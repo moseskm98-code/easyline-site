@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,13 +10,19 @@
 :root{color-scheme:only light!important}
 @media (prefers-color-scheme:dark){:root{color-scheme:only light!important}html,body{background-color:#fff!important;background-image:linear-gradient(#fff,#fff)!important}}
 </style>
-<title>EasyLine — вариант 2.2.1</title>
+<meta name="description" content="Протоколы питания, боксы и витрина grab & go EasyLine в Махачкале, Каспийске и Избербаше.">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyLine">
+<meta property="og:title" content="EasyLine">
+<meta property="og:description" content="Протоколы питания, боксы и витрина grab & go EasyLine в Махачкале, Каспийске и Избербаше.">
+<title>EasyLine — каталог питания</title>
 <link rel="icon" href="/easyline-site-2-2-1/assets/logo-Ddt-JyRw.svg" type="image/svg+xml">
-<script>window.__EASYLINE_VARIANT__ = "2.2.1";</script>
-<script src="/easyline-site-2-2-1/vendor/react.production.min.js"></script>
-<script src="/easyline-site-2-2-1/vendor/react-dom.production.min.js"></script>
-  <script type="module" crossorigin src="/easyline-site-2-2-1/assets/index-bCZnP30B.js"></script>
-  <link rel="stylesheet" crossorigin href="/easyline-site-2-2-1/assets/index-D4zCjitH.css">
+<script>window.__EASYLINE_VARIANT__ = "2.2.2";</script>
+<script  src="/easyline-site-2-2-1/vendor/react.production.min.js"></script>
+<script  src="/easyline-site-2-2-1/vendor/react-dom.production.min.js"></script>
+  <script type="module" crossorigin src="/easyline-site-2-2-1/assets/index-Dwt8uDxZ.js"></script>
+  <link rel="stylesheet" crossorigin href="/easyline-site-2-2-1/assets/index-BmA-8PXs.css">
   <link rel="stylesheet" href="/easyline-site-2-2-1/assets/readability-overrides.css">
   <link rel="stylesheet" href="/easyline-site-2-2-1/assets/light-mode-only.css">
 </head>
@@ -36,9 +42,9 @@ button{font-family:inherit}
 </helmet>
 
 <div style="display:flex;justify-content:flex-start;width:max-content;min-width:100%;background:#eef5f8">
-<div style="container-type:inline-size;width:min({{ frameMax }},100vw);flex:0 0 auto;background:#ffffff;position:relative;overflow:clip">
+<div class="el-site-shell" style="container-type:inline-size;width:min({{ frameMax }},100vw);flex:0 0 auto;background:#ffffff;position:relative">
 <sc-if value="{{ is0131 }}">
-  <a href="#main-content" style="position:fixed;left:12px;top:12px;z-index:120;transform:translateY(-160%);padding:10px 14px;background:#8e242e;color:#ffffff;font:500 13px/1 'Geologica',sans-serif" onFocus="{{ showSkipLink }}" onBlur="{{ hideSkipLink }}">Перейти к содержанию</a>
+  <a class="el-skip-link" href="#main-content" style="position:fixed;left:12px;top:12px;z-index:120;transform:translateY(-160%);padding:10px 14px;background:#8e242e;color:#ffffff;font:500 13px/1 'Geologica',sans-serif" onFocus="{{ showSkipLink }}" onBlur="{{ hideSkipLink }}">Перейти к содержанию</a>
 </sc-if>
 
 <header style="position:sticky;top:0;z-index:40;background:#ffffff;border-bottom:1px solid #8e242e">
@@ -48,7 +54,7 @@ button{font-family:inherit}
         <sc-for list="{{ topNav }}" as="t" hint-placeholder-count="3">
           <a href="{{ t.href }}" onClick="{{ t.onClick }}" style="font:300 13px/1 'Geologica',sans-serif;color:{{ t.color }};white-space:nowrap">{{ t.label }}</a>
         </sc-for>
-        <a href="#" onClick="{{ openApp }}" style="font:500 13px/1 'Geologica',sans-serif;color:#8e242e;white-space:nowrap;padding-left:24px;border-left:1px solid #c8dce8">Войти</a>
+        <a href="#" data-el-app-intent="auth" onClick="{{ openAuth }}" style="font:500 13px/1 'Geologica',sans-serif;color:#8e242e;white-space:nowrap;padding-left:24px;border-left:1px solid #c8dce8">Войти</a>
       </div>
     </div>
   </sc-if>
@@ -57,7 +63,7 @@ button{font-family:inherit}
     <a href="{{ hrefHome }}" onClick="{{ goHome }}" style="flex:0 0 auto;display:block;line-height:0"><img src="/easyline-site-2-2-1/assets/logo-Ddt-JyRw.svg" alt="EasyLine — Изи Лайн" style="width:clamp(88px,7.4cqw,116px);height:auto;display:block"></a>
 
     <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}">
-      <nav style="display:flex;align-items:center;gap:26px;margin-left:8px">
+      <nav aria-label="Основная навигация" style="display:flex;align-items:center;gap:26px;margin-left:8px">
         <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="7">
           <a href="{{ item.href }}" onClick="{{ item.onClick }}" style="font:400 15px/1 'Geologica',sans-serif;color:{{ item.color }};white-space:nowrap;padding:6px 0;border-bottom:1px solid {{ item.rule }}" style-hover="color:#719dc9">{{ item.label }}</a>
         </sc-for>
@@ -68,7 +74,7 @@ button{font-family:inherit}
     <sc-if value="{{ isNarrow }}">
       <div style="margin-left:auto;display:flex;align-items:center;gap:12px">
         <button onClick="{{ goPrograms }}" style="padding:12px 18px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 13px/1 'Geologica',sans-serif;cursor:pointer;white-space:nowrap">Выбрать меню</button>
-        <button onClick="{{ toggleMenu }}" aria-label="Меню" style="width:44px;height:44px;display:grid;place-items:center;gap:5px;background:transparent;border:1px solid #8e242e;border-radius:2px;cursor:pointer;padding:12px">
+        <button data-el-menu-toggle="true" onClick="{{ toggleMenu }}" aria-label="Меню" aria-expanded="{{ menuOpen }}" aria-controls="mobile-menu" style="width:44px;height:44px;display:grid;place-items:center;gap:5px;background:transparent;border:1px solid #8e242e;border-radius:2px;cursor:pointer;padding:12px">
           <span style="display:block;width:18px;height:1.5px;background:#8e242e"></span>
           <span style="display:block;width:18px;height:1.5px;background:#8e242e"></span>
           <span style="display:block;width:18px;height:1.5px;background:#8e242e"></span>
@@ -77,14 +83,12 @@ button{font-family:inherit}
     </sc-if>
   </div>
 
-  <sc-if value="{{ menuOpen }}">
-    <div style="border-top:1px solid #c8dce8;background:#ffffff;padding:12px clamp(16px,3cqw,40px) 24px;display:flex;flex-direction:column">
-      <sc-for list="{{ allNav }}" as="item" hint-placeholder-count="10">
-        <a href="{{ item.href }}" onClick="{{ item.onClick }}" style="font:400 17px/1 'Geologica',sans-serif;color:{{ item.color }};padding:15px 0;border-bottom:1px solid #e3edf3">{{ item.label }}</a>
-      </sc-for>
-      <a href="#" onClick="{{ openApp }}" style="font:500 17px/1 'Geologica',sans-serif;color:#8e242e;padding:15px 0">Войти</a>
-    </div>
-  </sc-if>
+  <nav id="mobile-menu" hidden="{{ !menuOpen }}" aria-hidden="{{ !menuOpen }}" aria-label="Мобильная навигация" style="border-top:1px solid #c8dce8;background:#ffffff;padding:12px clamp(16px,3cqw,40px) 24px;display:flex;flex-direction:column">
+    <sc-for list="{{ allNav }}" as="item" hint-placeholder-count="10">
+      <a href="{{ item.href }}" onClick="{{ item.onClick }}" style="font:400 17px/1 'Geologica',sans-serif;color:{{ item.color }};padding:15px 0;border-bottom:1px solid #e3edf3">{{ item.label }}</a>
+    </sc-for>
+    <a href="#" data-el-app-intent="auth" onClick="{{ openAuth }}" style="font:500 17px/1 'Geologica',sans-serif;color:#8e242e;padding:15px 0">Войти</a>
+  </nav>
 </header>
 
 <main id="main-content">
@@ -181,7 +185,7 @@ button{font-family:inherit}
       <a href="{{ p.href }}" onClick="{{ p.open }}" style="display:block;background:#f8fbfd;border:1px solid #d2e3ed;border-radius:2px;overflow:hidden;color:inherit" style-hover="border-color:#8e242e">
         <div style="height:6px;background:{{ p.color }}"></div>
         <div class="el-photo-frame" style="aspect-ratio:16/9">
-          <img class="el-photo" src="{{ p.image }}" alt="{{ p.imageAlt }}" loading="lazy" decoding="async">
+          <img class="el-photo" data-el-src="{{ p.image }}" alt="{{ p.imageAlt }}" loading="lazy" decoding="async">
         </div>
         <div style="padding:22px 22px 24px">
           <div class="el-brand-kicker" style="font:400 11px/1 'Geologica',sans-serif;color:#6f8492;letter-spacing:.08em;text-transform:uppercase">{{ p.goal }}</div>
@@ -201,7 +205,7 @@ button{font-family:inherit}
               </sc-for>
             </div>
             <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid #e3edf3"><span style="font:500 12px/1 'Geologica',sans-serif;color:#465a67">Цикл 28 дней</span><span aria-hidden="true" style="font:700 20px/1 'Podkova',serif;color:#719dc9">→</span></div>
-            <sc-if value="{{ is022 }}"><div style="margin-top:14px;padding:12px 14px;background:#e4f0f7;border-left:3px solid #719dc9;font:400 13px/1.45 'Geologica',sans-serif;color:#294653;text-wrap:pretty">{{ p.benefit }}</div></sc-if>
+            <sc-if value="{{ is022 }}"><div class="el-card-description el-body-copy" style="margin-top:14px;padding:12px 14px;background:#e4f0f7;border-left:3px solid #719dc9;font:400 13px/1.45 'Geologica',sans-serif;color:#294653;text-wrap:pretty">{{ p.benefit }}</div></sc-if>
           </sc-if>
         </div>
       </a>
@@ -219,7 +223,7 @@ button{font-family:inherit}
       <sc-for list="{{ homeBoxes }}" as="b" hint-placeholder-count="4">
         <a href="{{ b.href }}" onClick="{{ b.open }}" style="display:block;background:#ffffff;border:1px solid #d2e3ed;border-radius:2px;overflow:hidden;color:inherit" style-hover="border-color:#8e242e">
           <div class="el-photo-frame" style="aspect-ratio:4/3">
-            <img class="el-photo" src="{{ b.image }}" alt="{{ b.imageAlt }}" loading="lazy" decoding="async">
+            <img class="el-photo" data-el-src="{{ b.image }}" alt="{{ b.imageAlt }}" loading="lazy" decoding="async">
           </div>
           <div style="padding:16px 16px 18px">
             <h3 style="font:400 15px/1.35 'Geologica',sans-serif;color:#23333d;margin:0;min-height:60px;text-wrap:pretty">{{ b.name }}</h3>
@@ -228,7 +232,7 @@ button{font-family:inherit}
               <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px">
                 <sc-for list="{{ b.chips }}" as="chip" hint-placeholder-count="4"><span style="padding:6px 8px;background:#f8fbfd;border:1px solid #d2e3ed;font:500 10px/1 'Geologica',sans-serif;color:#465a67">{{ chip }}</span></sc-for>
               </div>
-              <sc-if value="{{ is022 }}"><div style="margin-top:12px;padding-top:11px;border-top:1px solid #d2e3ed;font:400 12px/1.45 'Geologica',sans-serif;color:#0f4d7a;text-wrap:pretty">{{ b.benefit }}</div></sc-if>
+              <sc-if value="{{ is022 }}"><div class="el-card-description el-body-copy" style="margin-top:12px;padding-top:11px;border-top:1px solid #d2e3ed;font:400 12px/1.45 'Geologica',sans-serif;color:#0f4d7a;text-wrap:pretty">{{ b.benefit }}</div></sc-if>
             </sc-if>
           </div>
         </a>
@@ -242,16 +246,21 @@ button{font-family:inherit}
     <div style="flex:1 1 300px">
       <h2 style="font:600 clamp(26px,3.4cqw,44px)/1.05 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0">Витрина grab &amp; go</h2>
       <p style="font:300 clamp(15px,1.3cqw,17px)/1.65 'Geologica',sans-serif;color:#465a67;margin:16px 0 0;max-width:500px;text-wrap:pretty">{{ showcaseIntro }}</p>
-      <sc-if value="{{ is022 }}"><div style="margin-top:18px;padding:14px 16px;background:#e4f0f7;border-left:3px solid #719dc9;max-width:500px;font:400 14px/1.5 'Geologica',sans-serif;color:#0f4d7a;text-wrap:pretty">{{ showcaseBenefit }}</div></sc-if>
+      <sc-if value="{{ is022 }}"><div class="el-body-copy" style="margin-top:18px;padding:14px 16px;background:#e4f0f7;border-left:3px solid #719dc9;max-width:500px;font:400 14px/1.5 'Geologica',sans-serif;color:#0f4d7a;text-wrap:pretty">{{ showcaseBenefit }}</div></sc-if>
       <sc-if value="{{ !is0131 }}"><button onClick="{{ goShowcase }}" style="margin-top:26px;padding:16px 28px;background:transparent;color:#8e242e;border:1px solid #8e242e;border-radius:2px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer" style-hover="background:#8e242e;color:#ffffff">Смотреть витрину</button></sc-if>
       <sc-if value="{{ is0131 }}"><a href="{{ hrefShowcase }}" onClick="{{ goShowcase }}" style="display:inline-flex;margin-top:26px;padding:16px 28px;background:transparent;color:#8e242e;border:1px solid #8e242e;border-radius:2px;font:500 15px/1 'Geologica',sans-serif" style-hover="background:#8e242e;color:#ffffff">Смотреть витрину</a></sc-if>
     </div>
-    <div style="flex:1 1 320px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px">
+    <div class="el-home-showcase-grid" style="flex:1 1 360px;display:grid;grid-template-columns:repeat(2,minmax(180px,1fr));gap:16px">
       <sc-for list="{{ homeShowcase }}" as="s" hint-placeholder-count="4">
-        <div style="background:#f8fbfd;border:1px solid #d2e3ed;border-radius:2px;padding:16px;overflow:hidden">
-          <sc-if value="{{ is0131 }}"><div aria-hidden="true" style="height:42px;margin:-16px -16px 14px;background:repeating-linear-gradient(90deg,#e4f0f7 0 12px,#ffffff 12px 24px);border-bottom:1px solid #d2e3ed;display:flex;align-items:center;justify-content:flex-end;padding:0 10px"><span style="font:700 18px/1 'Podkova',serif;color:#8e242e">{{ s.n }}</span></div></sc-if>
-          <div class="el-brand-kicker el-brand-kicker--compact" style="font:400 10px/1 'Geologica',sans-serif;color:#719dc9;letter-spacing:.09em;text-transform:uppercase">{{ s.line }}</div>
-          <div style="font:400 14px/1.4 'Geologica',sans-serif;color:#23333d;margin-top:10px;text-wrap:pretty">{{ s.name }}</div>
+        <div class="el-showcase-preview-card" style="background:#f8fbfd;border:1px solid #d2e3ed;border-radius:2px;overflow:hidden">
+          <sc-if value="{{ is0131 }}"><div class="el-brand-stripes" aria-hidden="true" style="height:42px;background:repeating-linear-gradient(90deg,#bddced 0 12px,#ffffff 12px 24px);border-bottom:1px solid #d2e3ed;display:flex;align-items:center;justify-content:flex-end;padding:0 12px"><span style="font:700 18px/1 'Podkova',serif;color:#8e242e">{{ s.n }}</span></div></sc-if>
+          <div class="el-photo-frame el-showcase-preview-photo" style="aspect-ratio:4/3">
+            <img class="el-photo" data-el-src="{{ s.image }}" alt="{{ s.imageAlt }}" loading="lazy" decoding="async">
+          </div>
+          <div class="el-showcase-preview-copy" style="padding:16px 18px 18px">
+            <div class="el-brand-kicker el-brand-kicker--compact" style="font:400 10px/1 'Geologica',sans-serif;color:#719dc9;letter-spacing:.09em;text-transform:uppercase">{{ s.line }}</div>
+            <div style="font:400 14px/1.4 'Geologica',sans-serif;color:#23333d;margin-top:10px;text-wrap:pretty">{{ s.name }}</div>
+          </div>
         </div>
       </sc-for>
     </div>
@@ -264,7 +273,7 @@ button{font-family:inherit}
       <div>
         <h2 style="font:600 clamp(26px,3.4cqw,44px)/1.05 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0">{{ sampleDay.title }}</h2>
         <p style="font:300 14px/1.5 'Geologica',sans-serif;color:#6f8492;margin:12px 0 0">{{ sampleDay.protocol }} · день {{ sampleDay.n }} · {{ sampleDay.kcal }} ккал</p>
-        <sc-if value="{{ is022 }}"><p style="font:400 14px/1.5 'Geologica',sans-serif;color:#0f4d7a;margin:10px 0 0;max-width:620px;text-wrap:pretty">{{ sampleDayBenefit }}</p></sc-if>
+        <sc-if value="{{ is022 }}"><p class="el-body-copy" style="font:400 14px/1.5 'Geologica',sans-serif;color:#0f4d7a;margin:10px 0 0;max-width:620px;text-wrap:pretty">{{ sampleDayBenefit }}</p></sc-if>
       </div>
       <a href="{{ hrefBase }}" onClick="{{ openBase }}" style="font:400 15px/1 'Geologica',sans-serif;color:#8e242e;border-bottom:1px solid #b8d2e1;padding-bottom:3px">Все 28 дней →</a>
     </div>
@@ -311,7 +320,7 @@ button{font-family:inherit}
       <sc-for list="{{ homeArticles }}" as="a" hint-placeholder-count="3">
         <a href="{{ a.href }}" onClick="{{ a.open }}" style="display:block;color:inherit">
           <div class="el-photo-frame" style="aspect-ratio:16/10;border:1px solid #d2e3ed">
-            <img class="el-photo" src="{{ a.image }}" alt="{{ a.imageAlt }}" loading="lazy" decoding="async">
+            <img class="el-photo" data-el-src="{{ a.image }}" alt="{{ a.imageAlt }}" loading="lazy" decoding="async">
             <span class="el-photo-index">{{ a.n }}</span>
           </div>
           <div class="el-brand-kicker el-brand-kicker--compact" style="font:300 12px/1 'Geologica',sans-serif;color:#7a909d;margin-top:16px">{{ a.date }}</div>
@@ -334,13 +343,11 @@ button{font-family:inherit}
     <div style="flex:1 1 420px;min-width:280px">
       <sc-for list="{{ homeFaq }}" as="f" hint-placeholder-count="5">
         <div style="border-bottom:1px solid #c8dce8">
-          <button onClick="{{ f.toggle }}" style="width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:20px 0;background:transparent;border:none;cursor:pointer;text-align:left">
+          <button id="{{ f.buttonId }}" onClick="{{ f.toggle }}" aria-expanded="{{ f.isOpen }}" aria-controls="{{ f.panelId }}" style="width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:20px 0;background:transparent;border:none;cursor:pointer;text-align:left">
             <span style="font:400 clamp(15px,1.4cqw,18px)/1.4 'Geologica',sans-serif;color:#23333d">{{ f.q }}</span>
             <span style="font:400 20px/1 'Oswald',sans-serif;color:#719dc9;flex:0 0 auto">{{ f.sign }}</span>
           </button>
-          <sc-if value="{{ f.isOpen }}">
-            <p style="font:300 15px/1.65 'Geologica',sans-serif;color:#465a67;margin:0;padding:0 40px 22px 0;text-wrap:pretty">{{ f.a }}</p>
-          </sc-if>
+          <p id="{{ f.panelId }}" hidden="{{ !f.isOpen }}" aria-hidden="{{ !f.isOpen }}" role="region" aria-labelledby="{{ f.buttonId }}" style="font:300 15px/1.65 'Geologica',sans-serif;color:#465a67;margin:0;padding:0 40px 22px 0;text-wrap:pretty">{{ f.a }}</p>
         </div>
       </sc-for>
     </div>
@@ -353,7 +360,7 @@ button{font-family:inherit}
       <h2 style="font:600 clamp(28px,3.8cqw,52px)/1.02 'Oswald',sans-serif;text-transform:uppercase;color:#ffffff;margin:0;text-wrap:balance">{{ finalCtaTitle }}</h2>
       <p style="font:300 clamp(14px,1.3cqw,17px)/1.6 'Geologica',sans-serif;color:#dbe9f1;margin:16px 0 0">{{ finalCtaText }}</p>
     </div>
-    <button onClick="{{ finalCtaAction }}" style="position:relative;z-index:2;padding:18px 32px;background:#bbdcef;color:#8e242e;border:none;border-radius:2px;font:500 16px/1 'Geologica',sans-serif;cursor:pointer;white-space:nowrap" style-hover="background:#ffffff">{{ finalCtaButton }}</button>
+    <button data-el-app-intent="order" onClick="{{ openOrder }}" style="position:relative;z-index:2;padding:18px 32px;background:#bbdcef;color:#8e242e;border:none;border-radius:2px;font:500 16px/1 'Geologica',sans-serif;cursor:pointer;white-space:nowrap" style-hover="background:#ffffff">{{ finalCtaButton }}</button>
     <sc-if value="{{ !is0131 }}"><img src="/easyline-site-2-2-1/assets/mascot-line-cream-BrTVyh0a.svg" alt="" style="position:absolute;right:-30px;bottom:-60px;width:clamp(220px,26cqw,360px);opacity:.17;z-index:1"></sc-if>
   </div>
 </section>
@@ -362,14 +369,17 @@ button{font-family:inherit}
 <!-- КАТАЛОГ ПРОТОКОЛОВ -->
 <sc-if value="{{ isPrograms }}">
 <section style="max-width:1240px;margin:0 auto;padding:clamp(32px,4cqw,64px) clamp(16px,3cqw,40px) clamp(56px,7cqw,100px)">
-  <h1 style="font:600 clamp(32px,4.6cqw,64px)/1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 12px">Протоколы питания</h1>
+  <h1 id="programs-title" style="font:600 clamp(32px,4.6cqw,64px)/1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 12px">Протоколы питания</h1>
   <p style="font:300 clamp(15px,1.3cqw,17px)/1.6 'Geologica',sans-serif;color:#465a67;margin:0 0 clamp(28px,3.4cqw,48px);max-width:640px">Полный цикл 28 дней с расписанным меню на каждый день, составом до грамма и посчитанным КБЖУ. Три приёма пищи, без перекусов.</p>
+  <div id="programs-catalog-region" role="region" aria-labelledby="programs-title" aria-describedby="programs-catalog-status programs-catalog-alert" aria-busy="{{ loading }}">
+  <p id="programs-catalog-status" class="el-sr-only" role="status" aria-live="polite" aria-atomic="true">{{ catalogStatus }}</p>
+  <p id="programs-catalog-alert" class="el-sr-only" role="alert" aria-live="assertive" aria-atomic="true">{{ catalogAlert }}</p>
   <sc-if value="{{ error }}">
     <div style="border:1px solid #8e242e;border-radius:2px;padding:36px;text-align:center;background:#f8fbfd">
       <sc-if value="{{ !is0131 }}"><img src="/easyline-site-2-2-1/assets/mascot-line-CpwpY2Zd.svg" alt="" style="width:96px;height:auto;margin:0 auto 16px;display:block;opacity:.85"></sc-if>
       <div style="font:500 20px/1.2 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e">Не удалось загрузить меню</div>
       <p style="font:300 15px/1.6 'Geologica',sans-serif;color:#465a67;margin:10px 0 20px">Проверьте соединение — данные каталога временно недоступны.</p>
-      <button onClick="{{ retry }}" style="padding:14px 26px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer">Повторить</button>
+      <button data-el-catalog-retry onClick="{{ retry }}" style="padding:14px 26px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer">Повторить</button>
     </div>
   </sc-if>
   <sc-if value="{{ loading }}">
@@ -384,11 +394,11 @@ button{font-family:inherit}
       <a href="{{ p.href }}" onClick="{{ p.open }}" style="display:block;background:#f8fbfd;border:1px solid #d2e3ed;border-radius:2px;overflow:hidden;color:inherit" style-hover="border-color:#8e242e">
         <div style="height:6px;background:{{ p.color }}"></div>
         <div class="el-photo-frame" style="aspect-ratio:16/9">
-          <img class="el-photo" src="{{ p.image }}" alt="{{ p.imageAlt }}" loading="lazy" decoding="async">
+          <img class="el-photo" data-el-src="{{ p.image }}" alt="{{ p.imageAlt }}" loading="lazy" decoding="async">
         </div>
         <div style="padding:24px">
           <div class="el-brand-kicker" style="font:400 11px/1 'Geologica',sans-serif;color:#6f8492;letter-spacing:.08em;text-transform:uppercase">{{ p.goal }}</div>
-          <h3 style="font:500 clamp(20px,2.1cqw,28px)/1.12 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:8px 0 0">{{ p.name }}</h3>
+          <h2 class="el-program-card-title" style="font:500 clamp(20px,2.1cqw,28px)/1.12 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:8px 0 0">{{ p.name }}</h2>
           <p style="font:300 14px/1.6 'Geologica',sans-serif;color:#465a67;margin:12px 0 20px;text-wrap:pretty">{{ p.short }}</p>
           <div style="display:flex;flex-direction:column;gap:10px;border-top:1px solid #e3edf3;padding-top:16px">
             <sc-for list="{{ p.facts }}" as="f" hint-placeholder-count="4">
@@ -401,6 +411,7 @@ button{font-family:inherit}
         </div>
       </a>
     </sc-for>
+  </div>
   </div>
   <div style="margin-top:clamp(32px,4cqw,56px);background:#bddced;border-radius:2px;padding:clamp(24px,3cqw,40px);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
     <div style="max-width:560px">
@@ -415,13 +426,13 @@ button{font-family:inherit}
 <!-- СТРАНИЦА ПРОТОКОЛА -->
 <sc-if value="{{ isProgram }}">
 <div class="el-photo-frame" style="aspect-ratio:{{ coverRatio }};max-height:520px;border-bottom:1px solid #c8dce8">
-  <img class="el-photo" src="{{ prog.image }}" alt="{{ prog.imageAlt }}" fetchpriority="high" decoding="async">
+  <img class="el-photo" data-el-src="{{ prog.image }}" alt="{{ prog.imageAlt }}" fetchpriority="high" decoding="async">
 </div>
 <section style="max-width:1240px;margin:0 auto;padding:clamp(32px,4cqw,56px) clamp(16px,3cqw,40px) 0;display:flex;flex-wrap:wrap;gap:clamp(24px,4cqw,64px)">
   <div style="flex:1 1 400px;min-width:270px">
     <div class="el-brand-kicker" style="font:400 11px/1 'Geologica',sans-serif;color:#6f8492;letter-spacing:.1em;text-transform:uppercase">{{ prog.goal }}</div>
     <h1 style="font:600 clamp(30px,4.2cqw,58px)/1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:12px 0 0;text-wrap:balance">{{ prog.name }}</h1>
-    <p style="font:300 clamp(15px,1.35cqw,18px)/1.65 'Geologica',sans-serif;color:#465a67;margin:18px 0 0;max-width:560px;text-wrap:pretty">{{ prog.long }}</p>
+    <p class="el-body-copy" style="font:300 clamp(15px,1.35cqw,18px)/1.65 'Geologica',sans-serif;color:#465a67;margin:18px 0 0;max-width:560px;text-wrap:pretty">{{ prog.long }}</p>
     <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:24px">
       <sc-for list="{{ prog.tags }}" as="t" hint-placeholder-count="4">
         <span style="padding:8px 14px;background:#f8fbfd;border:1px solid #d2e3ed;border-radius:2px;font:300 13px/1 'Geologica',sans-serif;color:#465a67">{{ t }}</span>
@@ -434,30 +445,30 @@ button{font-family:inherit}
       <div style="display:flex;flex-direction:column;gap:12px;margin:18px 0 22px">
         <sc-for list="{{ prog.facts }}" as="f" hint-placeholder-count="4">
           <div style="display:flex;gap:12px;justify-content:space-between;border-bottom:1px solid #e3edf3;padding-bottom:10px">
-            <span style="font:300 13px/1.4 'Geologica',sans-serif;color:#6f8492">{{ f.k }}</span>
+            <span class="el-protocol-fact-key" style="font:300 13px/1.4 'Geologica',sans-serif;color:#6f8492">{{ f.k }}</span>
             <span style="font:400 13px/1.4 'Geologica',sans-serif;color:#23333d;text-align:right">{{ f.v }}</span>
           </div>
         </sc-for>
       </div>
-      <button onClick="{{ openApp }}" style="width:100%;padding:17px 24px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 16px/1 'Geologica',sans-serif;cursor:pointer" style-hover="background:#5f8dbb">Заказать</button>
-      <div style="font:300 12px/1.5 'Geologica',sans-serif;color:#7a909d;margin-top:12px;text-align:center">Расчёт стоимости и оформление — в приложении</div>
+      <button data-el-app-intent="order" onClick="{{ openOrder }}" style="width:100%;padding:17px 24px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 16px/1 'Geologica',sans-serif;cursor:pointer" style-hover="background:#5f8dbb">Заказать</button>
+      <div class="el-body-copy" style="font:300 12px/1.5 'Geologica',sans-serif;color:#7a909d;margin-top:12px;text-align:center">Расчёт стоимости и оформление — в приложении</div>
     </div>
   </div>
 </section>
 
 <section style="max-width:1240px;margin:0 auto;padding:clamp(40px,5cqw,72px) clamp(16px,3cqw,40px) 0">
   <h2 style="font:500 clamp(22px,2.6cqw,32px)/1.1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 20px">Меню на 28 дней</h2>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px">
+  <div role="group" aria-label="Выбор недели" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px">
     <sc-for list="{{ weekTabs }}" as="w" hint-placeholder-count="4">
-      <button onClick="{{ w.select }}" style="text-align:left;padding:16px 18px;background:{{ w.bg }};border:1px solid {{ w.border }};border-radius:2px;cursor:pointer">
+      <button onClick="{{ w.select }}" aria-pressed="{{ w.pressed }}" aria-controls="program-day-panel" style="text-align:left;padding:16px 18px;background:{{ w.bg }};border:1px solid {{ w.border }};border-radius:2px;cursor:pointer">
         <div style="font:500 12px/1 'Geologica',sans-serif;color:{{ w.fg }};letter-spacing:.08em;text-transform:uppercase">Неделя {{ w.n }}</div>
         <div style="font:400 14px/1.35 'Geologica',sans-serif;color:{{ w.fg }};margin-top:8px">{{ w.name }}</div>
       </button>
     </sc-for>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:16px">
+  <div role="group" aria-label="Выбор дня" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:16px">
     <sc-for list="{{ weekDays }}" as="d" hint-placeholder-count="7">
-      <button onClick="{{ d.select }}" style="text-align:left;padding:16px;background:{{ d.bg }};border:1px solid {{ d.border }};border-radius:2px;cursor:pointer;display:flex;flex-direction:column;gap:8px">
+      <button onClick="{{ d.select }}" aria-pressed="{{ d.pressed }}" aria-controls="program-day-panel" style="text-align:left;padding:16px;background:{{ d.bg }};border:1px solid {{ d.border }};border-radius:2px;cursor:pointer;display:flex;flex-direction:column;gap:8px">
         <div style="display:flex;align-items:baseline;gap:8px">
           <span style="font:600 clamp(22px,2.2cqw,28px)/1 'Podkova',serif;color:{{ d.accent }}">{{ d.n }}</span>
           <span style="font:300 12px/1 'Geologica',sans-serif;color:{{ d.muted }}">{{ d.dow }}</span>
@@ -472,7 +483,7 @@ button{font-family:inherit}
     </sc-for>
   </div>
 
-  <div style="margin-top:16px;background:#f8fbfd;border:1px solid #8e242e;border-radius:2px;padding:clamp(20px,2.6cqw,32px)">
+  <div id="program-day-panel" aria-live="polite" aria-atomic="false" style="margin-top:16px;background:#f8fbfd;border:1px solid #8e242e;border-radius:2px;padding:clamp(20px,2.6cqw,32px)">
     <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:baseline;justify-content:space-between;border-bottom:1px solid #e3edf3;padding-bottom:18px">
       <div>
         <div style="font:500 clamp(20px,2.2cqw,28px)/1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e">День {{ day.n }} · {{ day.dow }}</div>
@@ -510,7 +521,7 @@ button{font-family:inherit}
     <sc-for list="{{ prog.rules }}" as="r" hint-placeholder-count="6">
       <div style="display:flex;gap:14px;background:#f8fbfd;border:1px solid #d2e3ed;border-radius:2px;padding:18px">
         <span style="flex:0 0 auto;width:7px;height:7px;margin-top:7px;background:#719dc9;border-radius:50%"></span>
-        <span style="font:300 14px/1.6 'Geologica',sans-serif;color:#394c58;text-wrap:pretty">{{ r }}</span>
+        <span class="el-card-description" style="font:300 14px/1.6 'Geologica',sans-serif;color:#394c58;text-wrap:pretty">{{ r }}</span>
       </div>
     </sc-for>
   </div>
@@ -539,7 +550,7 @@ button{font-family:inherit}
         <span style="font:300 13px/1 'Geologica',sans-serif;color:#6f8492">день {{ day.n }}</span>
       </div>
     </div>
-    <button onClick="{{ openApp }}" style="padding:15px 30px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer;white-space:nowrap" style-hover="background:#5f8dbb">Заказать</button>
+    <button data-el-app-intent="order" onClick="{{ openOrder }}" style="padding:15px 30px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer;white-space:nowrap" style-hover="background:#5f8dbb">Заказать</button>
   </div>
 </div>
 </sc-if>
@@ -566,7 +577,7 @@ button{font-family:inherit}
       <fieldset style="border:0;padding:0;margin:0"><legend style="font:500 16px/1.3 'Geologica',sans-serif;color:#23333d;margin-bottom:14px"><span style="color:#719dc9;font:700 20px/1 'Podkova',serif;margin-right:8px">1</span>Калорийность</legend><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px"><sc-for list="{{ calorieOptions }}" as="o" hint-placeholder-count="3"><button type="button" onClick="{{ o.select }}" style="text-align:left;padding:16px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid {{ o.border }};cursor:pointer"><strong style="display:block;font:500 15px/1 'Geologica',sans-serif">{{ o.name }}</strong><span style="display:block;font:300 13px/1 'Geologica',sans-serif;margin-top:9px">{{ o.kcal }} ккал</span></button></sc-for></div></fieldset>
       <fieldset style="border:0;padding:0;margin:0"><legend style="font:500 16px/1.3 'Geologica',sans-serif;color:#23333d;margin-bottom:14px"><span style="color:#719dc9;font:700 20px/1 'Podkova',serif;margin-right:8px">2</span>Длительность</legend><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px"><sc-for list="{{ durationOptions }}" as="o" hint-placeholder-count="3"><button type="button" onClick="{{ o.select }}" style="text-align:left;padding:16px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid {{ o.border }};cursor:pointer"><strong style="display:block;font:500 15px/1 'Geologica',sans-serif">{{ o.label }}</strong><span style="display:block;font:300 13px/1 'Geologica',sans-serif;margin-top:9px">{{ o.total }}</span></button></sc-for></div></fieldset>
       <fieldset style="border:0;padding:0;margin:0"><legend style="font:500 16px/1.3 'Geologica',sans-serif;color:#23333d;margin-bottom:14px"><span style="color:#719dc9;font:700 20px/1 'Podkova',serif;margin-right:8px">3</span>График доставки</legend><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px"><sc-for list="{{ scheduleOptions }}" as="o" hint-placeholder-count="3"><button type="button" onClick="{{ o.select }}" style="text-align:left;padding:16px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid {{ o.border }};cursor:pointer"><strong style="font:500 14px/1.25 'Geologica',sans-serif">{{ o.label }}</strong></button></sc-for></div></fieldset>
-      <fieldset style="border:0;padding:0;margin:0"><legend style="font:500 16px/1.3 'Geologica',sans-serif;color:#23333d;margin-bottom:14px"><span style="color:#719dc9;font:700 20px/1 'Podkova',serif;margin-right:8px">4</span>Первая доставка</legend><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px"><label style="font:400 13px/1.4 'Geologica',sans-serif;color:#465a67">Дата<input type="date" value="{{ deliveryDate }}" onChange="{{ setDeliveryDate }}" required style="display:block;width:100%;margin-top:8px;padding:14px;background:#ffffff;border:1px solid #b8d2e1;font:400 15px/1 'Geologica',sans-serif"></label><label style="font:400 13px/1.4 'Geologica',sans-serif;color:#465a67">Адрес<input type="text" value="{{ deliveryAddress }}" onChange="{{ setDeliveryAddress }}" placeholder="Улица, дом, квартира" required style="display:block;width:100%;margin-top:8px;padding:14px;background:#ffffff;border:1px solid #b8d2e1;font:400 15px/1 'Geologica',sans-serif"></label></div></fieldset>
+      <fieldset style="border:0;padding:0;margin:0"><legend style="font:500 16px/1.3 'Geologica',sans-serif;color:#23333d;margin-bottom:14px"><span style="color:#719dc9;font:700 20px/1 'Podkova',serif;margin-right:8px">4</span>Первая доставка</legend><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px"><label style="font:400 13px/1.4 'Geologica',sans-serif;color:#465a67">Дата<input type="date" data-el-value="{{ deliveryDate }}" onChange="{{ setDeliveryDate }}" required style="display:block;width:100%;margin-top:8px;padding:14px;background:#ffffff;border:1px solid #b8d2e1;font:400 15px/1 'Geologica',sans-serif"></label><label style="font:400 13px/1.4 'Geologica',sans-serif;color:#465a67">Адрес<input type="text" data-el-value="{{ deliveryAddress }}" onChange="{{ setDeliveryAddress }}" placeholder="Улица, дом, квартира" required style="display:block;width:100%;margin-top:8px;padding:14px;background:#ffffff;border:1px solid #b8d2e1;font:400 15px/1 'Geologica',sans-serif"></label></div></fieldset>
     </div>
     <aside class="el-configurator-summary" style="align-self:start;position:sticky;top:132px;background:#ffffff;border:1px solid #8e242e;padding:clamp(22px,3cqw,32px)"><div style="font:500 11px/1 'Geologica',sans-serif;color:#719dc9;letter-spacing:.1em;text-transform:uppercase">Ваш рацион</div><h3 style="font:600 clamp(25px,3cqw,38px)/1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:12px 0 24px">{{ flexProgram.name }}</h3><div style="display:flex;flex-direction:column;gap:12px"><sc-for list="{{ configRows }}" as="r" hint-placeholder-count="4"><div style="display:flex;justify-content:space-between;gap:16px;padding-bottom:10px;border-bottom:1px solid #e3edf3"><span style="font:300 13px/1.4 'Geologica',sans-serif;color:#6f8492">{{ r.k }}</span><strong style="font:500 13px/1.4 'Geologica',sans-serif;color:#23333d;text-align:right">{{ r.v }}</strong></div></sc-for></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:18px;margin-top:28px"><span style="font:500 15px/1 'Geologica',sans-serif;color:#23333d">Итого</span><strong style="font:700 clamp(24px,2.8cqw,36px)/1 'Podkova',serif;color:#8e242e">{{ configTotal }}</strong></div><button type="submit" style="width:100%;margin-top:24px;padding:16px;background:#719dc9;color:#ffffff;border:0;font:500 15px/1 'Geologica',sans-serif;cursor:pointer">Продолжить</button><small style="display:block;font:300 12px/1.5 'Geologica',sans-serif;color:#7a909d;margin-top:12px;text-align:center">Доставка уже включена в стоимость.</small><sc-if value="{{ configSubmitted }}"><p style="font:400 13px/1.55 'Geologica',sans-serif;color:#0f4d7a;background:#bddced;padding:12px;margin:16px 0 0">Конфигурация готова. Для оформления потребуется вход в личный кабинет.</p></sc-if></aside>
   </form>
@@ -590,7 +601,7 @@ button{font-family:inherit}
       <a href="{{ b.href }}" onClick="{{ b.open }}" style="display:block;background:#f8fbfd;border:1px solid #d2e3ed;border-radius:2px;overflow:hidden;color:inherit" style-hover="border-color:#8e242e">
         <div style="height:5px;background:{{ b.color }}"></div>
         <div class="el-photo-frame" style="aspect-ratio:4/3">
-          <img class="el-photo" src="{{ b.image }}" alt="{{ b.imageAlt }}" loading="lazy" decoding="async">
+          <img class="el-photo" data-el-src="{{ b.image }}" alt="{{ b.imageAlt }}" loading="lazy" decoding="async">
         </div>
         <div style="padding:18px 18px 20px">
           <h3 style="font:400 15px/1.4 'Geologica',sans-serif;color:#23333d;margin:0;min-height:63px;text-wrap:pretty">{{ b.name }}</h3>
@@ -611,7 +622,7 @@ button{font-family:inherit}
 <section style="max-width:1240px;margin:0 auto;padding:clamp(32px,4cqw,64px) clamp(16px,3cqw,40px) clamp(56px,7cqw,100px);display:flex;flex-wrap:wrap;gap:clamp(28px,4cqw,64px)">
   <div style="flex:1 1 340px;min-width:280px">
     <div class="el-photo-frame" style="aspect-ratio:4/3;box-shadow:0 0 0 1px #8e242e,0 0 0 5px #ffffff,0 0 0 6px #8e242e">
-      <img class="el-photo" src="{{ box.image }}" alt="{{ box.imageAlt }}" fetchpriority="high" decoding="async">
+      <img class="el-photo" data-el-src="{{ box.image }}" alt="{{ box.imageAlt }}" fetchpriority="high" decoding="async">
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px">
       <span style="padding:9px 14px;background:#bbdcef;border-radius:2px;font:500 12px/1 'Geologica',sans-serif;color:#8e242e;letter-spacing:.05em;text-transform:uppercase">Можно поштучно</span>
@@ -644,7 +655,7 @@ button{font-family:inherit}
       </sc-for>
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:clamp(28px,3cqw,40px)">
-      <button onClick="{{ openApp }}" style="padding:17px 30px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer" style-hover="background:#5f8dbb">Заказать</button>
+      <button data-el-app-intent="order" onClick="{{ openOrder }}" style="padding:17px 30px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer" style-hover="background:#5f8dbb">Заказать</button>
       <a href="{{ hrefBoxes }}" onClick="{{ goBoxes }}" style="font:400 15px/1 'Geologica',sans-serif;color:#8e242e;border-bottom:1px solid #b8d2e1;padding-bottom:3px">← Все боксы</a>
     </div>
   </div>
@@ -657,9 +668,9 @@ button{font-family:inherit}
   <h1 style="font:600 clamp(32px,4.6cqw,64px)/1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 12px">Витрина</h1>
   <p style="font:300 clamp(15px,1.3cqw,17px)/1.6 'Geologica',sans-serif;color:#465a67;margin:0 0 clamp(24px,3cqw,40px);max-width:640px">Позиции grab &amp; go для витрины, вендинговых аппаратов и корпоративных заказов. Выберите соус — КБЖУ пересчитается.</p>
 
-  <div style="display:flex;gap:10px;flex-wrap:wrap">
+  <div role="group" aria-label="Линейка витрины" style="display:flex;gap:10px;flex-wrap:wrap">
     <sc-for list="{{ lineTabs }}" as="l" hint-placeholder-count="2">
-      <button onClick="{{ l.select }}" style="padding:14px 24px;background:{{ l.bg }};color:{{ l.fg }};border:1px solid {{ l.border }};border-radius:2px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer">{{ l.name }}</button>
+      <button onClick="{{ l.select }}" aria-pressed="{{ l.pressed }}" style="padding:14px 24px;background:{{ l.bg }};color:{{ l.fg }};border:1px solid {{ l.border }};border-radius:2px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer">{{ l.name }}</button>
     </sc-for>
   </div>
   <p style="font:300 14px/1.6 'Geologica',sans-serif;color:#6f8492;margin:18px 0 0;max-width:620px">{{ lineNote }}</p>
@@ -671,19 +682,19 @@ button{font-family:inherit}
         <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="3">
           <div style="background:#f8fbfd;border:1px solid #d2e3ed;border-radius:2px;overflow:hidden;display:flex;flex-direction:column">
             <div class="el-photo-frame" style="aspect-ratio:16/10">
-              <img class="el-photo" src="{{ it.image }}" alt="{{ it.imageAlt }}" loading="lazy" decoding="async">
+              <img class="el-photo" data-el-src="{{ it.image }}" alt="{{ it.imageAlt }}" loading="lazy" decoding="async">
             </div>
             <div style="padding:18px;display:flex;flex-direction:column;gap:14px;flex:1">
               <div>
                 <h3 style="font:400 16px/1.35 'Geologica',sans-serif;color:#23333d;margin:0;text-wrap:pretty">{{ it.name }}</h3>
                 <div style="font:300 12px/1.4 'Geologica',sans-serif;color:#7a909d;margin-top:6px">{{ it.base }}</div>
               </div>
-              <div style="font:300 13px/1.6 'Geologica',sans-serif;color:#465a67">{{ it.comp }}</div>
+              <div class="el-card-description" style="font:300 13px/1.6 'Geologica',sans-serif;color:#465a67">{{ it.comp }}</div>
               <div>
                 <div style="font:500 10px/1 'Geologica',sans-serif;color:#719dc9;letter-spacing:.09em;text-transform:uppercase">Соус</div>
-                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">
+                <div role="group" aria-label="Выбор соуса для {{ it.name }}" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">
                   <sc-for list="{{ it.sauces }}" as="s" hint-placeholder-count="3">
-                    <button onClick="{{ s.select }}" style="padding:8px 11px;background:{{ s.bg }};color:{{ s.fg }};border:1px solid {{ s.border }};border-radius:2px;font:300 12px/1 'Geologica',sans-serif;cursor:pointer">{{ s.name }}</button>
+                    <button onClick="{{ s.select }}" aria-pressed="{{ s.pressed }}" style="padding:8px 11px;background:{{ s.bg }};color:{{ s.fg }};border:1px solid {{ s.border }};border-radius:2px;font:300 12px/1 'Geologica',sans-serif;cursor:pointer">{{ s.name }}</button>
                   </sc-for>
                 </div>
               </div>
@@ -734,7 +745,7 @@ button{font-family:inherit}
       </sc-if>
       <sc-if value="{{ b.isPhoto }}">
         <div class="el-photo-frame" style="aspect-ratio:16/9;margin:24px 0 28px;border:1px solid #d2e3ed">
-          <sc-if value="{{ b.hasImage }}"><img class="el-photo" src="{{ b.image }}" alt="{{ b.alt }}" loading="lazy" decoding="async"></sc-if>
+          <sc-if value="{{ b.hasImage }}"><img class="el-photo" data-el-src="{{ b.image }}" alt="{{ b.alt }}" loading="lazy" decoding="async"></sc-if>
           <sc-if value="{{ !b.hasImage }}"><span class="el-photo-placeholder-label">{{ b.text }}</span></sc-if>
         </div>
       </sc-if>
@@ -776,7 +787,7 @@ button{font-family:inherit}
       <img src="/easyline-site-2-2-1/assets/mascot-line-CpwpY2Zd.svg" alt="" style="width:clamp(96px,10cqw,132px);height:auto;margin:0 auto 20px;display:block;opacity:.85">
       <div style="font:500 clamp(20px,2.2cqw,28px)/1.15 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e">Отзывов пока нет</div>
       <p style="font:300 15px/1.7 'Geologica',sans-serif;color:#465a67;margin:14px auto 26px;max-width:420px;text-wrap:pretty">Мы только начали работать в Махачкале. Первые отзывы появятся здесь, когда клиенты закончат первый цикл — публикуем всё без правок.</p>
-      <button onClick="{{ openApp }}" style="padding:16px 28px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer" style-hover="background:#5f8dbb">Начать протокол</button>
+      <button data-el-app-intent="order" onClick="{{ openOrder }}" style="padding:16px 28px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer" style-hover="background:#5f8dbb">Начать протокол</button>
     </div>
   </sc-if>
 </section>
@@ -804,7 +815,7 @@ button{font-family:inherit}
 <sc-if value="{{ isPromoItem }}">
 <section style="max-width:900px;margin:0 auto;padding:clamp(32px,4cqw,64px) clamp(16px,3cqw,40px) clamp(56px,7cqw,100px)">
   <div class="el-photo-frame" style="aspect-ratio:16/9;border-radius:2px">
-    <img class="el-photo" src="{{ promo.image }}" alt="{{ promo.imageAlt }}" fetchpriority="high" decoding="async">
+    <img class="el-photo" data-el-src="{{ promo.image }}" alt="{{ promo.imageAlt }}" fetchpriority="high" decoding="async">
   </div>
   <div class="el-brand-kicker el-brand-kicker--compact" style="font:400 11px/1 'Geologica',sans-serif;color:#6f8492;letter-spacing:.09em;text-transform:uppercase;margin-top:28px">{{ promo.until }}</div>
   <h1 style="font:600 clamp(28px,4cqw,54px)/1.02 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:14px 0 20px;text-wrap:balance">{{ promo.title }}</h1>
@@ -815,7 +826,7 @@ button{font-family:inherit}
     </sc-for>
   </ul>
   <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center">
-    <button onClick="{{ openApp }}" style="padding:17px 30px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer" style-hover="background:#5f8dbb">Воспользоваться</button>
+    <button data-el-app-intent="promo" onClick="{{ openPromo }}" style="padding:17px 30px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer" style-hover="background:#5f8dbb">Воспользоваться</button>
     <a href="{{ hrefPromo }}" onClick="{{ goPromo }}" style="font:400 15px/1 'Geologica',sans-serif;color:#8e242e;border-bottom:1px solid #b8d2e1;padding-bottom:3px">← Все акции</a>
   </div>
 </section>
@@ -829,7 +840,7 @@ button{font-family:inherit}
     <sc-for list="{{ articles }}" as="a" hint-placeholder-count="6">
       <a href="{{ a.href }}" onClick="{{ a.open }}" style="display:block;color:inherit">
         <div class="el-photo-frame" style="aspect-ratio:16/10;border:1px solid #d2e3ed">
-          <img class="el-photo" src="{{ a.image }}" alt="{{ a.imageAlt }}" loading="lazy" decoding="async">
+          <img class="el-photo" data-el-src="{{ a.image }}" alt="{{ a.imageAlt }}" loading="lazy" decoding="async">
         </div>
         <div class="el-brand-kicker el-brand-kicker--compact" style="font:300 12px/1 'Geologica',sans-serif;color:#7a909d;margin-top:16px">{{ a.date }}</div>
         <h3 style="font:500 clamp(17px,1.6cqw,21px)/1.25 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:8px 0;text-wrap:balance">{{ a.title }}</h3>
@@ -844,7 +855,7 @@ button{font-family:inherit}
 <sc-if value="{{ isArticle }}">
 <section style="max-width:820px;margin:0 auto;padding:clamp(32px,4cqw,64px) clamp(16px,3cqw,40px) clamp(56px,7cqw,100px)">
   <div class="el-photo-frame" style="aspect-ratio:16/9;border:1px solid #d2e3ed">
-    <img class="el-photo" src="{{ article.image }}" alt="{{ article.imageAlt }}" fetchpriority="high" decoding="async">
+    <img class="el-photo" data-el-src="{{ article.image }}" alt="{{ article.imageAlt }}" fetchpriority="high" decoding="async">
   </div>
   <div class="el-brand-kicker el-brand-kicker--compact" style="font:300 12px/1 'Geologica',sans-serif;color:#7a909d;margin-top:28px">{{ article.date }}</div>
   <h1 style="font:600 clamp(28px,3.8cqw,50px)/1.05 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:14px 0 24px;text-wrap:balance">{{ article.title }}</h1>
@@ -866,13 +877,11 @@ button{font-family:inherit}
   <h1 style="font:600 clamp(32px,4.6cqw,64px)/1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 clamp(24px,3cqw,40px)">Частые вопросы</h1>
   <sc-for list="{{ faq }}" as="f" hint-placeholder-count="8">
     <div style="border-bottom:1px solid #c8dce8">
-      <button onClick="{{ f.toggle }}" style="width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:22px 0;background:transparent;border:none;cursor:pointer;text-align:left">
+      <button id="{{ f.buttonId }}" onClick="{{ f.toggle }}" aria-expanded="{{ f.isOpen }}" aria-controls="{{ f.panelId }}" style="width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:22px 0;background:transparent;border:none;cursor:pointer;text-align:left">
         <span style="font:400 clamp(16px,1.5cqw,19px)/1.4 'Geologica',sans-serif;color:#23333d">{{ f.q }}</span>
         <span style="font:400 22px/1 'Oswald',sans-serif;color:#719dc9;flex:0 0 auto">{{ f.sign }}</span>
       </button>
-      <sc-if value="{{ f.isOpen }}">
-        <p style="font:300 15px/1.7 'Geologica',sans-serif;color:#465a67;margin:0;padding:0 40px 24px 0;text-wrap:pretty">{{ f.a }}</p>
-      </sc-if>
+      <p id="{{ f.panelId }}" hidden="{{ !f.isOpen }}" aria-hidden="{{ !f.isOpen }}" role="region" aria-labelledby="{{ f.buttonId }}" style="font:300 15px/1.7 'Geologica',sans-serif;color:#465a67;margin:0;padding:0 40px 24px 0;text-wrap:pretty">{{ f.a }}</p>
     </div>
   </sc-for>
 </section>
@@ -883,11 +892,11 @@ button{font-family:inherit}
 <section style="max-width:1240px;margin:0 auto;padding:clamp(32px,4cqw,64px) clamp(16px,3cqw,40px) clamp(56px,7cqw,100px);display:flex;flex-wrap:wrap;gap:clamp(28px,4cqw,64px)">
   <aside style="flex:0 1 260px;min-width:220px">
     <div class="el-brand-kicker el-brand-kicker--compact" style="font:400 11px/1 'Geologica',sans-serif;color:#6f8492;letter-spacing:.09em;text-transform:uppercase;margin-bottom:14px">Документы</div>
-    <div style="display:flex;flex-direction:column">
+    <nav aria-label="Юридические документы" style="display:flex;flex-direction:column">
       <sc-for list="{{ legalDocs }}" as="d" hint-placeholder-count="9">
-        <a href="{{ d.href }}" onClick="{{ d.open }}" style="font:300 14px/1.45 'Geologica',sans-serif;color:{{ d.color }};padding:10px 0;border-bottom:1px solid #e3edf3">{{ d.title }}</a>
+        <a href="{{ d.href }}" onClick="{{ d.open }}" aria-current="{{ d.current }}" style="font:300 14px/1.45 'Geologica',sans-serif;color:{{ d.color }};padding:10px 0;border-bottom:1px solid #e3edf3">{{ d.title }}</a>
       </sc-for>
-    </div>
+    </nav>
   </aside>
   <div style="flex:1 1 460px;min-width:280px;max-width:760px">
     <h1 style="font:600 clamp(26px,3.4cqw,44px)/1.05 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 10px;text-wrap:balance">{{ legal.title }}</h1>
@@ -933,26 +942,26 @@ button{font-family:inherit}
         </sc-for>
       </div>
     </div>
-    <div style="display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;gap:14px">
+    <div class="el-removed-art" style="display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;gap:14px">
       <img src="/easyline-site-2-2-1/assets/mascot-line-cream-BrTVyh0a.svg" alt="" style="width:clamp(128px,13cqw,190px);height:auto;display:block">
       <div style="font:300 12px/1.5 'Geologica',sans-serif;color:#b7d2e2;letter-spacing:.06em;text-transform:uppercase;text-align:right">Барс — символ EasyLine</div>
     </div>
   </div>
   <div style="max-width:1240px;margin:0 auto;padding:0 clamp(16px,3cqw,40px) clamp(32px,4cqw,52px);display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;border-top:1px solid #b55b66;padding-top:24px">
-    <div style="font:300 13px/1.5 'Geologica',sans-serif;color:#c9dce8">© 2026 EasyLine. ИП Магомедов А. М. · ИНН 057200000000</div>
+    <div style="font:300 13px/1.5 'Geologica',sans-serif;color:#c9dce8;min-width:0;overflow-wrap:anywhere">© 2026 EasyLine. ИП Магомедов А. М. · ИНН 057200000000</div>
     <img src="/easyline-site-2-2-1/assets/script-be-easy-yellow-Y0GVzQ1M.svg" alt="be easy" style="width:96px;height:auto;opacity:.9">
   </div>
 </footer>
 
 <sc-if value="{{ appModal }}">
-<div onClick="{{ closeApp }}" style="position:fixed;inset:0;z-index:90;background:rgba(43,33,28,.55);display:grid;place-items:center;padding:24px">
-  <div style="background:#ffffff;border-radius:2px;max-width:420px;width:100%;padding:36px;text-align:center;box-shadow:0 0 0 1px #8e242e,0 0 0 5px #ffffff,0 0 0 6px #8e242e">
+<div data-el-modal-overlay="true" onClick="{{ closeAppOverlay }}" style="position:fixed;inset:0;z-index:90;background:rgba(43,33,28,.55);display:grid;place-items:center;padding:24px">
+  <div data-el-modal-panel="true" onClick="{{ stopPropagation }}" role="dialog" aria-modal="true" aria-labelledby="app-modal-title" aria-describedby="app-modal-description" style="background:#ffffff;border-radius:2px;max-width:420px;width:100%;padding:36px;text-align:center;box-shadow:0 0 0 1px #8e242e,0 0 0 5px #ffffff,0 0 0 6px #8e242e">
     <img src="/easyline-site-2-2-1/assets/mascot-line-CpwpY2Zd.svg" alt="" style="width:104px;height:auto;margin:0 auto 16px;display:block">
-    <h3 style="font:600 clamp(22px,2.4cqw,30px)/1.1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0">Заказ — в приложении</h3>
-    <p style="font:300 15px/1.65 'Geologica',sans-serif;color:#465a67;margin:14px 0 26px">Оформление, оплата и управление подпиской происходят в приложении EasyLine.</p>
+    <h2 id="app-modal-title" style="font:600 clamp(22px,2.4cqw,30px)/1.1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0">{{ appModalTitle }}</h2>
+    <p id="app-modal-description" style="font:300 15px/1.65 'Geologica',sans-serif;color:#465a67;margin:14px 0 26px">{{ appModalText }}</p>
     <div style="display:flex;flex-direction:column;gap:10px">
       <button style="padding:15px 24px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer">Скачать приложение</button>
-      <button onClick="{{ closeApp }}" style="padding:15px 24px;background:transparent;color:#8e242e;border:1px solid #b8d2e1;border-radius:2px;font:400 15px/1 'Geologica',sans-serif;cursor:pointer">Закрыть</button>
+      <button data-el-modal-close="true" onClick="{{ closeApp }}" style="padding:15px 24px;background:transparent;color:#8e242e;border:1px solid #b8d2e1;border-radius:2px;font:400 15px/1 'Geologica',sans-serif;cursor:pointer">Закрыть</button>
     </div>
   </div>
 </div>
@@ -965,7 +974,7 @@ button{font-family:inherit}
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1200},&quot;viewport&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;tablet&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Прототип&quot;},&quot;showStickers&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Стиль&quot;}}">
 const HANDOFF_VARIANT = window.__EASYLINE_VARIANT__;
 const PAGES_BASE = '/easyline-site-2-2-1';
-const IS_022 = HANDOFF_VARIANT === '2.2' || HANDOFF_VARIANT === '2.2.1';
+const IS_022 = ['2.2', '2.2.1', '2.2.2'].includes(HANDOFF_VARIANT);
 const IS_0131 = HANDOFF_VARIANT === '2.1' || IS_022;
 const REVIEWS = [];
 
@@ -1092,7 +1101,7 @@ class Component extends DCLogic {
   state = {
     route:'home', slug:null, menuOpen:false, faqOpen:0, homeFaqOpen:0,
     week:1, dayN:1, line:0, sauces:{}, appModal:false,
-    data:null, extra:null, loading:true, error:false,
+    data:null, loading:true, error:false,
     flexDay:1, calorie:1200, duration:7, schedule:'Ежедневно',
     deliveryDate:'', deliveryAddress:'', configSubmitted:false,
   };
@@ -1110,10 +1119,32 @@ class Component extends DCLogic {
     if (this._onPopState) window.removeEventListener('popstate', this._onPopState);
   }
 
-  load() {
+  componentDidUpdate() {
+    window.dispatchEvent(new CustomEvent('easyline:render'));
+    if (this._restoreCatalogFocus && !this.state.loading) {
+      const selector = this.state.error
+        ? '[data-el-catalog-retry]'
+        : '#programs-catalog-region a[href]';
+      this._restoreCatalogFocus = false;
+      window.requestAnimationFrame(() => document.querySelector(selector)?.focus({ preventScroll:true }));
+    }
+  }
+
+  load(recovery = false) {
     this.setState({ loading:true, error:false });
-    import('/easyline-site-2-2-1/assets/menu-data-6F787N4k.js')
-      .then((m) => this.setState({ data:{ protocols:m.PROTOCOLS, boxes:m.BOXES, showcase:m.SHOWCASE }, extra:null, loading:false }))
+    const recoveryAttempt = recovery
+      ? (this._catalogRecoveryAttempt = (this._catalogRecoveryAttempt || 0) + 1)
+      : 0;
+    const resource = recoveryAttempt === 1
+      ? import('/easyline-site-2-2-1/assets/menu-data-6F787N4k.js?el-retry=1')
+      : recoveryAttempt > 1
+        ? import('/easyline-site-2-2-1/assets/menu-data-6F787N4k.js?el-retry=2')
+        : import('/easyline-site-2-2-1/assets/menu-data-6F787N4k.js');
+    resource
+      .then((m) => this.setState({
+        data:{ protocols:m.PROTOCOLS, boxes:m.BOXES, showcase:m.SHOWCASE },
+        loading:false,
+      }))
       .catch(() => this.setState({ loading:false, error:true }));
   }
 
@@ -1162,7 +1193,7 @@ class Component extends DCLogic {
 
   syncRouteFromLocation() {
     const next = this.routeFromPath(window.location.pathname);
-    this.setState({ ...next, menuOpen:false, week:1, dayN:1, faqOpen:0, configSubmitted:false });
+    this.setState({ ...next, menuOpen:false, appModal:false, week:1, dayN:1, faqOpen:0, configSubmitted:false });
   }
 
   go(route, slug) {
@@ -1170,7 +1201,7 @@ class Component extends DCLogic {
       const path = this.pathFor(route, slug);
       if (window.location.pathname !== path) window.history.pushState({}, '', path);
     }
-    this.setState({ route, slug: slug || null, menuOpen:false, week:1, dayN:1, faqOpen:0, configSubmitted:false });
+    this.setState({ route, slug: slug || null, menuOpen:false, appModal:false, week:1, dayN:1, faqOpen:0, configSubmitted:false });
     try { window.scrollTo(0, 0); } catch (e) {}
   }
 
@@ -1220,6 +1251,7 @@ class Component extends DCLogic {
     if (prog) {
       weekTabs = prog.weeks.map((name, i) => ({
         n: i + 1, name,
+        pressed: S.week === i + 1,
         bg: S.week === i + 1 ? '#8e242e' : '#f8fbfd',
         fg: S.week === i + 1 ? '#ffffff' : '#8e242e',
         border: S.week === i + 1 ? '#8e242e' : '#d2e3ed',
@@ -1232,7 +1264,7 @@ class Component extends DCLogic {
         if (d.unload) badges.push({ label:'Разгрузка', bg:'#bddced', fg:'#0f4d7a' });
         if (d.fruit) badges.push({ label:d.fruit, bg:'#a9cadf', fg:'#294653' });
         return {
-          n: d.n, dow: d.dow, kcal: d.kcal, badges,
+          n: d.n, dow: d.dow, kcal: d.kcal, badges, pressed:on,
           bg: on ? '#8e242e' : '#f8fbfd',
           fg: on ? '#ffffff' : '#23333d',
           accent: on ? '#bbdcef' : '#8e242e',
@@ -1274,6 +1306,7 @@ class Component extends DCLogic {
     const line = SHOWCASE[S.line] || null;
     const lineTabs = SHOWCASE.map((l, i) => ({
       name: l.name,
+      pressed: S.line === i,
       bg: S.line === i ? '#8e242e' : '#f8fbfd',
       fg: S.line === i ? '#ffffff' : '#8e242e',
       border: S.line === i ? '#8e242e' : '#d2e3ed',
@@ -1292,6 +1325,7 @@ class Component extends DCLogic {
           image:`/easyline-site-2-2-1/assets/photos/showcase-${it.slug}.jpg`, imageAlt:`Витрина EasyLine: ${it.name}`,
           sauces: it.sauces.map((s, i) => ({
             name: s.name,
+            pressed: si === i,
             bg: si === i ? '#bbdcef' : '#ffffff',
             fg: si === i ? '#8e242e' : '#465a67',
             border: si === i ? '#8e242e' : '#d2e3ed',
@@ -1303,14 +1337,20 @@ class Component extends DCLogic {
 
     const homeShowcase = [];
     SHOWCASE.forEach(l => l.groups.forEach(g => g.items.forEach(it => {
-      if (homeShowcase.length < 4 && it.kbju) homeShowcase.push({ n:homeShowcase.length + 1, line: l.name, name: it.name });
+      if (homeShowcase.length < 4 && it.kbju) homeShowcase.push({
+        n:homeShowcase.length + 1,
+        line:l.name,
+        name:it.name,
+        image:`/easyline-site-2-2-1/assets/photos/showcase-${it.slug}.jpg`,
+        imageAlt:`Витрина EasyLine: ${it.name}`,
+      });
     })));
 
     const baseProt = PROTOCOLS[0] || null;
     const sd = baseProt ? baseProt.days[0] : null;
     const sampleDay = sd
-      ? { title:IS_0131 ? `День ${sd.n} · ${baseProt.name}` : 'Один день протокола', protocol: baseProt.name, n: sd.n, kcal: sd.kcal,
-          meals: sd.meals.map(m => ({ slot: m.slot, kcal: m.kcal ? m.kcal + ' ккал' : '', items: m.items })) }
+      ? { title:IS_0131 ? `День ${sd.n} · ${baseProt.name}` : 'Один день протокола', protocol:baseProt.name, n:sd.n, kcal:sd.kcal,
+          meals: sd.meals.map(m => ({ slot:m.slot, kcal:m.kcal ? m.kcal + ' ккал' : '', items:m.items })) }
       : { title:'Один день протокола', protocol:'', n:'', kcal:'', meals:[] };
     const openBase = baseProt ? this.link('program', baseProt.slug) : this.link('programs');
     const hrefBase = baseProt ? hrefFor('program', baseProt.slug) : hrefFor('programs');
@@ -1368,19 +1408,21 @@ class Component extends DCLogic {
     }));
 
     const faqBuild = (key) => faqSource.map((f, i) => ({
-      q: f.q, a: f.a, isOpen: S[key] === i, sign: S[key] === i ? '–' : '+',
+      q:f.q, a:f.a, isOpen:S[key] === i, sign:S[key] === i ? '–' : '+',
+      buttonId:`${key}-question-${i + 1}`, panelId:`${key}-answer-${i + 1}`,
       toggle: () => this.setState({ [key]: S[key] === i ? -1 : i }),
     }));
 
-    const legalDocs = LEGAL.map(d => ({
-      title: d.title, href:hrefFor('legal', d.type), open: this.link('legal', d.type),
+    const legalSource = LEGAL;
+    const legalDocs = legalSource.map(d => ({
+      title: d.title, href:hrefFor('legal', d.type), open: this.link('legal', d.type), current:S.route === 'legal' && S.slug === d.type ? 'page' : undefined,
       color: S.route === 'legal' && S.slug === d.type ? '#719dc9' : '#465a67',
     }));
-    const legalDoc = LEGAL.find(d => d.type === S.slug) || LEGAL[0];
+    const legalDoc = legalSource.find(d => d.type === S.slug) || legalSource[0];
     const selectedPromo = promos.find(p => p.slug === S.slug) || promos[0];
     const selectedArticle = articles.find(a => a.slug === S.slug) || articles[0];
     const validText = !!TEXT_PAGES[S.slug];
-    const validLegal = LEGAL.some(d => d.type === S.slug);
+    const validLegal = legalSource.some(d => d.type === S.slug);
     const validPromo = promoSource.some(p => p.slug === S.slug);
     const validArticle = articleSource.some(a => a.slug === S.slug);
     const isNotFound = S.route === 'notfound' || (IS_0131 && (
@@ -1400,10 +1442,29 @@ class Component extends DCLogic {
       goHome: this.link('home'), goPrograms: this.link('programs'), goBoxes: this.link('boxes'),
       goShowcase: this.link('showcase'), goReviews: this.link('reviews'), goPromo: this.link('promo'),
       goArticles: this.link('articles'), goFaq: this.link('faq'),
-      openApp: (e) => { if (e) e.preventDefault(); this.setState({ appModal:true }); },
+      openOrder: (e) => { if (e) e.preventDefault(); this.setState({ appModal:true }); },
+      openAuth: (e) => { if (e) e.preventDefault(); this.setState({ appModal:true, menuOpen:false }); },
+      openPromo: (e) => { if (e) e.preventDefault(); this.setState({ appModal:true }); },
       closeApp: (e) => { if (e) e.preventDefault(); this.setState({ appModal:false }); },
-      appModal: S.appModal, retry: () => this.load(),
+      closeAppOverlay: (e) => { if (e) e.preventDefault(); if (!e || e.target === e.currentTarget) this.setState({ appModal:false }); },
+      stopPropagation: (e) => { if (e) e.stopPropagation(); },
+      appModal: S.appModal,
+      appModalTitle:'Заказ — в приложении',
+      appModalText:'Оформление, оплата и управление подпиской происходят в приложении EasyLine.',
+      retry: (e) => {
+        if (e) e.preventDefault();
+        this._restoreCatalogFocus = true;
+        this.load(true);
+      },
       loading: S.loading, error: S.error, skeleton2: [1, 2], skeleton6: [1, 2, 3, 4, 5, 6],
+      catalogStatus: S.loading
+        ? 'Загружаем каталог протоколов.'
+        : S.error
+          ? ''
+          : `Каталог протоколов загружен. Доступно программ: ${PROTOCOLS.length}.`,
+      catalogAlert: S.error
+        ? 'Не удалось загрузить каталог протоколов. Проверьте соединение и повторите попытку.'
+        : '',
 
       isHome: S.route === 'home', isPrograms: S.route === 'programs', isProgram: S.route === 'program' && !!progMatch,
       isFlexProgram: S.route === 'program' && !!flexRaw,
@@ -1435,9 +1496,9 @@ class Component extends DCLogic {
         { num:'3', title:'Доставим к двери', text:'Утром с 6:00 до 9:00 курьер привозит три приёма пищи в фирменной упаковке. Разогреть — и всё.' },
       ],
       protocols: PROTOCOLS.map(p => ({
-        slug: p.slug, name: p.name, goal: p.goal, color: p.color, short: p.short,
+        slug:p.slug, name:p.name, goal:p.goal, color:p.color, short:p.short,
         image:`/easyline-site-2-2-1/assets/photos/protocol-${p.slug}.jpg`, imageAlt:`${p.name}: готовый рацион EasyLine`,
-        tags: p.tags, facts: p.facts, homeFacts:p.facts.slice(0,2).map(f => ({ label:f.k, value:f.v })), benefit:protocolBenefits[p.slug] || '',
+        tags:p.tags, facts:p.facts, homeFacts:p.facts.slice(0,2).map(f => ({ label:f.k, value:f.v })), benefit:protocolBenefits[p.slug] || '',
         href:hrefFor('program', p.slug), open: this.link('program', p.slug),
       })),
       prog: prog ? { ...prog, image:`/easyline-site-2-2-1/assets/photos/protocol-${prog.slug}.jpg`, imageAlt:`${prog.name}: готовый рацион EasyLine` } : { name:'', goal:'', long:'', slug:'', tags:[], facts:[], rules:[], image:'', imageAlt:'' },
@@ -1451,7 +1512,7 @@ class Component extends DCLogic {
       scrollToConfigurator:(e) => { if (e) e.preventDefault(); document.getElementById('configurator-0131')?.scrollIntoView({ behavior:'smooth', block:'start' }); },
 
       boxes, homeBoxes: boxes.slice(0, 4), box,
-      lineTabs, lineGroups, lineNote: line ? line.note : '', homeShowcase,
+      lineTabs, lineGroups, lineNote:line ? line.note : '', homeShowcase,
       showcaseIntro: IS_022
         ? 'Чиабатты, сэндвичи, тортильи и бургеры доступны на витрине и в вендинговых аппаратах. Отдельная ПП-линейка — на цельнозерновой основе и с соусами на греческом йогурте.'
         : 'Чиабатты, сэндвичи, тортильи и бургеры на витрине и в вендинговых аппаратах. Отдельная ПП-линейка на цельнозерновой основе — с соусами на греческом йогурте.',
@@ -1471,12 +1532,11 @@ class Component extends DCLogic {
 
       textPage: TEXT_PAGES[S.slug] || TEXT_PAGES['about-production'],
       promo: selectedPromo,
-      article: { ...selectedArticle, body: selectedArticle && selectedArticle.body ? selectedArticle.body : ARTICLE_BODY },
-      legalDocs, legal: { ...legalDoc, version: '12 мая 2026', body: LEGAL_BODY },
+      article: { ...selectedArticle, body:selectedArticle && selectedArticle.body ? selectedArticle.body : ARTICLE_BODY },
+      legalDocs, legal: { ...legalDoc, version:'12 мая 2026', body:LEGAL_BODY },
       finalCtaTitle:IS_022 ? 'Получите готовый план питания на 28 дней' : 'Начните протокол уже завтра',
       finalCtaText:IS_022 ? 'Ответьте на несколько вопросов — подберём протокол и калорийность. Уже завтра не придётся считать калории, готовить и решать, что есть.' : 'Ответьте на несколько вопросов в приложении — подберём протокол и калорийность под вашу цель.',
       finalCtaButton:IS_022 ? 'Подобрать мой протокол' : 'Подобрать протокол',
-      finalCtaAction:(e) => { if (e) e.preventDefault(); this.setState({ appModal:true }); },
 
       footerSections: [
         { label:'Протоколы', href:hrefFor('programs'), onClick: this.link('programs') },
@@ -1487,10 +1547,10 @@ class Component extends DCLogic {
         { label:'FAQ', href:hrefFor('faq'), onClick: this.link('faq') },
       ],
       footerDocs: [
-        { label:'Политика конфиденциальности', href:hrefFor('legal','privacy'), onClick: this.link('legal','privacy') },
-        { label:'Публичная оферта', href:hrefFor('legal','offer'), onClick: this.link('legal','offer') },
-        { label:'Обработка персональных данных', href:hrefFor('legal','pd'), onClick: this.link('legal','pd') },
-        { label:'Правила доставки', href:hrefFor('legal','delivery'), onClick: this.link('legal','delivery') },
+        { label:'Политика конфиденциальности', href:hrefFor('legal','privacy'), onClick:this.link('legal','privacy') },
+        { label:'Публичная оферта', href:hrefFor('legal','offer'), onClick:this.link('legal','offer') },
+        { label:'Обработка персональных данных', href:hrefFor('legal','pd'), onClick:this.link('legal','pd') },
+        { label:'Правила доставки', href:hrefFor('legal','delivery'), onClick:this.link('legal','delivery') },
       ],
     };
   }
