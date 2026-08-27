@@ -7,6 +7,7 @@
 html,
 body {
   background-color: #ffffff;
+  background-image: linear-gradient(#ffffff, #ffffff);
 }
 
 button,
@@ -24,5 +25,6 @@ textarea {
   html,
   body {
     background-color: #ffffff !important;
+    background-image: linear-gradient(#ffffff, #ffffff) !important;
   }
 }
