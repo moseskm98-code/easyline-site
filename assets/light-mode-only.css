@@ -1,0 +1,28 @@
+/* EasyLine is intentionally light-only. Prevent mobile browsers from applying
+   an automatic dark palette when the device uses a dark system appearance. */
+:root {
+  color-scheme: only light !important;
+}
+
+html,
+body {
+  background-color: #ffffff;
+}
+
+button,
+input,
+select,
+textarea {
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: only light !important;
+  }
+
+  html,
+  body {
+    background-color: #ffffff !important;
+  }
+}
