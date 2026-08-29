@@ -18,7 +18,7 @@
 <meta property="og:description" content="Протоколы питания, боксы и витрина grab & go EasyLine в Махачкале, Каспийске и Избербаше.">
 <title>EasyLine — каталог питания</title>
 <link rel="icon" href="/easyline-site-2-2-1/assets/logo-Ddt-JyRw.svg" type="image/svg+xml">
-<script>window.__EASYLINE_VARIANT__ = "2.2.2";</script>
+<script>window.__EASYLINE_VARIANT__ = "2.2.2.2";</script>
 <script  src="/easyline-site-2-2-1/vendor/react.production.min.js"></script>
 <script  src="/easyline-site-2-2-1/vendor/react-dom.production.min.js"></script>
   <script type="module" crossorigin src="/easyline-site-2-2-1/assets/index-Dwt8uDxZ.js"></script>
@@ -974,7 +974,7 @@ button{font-family:inherit}
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1200},&quot;viewport&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;tablet&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Прототип&quot;},&quot;showStickers&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Стиль&quot;}}">
 const HANDOFF_VARIANT = window.__EASYLINE_VARIANT__;
 const PAGES_BASE = '/easyline-site-2-2-1';
-const IS_022 = ['2.2', '2.2.1', '2.2.2'].includes(HANDOFF_VARIANT);
+const IS_022 = ['2.2', '2.2.1', '2.2.2', '2.2.2.2'].includes(HANDOFF_VARIANT);
 const IS_0131 = HANDOFF_VARIANT === '2.1' || IS_022;
 const REVIEWS = [];
 
@@ -1213,7 +1213,9 @@ class Component extends DCLogic {
     const requestedVp = ['desktop','tablet','mobile'].includes(queryVp) ? queryVp : (P.viewport || 'desktop');
     const autoVp = window.innerWidth <= 560 ? 'mobile' : window.innerWidth <= 920 ? 'tablet' : 'desktop';
     const vp = requestedVp === 'desktop' ? autoVp : requestedVp;
-    const frameMax = vp === 'mobile' ? '390px' : vp === 'tablet' ? '768px' : '1440px';
+    // The public shell follows the real viewport so no canvas strip remains
+    // uncovered on large phones or screens wider than 1440px.
+    const frameMax = '100vw';
     const isWide = vp === 'desktop';
 
     const PROTOCOLS = D ? D.protocols : [];
