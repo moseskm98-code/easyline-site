@@ -48,25 +48,18 @@ button{font-family:inherit}
 </sc-if>
 
 <header style="position:sticky;top:0;z-index:40;background:#ffffff;border-bottom:1px solid #8e242e">
-  <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}">
-    <div style="background:#f8fbfd;border-bottom:1px solid #c8dce8">
-      <div style="max-width:1240px;margin:0 auto;padding:0 clamp(16px,3cqw,40px);height:38px;display:flex;align-items:center;justify-content:flex-end;gap:24px">
-        <sc-for list="{{ topNav }}" as="t" hint-placeholder-count="3">
-          <a href="{{ t.href }}" onClick="{{ t.onClick }}" style="font:300 13px/1 'Geologica',sans-serif;color:{{ t.color }};white-space:nowrap">{{ t.label }}</a>
-        </sc-for>
-        <a href="#" data-el-app-intent="auth" onClick="{{ openAuth }}" style="font:500 13px/1 'Geologica',sans-serif;color:#8e242e;white-space:nowrap;padding-left:24px;border-left:1px solid #c8dce8">Войти</a>
-      </div>
-    </div>
-  </sc-if>
-
-  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(16px,3cqw,40px);height:clamp(80px,6.8cqw,104px);display:flex;align-items:center;gap:clamp(16px,2.2cqw,32px)">
+  <div style="max-width:1240px;margin:0 auto;padding:14px clamp(16px,3cqw,40px);min-height:clamp(80px,6.8cqw,104px);display:flex;align-items:center;gap:clamp(16px,2.2cqw,32px)">
     <a href="{{ hrefHome }}" onClick="{{ goHome }}" style="flex:0 0 auto;display:block;line-height:0"><img src="/easyline-site/assets/logo-Ddt-JyRw.svg" alt="EasyLine — Изи Лайн" style="width:clamp(88px,7.4cqw,116px);height:auto;display:block"></a>
 
     <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}">
-      <nav aria-label="Основная навигация" style="display:flex;align-items:center;gap:26px;margin-left:8px">
+      <nav aria-label="Основная навигация" style="display:flex;flex:1 1 auto;align-items:center;flex-wrap:wrap;gap:10px clamp(14px,1.45cqw,26px);margin-left:8px">
         <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="7">
           <a href="{{ item.href }}" onClick="{{ item.onClick }}" style="font:400 15px/1 'Geologica',sans-serif;color:{{ item.color }};white-space:nowrap;padding:6px 0;border-bottom:1px solid {{ item.rule }}" style-hover="color:#719dc9">{{ item.label }}</a>
         </sc-for>
+        <sc-for list="{{ topNav }}" as="t" hint-placeholder-count="3">
+          <a href="{{ t.href }}" onClick="{{ t.onClick }}" style="font:400 15px/1 'Geologica',sans-serif;color:{{ t.color }};white-space:nowrap;padding:6px 0;border-bottom:1px solid {{ t.rule }}" style-hover="color:#719dc9">{{ t.label }}</a>
+        </sc-for>
+        <a href="#" data-el-app-intent="auth" onClick="{{ openAuth }}" style="font:500 15px/1 'Geologica',sans-serif;color:#8e242e;white-space:nowrap;padding:6px 0 6px clamp(14px,1.45cqw,26px);border-left:1px solid #c8dce8">Войти</a>
       </nav>
       <button onClick="{{ goPrograms }}" style="margin-left:auto;padding:13px 24px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 14px/1 'Geologica',sans-serif;cursor:pointer;white-space:nowrap" style-hover="background:#5f8dbb">Выбрать меню</button>
     </sc-if>
