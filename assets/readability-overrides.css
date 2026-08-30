@@ -3,6 +3,28 @@
  * The source variants are intentionally untouched.
  */
 
+/* Final Nunito/Bebas typography variant. */
+@font-face {
+  font-family: "Nunito EasyLine";
+  src: url("/easyline-site/assets/nunito-variable-cyrillic.ttf") format("truetype-variations");
+  font-weight: 200 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --el-display-font: "Bebas Neue", sans-serif;
+  --el-body-font: "Nunito EasyLine", "Nunito", system-ui, sans-serif;
+  --el-accent-font: "Nunito EasyLine", "Nunito", system-ui, sans-serif;
+  --el-ui-weight: 600;
+}
+
+.sc-host h1[style],
+.sc-host h2[style],
+.sc-host h3[style] {
+  font-family: var(--el-display-font) !important;
+}
+
 .sc-host h1,
 .sc-host h2,
 .sc-host h3 {
@@ -10,19 +32,38 @@
   text-wrap: balance;
 }
 
-.sc-host h1 {
+.sc-host h1,
+.sc-host h1[style] {
   font-size: clamp(44px, 5.6cqw, 80px) !important;
+  font-weight: 400 !important;
   line-height: 1 !important;
 }
 
-.sc-host h2 {
+.sc-host h2,
+.sc-host h2[style] {
   font-size: clamp(34px, 3.9cqw, 56px) !important;
+  font-weight: 400 !important;
   line-height: 1.04 !important;
 }
 
-.sc-host h3 {
+.sc-host h3,
+.sc-host .el-program-card-title {
   font-size: clamp(20px, 2cqw, 30px) !important;
+  font-weight: 700 !important;
   line-height: 1.12 !important;
+}
+
+/* Bebas has no ₽ glyph; keep each monetary fragment in one compatible face. */
+.sc-host :is(h1, h2, h3) .el-currency-inline {
+  display: inline-block;
+  font-family: var(--el-body-font) !important;
+  font-size: 0.82em;
+  font-weight: 700 !important;
+  line-height: 1;
+  letter-spacing: 0 !important;
+  text-transform: none;
+  white-space: nowrap;
+  vertical-align: 0.08em;
 }
 
 .sc-host p {
@@ -41,7 +82,7 @@
 .sc-host p[style*="font:500"],
 .sc-host p[style*="font-weight:500"],
 .sc-host p[style*="font-weight: 500"] {
-  font-weight: 500 !important;
+  font-weight: var(--el-ui-weight) !important;
 }
 
 .sc-host p[style*="font-weight:300"],
@@ -52,22 +93,54 @@
 }
 
 .sc-host .el-brand-kicker {
-  font-size: clamp(20px, 1.55cqw, 24px) !important;
-  line-height: 1.12 !important;
+  font-family: var(--el-body-font) !important;
+  font-size: clamp(14px, 1.05cqw, 16px) !important;
+  font-weight: 600 !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0.035em !important;
 }
 
-.sc-host .el-brand-kicker--compact,
+.sc-host .el-brand-kicker--compact {
+  font-size: clamp(13px, 0.95cqw, 15px) !important;
+  line-height: 1.25 !important;
+}
+
 .sc-host .el-brand-kicker--badge {
-  font-size: clamp(18px, 1.35cqw, 21px) !important;
+  font-size: clamp(14px, 1.05cqw, 16px) !important;
+  font-weight: var(--el-ui-weight) !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+}
+
+.sc-host .el-brand-kicker--badge + .el-brand-price {
+  font-family: var(--el-body-font) !important;
+  font-size: clamp(14px, 1.05cqw, 16px) !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+}
+
+.sc-host main [style*="display:flex"][style*="align-items:center"] > [style*="Podkova"],
+.sc-host main [style*="display:flex"][style*="align-items:baseline"] > [style*="Podkova"],
+.sc-host main [style*="display:inline-flex"][style*="align-items:center"] > [style*="Podkova"] {
+  font-family: var(--el-body-font) !important;
+  line-height: 1 !important;
+}
+
+.sc-host main button[aria-controls*="answer"] > span:last-child {
+  font-family: var(--el-body-font) !important;
+  font-weight: var(--el-ui-weight) !important;
+  line-height: 1.4 !important;
 }
 
 .sc-host header a[style*="font"] {
   font-size: 16px !important;
+  font-weight: var(--el-ui-weight) !important;
   line-height: 1.25 !important;
 }
 
 .sc-host header button {
   font-size: 16px !important;
+  font-weight: var(--el-ui-weight) !important;
   line-height: 1.15 !important;
 }
 
@@ -81,6 +154,7 @@
 
 .sc-host main button:not(.el-tweaker-launcher):not(.el-tweaker__button) {
   font-size: 17px !important;
+  font-weight: var(--el-ui-weight) !important;
   line-height: 1.35 !important;
 }
 
