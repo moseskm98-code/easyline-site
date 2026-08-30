@@ -1,0 +1,214 @@
+:root {
+  --el-surface: #f8fbfd;
+  --el-surface-alt: #ffffff;
+  --el-border: #b8d2e1;
+  --el-primary: #8e242e;
+  --el-primary-hover: #74202a;
+  --el-link: #0f4d7a;
+  --el-meta: #536f8a;
+  --el-soft: #bddced;
+  --el-soft-alt: #e4f0f7;
+  --el-ink: #23333d;
+  --el-focus: #f8e083;
+}
+
+html,
+body {
+  background: var(--el-surface) !important;
+}
+
+body,
+.el-site-shell,
+.sc-host {
+  background: var(--el-surface-alt) !important;
+  color: var(--el-ink) !important;
+}
+
+.sc-host [style*="background:#719dc9"][style*="color:#ffffff"],
+.sc-host [style*="background: #719dc9"][style*="color: #ffffff"],
+.sc-host [style*="background:#5f8dbb"][style*="color:#ffffff"],
+.sc-host [style*="background:#719dc9"],
+.sc-host [style*="background:#5f8dbb"] {
+  background: var(--el-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--el-primary) !important;
+}
+
+.sc-host [style*="color:#719dc9"],
+.sc-host [style*="color:#0f4d7a"] {
+  color: var(--el-link) !important;
+}
+
+.sc-host [style*="color:#6f8492"],
+.sc-host [style*="color:#7a909d"],
+.sc-host [style*="color:#465a67"] {
+  color: var(--el-meta) !important;
+}
+
+.sc-host [style*="background:#bbdcef"],
+.sc-host [style*="background:#bddced"],
+.sc-host [style*="background:#d8e8f2"],
+.sc-host [style*="background:#a9cadf"],
+.sc-host [style*="background:#e4f0f7"] {
+  background-color: var(--el-soft-alt) !important;
+}
+
+.sc-host [style*="border-color:#c8dce8"],
+.sc-host [style*="border-color:#d2e3ed"],
+.sc-host [style*="border-color:#e3edf3"],
+.sc-host [style*="border-color:#b8d2e1"],
+.sc-host [style*="border-top:1px solid #c8dce8"],
+.sc-host [style*="border-bottom:1px solid #c8dce8"],
+.sc-host [style*="border-left:3px solid #719dc9"] {
+  border-color: var(--el-border) !important;
+}
+
+.sc-host [style*="background:#eef5f8"],
+.sc-host [style*="background:#f8fbfd"],
+.sc-host [data-el-modal-panel="true"] {
+  background-color: var(--el-surface) !important;
+}
+
+.sc-host a,
+.sc-host a:visited,
+.sc-host a:hover,
+.sc-host a:focus-visible {
+  color: var(--el-link) !important;
+}
+
+.sc-host button[style*="background:#8e242e"],
+.sc-host a[style*="background:#8e242e"] {
+  background: var(--el-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--el-primary) !important;
+}
+
+.sc-host button[style*="background:#719dc9"]:hover,
+.sc-host button[style*="background:#8e242e"]:hover,
+.sc-host a[style*="background:#8e242e"]:hover {
+  background: var(--el-primary-hover) !important;
+  color: #ffffff !important;
+}
+
+.sc-host button[style*="background:transparent"],
+.sc-host a[style*="background:transparent"] {
+  color: var(--el-primary) !important;
+  border-color: var(--el-primary) !important;
+}
+
+.sc-host footer {
+  background: var(--el-primary) !important;
+}
+
+.sc-host footer a,
+.sc-host footer a:hover,
+.sc-host footer a:focus-visible {
+  color: #ffffff !important;
+}
+
+.sc-host :where(a[href], button, input, select, textarea):focus-visible {
+  outline: 3px solid var(--el-focus) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 2px #ffffff !important;
+}
+
+.sc-host [hidden] {
+  display: none !important;
+}
+
+/* Runtime normalizes template HEX colors to rgb(...). */
+.sc-host [style*="background: rgb(113, 157, 201)"],
+.sc-host [style*="background: rgb(95, 141, 187)"] {
+  background: var(--el-primary) !important;
+  border-color: var(--el-primary) !important;
+  color: #ffffff !important;
+}
+
+.sc-host [style*="color: rgb(113, 157, 201)"],
+.sc-host [style*="color: rgb(15, 77, 122)"] {
+  color: var(--el-link) !important;
+}
+
+.sc-host [style*="color: rgb(111, 132, 146)"],
+.sc-host [style*="color: rgb(122, 144, 157)"],
+.sc-host [style*="color: rgb(70, 90, 103)"] {
+  color: var(--el-meta) !important;
+}
+
+.sc-host [style*="background: rgb(187, 220, 239)"],
+.sc-host [style*="background: rgb(189, 220, 237)"],
+.sc-host [style*="background: rgb(216, 232, 242)"],
+.sc-host [style*="background: rgb(169, 202, 223)"],
+.sc-host [style*="background: rgb(228, 240, 247)"] {
+  background-color: var(--el-soft-alt) !important;
+}
+
+.sc-host [style*="border-color: rgb(200, 220, 232)"],
+.sc-host [style*="border-color: rgb(210, 227, 237)"],
+.sc-host [style*="border-color: rgb(227, 237, 243)"],
+.sc-host [style*="border-color: rgb(184, 210, 225)"],
+.sc-host [style*="border-left: 3px solid rgb(113, 157, 201)"] {
+  border-color: var(--el-border) !important;
+}
+
+.sc-host button[style*="background: rgb(142, 36, 46)"],
+.sc-host a[style*="background: rgb(142, 36, 46)"] {
+  background: var(--el-primary) !important;
+  border-color: var(--el-primary) !important;
+  color: #ffffff !important;
+}
+
+button[style*="background:#719dc9"],
+button[style*="background:#5f8dbb"],
+button[style*="background:#8e242e"],
+a[style*="background:#8e242e"],
+[style*="background:#719dc9"][style*="color:#ffffff"],
+[style*="background:#5f8dbb"][style*="color:#ffffff"] {
+  background: var(--el-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--el-primary) !important;
+}
+
+button[style*="background:#719dc9"] *,
+button[style*="background:#5f8dbb"] *,
+button[style*="background:#8e242e"] *,
+a[style*="background:#8e242e"] * {
+  color: #ffffff !important;
+}
+
+button[style*="background:transparent"],
+a[style*="background:transparent"] {
+  color: var(--el-primary) !important;
+  border-color: var(--el-primary) !important;
+}
+
+[style*="color:#719dc9"],
+[style*="color:#0f4d7a"] {
+  color: var(--el-link) !important;
+}
+
+[style*="color:#6f8492"],
+[style*="color:#7a909d"],
+[style*="color:#465a67"] {
+  color: var(--el-meta) !important;
+}
+
+[style*="background: rgb(113, 157, 201)"],
+[style*="background: rgb(95, 141, 187)"],
+[style*="background-color: rgb(113, 157, 201)"],
+[style*="background-color: rgb(95, 141, 187)"] {
+  background: var(--el-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--el-primary) !important;
+}
+
+[style*="color: rgb(113, 157, 201)"],
+[style*="color: rgb(15, 77, 122)"] {
+  color: var(--el-link) !important;
+}
+
+[style*="color: rgb(111, 132, 146)"],
+[style*="color: rgb(122, 144, 157)"],
+[style*="color: rgb(70, 90, 103)"] {
+  color: var(--el-meta) !important;
+}
