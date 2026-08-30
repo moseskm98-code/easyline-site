@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="description" content="Живая дизайн-система EasyLine, собранная по опубликованной версии 2.2.2.">
+    <title>Дизайн-система EasyLine</title>
+    <link rel="icon" href="../assets/logo-Ddt-JyRw.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="tokens.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Перейти к содержанию</a>
+
+    <div class="ds-shell">
+      <header class="ds-topbar">
+        <div class="ds-container ds-topbar__inner">
+          <a href="#top" aria-label="Дизайн-система EasyLine, в начало страницы">
+            <img class="ds-logo" src="../assets/logo-Ddt-JyRw.svg" alt="EasyLine">
+          </a>
+          <div class="ds-title-lockup">
+            <strong>Design System</strong>
+            <span>Публичная версия 2.2.2 · e9cc283</span>
+          </div>
+          <nav class="ds-nav" aria-label="Разделы дизайн-системы">
+            <a href="#foundations">Основы</a>
+            <a href="#components">Компоненты</a>
+            <a href="#patterns">Паттерны</a>
+            <a href="#accessibility">Доступность</a>
+          </nav>
+        </div>
+      </header>
+
+      <main id="content">
+        <section class="ds-hero" id="top" aria-labelledby="hero-title">
+          <div class="ds-hero__copy">
+            <div class="ds-hero__copy-inner">
+              <div class="ds-kicker">EasyLine · интерфейсная система</div>
+              <h1 id="hero-title">Один язык для продукта, контента и заказа</h1>
+              <p>Каталог фиксирует активные цвета, типографику, размеры, состояния и повторяемые компоненты прямо из финальной публикации. Это не редизайн: визуальный характер сайта сохранён.</p>
+              <div class="ds-actions">
+                <a class="el-button" href="#components">Смотреть компоненты</a>
+                <a class="el-button el-button--secondary" href="../" target="_blank" rel="noreferrer">Открыть эталон</a>
+              </div>
+              <dl class="ds-meta-list">
+                <div>
+                  <dt>Источник</dt>
+                  <dd>main · e9cc283</dd>
+                </div>
+                <div>
+                  <dt>Тема</dt>
+                  <dd>accessible-digital</dd>
+                </div>
+                <div>
+                  <dt>Контроль</dt>
+                  <dd>desktop + mobile</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+          <div class="ds-hero__media">
+            <img src="../assets/photos/home-hero-ration-day.jpg" alt="Готовые рационы EasyLine на один день">
+            <div class="ds-hero__stamp">
+              <strong>Источник изображения</strong>
+              <span>Реальный ассет финальной публикации, без стоковых замен.</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="ds-section" id="foundations" aria-labelledby="foundations-title">
+          <div class="ds-container">
+            <div class="ds-section__intro">
+              <div>
+                <div class="ds-kicker">01 · Основы</div>
+                <h2 id="foundations-title">Токены, которые держат систему вместе</h2>
+              </div>
+              <p>Активный слой публикации сочетает бордовый акцент, холодные голубые поверхности, Bebas Neue в заголовках и Nunito во всём интерфейсном и основном тексте.</p>
+            </div>
+
+            <div class="ds-subsection">
+              <div class="ds-subsection__head">
+                <h3>Цвет</h3>
+                <p class="ds-note">Семантические имена повторяют назначение цветов, а не привязаны к конкретному экрану.</p>
+              </div>
+              <div class="ds-color-grid">
+                <article class="ds-color-card">
+                  <div class="ds-color-card__swatch" style="--swatch:#8e242e"></div>
+                  <div class="ds-color-card__copy"><strong>Primary</strong><code>#8E242E</code><button class="ds-copy" type="button" data-copy="#8E242E">Скопировать</button></div>
+                </article>
+                <article class="ds-color-card">
+                  <div class="ds-color-card__swatch" style="--swatch:#74202a"></div>
+                  <div class="ds-color-card__copy"><strong>Primary hover</strong><code>#74202A</code><button class="ds-copy" type="button" data-copy="#74202A">Скопировать</button></div>
+                </article>
+                <article class="ds-color-card">
+                  <div class="ds-color-card__swatch" style="--swatch:#0f4d7a"></div>
+                  <div class="ds-color-card__copy"><strong>Link</strong><code>#0F4D7A</code><button class="ds-copy" type="button" data-copy="#0F4D7A">Скопировать</button></div>
+                </article>
+                <article class="ds-color-card">
+                  <div class="ds-color-card__swatch" style="--swatch:#23333d"></div>
+                  <div class="ds-color-card__copy"><strong>Ink</strong><code>#23333D</code><button class="ds-copy" type="button" data-copy="#23333D">Скопировать</button></div>
+                </article>
+                <article class="ds-color-card">
+                  <div class="ds-color-card__swatch" style="--swatch:#536f8a"></div>
+                  <div class="ds-color-card__copy"><strong>Meta</strong><code>#536F8A</code><button class="ds-copy" type="button" data-copy="#536F8A">Скопировать</button></div>
+                </article>
+                <article class="ds-color-card">
+                  <div class="ds-color-card__swatch" style="--swatch:#bddced"></div>
+                  <div class="ds-color-card__copy"><strong>Soft</strong><code>#BDDCED</code><button class="ds-copy" type="button" data-copy="#BDDCED">Скопировать</button></div>
+                </article>
+                <article class="ds-color-card">
+                  <div class="ds-color-card__swatch" style="--swatch:#e4f0f7"></div>
+                  <div class="ds-color-card__copy"><strong>Soft alt</strong><code>#E4F0F7</code><button class="ds-copy" type="button" data-copy="#E4F0F7">Скопировать</button></div>
+                </article>
+                <article class="ds-color-card">
+                  <div class="ds-color-card__swatch" style="--swatch:#f8e083"></div>
+                  <div class="ds-color-card__copy"><strong>Focus</strong><code>#F8E083</code><button class="ds-copy" type="button" data-copy="#F8E083">Скопировать</button></div>
+                </article>
+              </div>
+            </div>
+
+            <div class="ds-subsection">
+              <div class="ds-subsection__head">
+                <h3>Типографика</h3>
+                <p class="ds-note">Bebas Neue строит иерархию, Nunito обеспечивает читабельность русского текста и символа ₽.</p>
+              </div>
+              <div class="ds-type-grid">
+                <div class="ds-type-specimens">
+                  <div class="ds-type-row">
+                    <div class="ds-type-row__meta">Display XL<br>400 · 1.0</div>
+                    <p class="ds-type-row__sample ds-type-row__sample--h1">Протокол вместо диеты</p>
+                  </div>
+                  <div class="ds-type-row">
+                    <div class="ds-type-row__meta">Display L<br>400 · 1.04</div>
+                    <p class="ds-type-row__sample ds-type-row__sample--h2">Как это работает</p>
+                  </div>
+                  <div class="ds-type-row">
+                    <div class="ds-type-row__meta">Display M<br>700 · 1.12</div>
+                    <p class="ds-type-row__sample ds-type-row__sample--h3">Протокол 28 дней</p>
+                  </div>
+                  <div class="ds-type-row">
+                    <div class="ds-type-row__meta">Body L<br>400 · 1.52</div>
+                    <p class="ds-type-row__sample ds-type-row__sample--body">Три приёма пищи, рассчитанный КБЖУ и готовый план на каждый день — без ежедневных таблиц и подсчётов.</p>
+                  </div>
+                </div>
+                <aside class="ds-type-aside">
+                  <strong>Активные гарнитуры</strong>
+                  <ul>
+                    <li>Bebas Neue Regular 400 — h1, h2</li>
+                    <li>Bebas Neue Bold 700 — h3, названия карточек</li>
+                    <li>Nunito Variable 400 — основной текст</li>
+                    <li>Nunito Variable 600–700 — UI, цены, метки</li>
+                  </ul>
+                  <p class="ds-note">Podkova остаётся в статическом пакете как исторический ассет, но финальный readability-слой заменяет активный accent-font на Nunito.</p>
+                </aside>
+              </div>
+            </div>
+
+            <div class="ds-subsection">
+              <div class="ds-subsection__head">
+                <h3>Ритм и форма</h3>
+                <p class="ds-note">Базовая шкала кратна 4 px; в опубликованной системе чаще всего повторяются 8, 10, 12 и 16 px.</p>
+              </div>
+              <div class="ds-token-strip" aria-label="Шкала отступов">
+                <div class="ds-space-token"><span style="--size:4px"></span>4 px</div>
+                <div class="ds-space-token"><span style="--size:8px"></span>8 px</div>
+                <div class="ds-space-token"><span style="--size:12px"></span>12 px</div>
+                <div class="ds-space-token"><span style="--size:16px"></span>16 px</div>
+                <div class="ds-space-token"><span style="--size:24px"></span>24 px</div>
+                <div class="ds-space-token"><span style="--size:40px"></span>40 px</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="ds-section ds-section--soft" id="components" aria-labelledby="components-title">
+          <div class="ds-container">
+            <div class="ds-section__intro">
+              <div>
+                <div class="ds-kicker">02 · Компоненты</div>
+                <h2 id="components-title">Реальные детали интерфейса</h2>
+              </div>
+              <p>Компоненты собраны из повторяемых паттернов главной, каталога протоколов, боксов, витрины, акций и FAQ — с теми же ассетами, контентной плотностью и состояниями.</p>
+            </div>
+
+            <div class="ds-component-grid">
+              <article class="ds-component-frame ds-component-frame--wide">
+                <div class="ds-component-label"><span>Header</span><span>44 px touch targets</span></div>
+                <div class="el-header-demo">
+                  <img class="el-header-demo__logo" src="../assets/logo-Ddt-JyRw.svg" alt="EasyLine">
+                  <nav aria-label="Демонстрационная навигация">
+                    <a href="#components">Протоколы</a>
+                    <a href="#components">Боксы</a>
+                    <a href="#components">Витрина</a>
+                    <a href="#components">Акции</a>
+                  </nav>
+                  <button class="el-account" type="button" aria-label="Войти в личный кабинет">
+                    <img src="../assets/phosphor-user-circle.svg" alt="">
+                  </button>
+                </div>
+              </article>
+
+              <article class="ds-component-frame">
+                <div class="ds-component-label"><span>Buttons</span><span>4 состояния</span></div>
+                <div class="ds-demo-stack">
+                  <button class="el-button" type="button">Выбрать меню</button>
+                  <button class="el-button el-button--secondary" type="button">Подробнее</button>
+                  <button class="el-button" type="button" disabled>Недоступно</button>
+                </div>
+              </article>
+
+              <article class="ds-component-frame">
+                <div class="ds-component-label"><span>Badges</span><span>контекст и статус</span></div>
+                <div class="ds-demo-stack">
+                  <span class="el-badge el-badge--primary">−20%</span>
+                  <span class="el-badge el-badge--soft">ПП-линейка</span>
+                  <span class="el-badge">28 дней</span>
+                  <span class="el-badge">1650 ккал</span>
+                </div>
+              </article>
+
+              <article class="ds-component-frame">
+                <div class="ds-component-label"><span>Protocol card</span><span>каталог</span></div>
+                <a class="el-program-card" href="../programs/protokol-28/">
+                  <div class="el-card-media">
+                    <img src="../assets/photos/protocol-protokol-28.jpg" alt="Готовый рацион Протокол 28 дней">
+                    <span class="el-card-index">28</span>
+                  </div>
+                  <div class="el-card-body">
+                    <span class="ds-kicker">Здоровое питание</span>
+                    <h3>Протокол 28 дней</h3>
+                    <p>Три приёма пищи без перекусов, полный КБЖУ и разгрузочные дни каждую неделю.</p>
+                    <div class="el-card-facts">
+                      <div><strong>1470–1660</strong><span>ккал в день</span></div>
+                      <div><strong>28 дней</strong><span>полный цикл</span></div>
+                    </div>
+                  </div>
+                </a>
+              </article>
+
+              <article class="ds-component-frame">
+                <div class="ds-component-label"><span>Food card</span><span>боксы</span></div>
+                <a class="el-food-card" href="../boxes/bulgur-kurica/">
+                  <div class="el-card-media">
+                    <img src="../assets/photos/box-bulgur-kurica.jpg" alt="Булгур с курицей и овощами">
+                  </div>
+                  <div class="el-card-body">
+                    <h3>Булгур + курица из духовки + овощи</h3>
+                    <p>Готовый сбалансированный приём пищи без обязательства заказывать цикл.</p>
+                    <div class="el-macro-list"><span>505 ккал</span><span>Б 40</span><span>Ж 16</span><span>У 47</span></div>
+                  </div>
+                </a>
+              </article>
+
+              <article class="ds-component-frame">
+                <div class="ds-component-label"><span>Promo card</span><span>предложение</span></div>
+                <a class="el-promo-card" href="../promo/first-order/">
+                  <span class="el-badge el-badge--primary">До 31 августа</span>
+                  <h3>−20% на первый заказ</h3>
+                  <p>Скидка действует на любой протокол от 7 дней.</p>
+                  <p>Экономите 20% и знакомитесь с протоколом с меньшими затратами.</p>
+                </a>
+              </article>
+
+              <article class="ds-component-frame">
+                <div class="ds-component-label"><span>Article card</span><span>контент</span></div>
+                <a class="el-article-card" href="../articles/belok/">
+                  <div class="el-card-media"><img src="../assets/photos/article-belok.jpg" alt="Обложка статьи о дневной норме белка"></div>
+                  <div class="el-card-body">
+                    <span class="ds-kicker">14 июля 2026</span>
+                    <h3>Сколько белка нужно в день</h3>
+                    <p>Простая формула, которая работает и для похудения, и для набора массы.</p>
+                  </div>
+                </a>
+              </article>
+
+              <article class="ds-component-frame ds-component-frame--wide">
+                <div class="ds-component-label"><span>Fields</span><span>48 px control height</span></div>
+                <form class="el-field-grid" action="#components" novalidate>
+                  <div class="el-field">
+                    <label for="ds-name">Имя</label>
+                    <input id="ds-name" name="name" type="text" placeholder="Как к вам обращаться">
+                  </div>
+                  <div class="el-field">
+                    <label for="ds-goal">Цель</label>
+                    <select id="ds-goal" name="goal"><option>Выберите цель</option><option>Сбалансированное питание</option><option>Поддержка тренировок</option></select>
+                  </div>
+                  <div class="el-field el-field--full">
+                    <label for="ds-comment">Комментарий</label>
+                    <textarea id="ds-comment" name="comment" placeholder="Пожелания по рациону"></textarea>
+                    <span class="el-field__hint">Подсказка остаётся видимой и не заменяет label.</span>
+                  </div>
+                  <div class="el-field--full"><button class="el-button" type="button">Подобрать протокол</button></div>
+                </form>
+              </article>
+
+              <article class="ds-component-frame ds-component-frame--wide">
+                <div class="ds-component-label"><span>FAQ</span><span>native disclosure</span></div>
+                <div class="el-faq">
+                  <details open>
+                    <summary>Чем протокол отличается от обычной доставки еды?</summary>
+                    <p>Протокол — это цикл с заранее просчитанным меню: три приёма пищи, фиксированные интервалы и полный КБЖУ.</p>
+                  </details>
+                  <details>
+                    <summary>Какой протокол выбрать?</summary>
+                    <p>Базовый подходит для повседневного ритма, спортивный — для тренировок и восстановления.</p>
+                  </details>
+                  <details>
+                    <summary>Когда привозят еду?</summary>
+                    <p>Утренний интервал доставки в публикации указан с 6:00 до 9:00.</p>
+                  </details>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="ds-section" id="patterns" aria-labelledby="patterns-title">
+          <div class="ds-container">
+            <div class="ds-section__intro">
+              <div>
+                <div class="ds-kicker">03 · Паттерны</div>
+                <h2 id="patterns-title">Правила сборки экранов</h2>
+              </div>
+              <p>Система работает не только на уровне цвета и кнопки. Повторяемый порядок помогает быстро читать экран и принимать решение.</p>
+            </div>
+            <div class="ds-rule-grid">
+              <article class="ds-rule-card"><strong>Свойство → преимущество → выгода</strong><p>Сначала показываем, что входит в продукт, затем чем это лучше и что получает человек.</p></article>
+              <article class="ds-rule-card"><strong>Фото ведёт, текст объясняет</strong><p>В продуктовых карточках изображение занимает отдельную устойчивую зону и не конкурирует с ценой или КБЖУ.</p></article>
+              <article class="ds-rule-card"><strong>Один основной следующий шаг</strong><p>У секции есть одна доминирующая CTA; вторичная ссылка не получает равный визуальный вес.</p></article>
+              <article class="ds-rule-card"><strong>1240 px и адаптивный gutter</strong><p>Контент ограничен общей шириной, а поля страницы растут от 16 до 40 px без скачков.</p></article>
+              <article class="ds-rule-card"><strong>Минимум декоративного радиуса</strong><p>Карточки и поля используют 2 px. Скругление — функциональная деталь, а не отдельный визуальный стиль.</p></article>
+              <article class="ds-rule-card"><strong>Мобильная читабельность — базовая</strong><p>Основной текст не уменьшается ниже 17 px, контролы держат минимум 44–48 px по высоте.</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="ds-section ds-section--soft" id="accessibility" aria-labelledby="accessibility-title">
+          <div class="ds-container">
+            <div class="ds-section__intro">
+              <div>
+                <div class="ds-kicker">04 · Доступность</div>
+                <h2 id="accessibility-title">Состояния видны, движение управляемо</h2>
+              </div>
+              <p>Финальная публикация использует отдельный focus-токен, светлую цветовую схему, крупные touch targets и отключает декоративное движение при системной настройке reduced motion.</p>
+            </div>
+            <div class="ds-rule-grid">
+              <article class="ds-rule-card"><strong>Focus: #F8E083</strong><p>Трёхпиксельный контур с белым разделителем остаётся видимым на бордовом, голубом и белом фоне.</p></article>
+              <article class="ds-rule-card"><strong>44 px минимум</strong><p>Навигация, меню, иконка аккаунта и мобильные поля сохраняют комфортную сенсорную область.</p></article>
+              <article class="ds-rule-card"><strong>Reduced motion</strong><p>Плавное появление, параллакс и ambient-эффекты не должны быть обязательными для понимания интерфейса.</p></article>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="ds-footer">
+        <div class="ds-container ds-footer__inner">
+          <img src="../assets/logo-cream-D09r1U-t.svg" alt="EasyLine">
+          <p>Дизайн-система собрана по текущей публикации и изолирована в ветке <strong>design-system</strong>. Основной сайт и ветка main не изменены.</p>
+        </div>
+      </footer>
+    </div>
+
+    <div class="ds-toast" role="status" aria-live="polite" hidden></div>
+  </body>
+</html>

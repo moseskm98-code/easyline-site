@@ -19,3 +19,15 @@
 - в HTML сохранён исходный маркер `window.__EASYLINE_VARIANT__ = "2.2.2"`, чтобы правка шапки не переключала другие варианты шаблона;
 - `frameMax` равен `100vw`;
 - на ширине 440 px правая граница `.el-site-shell` совпадает с правой границей окна.
+
+## Ветка дизайн-системы
+
+Ветка `design-system` создана от опубликованного коммита `e9cc283` и содержит
+отдельный живой каталог интерфейсных основ и компонентов в `design-system/`.
+Публичные страницы и их runtime не изменяются.
+
+Локальная проверка каталога:
+
+```bash
+/Users/user1/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node scripts/verify-design-system.mjs
+```

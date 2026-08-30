@@ -1,0 +1,101 @@
+@font-face {
+  font-family: "Bebas Neue EasyLine";
+  src: url("../assets/bebas-neue-regular-mhMkEidK.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bebas Neue EasyLine";
+  src: url("../assets/bebas-neue-bold-DqarbXCh.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nunito EasyLine";
+  src: url("../assets/nunito-variable-cyrillic.ttf") format("truetype-variations");
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: only light;
+
+  /* Active published palette: accessible-digital. */
+  --el-color-primary: #8e242e;
+  --el-color-primary-hover: #74202a;
+  --el-color-link: #0f4d7a;
+  --el-color-ink: #23333d;
+  --el-color-meta: #536f8a;
+  --el-color-surface: #f8fbfd;
+  --el-color-surface-alt: #ffffff;
+  --el-color-border: #b8d2e1;
+  --el-color-soft: #bddced;
+  --el-color-soft-alt: #e4f0f7;
+  --el-color-focus: #f8e083;
+  --el-color-on-primary: #ffffff;
+
+  /* Active published typography. */
+  --el-font-display: "Bebas Neue EasyLine", "Arial Narrow", sans-serif;
+  --el-font-body: "Nunito EasyLine", Nunito, system-ui, sans-serif;
+  --el-font-weight-regular: 400;
+  --el-font-weight-ui: 600;
+  --el-font-weight-bold: 700;
+  --el-type-display-xl: clamp(44px, 5.6cqw, 80px);
+  --el-type-display-lg: clamp(34px, 3.9cqw, 56px);
+  --el-type-display-md: clamp(20px, 2cqw, 30px);
+  --el-type-body-lg: clamp(18px, 1.35cqw, 21px);
+  --el-type-body-md: 17px;
+  --el-type-body-sm: 15px;
+  --el-type-label: 14px;
+  --el-leading-display-xl: 1;
+  --el-leading-display-lg: 1.04;
+  --el-leading-display-md: 1.12;
+  --el-leading-body: 1.52;
+  --el-leading-compact: 1.25;
+
+  /* Repeated spacing values from the published layouts. */
+  --el-space-1: 4px;
+  --el-space-2: 8px;
+  --el-space-3: 10px;
+  --el-space-4: 12px;
+  --el-space-5: 16px;
+  --el-space-6: 20px;
+  --el-space-7: 24px;
+  --el-space-8: 32px;
+  --el-space-9: 40px;
+  --el-space-10: 56px;
+  --el-space-11: 72px;
+  --el-space-12: 100px;
+
+  --el-radius-card: 2px;
+  --el-radius-menu: 4px;
+  --el-radius-round: 999px;
+  --el-border-default: 1px solid var(--el-color-border);
+  --el-border-strong: 2px solid var(--el-color-primary);
+  --el-shadow-card: 0 8px 24px rgb(35 51 61 / 6%);
+  --el-shadow-menu: 0 14px 36px rgb(35 51 61 / 14%);
+
+  --el-layout-max: 1240px;
+  --el-layout-reading: 760px;
+  --el-layout-gutter: clamp(16px, 3cqw, 40px);
+  --el-section-block: clamp(56px, 7cqw, 100px);
+
+  --el-motion-fast: 160ms;
+  --el-motion-photo: 480ms;
+  --el-motion-enter: 650ms;
+  --el-motion-ease: cubic-bezier(0.2, 0.72, 0.2, 1);
+}
+
+@media (max-width: 600px) {
+  :root {
+    --el-type-display-xl: 42px;
+    --el-type-display-lg: 32px;
+    --el-type-display-md: 19px;
+    --el-type-body-lg: 17px;
+  }
+}
