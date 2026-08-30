@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="/easyline-site/assets/readability-overrides.css">
   <link rel="stylesheet" href="/easyline-site/assets/light-mode-only.css">
   <link rel="stylesheet" href="/easyline-site/assets/accessible-digital.css">
+  <link rel="stylesheet" href="/easyline-site/assets/layout-stage-preview.css">
   <meta name="x-easyline-color-variant" content="accessible-digital">
 </head>
 <body>
@@ -49,27 +50,32 @@ button{font-family:inherit}
   <a class="el-skip-link" href="#main-content" style="position:fixed;left:12px;top:12px;z-index:120;transform:translateY(-160%);padding:10px 14px;background:#8e242e;color:#ffffff;font:500 13px/1 'Geologica',sans-serif" onFocus="{{ showSkipLink }}" onBlur="{{ hideSkipLink }}">Перейти к содержанию</a>
 </sc-if>
 
-<header style="position:sticky;top:0;z-index:40;background:#ffffff;border-bottom:1px solid #8e242e">
-  <div style="max-width:1240px;margin:0 auto;padding:14px clamp(16px,3cqw,40px);min-height:clamp(80px,6.8cqw,104px);display:flex;align-items:center;gap:clamp(16px,2.2cqw,32px)">
-    <a href="{{ hrefHome }}" onClick="{{ goHome }}" style="flex:0 0 auto;display:block;line-height:0"><img src="/easyline-site/assets/logo-Ddt-JyRw.svg" alt="EasyLine — Изи Лайн" style="width:clamp(88px,7.4cqw,116px);height:auto;display:block"></a>
+<header class="el-main-header" style="position:sticky;top:0;z-index:40;background:#ffffff;border-bottom:1px solid #8e242e">
+  <div class="el-main-header__inner" style="max-width:1240px;margin:0 auto;padding:8px clamp(16px,3cqw,40px);display:flex;align-items:center;gap:clamp(10px,1.35cqw,20px)">
+    <a href="{{ hrefHome }}" onClick="{{ goHome }}" style="flex:0 0 auto;display:block;line-height:0"><img src="/easyline-site/assets/logo-Ddt-JyRw.svg" alt="EasyLine — Изи Лайн" style="width:clamp(72px,5.2cqw,78px);height:auto;display:block"></a>
 
     <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}">
-      <nav aria-label="Основная навигация" style="display:flex;flex:1 1 auto;align-items:center;flex-wrap:wrap;gap:10px clamp(14px,1.45cqw,26px);margin-left:8px">
-        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="7">
-          <a href="{{ item.href }}" onClick="{{ item.onClick }}" style="font:400 15px/1 'Geologica',sans-serif;color:{{ item.color }};white-space:nowrap;padding:6px 0;border-bottom:1px solid {{ item.rule }}" style-hover="color:#719dc9">{{ item.label }}</a>
+      <nav aria-label="Основная навигация" style="display:flex;flex:1 1 auto;align-items:center;flex-wrap:nowrap;gap:0 clamp(10px,1cqw,17px);margin-left:2px">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+          <a class="el-primary-nav__link" href="{{ item.href }}" onClick="{{ item.onClick }}" style="font:400 15px/1 'Geologica',sans-serif;color:{{ item.color }};white-space:nowrap;padding:10px 0;border-bottom:1px solid {{ item.rule }}" style-hover="color:#719dc9">{{ item.label }}</a>
         </sc-for>
-        <sc-for list="{{ topNav }}" as="t" hint-placeholder-count="3">
-          <a href="{{ t.href }}" onClick="{{ t.onClick }}" style="font:400 15px/1 'Geologica',sans-serif;color:{{ t.color }};white-space:nowrap;padding:6px 0;border-bottom:1px solid {{ t.rule }}" style-hover="color:#719dc9">{{ t.label }}</a>
-        </sc-for>
-        <a href="#" data-el-app-intent="auth" onClick="{{ openAuth }}" style="font:500 15px/1 'Geologica',sans-serif;color:#8e242e;white-space:nowrap;padding:6px 0 6px clamp(14px,1.45cqw,26px);border-left:1px solid #c8dce8">Войти</a>
       </nav>
-      <button onClick="{{ goPrograms }}" style="margin-left:auto;padding:13px 24px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 14px/1 'Geologica',sans-serif;cursor:pointer;white-space:nowrap" style-hover="background:#5f8dbb">Выбрать меню</button>
+      <div class="el-more-menu" onKeyDown="{{ handleMoreMenuKeyDown }}">
+        <button class="el-more-menu__trigger" type="button" onClick="{{ toggleMore }}" onKeyDown="{{ handleMoreTriggerKeyDown }}" aria-haspopup="true" aria-expanded="{{ moreOpen }}" aria-controls="desktop-more-menu" style="padding:10px 11px;background:transparent;color:#8e242e;border:1px solid #b8d2e1;border-radius:2px;font:500 14px/1 'Geologica',sans-serif;cursor:pointer;white-space:nowrap">Ещё <span class="el-more-menu__chevron" aria-hidden="true">⌄</span></button>
+        <nav id="desktop-more-menu" class="el-more-menu__panel" hidden="{{ !moreOpen }}" aria-hidden="{{ !moreOpen }}" aria-label="Дополнительная навигация">
+          <sc-for list="{{ topNav }}" as="t" hint-placeholder-count="3">
+            <a class="el-more-menu__item" href="{{ t.href }}" onClick="{{ t.onClick }}" style="font:400 15px/1.25 'Geologica',sans-serif;color:{{ t.color }};white-space:nowrap;border-bottom:1px solid transparent">{{ t.label }}</a>
+          </sc-for>
+        </nav>
+      </div>
+      <button class="el-account-button" type="button" data-el-app-intent="auth" onClick="{{ openAuth }}" aria-label="Войти в личный кабинет" title="Войти" style="padding:0;background:transparent;color:#8e242e;border:1px solid #b8d2e1;border-radius:2px;cursor:pointer"><img src="/easyline-site/assets/phosphor-user-circle.svg" alt="" aria-hidden="true"></button>
+      <button type="button" onClick="{{ goPrograms }}" style="min-height:44px;padding:13px 20px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 14px/1 'Geologica',sans-serif;cursor:pointer;white-space:nowrap" style-hover="background:#5f8dbb">Выбрать меню</button>
     </sc-if>
 
     <sc-if value="{{ isNarrow }}">
       <div style="margin-left:auto;display:flex;align-items:center;gap:12px">
-        <button onClick="{{ goPrograms }}" style="padding:12px 18px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 13px/1 'Geologica',sans-serif;cursor:pointer;white-space:nowrap">Выбрать меню</button>
-        <button data-el-menu-toggle="true" onClick="{{ toggleMenu }}" aria-label="Меню" aria-expanded="{{ menuOpen }}" aria-controls="mobile-menu" style="width:44px;height:44px;display:grid;place-items:center;gap:5px;background:transparent;border:1px solid #8e242e;border-radius:2px;cursor:pointer;padding:12px">
+        <button type="button" onClick="{{ goPrograms }}" style="min-height:44px;padding:13px 16px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 13px/1 'Geologica',sans-serif;cursor:pointer;white-space:nowrap">Выбрать меню</button>
+        <button type="button" data-el-menu-toggle="true" onClick="{{ toggleMenu }}" aria-label="Меню" aria-expanded="{{ menuOpen }}" aria-controls="mobile-menu" style="width:44px;height:44px;display:grid;place-items:center;gap:5px;background:transparent;border:1px solid #8e242e;border-radius:2px;cursor:pointer;padding:12px">
           <span style="display:block;width:18px;height:1.5px;background:#8e242e"></span>
           <span style="display:block;width:18px;height:1.5px;background:#8e242e"></span>
           <span style="display:block;width:18px;height:1.5px;background:#8e242e"></span>
@@ -79,7 +85,7 @@ button{font-family:inherit}
   </div>
 
   <nav id="mobile-menu" hidden="{{ !menuOpen }}" aria-hidden="{{ !menuOpen }}" aria-label="Мобильная навигация" style="border-top:1px solid #c8dce8;background:#ffffff;padding:12px clamp(16px,3cqw,40px) 24px;display:flex;flex-direction:column">
-    <sc-for list="{{ allNav }}" as="item" hint-placeholder-count="10">
+    <sc-for list="{{ allNav }}" as="item" hint-placeholder-count="9">
       <a href="{{ item.href }}" onClick="{{ item.onClick }}" style="font:400 17px/1 'Geologica',sans-serif;color:{{ item.color }};padding:15px 0;border-bottom:1px solid #e3edf3">{{ item.label }}</a>
     </sc-for>
     <a href="#" data-el-app-intent="auth" onClick="{{ openAuth }}" style="font:500 17px/1 'Geologica',sans-serif;color:#8e242e;padding:15px 0">Войти</a>
@@ -208,15 +214,15 @@ button{font-family:inherit}
   </div>
 </section>
 
-<section style="background:#f8fbfd;border-top:1px solid #c8dce8;border-bottom:1px solid #c8dce8">
+<section class="el-home-boxes" style="background:#f8fbfd;border-top:1px solid #c8dce8;border-bottom:1px solid #c8dce8">
   <div style="max-width:1240px;margin:0 auto;padding:clamp(44px,6cqw,84px) clamp(16px,3cqw,40px)">
     <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:baseline;justify-content:space-between;margin-bottom:clamp(24px,3cqw,40px)">
       <h2 style="font:600 clamp(26px,3.4cqw,44px)/1.05 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0">Боксы</h2>
       <a href="{{ hrefBoxes }}" onClick="{{ goBoxes }}" style="font:400 15px/1 'Geologica',sans-serif;color:#8e242e;border-bottom:1px solid #b8d2e1;padding-bottom:3px">Все 12 боксов →</a>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(14px,1.8cqw,24px)">
+    <div class="el-home-boxes-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(14px,1.8cqw,24px)">
       <sc-for list="{{ homeBoxes }}" as="b" hint-placeholder-count="4">
-        <a href="{{ b.href }}" onClick="{{ b.open }}" style="display:block;background:#ffffff;border:1px solid #d2e3ed;border-radius:2px;overflow:hidden;color:inherit" style-hover="border-color:#8e242e">
+        <a class="el-home-box-card" href="{{ b.href }}" onClick="{{ b.open }}" style="display:block;background:#ffffff;border:1px solid #d2e3ed;border-radius:2px;overflow:hidden;color:inherit" style-hover="border-color:#8e242e">
           <div class="el-photo-frame" style="aspect-ratio:4/3">
             <img class="el-photo" data-el-src="{{ b.image }}" alt="{{ b.imageAlt }}" loading="lazy" decoding="async">
           </div>
@@ -290,14 +296,14 @@ button{font-family:inherit}
   </div>
 </section>
 
-<section style="max-width:1240px;margin:0 auto;padding:clamp(44px,6cqw,84px) clamp(16px,3cqw,40px)">
+<section class="el-home-promos" style="max-width:1240px;margin:0 auto;padding:clamp(44px,6cqw,84px) clamp(16px,3cqw,40px)">
   <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:baseline;justify-content:space-between;margin-bottom:clamp(24px,3cqw,40px)">
     <h2 style="font:600 clamp(26px,3.4cqw,44px)/1.05 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0">Акции</h2>
     <a href="{{ hrefPromo }}" onClick="{{ goPromo }}" style="font:400 15px/1 'Geologica',sans-serif;color:#8e242e;border-bottom:1px solid #b8d2e1;padding-bottom:3px">Все акции →</a>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(14px,1.8cqw,22px)">
+  <div class="el-home-promos-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(14px,1.8cqw,22px)">
     <sc-for list="{{ promos }}" as="pr" hint-placeholder-count="4">
-      <a href="{{ pr.href }}" onClick="{{ pr.open }}" style="display:flex;flex-direction:column;justify-content:space-between;min-height:190px;padding:22px;background:{{ pr.color }};border-radius:2px;color:#23333d" style-hover="opacity:.88">
+      <a class="el-home-promo-card" href="{{ pr.href }}" onClick="{{ pr.open }}" style="display:flex;flex-direction:column;justify-content:space-between;min-height:190px;padding:22px;background:{{ pr.color }};border-radius:2px;color:#23333d" style-hover="opacity:.88">
         <div><sc-if value="{{ is0131 }}"><div class="el-brand-kicker el-brand-kicker--compact" style="font:500 11px/1 'Geologica',sans-serif;color:#0f4d7a;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px">{{ pr.until }}</div></sc-if><h3 style="font:500 clamp(18px,1.8cqw,23px)/1.15 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0;text-wrap:balance">{{ pr.title }}</h3><p style="font:300 14px/1.55 'Geologica',sans-serif;color:#394c58;margin:14px 0 0;text-wrap:pretty">{{ pr.short }}</p><sc-if value="{{ is022 }}"><p style="font:500 13px/1.5 'Geologica',sans-serif;color:#0f4d7a;margin:10px 0 0;text-wrap:pretty">{{ pr.benefit }}</p></sc-if></div>
         <sc-if value="{{ is0131 }}"><span style="display:block;margin-top:18px;padding-top:14px;border-top:1px solid rgba(142,36,46,.22);font:500 12px/1 'Geologica',sans-serif;color:#8e242e">Подробнее →</span></sc-if>
       </a>
@@ -305,15 +311,15 @@ button{font-family:inherit}
   </div>
 </section>
 
-<section style="background:#f8fbfd;border-top:1px solid #c8dce8;border-bottom:1px solid #c8dce8">
+<section class="el-home-blog" style="background:#f8fbfd;border-top:1px solid #c8dce8;border-bottom:1px solid #c8dce8">
   <div style="max-width:1240px;margin:0 auto;padding:clamp(44px,6cqw,84px) clamp(16px,3cqw,40px)">
     <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:baseline;justify-content:space-between;margin-bottom:clamp(24px,3cqw,40px)">
       <h2 style="font:600 clamp(26px,3.4cqw,44px)/1.05 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0">Блог</h2>
       <a href="{{ hrefArticles }}" onClick="{{ goArticles }}" style="font:400 15px/1 'Geologica',sans-serif;color:#8e242e;border-bottom:1px solid #b8d2e1;padding-bottom:3px">Все статьи →</a>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(16px,2.2cqw,28px)">
+    <div class="el-home-blog-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(16px,2.2cqw,28px)">
       <sc-for list="{{ homeArticles }}" as="a" hint-placeholder-count="3">
-        <a href="{{ a.href }}" onClick="{{ a.open }}" style="display:block;color:inherit">
+        <a class="el-home-blog-card" href="{{ a.href }}" onClick="{{ a.open }}" style="display:block;color:inherit">
           <div class="el-photo-frame" style="aspect-ratio:16/10;border:1px solid #d2e3ed">
             <img class="el-photo" data-el-src="{{ a.image }}" alt="{{ a.imageAlt }}" loading="lazy" decoding="async">
             <span class="el-photo-index">{{ a.n }}</span>
@@ -1094,7 +1100,7 @@ const LEGAL_BODY = [
 
 class Component extends DCLogic {
   state = {
-    route:'home', slug:null, menuOpen:false, faqOpen:0, homeFaqOpen:0,
+    route:'home', slug:null, menuOpen:false, moreOpen:false, viewportTick:0, faqOpen:0, homeFaqOpen:0,
     week:1, dayN:1, line:0, sauces:{}, appModal:false,
     data:null, loading:true, error:false,
     flexDay:1, calorie:1200, duration:7, schedule:'Ежедневно',
@@ -1107,11 +1113,24 @@ class Component extends DCLogic {
       this._onPopState = () => this.syncRouteFromLocation();
       window.addEventListener('popstate', this._onPopState);
     }
+    this._onDocumentPointerDown = (e) => {
+      const more = document.querySelector('.el-more-menu');
+      if (this.state.moreOpen && more && !more.contains(e.target)) this.setState({ moreOpen:false });
+    };
+    this._onResize = () => {
+      if (this._resizeFrame) window.cancelAnimationFrame(this._resizeFrame);
+      this._resizeFrame = window.requestAnimationFrame(() => this.setState(s => ({ viewportTick:s.viewportTick + 1, moreOpen:false })));
+    };
+    document.addEventListener('pointerdown', this._onDocumentPointerDown);
+    window.addEventListener('resize', this._onResize);
     this.load();
   }
 
   componentWillUnmount() {
     if (this._onPopState) window.removeEventListener('popstate', this._onPopState);
+    if (this._onDocumentPointerDown) document.removeEventListener('pointerdown', this._onDocumentPointerDown);
+    if (this._onResize) window.removeEventListener('resize', this._onResize);
+    if (this._resizeFrame) window.cancelAnimationFrame(this._resizeFrame);
   }
 
   componentDidUpdate() {
@@ -1122,6 +1141,32 @@ class Component extends DCLogic {
         : '#programs-catalog-region a[href]';
       this._restoreCatalogFocus = false;
       window.requestAnimationFrame(() => document.querySelector(selector)?.focus({ preventScroll:true }));
+    }
+  }
+
+  focusMoreTrigger() {
+    window.requestAnimationFrame(() => document.querySelector('.el-more-menu__trigger')?.focus({ preventScroll:true }));
+  }
+
+  focusFirstMoreItem() {
+    window.requestAnimationFrame(() => document.querySelector('#desktop-more-menu a')?.focus({ preventScroll:true }));
+  }
+
+  handleMoreTriggerKeyDown(e) {
+    if (!e) return;
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      this.setState({ moreOpen:true }, () => this.focusFirstMoreItem());
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      this.setState({ moreOpen:false }, () => this.focusMoreTrigger());
+    }
+  }
+
+  handleMoreMenuKeyDown(e) {
+    if (e && e.key === 'Escape') {
+      e.preventDefault();
+      this.setState({ moreOpen:false }, () => this.focusMoreTrigger());
     }
   }
 
@@ -1188,7 +1233,7 @@ class Component extends DCLogic {
 
   syncRouteFromLocation() {
     const next = this.routeFromPath(window.location.pathname);
-    this.setState({ ...next, menuOpen:false, appModal:false, week:1, dayN:1, faqOpen:0, configSubmitted:false });
+    this.setState({ ...next, menuOpen:false, moreOpen:false, appModal:false, week:1, dayN:1, faqOpen:0, configSubmitted:false });
   }
 
   go(route, slug) {
@@ -1196,7 +1241,7 @@ class Component extends DCLogic {
       const path = this.pathFor(route, slug);
       if (window.location.pathname !== path) window.history.pushState({}, '', path);
     }
-    this.setState({ route, slug: slug || null, menuOpen:false, appModal:false, week:1, dayN:1, faqOpen:0, configSubmitted:false });
+    this.setState({ route, slug: slug || null, menuOpen:false, moreOpen:false, appModal:false, week:1, dayN:1, faqOpen:0, configSubmitted:false });
     try { window.scrollTo(0, 0); } catch (e) {}
   }
 
@@ -1206,7 +1251,7 @@ class Component extends DCLogic {
     const S = this.state, P = this.props, D = S.data;
     const queryVp = new URLSearchParams(window.location.search).get('viewport');
     const requestedVp = ['desktop','tablet','mobile'].includes(queryVp) ? queryVp : (P.viewport || 'desktop');
-    const autoVp = window.innerWidth <= 560 ? 'mobile' : window.innerWidth <= 920 ? 'tablet' : 'desktop';
+    const autoVp = window.innerWidth <= 560 ? 'mobile' : window.innerWidth <= 1080 ? 'tablet' : 'desktop';
     const vp = requestedVp === 'desktop' ? autoVp : requestedVp;
     // The public shell follows the real viewport so no canvas strip remains
     // uncovered on large phones or screens wider than 1440px.
@@ -1432,7 +1477,9 @@ class Component extends DCLogic {
       frameMax, isWide, isNarrow: !isWide, is0131:IS_0131, is022:IS_022, stickersOn: P.showStickers !== false,
       showSkipLink:(e) => { if (e && e.currentTarget) e.currentTarget.style.transform = 'translateY(0)'; },
       hideSkipLink:(e) => { if (e && e.currentTarget) e.currentTarget.style.transform = 'translateY(-160%)'; },
-      menuOpen: S.menuOpen, toggleMenu: () => this.setState({ menuOpen: !S.menuOpen }),
+      menuOpen: S.menuOpen, toggleMenu: () => this.setState({ menuOpen: !S.menuOpen, moreOpen:false }),
+      moreOpen: S.moreOpen, toggleMore: (e) => { if (e) e.preventDefault(); this.setState({ moreOpen:!S.moreOpen, menuOpen:false }); },
+      handleMoreTriggerKeyDown:(e) => this.handleMoreTriggerKeyDown(e), handleMoreMenuKeyDown:(e) => this.handleMoreMenuKeyDown(e),
       navItems: primary.map(mk), topNav: secondary.map(mk), allNav: primary.concat(secondary).map(mk),
       hrefHome:hrefFor('home'), hrefPrograms:hrefFor('programs'), hrefBoxes:hrefFor('boxes'), hrefShowcase:hrefFor('showcase'),
       hrefReviews:hrefFor('reviews'), hrefPromo:hrefFor('promo'), hrefArticles:hrefFor('articles'), hrefFaq:hrefFor('faq'), hrefBase,
@@ -1440,7 +1487,7 @@ class Component extends DCLogic {
       goShowcase: this.link('showcase'), goReviews: this.link('reviews'), goPromo: this.link('promo'),
       goArticles: this.link('articles'), goFaq: this.link('faq'),
       openOrder: (e) => { if (e) e.preventDefault(); this.setState({ appModal:true }); },
-      openAuth: (e) => { if (e) e.preventDefault(); this.setState({ appModal:true, menuOpen:false }); },
+      openAuth: (e) => { if (e) e.preventDefault(); this.setState({ appModal:true, menuOpen:false, moreOpen:false }); },
       openPromo: (e) => { if (e) e.preventDefault(); this.setState({ appModal:true }); },
       closeApp: (e) => { if (e) e.preventDefault(); this.setState({ appModal:false }); },
       closeAppOverlay: (e) => { if (e) e.preventDefault(); if (!e || e.target === e.currentTarget) this.setState({ appModal:false }); },
