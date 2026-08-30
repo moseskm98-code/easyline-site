@@ -298,3 +298,87 @@
     font-size: 26px;
   }
 }
+
+@media (max-width: 700px) {
+  html[data-el-route-key="home"] .el-home-showcase-grid .el-showcase-preview-copy > div:first-child,
+  html[data-el-route-key="home"] [class="el-brand-kicker el-brand-kicker--compact"],
+  html[data-el-route-key="home"] .el-home-blog-card > .el-brand-kicker,
+  html[data-el-route-key="home"] .el-home-promos-grid span[style*="font:500 11px/1"],
+  html[data-el-route-key="home"] .el-home-promos-grid span[style*="font:500 12px/1"],
+  html[data-el-route-key="home"] [class="el-brand-kicker el-brand-kicker--compact"] + span[style*="font:600 14px/1"],
+  html[data-el-route-key="home"] [style*="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px"] > span,
+  html[data-el-route-key="home"] [style*="display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-bottom:2px solid #8e242e;padding-bottom:10px"] > span {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+
+  html[data-el-route-key="home"] .el-home-showcase-grid .el-showcase-preview-copy > div:last-child,
+  html[data-el-route-key="home"] .el-home-promos-grid p,
+  html[data-el-route-key="home"] .el-home-blog-grid p,
+  html[data-el-route-key="home"] .el-home-showcase-grid .el-body-copy,
+  html[data-el-route-key="home"] .el-home-blog-card p,
+  html[data-el-route-key="home"] .el-home-promo-card p,
+  html[data-el-route-key="home"] p[style*="sampleDay.protocol"],
+  html[data-el-route-key="home"] li[style*="font:300 14px/1.45"],
+  html[data-el-route-key="home"] p[style*="faqIntro"],
+  html[data-el-route-key="home"] p[style*="finalCtaText"],
+  html[data-el-route-key="home"] [id$="-panel"][role="region"],
+  html[data-el-route-key="home"] [style*="font:400 14px/1.5 'Geologica',sans-serif;color:#0f4d7a"],
+  html[data-el-route-key="home"] [style*="font:300 15px/1.65 'Geologica',sans-serif;color:#465a67"],
+  html[data-el-route-key="home"] [style*="font:300 clamp(15px,1.3cqw,17px)/1.65 'Geologica',sans-serif;color:#465a67"],
+  html[data-el-route-key="home"] [style*="font:300 clamp(14px,1.3cqw,17px)/1.6 'Geologica',sans-serif;color:#dbe9f1"] {
+    font-size: 17px !important;
+    line-height: 1.6 !important;
+  }
+
+  html[data-el-route-key="home"] button[aria-controls][style*="justify-content:space-between"] > span:first-child {
+    font-size: 17px !important;
+    line-height: 1.45 !important;
+  }
+
+  html[data-el-route-key="program-protokol-28"] .el-brand-kicker,
+  html[data-el-route-key="program-protokol-28"] .el-brand-kicker--compact,
+  html[data-el-route-key="program-protokol-28"] .el-protocol-fact-key,
+  html[data-el-route-key="program-protokol-28"] [role="group"][aria-label="Выбор недели"] button > div:first-child,
+  html[data-el-route-key="program-protokol-28"] [role="group"][aria-label="Выбор недели"] button > div:last-child,
+  html[data-el-route-key="program-protokol-28"] [role="group"][aria-label="Выбор дня"] button > div:first-child > span:last-child,
+  html[data-el-route-key="program-protokol-28"] [role="group"][aria-label="Выбор дня"] button > div:nth-child(2),
+  html[data-el-route-key="program-protokol-28"] [role="group"][aria-label="Выбор дня"] button > div:last-child > span,
+  html[data-el-route-key="program-protokol-28"] #program-day-panel [style*="font:300 13px/1.4"],
+  html[data-el-route-key="program-protokol-28"] #program-day-panel [style*="font:600 14px/1"],
+  html[data-el-route-key="program-protokol-28"] [style*="font:300 12px/1.5 'Geologica',sans-serif;color:#7a909d"],
+  html[data-el-route-key="program-protokol-28"] [style*="font:300 12px/1 'Geologica',sans-serif;color:#6f8492"],
+  html[data-el-route-key="program-protokol-28"] [style*="font:300 13px/1 'Geologica',sans-serif;color:#6f8492"] {
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+  }
+
+  html[data-el-route-key="program-protokol-28"] .el-body-copy,
+  html[data-el-route-key="program-protokol-28"] #program-day-panel li,
+  html[data-el-route-key="program-protokol-28"] .el-card-description,
+  html[data-el-route-key="program-protokol-28"] [style*="font:300 15px/1.65 'Geologica',sans-serif;color:#28455c"],
+  html[data-el-route-key="program-protokol-28"] [style*="font:400 13px/1.4 'Geologica',sans-serif;color:#23333d;text-align:right"] {
+    font-size: 17px !important;
+    line-height: 1.6 !important;
+  }
+}
+
+@media (max-width: 700px) {
+  html[data-el-route-key="home"] .el-body-copy,
+  html[data-el-route-key="home"] .el-step-card p,
+  html[data-el-route-key="home"] .el-card-description,
+  html[data-el-route-key="home"] .sc-host main ul[style*="list-style:none"] > li,
+  html[data-el-route-key="home"] .sc-host main ul[style*="list-style: none"] > li,
+  html[data-el-route-key="home"] .el-home-showcase-grid .el-body-copy,
+  html[data-el-route-key="home"] main li[style*="font:300 14px/1.45"],
+  html[data-el-route-key="home"] main li[style*="font: 300 14px/1.45"] {
+    font-size: 17px !important;
+    line-height: 1.6 !important;
+  }
+
+  html[data-el-route-key="home"] main span[style*="padding:6px 8px"],
+  html[data-el-route-key="home"] main span[style*="padding: 6px 8px"] {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+}
