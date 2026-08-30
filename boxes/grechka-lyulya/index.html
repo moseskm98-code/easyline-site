@@ -21,6 +21,12 @@
 <script>window.__EASYLINE_VARIANT__ = "2.2.2";</script>
 <script  src="/easyline-site/vendor/react.production.min.js"></script>
 <script  src="/easyline-site/vendor/react-dom.production.min.js"></script>
+  <link rel="preload" href="/easyline-site/assets/nunito-variable-cyrillic.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="/easyline-site/assets/bebas-neue-regular-mhMkEidK.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="/easyline-site/assets/bebas-neue-bold-DqarbXCh.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="/easyline-site/assets/podkova-variable-DYz2L4Pv.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="/easyline-site/assets/first-frame-init.css">
+  <script src="/easyline-site/assets/first-frame-init.js"></script>
   <script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=remove-city-20260830"></script>
   <link rel="stylesheet" crossorigin href="/easyline-site/assets/index-BmA-8PXs-v222.css">
   <link rel="stylesheet" href="/easyline-site/assets/readability-overrides.css">
@@ -322,7 +328,6 @@ button{font-family:inherit}
         <a class="el-home-blog-card" href="{{ a.href }}" onClick="{{ a.open }}" style="display:block;color:inherit">
           <div class="el-photo-frame" style="aspect-ratio:16/10;border:1px solid #d2e3ed">
             <img class="el-photo" data-el-src="{{ a.image }}" alt="{{ a.imageAlt }}" loading="lazy" decoding="async">
-            <span class="el-photo-index">{{ a.n }}</span>
           </div>
           <div class="el-brand-kicker el-brand-kicker--compact" style="font:300 12px/1 'Geologica',sans-serif;color:#7a909d;margin-top:16px">{{ a.date }}</div>
           <h3 style="font:500 clamp(17px,1.6cqw,21px)/1.25 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:8px 0 8px;text-wrap:balance">{{ a.title }}</h3>

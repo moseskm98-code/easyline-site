@@ -1,0 +1,118 @@
+/* Prevent the browser from painting the raw design template. */
+body > x-dc {
+  display: none !important;
+}
+
+:root {
+  --el-first-frame-duration: 1500ms;
+  --el-first-frame-ease: cubic-bezier(.4, 0, .2, 1);
+}
+
+/* Keep the generated page out of the first paint until its final layout,
+   fonts and initial motion coordinates are ready. */
+html[data-el-boot-state="pending"] #dc-root {
+  visibility: hidden !important;
+}
+
+html[data-el-boot-state="pending"] main.el-page-enter,
+html[data-el-boot-state="pending"] header.el-header-enter {
+  animation-play-state: paused !important;
+}
+
+main.el-page-enter {
+  animation-name: el-first-frame-reveal !important;
+  animation-duration: var(--el-first-frame-duration) !important;
+  animation-timing-function: var(--el-first-frame-ease) !important;
+}
+
+header.el-header-enter {
+  animation-name: el-first-frame-header-reveal !important;
+  animation-duration: var(--el-first-frame-duration) !important;
+  animation-timing-function: var(--el-first-frame-ease) !important;
+  animation-fill-mode: both !important;
+  will-change: opacity, clip-path;
+}
+
+@keyframes el-first-frame-reveal {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 6px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes el-first-frame-header-reveal {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+
+  100% {
+    opacity: 1;
+    clip-path: inset(0);
+  }
+}
+
+html[data-el-motion-degraded="true"] .el-parallax-layer {
+  translate: none !important;
+  rotate: none !important;
+  scale: none !important;
+}
+
+html[data-el-motion-degraded="true"] main.el-page-enter {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+html[data-el-motion-degraded="true"] header.el-header-enter {
+  animation: none !important;
+  opacity: 1 !important;
+  clip-path: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header.el-header-enter {
+    animation: none !important;
+    opacity: 1 !important;
+    clip-path: none !important;
+  }
+}
+
+#el-boot-fallback {
+  min-height: 100dvh;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 16px;
+  padding: clamp(28px, 7vw, 80px);
+  background: #ffffff;
+  color: #23333d;
+}
+
+#el-boot-fallback h1 {
+  margin: 0;
+  color: #8e242e;
+  font: 700 clamp(34px, 7vw, 64px)/1 "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+}
+
+#el-boot-fallback p {
+  margin: 0;
+  max-width: 42rem;
+  font: 400 18px/1.55 "Nunito EasyLine", system-ui, sans-serif;
+}
+
+#el-boot-fallback button {
+  min-height: 44px;
+  padding: 12px 20px;
+  border: 1px solid #8e242e;
+  background: #8e242e;
+  color: #ffffff;
+  font: 700 16px/1 "Nunito EasyLine", system-ui, sans-serif;
+  cursor: pointer;
+}
