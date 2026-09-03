@@ -1153,10 +1153,10 @@ class Component extends DCLogic {
       ? (this._catalogRecoveryAttempt = (this._catalogRecoveryAttempt || 0) + 1)
       : 0;
     const resource = recoveryAttempt === 1
-      ? import('/easyline-site/assets/menu-data-6F787N4k.js?el-retry=1')
+      ? import('/easyline-site/assets/menu-data-6F787N4k.js?v=version-2.2.3-20260903&el-retry=1')
       : recoveryAttempt > 1
-        ? import('/easyline-site/assets/menu-data-6F787N4k.js?el-retry=2')
-        : import('/easyline-site/assets/menu-data-6F787N4k.js');
+        ? import('/easyline-site/assets/menu-data-6F787N4k.js?v=version-2.2.3-20260903&el-retry=2')
+        : import('/easyline-site/assets/menu-data-6F787N4k.js?v=version-2.2.3-20260903');
     resource
       .then((m) => this.setState({
         data:{ protocols:m.PROTOCOLS, boxes:m.BOXES, showcase:m.SHOWCASE },

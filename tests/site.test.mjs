@@ -55,6 +55,7 @@ test("the supplied 28-day menu is shown as one fixed menu without selectors", as
   ]);
   assert.match(index, /<sc-for list="\{\{ menuDays \}\}" as="d"/);
   assert.match(index, /Выбор блюд на сайте не предусмотрен/);
+  assert.match(index, /menu-data-6F787N4k\.js\?v=version-2\.2\.3-20260903/);
   assert.doesNotMatch(index, /day\.kcalPlain/);
   assert.doesNotMatch(index, /weekTabs|weekDays|\{\{ w\.select \}\}/);
 });
