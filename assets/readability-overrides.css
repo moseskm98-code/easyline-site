@@ -244,6 +244,43 @@
   line-height: 1.55;
 }
 
+html[data-el-route-key="program-protokol-28"] .el-protocol-hero {
+  width: min(calc(100% - clamp(32px, 6cqw, 80px)), 1240px);
+  aspect-ratio: 1823 / 863;
+  margin: clamp(20px, 3cqw, 40px) auto 0;
+  border: 1px solid #c8dce8;
+}
+
+html[data-el-route-key="program-protokol-28"] .el-protocol-hero__image {
+  object-position: center;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+html[data-el-route-key="program-protokol-28"] .el-protocol-hero__image.el-parallax-layer {
+  translate: none !important;
+  rotate: none !important;
+  scale: none !important;
+  will-change: auto;
+}
+
+html[data-el-route-key="program-protokol-28"] .el-protocol-menu.el-reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+  transition: none !important;
+}
+
+html[data-el-route-key="program-protokol-28"] main.el-page-enter,
+html[data-el-route-key="program-protokol-28"] header.el-header-enter {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+  will-change: auto;
+}
+
 .el-tweaker select,
 .el-tweaker__button,
 .el-tweaker__switch {
@@ -358,6 +395,14 @@
   html[data-el-route-key="program-protokol-28"] .el-menu-day {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
+  }
+
+  html[data-el-route-key="program-protokol-28"] .el-protocol-sticky__summary {
+    display: none;
+  }
+
+  html[data-el-route-key="program-protokol-28"] .el-protocol-sticky button {
+    width: 100%;
   }
 }
 

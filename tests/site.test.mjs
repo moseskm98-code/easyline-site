@@ -4,6 +4,7 @@ import test from "node:test";
 
 const root = new URL("../", import.meta.url);
 const index = await readFile(new URL("index.html", root), "utf8");
+const readability = await readFile(new URL("assets/readability-overrides.css", root), "utf8");
 
 test("version 2.2.3 sells only the 28-day protocol through an ERP lead form", async () => {
   assert.match(index, /window\.__EASYLINE_VARIANT__ = "2\.2\.3"/);
@@ -37,6 +38,7 @@ test("contacts and the three supplied legal documents are published", async () =
 test("the supplied 28-day menu is shown as one fixed menu without selectors", async () => {
   const { PROTOCOLS } = await import(new URL("../assets/menu-data-6F787N4k.js", import.meta.url));
   const protocol = PROTOCOLS.find(({ slug }) => slug === "protokol-28");
+  const protocolPage = index.match(/<!-- СТРАНИЦА ПРОТОКОЛА -->([\s\S]*?)<!-- ГИБКАЯ ПРОГРАММА/)[1];
 
   assert.equal(protocol.days.length, 28);
   assert.deepEqual(protocol.days[0].meals[0].items, [
@@ -53,9 +55,21 @@ test("the supplied 28-day menu is shown as one fixed menu without selectors", as
     "Лимон — 20 г",
     "Смесь семян — 10 г",
   ]);
-  assert.match(index, /<sc-for list="\{\{ menuDays \}\}" as="d"/);
-  assert.match(index, /Выбор блюд на сайте не предусмотрен/);
+  assert.match(protocolPage, /<sc-for list="\{\{ menuDays \}\}" as="d"/);
+  assert.match(protocolPage, /выбор блюд на сайте не предусмотрен/i);
   assert.match(index, /menu-data-6F787N4k\.js\?v=version-2\.2\.3-20260903/);
-  assert.doesNotMatch(index, /day\.kcalPlain/);
-  assert.doesNotMatch(index, /weekTabs|weekDays|\{\{ w\.select \}\}/);
+  assert.doesNotMatch(protocolPage, />День \{\{ d\.n \}\}</);
+  assert.doesNotMatch(protocolPage, /\{\{ d\.dow \}\}/);
+  assert.doesNotMatch(protocolPage, /day\.kcalPlain/);
+  assert.doesNotMatch(protocolPage, /weekTabs|weekDays|\{\{ w\.select \}\}/);
+
+  assert.match(protocolPage, /class="el-photo-frame el-protocol-hero"/);
+  assert.match(protocolPage, /class="el-photo el-protocol-hero__image"/);
+  assert.match(protocolPage, /class="el-protocol-menu"/);
+  assert.match(protocolPage, /class="el-protocol-sticky"/);
+  assert.doesNotMatch(protocolPage, /coverRatio/);
+  assert.match(readability, /\.el-protocol-hero\s*\{[^}]*aspect-ratio:\s*1823\s*\/\s*863/s);
+  assert.match(readability, /\.el-protocol-hero__image\.el-parallax-layer\s*\{[^}]*translate:\s*none\s*!important/s);
+  assert.match(readability, /\.el-protocol-menu\.el-reveal\s*\{[^}]*opacity:\s*1\s*!important/s);
+  assert.match(readability, /program-protokol-28[^}]*header\.el-header-enter[^}]*\{[^}]*animation:\s*none\s*!important/s);
 });

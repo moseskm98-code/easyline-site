@@ -426,8 +426,8 @@ button{font-family:inherit}
 
 <!-- СТРАНИЦА ПРОТОКОЛА -->
 <sc-if value="{{ isProgram }}">
-<div class="el-photo-frame" style="aspect-ratio:{{ coverRatio }};max-height:520px;border-bottom:1px solid #c8dce8">
-  <img class="el-photo" data-el-src="{{ prog.image }}" alt="{{ prog.imageAlt }}" fetchpriority="high" decoding="async">
+<div class="el-photo-frame el-protocol-hero">
+  <img class="el-photo el-protocol-hero__image" data-el-src="{{ prog.image }}" alt="{{ prog.imageAlt }}" fetchpriority="high" decoding="async">
 </div>
 <section style="max-width:1240px;margin:0 auto;padding:clamp(32px,4cqw,56px) clamp(16px,3cqw,40px) 0;display:flex;flex-wrap:wrap;gap:clamp(24px,4cqw,64px)">
   <div style="flex:1 1 400px;min-width:270px">
@@ -457,16 +457,12 @@ button{font-family:inherit}
   </div>
 </section>
 
-<section style="max-width:1240px;margin:0 auto;padding:clamp(40px,5cqw,72px) clamp(16px,3cqw,40px) 0">
+<section class="el-protocol-menu" style="max-width:1240px;margin:0 auto;padding:clamp(40px,5cqw,72px) clamp(16px,3cqw,40px) 0">
   <h2 style="font:500 clamp(22px,2.6cqw,32px)/1.1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 20px">Меню на 28 дней</h2>
   <p class="el-body-copy" style="font:300 15px/1.6 'Geologica',sans-serif;color:#465a67;margin:0 0 clamp(24px,3cqw,40px);max-width:700px">Все 28 рационов собраны в одном меню. Состав и порции уже зафиксированы; выбор блюд на сайте не предусмотрен.</p>
-  <div>
+  <div style="display:flex;flex-direction:column;gap:clamp(28px,4cqw,52px)">
     <sc-for list="{{ menuDays }}" as="d" hint-placeholder-count="4">
-      <article class="el-menu-day" aria-labelledby="menu-day-{{ d.n }}" style="display:grid;grid-template-columns:minmax(120px,180px) minmax(0,1fr);gap:clamp(20px,3cqw,48px);padding:clamp(28px,4cqw,48px) 0;border-top:1px solid #d2e3ed">
-        <div>
-          <h3 id="menu-day-{{ d.n }}" style="font:500 clamp(20px,2.2cqw,28px)/1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0">День {{ d.n }}</h3>
-          <div style="font:300 13px/1.4 'Geologica',sans-serif;color:#6f8492;margin-top:8px">{{ d.dow }}</div>
-        </div>
+      <article class="el-menu-day">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(22px,3cqw,40px)">
           <sc-for list="{{ d.meals }}" as="m" hint-placeholder-count="3">
             <div>
@@ -510,9 +506,9 @@ button{font-family:inherit}
   <a href="{{ hrefHome }}" onClick="{{ goHome }}" style="display:inline-block;margin:clamp(32px,4cqw,52px) 0 clamp(80px,9cqw,140px);font:400 15px/1 'Geologica',sans-serif;color:#8e242e;border-bottom:1px solid #b8d2e1;padding-bottom:3px">← Вернуться на главную</a>
 </section>
 
-<div style="position:sticky;bottom:0;z-index:30;background:#ffffff;border-top:1px solid #8e242e;padding:14px clamp(16px,3cqw,40px)">
+<div class="el-protocol-sticky" style="position:sticky;bottom:0;z-index:30;background:#ffffff;border-top:1px solid #8e242e;padding:14px clamp(16px,3cqw,40px)">
   <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px">
-    <div>
+    <div class="el-protocol-sticky__summary">
       <div style="font:300 12px/1 'Geologica',sans-serif;color:#6f8492">{{ prog.name }}</div>
       <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px">
         <span style="font:700 clamp(18px,2cqw,24px)/1 'Podkova',serif;color:#8e242e">Фиксированное меню</span>
@@ -1514,7 +1510,7 @@ class Component extends DCLogic {
         href:hrefFor('program', p.slug), open: this.link('program', p.slug),
       })),
       prog: prog ? { ...prog, image:`/easyline-site/assets/photos/protocol-${prog.slug}.jpg`, imageAlt:`${prog.name}: готовый рацион EasyLine` } : { name:'', goal:'', long:'', slug:'', tags:[], facts:[], rules:[], image:'', imageAlt:'' },
-      menuDays, coverRatio: vp === 'mobile' ? '4/3' : '21/9',
+      menuDays,
       flexPrograms, flexProgram, flexDayTabs, flexMeals:activeFlexDay.meals,
       calorieOptions, durationOptions, scheduleOptions, configRows, configTotal:rub(dayPrice * S.duration),
       deliveryDate:S.deliveryDate, deliveryAddress:S.deliveryAddress, configSubmitted:S.configSubmitted,
