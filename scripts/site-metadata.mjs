@@ -18,12 +18,12 @@ function entry(file, routeKey, routePath, title, description, options = {}) {
   };
 }
 
-const protocolDescription = "Протокол питания EasyLine на 28 дней: три приёма пищи, рассчитанный КБЖУ и доставка в Махачкале, Каспийске и Избербаше.";
+const protocolDescription = "Протокол питания EasyLine на 28 дней: три приёма пищи, фиксированное меню и доставка в Махачкале, Каспийске и Избербаше.";
 
 export const ROUTE_ENTRIES = [
   entry("index.html", "home", "/", "Протокол 28 дней — EasyLine", protocolDescription),
   entry("programs/index.html", "program-protokol-28", "/programs", "Протокол 28 дней — EasyLine", protocolDescription, { noindex: true, canonicalPath: "/programs/protokol-28" }),
-  entry("programs/protokol-28/index.html", "program-protokol-28", "/programs/protokol-28", "Протокол 28 дней — EasyLine", "Меню базового протокола EasyLine на 28 дней: три приёма пищи, полный КБЖУ и правила цикла."),
+  entry("programs/protokol-28/index.html", "program-protokol-28", "/programs/protokol-28", "Протокол 28 дней — EasyLine", "Фиксированное меню протокола EasyLine на 28 дней: завтрак, обед и ужин с указанными порциями."),
   entry("reviews/index.html", "reviews", "/reviews", "Отзывы — EasyLine", "Отзывы клиентов EasyLine о протоколе питания на 28 дней и доставке."),
   entry("faq/index.html", "faq", "/faq", "Частые вопросы — EasyLine", "Ответы о меню, доставке, оплате, хранении и паузе 28-дневного протокола EasyLine."),
   entry("about-production/index.html", "about-production", "/about-production", "О производстве — EasyLine", "Собственная кухня EasyLine: закупка сырья, приготовление, фасовка рационов и контроль качества."),

@@ -10,12 +10,12 @@
 :root{color-scheme:only light!important}
 @media (prefers-color-scheme:dark){:root{color-scheme:only light!important}html,body{background-color:#fff!important;background-image:linear-gradient(#fff,#fff)!important}}
 </style>
-<meta name="description" content="Меню базового протокола EasyLine на 28 дней: три приёма пищи, полный КБЖУ и правила цикла.">
+<meta name="description" content="Фиксированное меню протокола EasyLine на 28 дней: завтрак, обед и ужин с указанными порциями.">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="EasyLine">
 <meta property="og:title" content="Протокол 28 дней — EasyLine">
-<meta property="og:description" content="Меню базового протокола EasyLine на 28 дней: три приёма пищи, полный КБЖУ и правила цикла.">
+<meta property="og:description" content="Фиксированное меню протокола EasyLine на 28 дней: завтрак, обед и ужин с указанными порциями.">
 <meta property="og:url" content="https://easyline.club/programs/protokol-28/">
 <link rel="canonical" href="https://easyline.club/programs/protokol-28/">
 <title>Протокол 28 дней — EasyLine</title>
@@ -275,7 +275,7 @@ button{font-family:inherit}
     <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(24px,3cqw,40px)">
       <div>
         <h2 style="font:600 clamp(26px,3.4cqw,44px)/1.05 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0">{{ sampleDay.title }}</h2>
-        <p style="font:300 14px/1.5 'Geologica',sans-serif;color:#6f8492;margin:12px 0 0">{{ sampleDay.protocol }} · день {{ sampleDay.n }} · {{ sampleDay.kcal }} ккал</p>
+        <p style="font:300 14px/1.5 'Geologica',sans-serif;color:#6f8492;margin:12px 0 0">{{ sampleDay.protocol }} · фиксированное меню</p>
         <sc-if value="{{ is022 }}"><p class="el-body-copy" style="font:400 14px/1.5 'Geologica',sans-serif;color:#0f4d7a;margin:10px 0 0;max-width:620px;text-wrap:pretty">{{ sampleDayBenefit }}</p></sc-if>
       </div>
       <a href="{{ hrefBase }}" onClick="{{ openBase }}" style="font:400 15px/1 'Geologica',sans-serif;color:#8e242e;border-bottom:1px solid #b8d2e1;padding-bottom:3px">Все 28 дней →</a>
@@ -285,7 +285,6 @@ button{font-family:inherit}
         <div>
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-bottom:2px solid #8e242e;padding-bottom:10px">
             <span class="el-brand-kicker el-brand-kicker--compact" style="font:500 12px/1 'Geologica',sans-serif;color:#719dc9;letter-spacing:.09em;text-transform:uppercase">{{ m.slot }}</span>
-            <span style="font:600 14px/1 'Podkova',serif;color:#6f8492">{{ m.kcal }}</span>
           </div>
           <ul style="margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px">
             <sc-for list="{{ m.items }}" as="it" hint-placeholder-count="5">
@@ -372,7 +371,7 @@ button{font-family:inherit}
 <sc-if value="{{ isPrograms }}">
 <section style="max-width:1240px;margin:0 auto;padding:clamp(32px,4cqw,64px) clamp(16px,3cqw,40px) clamp(56px,7cqw,100px)">
   <h1 id="programs-title" style="font:600 clamp(32px,4.6cqw,64px)/1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 12px">Протоколы питания</h1>
-  <p style="font:300 clamp(15px,1.3cqw,17px)/1.6 'Geologica',sans-serif;color:#465a67;margin:0 0 clamp(28px,3.4cqw,48px);max-width:640px">Полный цикл 28 дней с расписанным меню на каждый день, составом до грамма и посчитанным КБЖУ. Три приёма пищи, без перекусов.</p>
+  <p style="font:300 clamp(15px,1.3cqw,17px)/1.6 'Geologica',sans-serif;color:#465a67;margin:0 0 clamp(28px,3.4cqw,48px);max-width:640px">Полный цикл на 28 дней: завтрак, обед и ужин с заранее зафиксированными блюдами и порциями. Выбирать блюда не нужно.</p>
   <div id="programs-catalog-region" role="region" aria-labelledby="programs-title" aria-describedby="programs-catalog-status programs-catalog-alert" aria-busy="{{ loading }}">
   <p id="programs-catalog-status" class="el-sr-only" role="status" aria-live="polite" aria-atomic="true">{{ catalogStatus }}</p>
   <p id="programs-catalog-alert" class="el-sr-only" role="alert" aria-live="assertive" aria-atomic="true">{{ catalogAlert }}</p>
@@ -460,60 +459,28 @@ button{font-family:inherit}
 
 <section style="max-width:1240px;margin:0 auto;padding:clamp(40px,5cqw,72px) clamp(16px,3cqw,40px) 0">
   <h2 style="font:500 clamp(22px,2.6cqw,32px)/1.1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 20px">Меню на 28 дней</h2>
-  <div role="group" aria-label="Выбор недели" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px">
-    <sc-for list="{{ weekTabs }}" as="w" hint-placeholder-count="4">
-      <button onClick="{{ w.select }}" aria-pressed="{{ w.pressed }}" aria-controls="program-day-panel" style="text-align:left;padding:16px 18px;background:{{ w.bg }};border:1px solid {{ w.border }};border-radius:2px;cursor:pointer">
-        <div style="font:500 12px/1 'Geologica',sans-serif;color:{{ w.fg }};letter-spacing:.08em;text-transform:uppercase">Неделя {{ w.n }}</div>
-        <div style="font:400 14px/1.35 'Geologica',sans-serif;color:{{ w.fg }};margin-top:8px">{{ w.name }}</div>
-      </button>
-    </sc-for>
-  </div>
-  <div role="group" aria-label="Выбор дня" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:16px">
-    <sc-for list="{{ weekDays }}" as="d" hint-placeholder-count="7">
-      <button onClick="{{ d.select }}" aria-pressed="{{ d.pressed }}" aria-controls="program-day-panel" style="text-align:left;padding:16px;background:{{ d.bg }};border:1px solid {{ d.border }};border-radius:2px;cursor:pointer;display:flex;flex-direction:column;gap:8px">
-        <div style="display:flex;align-items:baseline;gap:8px">
-          <span style="font:600 clamp(22px,2.2cqw,28px)/1 'Podkova',serif;color:{{ d.accent }}">{{ d.n }}</span>
-          <span style="font:300 12px/1 'Geologica',sans-serif;color:{{ d.muted }}">{{ d.dow }}</span>
+  <p class="el-body-copy" style="font:300 15px/1.6 'Geologica',sans-serif;color:#465a67;margin:0 0 clamp(24px,3cqw,40px);max-width:700px">Все 28 рационов собраны в одном меню. Состав и порции уже зафиксированы; выбор блюд на сайте не предусмотрен.</p>
+  <div>
+    <sc-for list="{{ menuDays }}" as="d" hint-placeholder-count="4">
+      <article class="el-menu-day" aria-labelledby="menu-day-{{ d.n }}" style="display:grid;grid-template-columns:minmax(120px,180px) minmax(0,1fr);gap:clamp(20px,3cqw,48px);padding:clamp(28px,4cqw,48px) 0;border-top:1px solid #d2e3ed">
+        <div>
+          <h3 id="menu-day-{{ d.n }}" style="font:500 clamp(20px,2.2cqw,28px)/1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0">День {{ d.n }}</h3>
+          <div style="font:300 13px/1.4 'Geologica',sans-serif;color:#6f8492;margin-top:8px">{{ d.dow }}</div>
         </div>
-        <div style="font:400 14px/1 'Geologica',sans-serif;color:{{ d.fg }}">{{ d.kcal }} ккал</div>
-        <div style="display:flex;flex-wrap:wrap;gap:5px">
-          <sc-for list="{{ d.badges }}" as="bd" hint-placeholder-count="1">
-            <span style="padding:4px 7px;background:{{ bd.bg }};border-radius:2px;font:400 10px/1 'Geologica',sans-serif;color:{{ bd.fg }};letter-spacing:.04em">{{ bd.label }}</span>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(22px,3cqw,40px)">
+          <sc-for list="{{ d.meals }}" as="m" hint-placeholder-count="3">
+            <div>
+              <div class="el-brand-kicker el-brand-kicker--compact" style="font:500 12px/1 'Geologica',sans-serif;color:#719dc9;letter-spacing:.09em;text-transform:uppercase;border-bottom:2px solid #8e242e;padding-bottom:10px">{{ m.slot }}</div>
+              <ul style="margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px">
+                <sc-for list="{{ m.items }}" as="it" hint-placeholder-count="5">
+                  <li style="font:300 14px/1.45 'Geologica',sans-serif;color:#394c58">{{ it }}</li>
+                </sc-for>
+              </ul>
+            </div>
           </sc-for>
         </div>
-      </button>
+      </article>
     </sc-for>
-  </div>
-
-  <div id="program-day-panel" aria-live="polite" aria-atomic="false" style="margin-top:16px;background:#f8fbfd;border:1px solid #8e242e;border-radius:2px;padding:clamp(20px,2.6cqw,32px)">
-    <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:baseline;justify-content:space-between;border-bottom:1px solid #e3edf3;padding-bottom:18px">
-      <div>
-        <div style="font:500 clamp(20px,2.2cqw,28px)/1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e">День {{ day.n }} · {{ day.dow }}</div>
-        <sc-if value="{{ day.hasNote }}">
-          <div style="font:300 13px/1.4 'Geologica',sans-serif;color:#6f8492;margin-top:8px">{{ day.note }}</div>
-        </sc-if>
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px">
-        <sc-for list="{{ day.kbju }}" as="m" hint-placeholder-count="4">
-          <span style="padding:9px 14px;background:#ffffff;border:1px solid #d2e3ed;border-radius:2px;font:600 14px/1 'Podkova',serif;color:#23333d">{{ m }}</span>
-        </sc-for>
-      </div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(16px,2.4cqw,32px);margin-top:22px">
-      <sc-for list="{{ day.meals }}" as="m" hint-placeholder-count="3">
-        <div>
-          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-bottom:2px solid #8e242e;padding-bottom:10px">
-            <span class="el-brand-kicker el-brand-kicker--compact" style="font:500 12px/1 'Geologica',sans-serif;color:#719dc9;letter-spacing:.09em;text-transform:uppercase">{{ m.slot }}</span>
-            <span style="font:600 14px/1 'Podkova',serif;color:#6f8492">{{ m.kcal }}</span>
-          </div>
-          <ul style="margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px">
-            <sc-for list="{{ m.items }}" as="it" hint-placeholder-count="5">
-              <li style="font:300 14px/1.45 'Geologica',sans-serif;color:#394c58">{{ it }}</li>
-            </sc-for>
-          </ul>
-        </div>
-      </sc-for>
-    </div>
   </div>
 </section>
 
@@ -546,10 +513,10 @@ button{font-family:inherit}
 <div style="position:sticky;bottom:0;z-index:30;background:#ffffff;border-top:1px solid #8e242e;padding:14px clamp(16px,3cqw,40px)">
   <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px">
     <div>
-      <div style="font:300 12px/1 'Geologica',sans-serif;color:#6f8492">{{ prog.name }} · 28 дней</div>
+      <div style="font:300 12px/1 'Geologica',sans-serif;color:#6f8492">{{ prog.name }}</div>
       <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px">
-        <span style="font:700 clamp(20px,2.2cqw,28px)/1 'Podkova',serif;color:#8e242e">{{ day.kcalPlain }} ккал</span>
-        <span style="font:300 13px/1 'Geologica',sans-serif;color:#6f8492">день {{ day.n }}</span>
+        <span style="font:700 clamp(18px,2cqw,24px)/1 'Podkova',serif;color:#8e242e">Фиксированное меню</span>
+        <span style="font:300 13px/1 'Geologica',sans-serif;color:#6f8492">28 дней</span>
       </div>
     </div>
     <button data-el-app-intent="order" onClick="{{ openOrder }}" style="padding:15px 30px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer;white-space:nowrap" style-hover="background:#5f8dbb">Оставить заявку</button>
@@ -1053,12 +1020,12 @@ const ARTICLE_BODY = [
 ];
 
 const FAQ = [
-  { q:'Чем протокол отличается от обычной доставки еды?', a:'Протокол — это цикл на 28 дней с заранее просчитанным меню на каждый день: три приёма пищи, фиксированные интервалы, разгрузочные дни и полный КБЖУ. Вы не выбираете блюда каждый день — за вас это уже сделал технолог.' },
-  { q:'Кому подходит протокол на 28 дней?', a:'Тем, кто хочет навести порядок в питании и не тратить время на ежедневный выбор блюд и подсчёт калорий. Перед стартом мы уточним ваши цели и ограничения по телефону.' },
-  { q:'Почему в протоколе нет перекусов?', a:'Интервал 4–5 часов между приёмами пищи помогает не растягивать желудок и удерживать аппетит. Если между приёмами хочется есть, значит порция подобрана неверно — напишите нам, скорректируем калорийность.' },
+  { q:'Чем протокол отличается от обычной доставки еды?', a:'Это готовый цикл на 28 дней: завтрак, обед и ужин уже собраны в фиксированное меню. Выбор блюд на сайте не предусмотрен.' },
+  { q:'Кому подходит протокол на 28 дней?', a:'Тем, кто хочет заранее организовать питание и не тратить время на ежедневный выбор блюд. Перед стартом мы уточним ваши цели и ограничения по телефону.' },
+  { q:'Почему в протоколе нет перекусов?', a:'Протокол предусматривает три основных приёма пищи. Перед стартом мы уточним ваши цели и ограничения и ответим на вопросы по составу.' },
   { q:'Из каких продуктов вы готовите?', a:'Мы работаем только с халяль-поставщиками мяса и птицы, овощи закупаем на местных фермах. Полуфабрикаты, усилители вкуса и сахар в блюдах не используем.' },
   { q:'Когда привозят еду?', a:'По Махачкале — ежедневно с 6:00 до 9:00. Точный интервал согласуем при подтверждении заявки. В Каспийск и Избербаш возим через день, накануне вечером.' },
-  { q:'Можно ли исключить продукты?', a:'Да. Сообщите об аллергиях и нелюбимых продуктах при подтверждении заявки — мы обсудим равноценную замену по калорийности и БЖУ.' },
+  { q:'Можно ли исключить продукты?', a:'Сообщите об аллергиях и ограничениях при подтверждении заявки. Возможность замены конкретного продукта уточним индивидуально.' },
   { q:'Можно ли поставить доставку на паузу?', a:'Да, до 7 дней за цикл. Сообщите о паузе не позднее 18:00 предыдущего дня — эти дни перенесутся в конец цикла.' },
   { q:'Как хранить и разогревать рационы?', a:'Держите контейнеры в холодильнике и съедайте в течение суток. Разогрев — 2 минуты при 700 Вт, крышку лучше приоткрыть. Масла, урбеч и семена добавляйте после разогрева. Салаты подаются холодными.' },
 ];
@@ -1110,7 +1077,7 @@ const LEGAL_BODY = [
 class Component extends DCLogic {
   state = {
     route:'home', slug:null, menuOpen:false, moreOpen:false, viewportTick:0, faqOpen:0, homeFaqOpen:0,
-    week:1, dayN:1, line:0, sauces:{},
+    line:0, sauces:{},
     data:null, loading:true, error:false,
     applicationSending:false, applicationSent:false, applicationError:'',
     flexDay:1, calorie:1200, duration:7, schedule:'Ежедневно',
@@ -1239,7 +1206,7 @@ class Component extends DCLogic {
     const unbased = currentPath === PAGES_BASE + '/programs';
     if (unbased) window.history.replaceState({}, '', PAGES_BASE + '/programs/protokol-28');
     const next = this.routeFromPath(window.location.pathname);
-    this.setState({ ...next, menuOpen:false, moreOpen:false, week:1, dayN:1, faqOpen:0, configSubmitted:false, applicationSent:false, applicationError:'' });
+    this.setState({ ...next, menuOpen:false, moreOpen:false, faqOpen:0, configSubmitted:false, applicationSent:false, applicationError:'' });
   }
 
   go(route, slug) {
@@ -1247,7 +1214,7 @@ class Component extends DCLogic {
       const path = this.pathFor(route, slug);
       if (window.location.pathname !== path) window.history.pushState({}, '', path);
     }
-    this.setState({ route, slug: slug || null, menuOpen:false, moreOpen:false, week:1, dayN:1, faqOpen:0, configSubmitted:false });
+    this.setState({ route, slug: slug || null, menuOpen:false, moreOpen:false, faqOpen:0, configSubmitted:false });
     try { window.scrollTo(0, 0); } catch (e) {}
   }
 
@@ -1294,40 +1261,7 @@ class Component extends DCLogic {
     const progMatch = PROTOCOLS.find(p => p.slug === S.slug) || null;
     const flexRaw = FLEX_PROGRAMS.find(p => p.slug === S.slug) || null;
     const prog = progMatch || PROTOCOLS[0] || null;
-    let weekTabs = [], weekDays = [], day = { n:'', dow:'', note:'', hasNote:false, kbju:[], meals:[], kcalPlain:'' };
-    if (prog) {
-      weekTabs = prog.weeks.map((name, i) => ({
-        n: i + 1, name,
-        pressed: S.week === i + 1,
-        bg: S.week === i + 1 ? '#8e242e' : '#f8fbfd',
-        fg: S.week === i + 1 ? '#ffffff' : '#8e242e',
-        border: S.week === i + 1 ? '#8e242e' : '#d2e3ed',
-        select: () => this.setState({ week: i + 1, dayN: i * 7 + 1 }),
-      }));
-      weekDays = prog.days.filter(d => d.week === S.week).map(d => {
-        const on = d.n === S.dayN;
-        const badges = [];
-        if (d.honey) badges.push({ label:'Мёд', bg: on ? '#bbdcef' : '#bbdcef', fg:'#8e242e' });
-        if (d.unload) badges.push({ label:'Разгрузка', bg:'#bddced', fg:'#0f4d7a' });
-        if (d.fruit) badges.push({ label:d.fruit, bg:'#a9cadf', fg:'#294653' });
-        return {
-          n: d.n, dow: d.dow, kcal: d.kcal, badges, pressed:on,
-          bg: on ? '#8e242e' : '#f8fbfd',
-          fg: on ? '#ffffff' : '#23333d',
-          accent: on ? '#bbdcef' : '#8e242e',
-          muted: on ? '#c9dce8' : '#7a909d',
-          border: on ? '#8e242e' : '#d2e3ed',
-          select: () => this.setState({ dayN: d.n }),
-        };
-      });
-      const d = prog.days.find(x => x.n === S.dayN) || prog.days[0];
-      const kbju = [d.kcal + ' ккал'];
-      if (prog.hasMacros) { kbju.push('Б ' + d.p + ' г'); kbju.push('Ж ' + d.f + ' г'); kbju.push('У ' + d.c + ' г'); }
-      day = {
-        n: d.n, dow: d.dow, note: d.note, hasNote: !!d.note, kbju, kcalPlain: d.kcal,
-        meals: d.meals.map(m => ({ slot: m.slot, kcal: m.kcal ? m.kcal + ' ккал' : '', items: m.items })),
-      };
-    }
+    const menuDays = prog ? prog.days.map(({ n, dow, meals }) => ({ n, dow, meals })) : [];
 
     const boxItem = b => ({
       n: b.n, slug:b.slug, name: b.name, color: b.color, kcal: b.kbju.k,
@@ -1396,9 +1330,8 @@ class Component extends DCLogic {
     const baseProt = PROTOCOLS[0] || null;
     const sd = baseProt ? baseProt.days[0] : null;
     const sampleDay = sd
-      ? { title:IS_0131 ? `День ${sd.n} · ${baseProt.name}` : 'Один день протокола', protocol:baseProt.name, n:sd.n, kcal:sd.kcal,
-          meals: sd.meals.map(m => ({ slot:m.slot, kcal:m.kcal ? m.kcal + ' ккал' : '', items:m.items })) }
-      : { title:'Один день протокола', protocol:'', n:'', kcal:'', meals:[] };
+      ? { title:IS_0131 ? `День ${sd.n} · ${baseProt.name}` : 'Один день протокола', protocol:baseProt.name, n:sd.n, meals:sd.meals }
+      : { title:'Один день протокола', protocol:'', n:'', meals:[] };
     const openBase = baseProt ? this.link('program', baseProt.slug) : this.link('programs');
     const hrefBase = baseProt ? hrefFor('program', baseProt.slug) : hrefFor('programs');
 
@@ -1553,21 +1486,21 @@ class Component extends DCLogic {
       showApplicationForm:!isNotFound,
 
       heroText: IS_022
-        ? '28-дневный протокол с тремя приёмами пищи и рассчитанным КБЖУ. Технолог заранее собирает меню и порции на каждый день — вам не нужно считать калории, выбирать блюда и каждый вечер решать, что приготовить.'
+        ? '28-дневный протокол с тремя приёмами пищи. Меню и порции уже зафиксированы — вам не нужно выбирать блюда и каждый вечер решать, что приготовить.'
         : 'Готовим рационы на 28 дней по протоколу: три приёма пищи, никаких перекусов, состав до грамма и посчитанный КБЖУ. Привозим к двери в Махачкале рано утром.',
-      counters: [ {value:'28', label:'дней в цикле протокола'}, {value:'3', label:'приёма пищи без перекусов'}, {value:'12', label:'боксов в меню'} ],
+      counters: [ {value:'28', label:'дней в цикле протокола'}, {value:'3', label:'приёма пищи без перекусов'}, {value:'1', label:'фиксированное меню'} ],
       sampleDay, openBase,
       deliveryCities:['Махачкала','Каспийск','Избербаш'],
       promiseItems: IS_022 ? [
-        { value:'28 дней', label:'меню собрано заранее' }, { value:'КБЖУ', label:'порции уже рассчитаны' },
-        { value:'К утру', label:'еда у вашей двери' }, { value:'Без подсчётов', label:'больше времени на себя' },
+        { value:'28 дней', label:'меню собрано заранее' }, { value:'Без выбора', label:'блюда уже определены' },
+        { value:'К утру', label:'еда у вашей двери' }, { value:'3 приёма', label:'завтрак, обед и ужин' },
       ] : [
         { value:'28', label:'дней в цикле' }, { value:'3', label:'приёма пищи' },
         { value:'12', label:'боксов' }, { value:'К утру', label:'доставка' },
       ],
       steps: IS_022 ? [
         { num:'1', title:'Оставьте заявку', text:'Укажите имя и номер телефона — мы перезвоним, ответим на вопросы и согласуем старт 28-дневного протокола.' },
-        { num:'2', title:'Мы всё рассчитываем', text:'Повар готовит по протоколу, а технолог проверяет калорийность и БЖУ — вы получаете стабильные порции без таблиц и подсчётов.' },
+        { num:'2', title:'Мы готовим по меню', text:'Повар готовит три приёма пищи с уже зафиксированным составом и размером порций.' },
         { num:'3', title:'Еда уже у двери', text:'С 6:00 до 9:00 курьер привозит три приёма пищи — утром не нужно готовить и решать, что взять с собой.' },
       ] : [
         { num:'1', title:'Выберите протокол', text:'Базовый или спортивный — либо возьмите боксы поштучно, если не готовы к циклу на месяц.' },
@@ -1581,7 +1514,7 @@ class Component extends DCLogic {
         href:hrefFor('program', p.slug), open: this.link('program', p.slug),
       })),
       prog: prog ? { ...prog, image:`/easyline-site/assets/photos/protocol-${prog.slug}.jpg`, imageAlt:`${prog.name}: готовый рацион EasyLine` } : { name:'', goal:'', long:'', slug:'', tags:[], facts:[], rules:[], image:'', imageAlt:'' },
-      weekTabs, weekDays, day, coverRatio: vp === 'mobile' ? '4/3' : '21/9',
+      menuDays, coverRatio: vp === 'mobile' ? '4/3' : '21/9',
       flexPrograms, flexProgram, flexDayTabs, flexMeals:activeFlexDay.meals,
       calorieOptions, durationOptions, scheduleOptions, configRows, configTotal:rub(dayPrice * S.duration),
       deliveryDate:S.deliveryDate, deliveryAddress:S.deliveryAddress, configSubmitted:S.configSubmitted,
@@ -1596,7 +1529,7 @@ class Component extends DCLogic {
         ? 'Чиабатты, сэндвичи, тортильи и бургеры доступны на витрине и в вендинговых аппаратах. Отдельная ПП-линейка — на цельнозерновой основе и с соусами на греческом йогурте.'
         : 'Чиабатты, сэндвичи, тортильи и бургеры на витрине и в вендинговых аппаратах. Отдельная ПП-линейка на цельнозерновой основе — с соусами на греческом йогурте.',
       showcaseBenefit:'Можно быстро взять понятный по составу перекус рядом с работой — без случайной еды из ближайшего магазина.',
-      sampleDayBenefit:'Состав и порции уже рассчитаны — остаётся открыть контейнер и поесть по плану.',
+      sampleDayBenefit:'Состав и порции уже зафиксированы — остаётся открыть контейнер и поесть по плану.',
       channels: [
         { title:'Витрина', text:'Свежие позиции каждый день у производства и в точках продаж. Срок реализации — сутки.', color:'#bddced' },
         { title:'Вендинг', text:'Фирменные аппараты в бизнес-центрах, клиниках и фитнес-клубах города.', color:'#bbdcef' },

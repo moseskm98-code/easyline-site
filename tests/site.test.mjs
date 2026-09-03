@@ -33,3 +33,28 @@ test("contacts and the three supplied legal documents are published", async () =
     "public-offer.pdf",
   ]) await access(new URL(`documents/${name}`, root));
 });
+
+test("the supplied 28-day menu is shown as one fixed menu without selectors", async () => {
+  const { PROTOCOLS } = await import(new URL("../assets/menu-data-6F787N4k.js", import.meta.url));
+  const protocol = PROTOCOLS.find(({ slug }) => slug === "protokol-28");
+
+  assert.equal(protocol.days.length, 28);
+  assert.deepEqual(protocol.days[0].meals[0].items, [
+    "Кабачковые оладьи — 200 г",
+    "Клубника — 100 г",
+    "Бразильский орех — 15 г",
+    "Греческий йогурт — 50 г",
+    "Брокколи запечённая — 30 г",
+    "Цветная капуста запечённая — 30 г",
+  ]);
+  assert.deepEqual(protocol.days[27].meals[2].items, [
+    "Кета запечённая — 130 г",
+    "Салат «Грин микс» — 180 г",
+    "Лимон — 20 г",
+    "Смесь семян — 10 г",
+  ]);
+  assert.match(index, /<sc-for list="\{\{ menuDays \}\}" as="d"/);
+  assert.match(index, /Выбор блюд на сайте не предусмотрен/);
+  assert.doesNotMatch(index, /day\.kcalPlain/);
+  assert.doesNotMatch(index, /weekTabs|weekDays|\{\{ w\.select \}\}/);
+});

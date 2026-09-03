@@ -339,13 +339,6 @@
   html[data-el-route-key="program-protokol-28"] .el-brand-kicker,
   html[data-el-route-key="program-protokol-28"] .el-brand-kicker--compact,
   html[data-el-route-key="program-protokol-28"] .el-protocol-fact-key,
-  html[data-el-route-key="program-protokol-28"] [role="group"][aria-label="Выбор недели"] button > div:first-child,
-  html[data-el-route-key="program-protokol-28"] [role="group"][aria-label="Выбор недели"] button > div:last-child,
-  html[data-el-route-key="program-protokol-28"] [role="group"][aria-label="Выбор дня"] button > div:first-child > span:last-child,
-  html[data-el-route-key="program-protokol-28"] [role="group"][aria-label="Выбор дня"] button > div:nth-child(2),
-  html[data-el-route-key="program-protokol-28"] [role="group"][aria-label="Выбор дня"] button > div:last-child > span,
-  html[data-el-route-key="program-protokol-28"] #program-day-panel [style*="font:300 13px/1.4"],
-  html[data-el-route-key="program-protokol-28"] #program-day-panel [style*="font:600 14px/1"],
   html[data-el-route-key="program-protokol-28"] [style*="font:300 12px/1.5 'Geologica',sans-serif;color:#7a909d"],
   html[data-el-route-key="program-protokol-28"] [style*="font:300 12px/1 'Geologica',sans-serif;color:#6f8492"],
   html[data-el-route-key="program-protokol-28"] [style*="font:300 13px/1 'Geologica',sans-serif;color:#6f8492"] {
@@ -354,12 +347,17 @@
   }
 
   html[data-el-route-key="program-protokol-28"] .el-body-copy,
-  html[data-el-route-key="program-protokol-28"] #program-day-panel li,
+  html[data-el-route-key="program-protokol-28"] .el-menu-day li,
   html[data-el-route-key="program-protokol-28"] .el-card-description,
   html[data-el-route-key="program-protokol-28"] [style*="font:300 15px/1.65 'Geologica',sans-serif;color:#28455c"],
   html[data-el-route-key="program-protokol-28"] [style*="font:400 13px/1.4 'Geologica',sans-serif;color:#23333d;text-align:right"] {
     font-size: 17px !important;
     line-height: 1.6 !important;
+  }
+
+  html[data-el-route-key="program-protokol-28"] .el-menu-day {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
   }
 }
 
