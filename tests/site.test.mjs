@@ -5,6 +5,7 @@ import test from "node:test";
 const root = new URL("../", import.meta.url);
 const index = await readFile(new URL("index.html", root), "utf8");
 const readability = await readFile(new URL("assets/readability-overrides.css", root), "utf8");
+const menuSource = await readFile(new URL("assets/menu-data-6F787N4k.js", root), "utf8");
 
 test("version 2.2.3 sells only the 28-day protocol through an ERP lead form", async () => {
   assert.match(index, /window\.__EASYLINE_VARIANT__ = "2\.2\.3"/);
@@ -24,6 +25,7 @@ test("contacts and the three supplied legal documents are published", async () =
   assert.match(index, /data-el-social="telegram"[^>]+href=""[^>]+aria-disabled="true"/);
   assert.match(index, /data-el-social="instagram"[^>]+href=""[^>]+aria-disabled="true"/);
   assert.match(index, /ИП Ибрагимов Рамазан Расулович/);
+  assert.match(index, /'contacts':[\s\S]*?\{k:'Город',v:'Избербаш'\}/);
 
   for (const name of [
     "privacy-policy.docx",
@@ -42,22 +44,26 @@ test("the supplied 28-day menu is shown as one fixed menu without selectors", as
 
   assert.equal(protocol.days.length, 28);
   assert.deepEqual(protocol.days[0].meals[0].items, [
-    "Кабачковые оладьи — 200 г",
-    "Клубника — 100 г",
-    "Бразильский орех — 15 г",
-    "Греческий йогурт — 50 г",
-    "Брокколи запечённая — 30 г",
-    "Цветная капуста запечённая — 30 г",
+    "Кабачковые оладьи",
+    "Клубника",
+    "Бразильский орех",
+    "Греческий йогурт",
+    "Брокколи запечённая",
+    "Цветная капуста запечённая",
   ]);
   assert.deepEqual(protocol.days[27].meals[2].items, [
-    "Кета запечённая — 130 г",
-    "Салат «Грин микс» — 180 г",
-    "Лимон — 20 г",
-    "Смесь семян — 10 г",
+    "Кета запечённая",
+    "Салат «Грин микс»",
+    "Лимон",
+    "Смесь семян",
   ]);
+  assert.ok(protocol.days.flatMap(({ meals }) => meals.flatMap(({ items }) => items)).includes("Апельсин — 1 шт."));
+  assert.doesNotMatch(menuSource, /\d+(?:[.,]\d+)?\s*г(?!\p{L})/iu);
+  assert.doesNotMatch(index, /\d+(?:[.,]\d+)?\s*г(?!\p{L})/iu);
+  assert.doesNotMatch(index, /(?:^|[^\p{L}])грамм(?:а|ов|ах|ы)?(?!\p{L})/iu);
   assert.match(protocolPage, /<sc-for list="\{\{ menuDays \}\}" as="d"/);
   assert.match(protocolPage, /выбор блюд на сайте не предусмотрен/i);
-  assert.match(index, /menu-data-6F787N4k\.js\?v=version-2\.2\.3-20260903/);
+  assert.match(index, /menu-data-6F787N4k\.js\?v=version-2\.2\.3-20260904/);
   assert.doesNotMatch(protocolPage, />День \{\{ d\.n \}\}</);
   assert.doesNotMatch(protocolPage, /\{\{ d\.dow \}\}/);
   assert.doesNotMatch(protocolPage, /day\.kcalPlain/);

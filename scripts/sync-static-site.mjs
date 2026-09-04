@@ -44,7 +44,7 @@ function buildHead(entryItem) {
 <link rel="preload" href="/easyline-site/assets/podkova-variable-DYz2L4Pv.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="/easyline-site/assets/first-frame-init.css">
 <script src="/easyline-site/assets/first-frame-init.js"></script>
-<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=version-2.2.3-20260903"></script>
+<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=version-2.2.3-20260904"></script>
 <script src="/easyline-site/assets/static-route-head.js"></script>
 <script type="module">import {normalizePhone,submitInquiry} from "/easyline-site/lead-form.js";window.__EASYLINE_LEADS__=Object.freeze({normalizePhone,submitInquiry});</script>
 <link rel="stylesheet" crossorigin href="/easyline-site/assets/index-BmA-8PXs-v222.css">

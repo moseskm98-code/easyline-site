@@ -29,7 +29,7 @@
 <link rel="preload" href="/easyline-site/assets/podkova-variable-DYz2L4Pv.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="/easyline-site/assets/first-frame-init.css">
 <script src="/easyline-site/assets/first-frame-init.js"></script>
-<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=version-2.2.3-20260903"></script>
+<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=version-2.2.3-20260904"></script>
 <script src="/easyline-site/assets/static-route-head.js"></script>
 <script type="module">import {normalizePhone,submitInquiry} from "/easyline-site/lead-form.js";window.__EASYLINE_LEADS__=Object.freeze({normalizePhone,submitInquiry});</script>
 <link rel="stylesheet" crossorigin href="/easyline-site/assets/index-BmA-8PXs-v222.css">
@@ -974,7 +974,7 @@ const REVIEWS_DRAFT = [
   { r:5, text:'Беру спортивный протокол вместе с тренировками. Калорийность расписана по каждому приёму, ничего не нужно считать самому.', name:'Рустам М.', program:'Спортивно-функциональный 2.0' },
   { r:4, text:'Заказываю боксы поштучно на работу. Голубцы и люля с гречкой — как домашние, но с честным КБЖУ на наклейке.', name:'Патимат Г.', program:'Боксы' },
   { r:5, text:'Беру чиабатту с курицей на витрине рядом с офисом. Наконец-то нормальный обед за пять минут.', name:'Магомед К.', program:'Витрина' },
-  { r:5, text:'Отдельное спасибо за разгрузочные дни в воскресенье — после них неделя начинается легко. И состав написан до грамма.', name:'Заира С.', program:'Протокол 28 дней' },
+  { r:5, text:'Отдельное спасибо за разгрузочные дни в воскресенье — после них неделя начинается легко. И состав подробно расписан.', name:'Заира С.', program:'Протокол 28 дней' },
   { r:5, text:'Второй цикл подряд. Понравилось, что у каждого дня своя задача: железо, омега-3, загрузка. Видно, что протокол собирал не маркетолог.', name:'Тимур Ш.', program:'Спортивно-функциональный 2.0' },
 ];
 
@@ -1009,10 +1009,10 @@ const ARTICLES = [
 const ARTICLE_BODY = [
   { isP:true, text:'Белок — единственный макронутриент, который организм не умеет запасать впрок. Поэтому его нужно получать каждый день, и желательно равномерно, а не одной большой порцией за ужином.' },
   { isH:true, text:'Формула' },
-  { isP:true, text:'Для человека без интенсивных тренировок достаточно 1,2–1,5 грамма белка на килограмм веса. При силовых тренировках норма растёт до 1,8–2,2 грамма. При снижении веса белок держат в верхней части диапазона: он помогает сохранить мышцы и лучше насыщает.' },
+  { isP:true, text:'Норма белка зависит от веса и активности. При силовых тренировках потребность растёт. При снижении веса белок держат в верхней части индивидуального диапазона: он помогает сохранить мышцы и лучше насыщает.' },
   { isH:true, text:'Как это выглядит на тарелке' },
-  { isP:true, text:'70 килограммов веса и умеренная активность — это примерно 100 граммов белка в день. В пересчёте на продукты: 150 г куриного филе, 100 г творога, два яйца и порция бобовых. В протоколе EasyLine это уже разложено по трём приёмам пищи.' },
-  { isP:true, text:'В каждом рационе указана калорийность и БЖУ, а состав написан до грамма — вам не нужно ничего пересчитывать.' },
+  { isP:true, text:'При умеренной активности белок лучше равномерно распределять между куриным филе, творогом, яйцами и бобовыми. В протоколе EasyLine продукты уже разложены по трём приёмам пищи.' },
+  { isP:true, text:'В каждом рационе указаны калорийность, БЖУ и подробный состав — вам не нужно ничего пересчитывать.' },
 ];
 
 const FAQ = [
@@ -1056,7 +1056,7 @@ const TEXT_PAGES = {
     { isP:true, text:'Паузу или перенос дня оформляйте не позднее 18:00 предыдущего дня. Отменить оставшуюся часть цикла можно в любой момент — деньги за неиспользованные дни вернутся на карту в течение 5 рабочих дней.' },
   ]},
   'contacts': { title:'Контакты', body:[
-    { isFacts:true, items:[{k:'Телефон',v:'+7 964 018-23-73'},{k:'Почта',v:'hello@easyline.club'},{k:'Часы работы',v:'Ежедневно 8:00–20:00'}] },
+    { isFacts:true, items:[{k:'Город',v:'Избербаш'},{k:'Телефон',v:'+7 964 018-23-73'},{k:'Почта',v:'hello@easyline.club'},{k:'Часы работы',v:'Ежедневно 8:00–20:00'}] },
     { isH:true, text:'Реквизиты' },
     { isP:true, text:'ИП Ибрагимов Рамазан Расулович' },
     { isFacts:true, items:[{k:'ИНН',v:'054600890467'},{k:'ОГРНИП',v:'326050000092094'}] },
@@ -1149,10 +1149,10 @@ class Component extends DCLogic {
       ? (this._catalogRecoveryAttempt = (this._catalogRecoveryAttempt || 0) + 1)
       : 0;
     const resource = recoveryAttempt === 1
-      ? import('/easyline-site/assets/menu-data-6F787N4k.js?v=version-2.2.3-20260903&el-retry=1')
+      ? import('/easyline-site/assets/menu-data-6F787N4k.js?v=version-2.2.3-20260904&el-retry=1')
       : recoveryAttempt > 1
-        ? import('/easyline-site/assets/menu-data-6F787N4k.js?v=version-2.2.3-20260903&el-retry=2')
-        : import('/easyline-site/assets/menu-data-6F787N4k.js?v=version-2.2.3-20260903');
+        ? import('/easyline-site/assets/menu-data-6F787N4k.js?v=version-2.2.3-20260904&el-retry=2')
+        : import('/easyline-site/assets/menu-data-6F787N4k.js?v=version-2.2.3-20260904');
     resource
       .then((m) => this.setState({
         data:{ protocols:m.PROTOCOLS, boxes:m.BOXES, showcase:m.SHOWCASE },
@@ -1483,7 +1483,7 @@ class Component extends DCLogic {
 
       heroText: IS_022
         ? '28-дневный протокол с тремя приёмами пищи. Меню и порции уже зафиксированы — вам не нужно выбирать блюда и каждый вечер решать, что приготовить.'
-        : 'Готовим рационы на 28 дней по протоколу: три приёма пищи, никаких перекусов, состав до грамма и посчитанный КБЖУ. Привозим к двери в Махачкале рано утром.',
+        : 'Готовим рационы на 28 дней по протоколу: три приёма пищи, никаких перекусов, подробный состав и посчитанный КБЖУ. Привозим к двери в Махачкале рано утром.',
       counters: [ {value:'28', label:'дней в цикле протокола'}, {value:'3', label:'приёма пищи без перекусов'}, {value:'1', label:'фиксированное меню'} ],
       sampleDay, openBase,
       deliveryCities:['Махачкала','Каспийск','Избербаш'],
