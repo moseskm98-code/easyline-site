@@ -37,6 +37,10 @@ test("contacts and the three supplied legal documents are published", async () =
   ]) await access(new URL(`documents/${name}`, root));
 });
 
+test("delivery includes both Izberbash and Derbent", () => {
+  assert.match(index, /deliveryCities:\['Махачкала','Каспийск','Избербаш','Дербент'\]/);
+});
+
 test("the supplied 28-day menu is shown as one fixed menu without selectors", async () => {
   const { PROTOCOLS } = await import(new URL("../assets/menu-data-6F787N4k.js", import.meta.url));
   const protocol = PROTOCOLS.find(({ slug }) => slug === "protokol-28");

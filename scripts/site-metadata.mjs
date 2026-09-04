@@ -18,7 +18,7 @@ function entry(file, routeKey, routePath, title, description, options = {}) {
   };
 }
 
-const protocolDescription = "Протокол питания EasyLine на 28 дней: три приёма пищи, фиксированное меню и доставка в Махачкале, Каспийске и Избербаше.";
+const protocolDescription = "Протокол питания EasyLine на 28 дней: три приёма пищи, фиксированное меню и доставка в Махачкале, Каспийске, Избербаше и Дербенте.";
 
 export const ROUTE_ENTRIES = [
   entry("index.html", "home", "/", "Протокол 28 дней — EasyLine", protocolDescription),
@@ -27,7 +27,7 @@ export const ROUTE_ENTRIES = [
   entry("reviews/index.html", "reviews", "/reviews", "Отзывы — EasyLine", "Отзывы клиентов EasyLine о протоколе питания на 28 дней и доставке."),
   entry("faq/index.html", "faq", "/faq", "Частые вопросы — EasyLine", "Ответы о меню, доставке, оплате, хранении и паузе 28-дневного протокола EasyLine."),
   entry("about-production/index.html", "about-production", "/about-production", "О производстве — EasyLine", "Собственная кухня EasyLine: закупка сырья, приготовление, фасовка рационов и контроль качества."),
-  entry("delivery-payment/index.html", "delivery-payment", "/delivery-payment", "Доставка и оплата — EasyLine", "График доставки протокола EasyLine по Махачкале, Каспийску и Избербашу, способы оплаты и перенос дней."),
+  entry("delivery-payment/index.html", "delivery-payment", "/delivery-payment", "Доставка и оплата — EasyLine", "График доставки протокола EasyLine по Махачкале, Каспийску, Избербашу и Дербенту, способы оплаты и перенос дней."),
   entry("contacts/index.html", "contacts", "/contacts", "Контакты — EasyLine", "Телефон, WhatsApp, часы работы и реквизиты ИП EasyLine."),
   entry("legal/privacy/index.html", "legal-privacy", "/legal/privacy", "Политика обработки персональных данных — EasyLine", "Официальная политика обработки персональных данных EasyLine."),
   entry("legal/terms/index.html", "legal-terms", "/legal/terms", "Пользовательское соглашение — EasyLine", "Официальное пользовательское соглашение EasyLine."),
