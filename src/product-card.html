@@ -1,0 +1,14 @@
+<article class="el-product-card" data-product-id="{{ item.id }}">
+  <sc-if value="{{ item.hasImage }}"><div class="el-product-card__photo"><img src="{{ item.image }}" alt="{{ item.imageAlt }}" loading="lazy" decoding="async"></div></sc-if>
+  <div class="el-product-card__body">
+    <div class="el-eyebrow">{{ item.eyebrow }}</div>
+    <h3>{{ item.title }}</h3>
+    <sc-if value="{{ item.detail }}"><p class="el-product-card__detail">{{ item.detail }}</p></sc-if>
+    <sc-if value="{{ item.wholegrain }}"><span class="el-bread-label">Цельнозерновой хлеб</span></sc-if>
+    <div class="el-product-card__bottom">
+      <span class="el-product-card__price">{{ item.priceLabel }}</span>
+      <sc-if value="{{ !item.inCart }}"><button type="button" class="el-button el-product-add" aria-label="{{ item.addLabel }}" onClick="{{ item.add }}">В корзину</button></sc-if>
+      <sc-if value="{{ item.inCart }}"><!-- QUANTITY_CONTROL --></sc-if>
+    </div>
+  </div>
+</article>

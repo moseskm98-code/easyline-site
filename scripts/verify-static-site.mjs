@@ -4,7 +4,7 @@ import { access, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { PUBLIC_ROUTE_ENTRIES, RETIRED_PATHS, ROUTE_ENTRIES, SITE_BASE, SITE_ORIGIN } from "./site-metadata.mjs";
+import { PUBLIC_ROUTE_ENTRIES, RETIRED_PATHS, ROUTE_ENTRIES, SITE_BASE, SITE_ORIGIN, SITE_VERSION } from "./site-metadata.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const localPrefix = `${SITE_BASE}/`;
@@ -36,13 +36,13 @@ for (const item of ROUTE_ENTRIES) {
   assert.equal(extractSingle(html, /<meta name="description" content="([^"]+)">/, "description", item.file), item.description);
   assert.equal(extractSingle(html, /<link rel="canonical" href="([^"]+)">/, "canonical", item.file), item.canonicalUrl);
   assert.equal(extractSingle(html, /<meta name="robots" content="([^"]+)">/, "robots", item.file), item.noindex ? "noindex,follow" : "index,follow");
-  assert.match(html, /window\.__EASYLINE_VARIANT__ = "2\.2\.3"/, `${item.file}: version marker missing`);
+  assert.ok(html.includes(`window.__EASYLINE_VARIANT__ = "${SITE_VERSION}"`), `${item.file}: version marker missing`);
   assert.match(html, /window\.__EASYLINE_SITE_ORIGIN__ = "https:\/\/easyline\.club"/, `${item.file}: production origin mismatch`);
   assert.match(html, /\/easyline-site\/lead-form\.js/, `${item.file}: ERP lead client missing`);
   await ensureLocalAssetsExist(html, item.file);
 }
 
-assert.equal(PUBLIC_ROUTE_ENTRIES.length, 10, "public route count mismatch");
+assert.equal(PUBLIC_ROUTE_ENTRIES.length, 12, "public route count mismatch");
 const sitemap = await readFile(path.join(root, "sitemap.xml"), "utf8");
 assert.deepEqual(
   [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]),
@@ -58,7 +58,7 @@ for (const retired of RETIRED_PATHS) {
 }
 
 const index = await readFile(path.join(root, "index.html"), "utf8");
-assert.match(index, /D\.protocols\.filter\(p => p\.slug === 'protokol-28'\)/, "protocol data is not restricted to protokol-28");
+assert.match(index, /S\.data\.protocols\.filter\(p => p\.slug === 'protokol-28'\)/, "protocol data is not restricted to protokol-28");
 assert.match(index, /<form[^>]+onSubmit="\{\{ submitApplication \}\}"/, "application form missing");
 assert.doesNotMatch(index, /data-el-app-intent="auth"|>Войти<|Заказ — в приложении|оформление — в приложении/i, "legacy account flow remains");
 assert.doesNotMatch(index, /\{ label:'Боксы'|\{ label:'Витрина'|\{ label:'Блог'/, "retired section remains in footer");

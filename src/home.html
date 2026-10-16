@@ -1,0 +1,63 @@
+<!-- ГЛАВНАЯ -->
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div class="el-refresh">
+<section class="el-wrap el-home-hero">
+  <div class="el-home-hero__copy">
+    <span class="el-eyebrow el-eyebrow--badge">EasyLine · готовая еда</span>
+    <h1>Питание<br>под ваш день</h1>
+    <p class="el-lead">Рацион на 28 дней, обед для рабочего дня или любимые блюда поштучно. Выберите свой формат — приготовление возьмём на себя.</p>
+    <nav class="el-hero-choices" aria-label="Выберите формат питания">
+      <a class="el-button" href="{{ hrefLunches }}" onClick="{{ goLunches }}">Корпоративные обеды</a>
+      <a class="el-button el-button--outline" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">Ассортимент</a>
+      <a class="el-text-link" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}">Протокол на 28 дней →</a>
+    </nav>
+  </div>
+  <div class="el-home-hero__visual"><div class="el-photo-frame"><img class="el-photo" src="/easyline-site/assets/home-hero-ration-day-KbJLqsW8.jpg" alt="Готовые рационы EasyLine в контейнерах" fetchpriority="high" decoding="async"></div></div>
+</section>
+<section id="directions" class="el-section el-surface">
+  <div class="el-wrap">
+    <div class="el-section-heading"><div><span class="el-eyebrow">Три направления</span><h2>Выберите свой формат</h2></div></div>
+    <div class="el-direction-grid">
+      <a class="el-direction-card" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}"><span class="el-direction-card__number">28 <small>дней</small></span><h3>Протокол питания</h3><p>Завтрак, обед и ужин. Полное меню уже собрано на весь цикл.</p><span class="el-text-link">Посмотреть меню →</span></a>
+      <a class="el-direction-card" href="{{ hrefLunches }}" onClick="{{ goLunches }}"><span class="el-direction-card__number">13 <small>комплектов</small></span><h3>Корпоративные обеды</h3><p>Готовые комплекты для рабочего дня. Выбирайте блюда и количество.</p><span class="el-text-link">Выбрать обед →</span></a>
+      <a class="el-direction-card" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}"><span class="el-direction-card__number">26 <small>позиций</small></span><h3>Ассортимент</h3><p>Чиабатты, сэндвичи, бургеры, тортильи, боулы и выпечка.</p><span class="el-text-link">Перейти в каталог →</span></a>
+    </div>
+  </div>
+</section>
+<section class="el-wrap el-section">
+  <div class="el-section-heading"><div><span class="el-eyebrow">Обед для рабочего дня</span><h2>Корпоративные обеды</h2></div><a class="el-text-link" href="{{ hrefLunches }}" onClick="{{ goLunches }}">Все 13 комплектов →</a></div>
+  <div class="el-product-grid el-home-lunches"><sc-for list="{{ homeLunches }}" as="item" hint-placeholder-count="4"><!-- PRODUCT_CARD --></sc-for></div>
+  <sc-if value="{{ catalogLoading }}"><p role="status" class="el-muted">Загружаем меню…</p></sc-if>
+  <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice">Не удалось загрузить меню. <button type="button" class="el-link-button" onClick="{{ retryCatalog }}">Повторить</button></div></sc-if>
+</section>
+<section class="el-section el-surface">
+  <div class="el-wrap">
+    <div class="el-section-heading"><div><span class="el-eyebrow">Блюда поштучно</span><h2>Ассортимент на каждый день</h2></div><a class="el-text-link" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">Весь ассортимент →</a></div>
+    <p class="el-section-intro">Выберите любимую начинку. Обычный или цельнозерновой хлеб — в одном каталоге.</p>
+    <div class="el-category-grid"><sc-for list="{{ homeCategories }}" as="category" hint-placeholder-count="6"><a class="el-category-card" href="{{ category.href }}" onClick="{{ category.open }}"><h3>{{ category.label }}</h3><span class="el-category-card__count">{{ category.count }}</span><span class="el-category-card__arrow" aria-hidden="true">→</span></a></sc-for></div>
+    <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice">Не удалось загрузить категории. <button type="button" class="el-link-button" onClick="{{ retryCatalog }}">Повторить</button></div></sc-if>
+  </div>
+</section>
+<section class="el-wrap el-section">
+  <div class="el-section-heading"><div><span class="el-eyebrow">Обеды и ассортимент</span><h2>Как заказать</h2></div></div>
+  <div class="el-steps-refresh">
+    <div><span class="el-step-number">1</span><h3>Выберите блюда</h3><p>Откройте обеды или ассортимент. Найдите нужные позиции в каталоге.</p></div>
+    <div><span class="el-step-number">2</span><h3>Соберите корзину</h3><p>Добавьте блюда и укажите количество для себя или команды.</p></div>
+    <div><span class="el-step-number">3</span><h3>Оформите заказ</h3><p>Проверьте состав заказа и заполните контактные данные.</p></div>
+  </div>
+  <p class="el-notice el-order-availability">Цены и условия доставки новых блюд уточняются. Оформление заказа пока недоступно.</p>
+  <p class="el-muted">Для протокола на 28 дней — <a class="el-text-link" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}">отдельная заявка</a>.</p>
+</section>
+<section class="el-section el-surface">
+  <div class="el-wrap el-service-grid">
+    <div><span class="el-eyebrow">Своя кухня</span><h2>Готовим в EasyLine</h2><p>Закупаем продукты, готовим и упаковываем еду на собственном производстве.</p><a class="el-text-link" href="{{ hrefProduction }}" onClick="{{ goProduction }}">О производстве →</a></div>
+    <div><span class="el-eyebrow">Условия заказа</span><h2>Доставка</h2><p>График доставки протокола и способы оплаты собраны на отдельной странице. Условия для новых блюд добавим отдельно.</p><a class="el-text-link" href="{{ hrefDelivery }}" onClick="{{ goDelivery }}">Доставка и оплата →</a></div>
+  </div>
+</section>
+<section class="el-wrap el-section">
+  <div class="el-section-heading"><h2>Частые вопросы</h2><a class="el-text-link" href="{{ hrefFaq }}" onClick="{{ goFaq }}">Все вопросы →</a></div>
+  <sc-for list="{{ homeFaq }}" as="f" hint-placeholder-count="5"><div class="el-faq-item"><button type="button" id="{{ f.buttonId }}" onClick="{{ f.toggle }}" aria-expanded="{{ f.isOpen }}" aria-controls="{{ f.panelId }}"><span>{{ f.q }}</span><span aria-hidden="true">{{ f.sign }}</span></button><div id="{{ f.panelId }}" hidden="{{ !f.isOpen }}" role="region" aria-labelledby="{{ f.buttonId }}"><p>{{ f.a }}</p></div></div></sc-for>
+</section>
+<section class="el-section el-contact-section"><div class="el-wrap el-contact-inner"><div><span class="el-eyebrow">Поможем с выбором</span><h2>Остались вопросы?</h2><p>Позвоните или напишите нам. Ответим на вопросы о меню и протоколе.</p></div><div class="el-contact-actions"><a class="el-button" href="tel:+79640182373">+7 964 018-23-73</a><a class="el-button el-button--outline" href="https://wa.me/79640182373" target="_blank" rel="noreferrer">Написать в WhatsApp</a></div></div></section>
+</div>
+</sc-if>

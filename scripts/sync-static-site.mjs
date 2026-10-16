@@ -2,8 +2,9 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 
-import { PUBLIC_ROUTE_ENTRIES, ROUTE_ENTRIES, SITE_BASE, SITE_ORIGIN } from "./site-metadata.mjs";
+import { PUBLIC_ROUTE_ENTRIES, ROUTE_ENTRIES, SITE_BASE, SITE_ORIGIN, SITE_VERSION } from "./site-metadata.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const compiledBundlePath = path.join(root, "assets", "index-Dwt8uDxZ.js");
@@ -35,7 +36,7 @@ function buildHead(entryItem) {
 <link rel="canonical" href="${entryItem.canonicalUrl}">
 <title>${entryItem.title}</title>
 <link rel="icon" href="/easyline-site/assets/logo-Ddt-JyRw.svg" type="image/svg+xml">
-<script>window.__EASYLINE_VARIANT__ = "2.2.3";window.__EASYLINE_SITE_ORIGIN__ = "${SITE_ORIGIN}";window.__EASYLINE_STATIC_ROUTE_KEY__ = "${entryItem.routeKey}";</script>
+<script>window.__EASYLINE_VARIANT__ = "${SITE_VERSION}";window.__EASYLINE_SITE_ORIGIN__ = "${SITE_ORIGIN}";window.__EASYLINE_STATIC_ROUTE_KEY__ = "${entryItem.routeKey}";</script>
 <script src="/easyline-site/vendor/react.production.min.js"></script>
 <script src="/easyline-site/vendor/react-dom.production.min.js"></script>
 <link rel="preload" href="/easyline-site/assets/nunito-variable-cyrillic.ttf" as="font" type="font/ttf" crossorigin>
@@ -52,6 +53,7 @@ function buildHead(entryItem) {
 <link rel="stylesheet" href="/easyline-site/assets/light-mode-only.css">
 <link rel="stylesheet" href="/easyline-site/assets/accessible-digital.css">
 <link rel="stylesheet" href="/easyline-site/assets/layout-stage-preview.css">
+<link rel="stylesheet" href="/easyline-site/assets/menu-refresh.css">
 <meta name="x-easyline-color-variant" content="accessible-digital">
 </head>`;
 }
@@ -132,7 +134,26 @@ async function patchCompiledBundle() {
 }
 
 async function writePages() {
-  const template = await readFile(path.join(root, "index.html"), "utf8");
+  const [page, retained, logic, cart, rawCatalog, home, catalogs, cartPages, productCard, quantity] = await Promise.all(
+    ["page.html", "retained-content.js", "site-logic.js", "cart.js", "catalog.json", "home.html", "catalogs.html", "cart-pages.html", "product-card.html", "quantity.html"]
+      .map((file) => readFile(path.join(root, "src", file), "utf8")),
+  );
+  const catalog = JSON.parse(rawCatalog);
+  if (catalog.items.length !== 39 || new Set(catalog.items.map((item) => item.id)).size !== 39) {
+    throw new Error("Catalog must contain 39 unique positions");
+  }
+  for (const item of catalog.items) {
+    if (item.priceRub !== null && (!Number.isFinite(item.priceRub) || item.priceRub <= 0)) throw new Error(`Invalid price: ${item.id}`);
+    if (item.image) await readFile(path.join(root, item.image.replace(/^\/easyline-site\//, "")));
+  }
+  const catalogModule = `// Generated from src/catalog.json and src/cart.js.\nexport const CATALOG = ${escapeScriptJson(catalog.items)};\nexport const CATEGORIES = ${escapeScriptJson(catalog.categories)};\n${cart}`;
+  const catalogAsset = `menu-catalog-${createHash("sha256").update(catalogModule).digest("hex").slice(0, 12)}.js`;
+  await writeFile(path.join(root, "assets", catalogAsset), catalogModule);
+  const template = page
+    .replace("<!-- NEW_HOME_AND_CATALOGS -->", [home, catalogs, cartPages].join("\n"))
+    .replaceAll("<!-- PRODUCT_CARD -->", productCard)
+    .replaceAll("<!-- QUANTITY_CONTROL -->", quantity)
+    .replace("<!-- EASYLINE_LOGIC -->", retained + "\n" + logic.replace("__CATALOG_ASSET__", catalogAsset));
   for (const entryItem of ROUTE_ENTRIES) {
     const html = template
       .replace(/<html lang="ru"(?:\s+data-el-route-key="[^"]*")?>/, `<html lang="ru" data-el-route-key="${entryItem.routeKey}">`)

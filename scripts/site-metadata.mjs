@@ -1,5 +1,6 @@
 export const SITE_ORIGIN = "https://easyline.club";
 export const SITE_BASE = "/easyline-site";
+export const SITE_VERSION = "2.3.0-preview";
 
 function canonicalUrl(routePath) {
   const path = routePath === "/" ? "/" : `${routePath.replace(/\/+$/, "")}/`;
@@ -21,11 +22,15 @@ function entry(file, routeKey, routePath, title, description, options = {}) {
 const protocolDescription = "Протокол питания EasyLine на 28 дней: три приёма пищи, фиксированное меню и доставка в Махачкале, Каспийске, Избербаше и Дербенте.";
 
 export const ROUTE_ENTRIES = [
-  entry("index.html", "home", "/", "Протокол 28 дней — EasyLine", protocolDescription),
+  entry("index.html", "home", "/", "EasyLine — готовое питание, обеды и ассортимент", "Протокол питания на 28 дней, 13 корпоративных обедов и 26 позиций ассортимента EasyLine. Выберите свой формат питания."),
+  entry("corporate-lunches/index.html", "corporate-lunches", "/corporate-lunches", "Корпоративные обеды — EasyLine", "13 готовых обеденных комплектов EasyLine. Выберите блюда и количество для рабочего дня."),
+  entry("assortment/index.html", "assortment", "/assortment", "Ассортимент — EasyLine", "Чиабатты, сэндвичи, бургеры, тортильи, боулы и выпечка EasyLine. 26 позиций с фильтрами по категории, начинке и хлебу."),
+  entry("cart/index.html", "cart", "/cart", "Корзина — EasyLine", "Выбранные блюда EasyLine и их количество.", { noindex: true }),
+  entry("checkout/index.html", "checkout", "/checkout", "Оформление заказа — EasyLine", "Состав заказа, контакты и адрес доставки EasyLine.", { noindex: true }),
   entry("programs/index.html", "program-protokol-28", "/programs", "Протокол 28 дней — EasyLine", protocolDescription, { noindex: true, canonicalPath: "/programs/protokol-28" }),
   entry("programs/protokol-28/index.html", "program-protokol-28", "/programs/protokol-28", "Протокол 28 дней — EasyLine", "Фиксированное меню протокола EasyLine на 28 дней: завтрак, обед и ужин с указанными порциями."),
   entry("reviews/index.html", "reviews", "/reviews", "Отзывы — EasyLine", "Отзывы клиентов EasyLine о протоколе питания на 28 дней и доставке."),
-  entry("faq/index.html", "faq", "/faq", "Частые вопросы — EasyLine", "Ответы о меню, доставке, оплате, хранении и паузе 28-дневного протокола EasyLine."),
+  entry("faq/index.html", "faq", "/faq", "Частые вопросы — EasyLine", "Ответы о протоколе на 28 дней, корпоративных обедах, ассортименте и корзине EasyLine."),
   entry("about-production/index.html", "about-production", "/about-production", "О производстве — EasyLine", "Собственная кухня EasyLine: закупка сырья, приготовление, фасовка рационов и контроль качества."),
   entry("delivery-payment/index.html", "delivery-payment", "/delivery-payment", "Доставка и оплата — EasyLine", "График доставки протокола EasyLine по Махачкале, Каспийску, Избербашу и Дербенту, способы оплаты и перенос дней."),
   entry("contacts/index.html", "contacts", "/contacts", "Контакты — EasyLine", "Телефон, WhatsApp, часы работы и реквизиты ИП EasyLine."),

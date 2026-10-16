@@ -7,12 +7,17 @@ const index = await readFile(new URL("index.html", root), "utf8");
 const readability = await readFile(new URL("assets/readability-overrides.css", root), "utf8");
 const menuSource = await readFile(new URL("assets/menu-data-6F787N4k.js", root), "utf8");
 
-test("version 2.2.3 sells only the 28-day protocol through an ERP lead form", async () => {
-  assert.match(index, /window\.__EASYLINE_VARIANT__ = "2\.2\.3"/);
+test("menu refresh retains the protocol and adds two catalog directions", async () => {
+  assert.match(index, /window\.__EASYLINE_VARIANT__ = "2\.3\.0-preview"/);
   assert.match(index, /<form[^>]+onSubmit="\{\{ submitApplication \}\}"/);
-  assert.match(index, /replaceState\(\{\}, '', PAGES_BASE \+ '\/programs\/protokol-28'\)/);
+  assert.ok(index.includes("history.replaceState({},'',PAGES_BASE + '/programs/protokol-28')"), 'legacy programs URL resolves to protocol');
   assert.doesNotMatch(index, /data-el-app-intent="auth"|>Войти</);
   assert.doesNotMatch(index, /\{ label:'Боксы'|\{ label:'Витрина'|\{ label:'Блог'/);
+
+  assert.match(index, /path === '\/corporate-lunches'/);
+  assert.match(index, /path === '\/assortment'/);
+  assert.match(index, /class="el-direction-grid"/);
+  assert.doesNotMatch(index, /Один протокол\. Полный цикл|Начните протокол на 28 дней/);
 
   const leads = await import(new URL("lead-form.js", root));
   assert.equal(leads.LEAD_ENDPOINT, "https://api.easyline.club/inquiries");
@@ -38,13 +43,13 @@ test("contacts and the three supplied legal documents are published", async () =
 });
 
 test("delivery includes both Izberbash and Derbent", () => {
-  assert.match(index, /deliveryCities:\['Махачкала','Каспийск','Избербаш','Дербент'\]/);
+  for (const city of ['Махачкала','Каспийск','Избербаш','Дербент']) assert.ok(index.includes("{k:'" + city + "',v:'"), city + ' delivery retained');
 });
 
 test("the supplied 28-day menu is shown as one fixed menu without selectors", async () => {
   const { PROTOCOLS } = await import(new URL("../assets/menu-data-6F787N4k.js", import.meta.url));
   const protocol = PROTOCOLS.find(({ slug }) => slug === "protokol-28");
-  const protocolPage = index.match(/<!-- СТРАНИЦА ПРОТОКОЛА -->([\s\S]*?)<!-- ГИБКАЯ ПРОГРАММА/)[1];
+  const protocolPage = index.match(/<!-- СТРАНИЦА ПРОТОКОЛА -->([\s\S]*?)<!-- ТЕКСТОВАЯ СТРАНИЦА ИЗ CMS/)[1];
 
   assert.equal(protocol.days.length, 28);
   assert.deepEqual(protocol.days[0].meals[0].items, [

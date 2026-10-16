@@ -1,0 +1,154 @@
+/* Extends the current easyline.club palette and typography. */
+.el-refresh{font-family:'Nunito EasyLine',Nunito,system-ui,sans-serif;color:#23333d;font-size:17px;line-height:1.6}
+.el-refresh *, .el-main-header *{min-width:0}
+.el-refresh :where(h1,h2,h3){font-family:'Bebas Neue',sans-serif;color:#8e242e;text-transform:uppercase;letter-spacing:.005em;font-weight:700;line-height:1.05;margin:0;text-wrap:balance}
+.el-refresh h1{font-size:clamp(44px,5.2vw,72px);margin:8px 0 22px}
+.el-refresh h2{font-size:clamp(30px,3.3vw,44px)}
+.el-refresh h3{font-size:clamp(25px,2.3vw,32px)}
+.el-refresh p{margin:14px 0 0}
+.el-wrap{width:100%;max-width:1240px;margin-inline:auto;padding-inline:clamp(16px,3vw,40px)}
+.el-section{padding-block:clamp(44px,5.5vw,76px)}
+.el-surface{background:#f8fbfd;border-block:1px solid #b8d2e1}
+.el-eyebrow{display:block;font-size:13px;font-weight:600;line-height:1.4;letter-spacing:.07em;text-transform:uppercase;color:#536f8a;margin-bottom:10px}
+.el-eyebrow--badge{display:inline-block;padding:8px 14px;background:#e4f0f7;color:#0f4d7a;letter-spacing:.04em}
+.el-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:13px 22px;border:1px solid #8e242e;border-radius:2px;background:#8e242e;color:#fff!important;font:600 16px/1.35 'Nunito EasyLine',Nunito,system-ui,sans-serif;text-align:center;text-decoration:none;cursor:pointer;transition:background-color .16s ease,border-color .16s ease}
+.el-button:hover{background:#74202a;color:#fff!important}
+.el-button--outline{background:#fff;color:#8e242e!important}
+.el-button--outline:hover{background:#e4f0f7;color:#8e242e!important}
+.el-button:disabled{background:#eef3f6;color:#536f8a!important;border-color:#b8d2e1;cursor:not-allowed}
+.el-cart-link{flex:none;font-size:14px;min-height:44px;padding:8px 14px}
+.el-cart-count{display:inline-grid;place-items:center;min-width:25px;height:25px;padding-inline:4px;background:#fff;color:#8e242e;font-weight:800;border-radius:50%}
+.el-text-link,.el-back-link{display:inline-block;color:#0f4d7a!important;border-bottom:1px solid #b8d2e1;line-height:1.45;text-decoration:none;text-underline-offset:4px}
+.el-text-link:hover,.el-back-link:hover{border-color:#8e242e}
+.el-back-link{margin-bottom:26px;font-size:15px}
+.el-home-hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(28px,4vw,64px);padding-block:clamp(28px,4vw,60px) clamp(44px,5vw,72px)}
+.el-home-hero h1{margin-top:20px;font-weight:400;font-size:clamp(48px,5.6vw,78px)}
+.el-home-hero .el-lead{max-width:510px;font-size:19px;line-height:1.6;color:#536f8a}
+.el-hero-choices{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:30px}
+.el-hero-choices>.el-text-link{flex-basis:max-content;margin-top:6px}
+.el-home-hero__visual .el-photo-frame{aspect-ratio:4/5;box-shadow:0 0 0 1px #8e242e,0 0 0 5px #fff,0 0 0 6px #8e242e}
+.el-home-hero__visual .el-photo{display:block;width:100%;height:100%;object-fit:cover}
+.el-section-heading{display:flex;align-items:end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:30px}
+.el-section-heading h1{margin-bottom:0}
+.el-section-heading>.el-text-link{flex:none;margin-bottom:4px}
+.el-section-intro{color:#536f8a;max-width:720px;margin:0 0 26px!important}
+.el-direction-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.el-direction-card{display:flex;flex-direction:column;align-items:start;gap:0;background:#fff;border:1px solid #b8d2e1;border-top:3px solid #8e242e;padding:28px;color:#23333d!important;transition:border-color .16s ease}
+.el-direction-card:hover{border-color:#8e242e}
+.el-direction-card__number{font:600 44px/1.1 'Podkova',serif;color:#8e242e;margin-bottom:25px}
+.el-direction-card__number small{font:500 14px/1.4 'Nunito EasyLine',sans-serif;color:#536f8a}
+.el-direction-card h3{font-size:30px}
+.el-direction-card p{margin:12px 0 24px;color:#536f8a;line-height:1.6}
+.el-direction-card>.el-text-link{margin-top:auto;font-size:15px}
+.el-product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.el-home-lunches{grid-template-columns:repeat(4,minmax(0,1fr))}
+.el-product-card{border:1px solid #b8d2e1;background:#fff;display:flex;flex-direction:column;overflow:hidden}
+.el-product-card__body{padding:24px;display:flex;flex-direction:column;align-items:start;flex:1}
+.el-product-card h3{font-size:28px;line-height:1.12;text-wrap:pretty}
+.el-product-card__detail{font-size:16px;color:#536f8a;line-height:1.5}
+.el-product-card__photo{aspect-ratio:4/3;overflow:hidden}
+.el-product-card__photo img{display:block;width:100%;height:100%;object-fit:cover}
+.el-product-card__bottom{width:100%;margin-top:auto;padding-top:28px;display:flex;flex-direction:column;gap:14px}
+.el-product-card__price{font-size:14px;color:#536f8a}
+.el-product-add{width:100%;min-height:46px}
+.el-bread-label{font-size:12px;font-weight:600;line-height:1.4;padding:5px 8px;color:#0f4d7a;background:#e4f0f7;margin-top:14px}
+.el-category-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.el-category-card{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;border:1px solid #b8d2e1;background:#fff;padding:24px;color:#8e242e!important}
+.el-category-card h3{font-size:30px}
+.el-category-card__count{font:600 28px/1 'Podkova',serif;color:#536f8a}
+.el-category-card__arrow{grid-column:2;font-size:23px;text-align:right}
+.el-category-card:hover{border-color:#8e242e}
+.el-steps-refresh{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.el-steps-refresh>div{border-top:2px solid #8e242e;padding-top:20px}
+.el-step-number{font:600 48px/1 'Podkova',serif;color:#0f4d7a;display:block;margin-bottom:20px}
+.el-steps-refresh p{font-size:16px;color:#536f8a}
+.el-notice{border:1px solid #b8d2e1;background:#f8fbfd;padding:18px 22px;font-size:15px;color:#536f8a;border-radius:2px}
+.el-order-availability{margin-top:30px!important}
+.el-muted{color:#536f8a;font-size:15px}
+.el-service-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,84px)}
+.el-service-grid p{color:#536f8a;margin-bottom:22px}
+.el-faq-item{border-bottom:1px solid #b8d2e1}
+.el-faq-item>button{display:flex;justify-content:space-between;align-items:start;gap:20px;width:100%;background:transparent;border:0;min-height:60px;padding:20px 0;text-align:left;font:500 18px/1.5 'Nunito EasyLine',sans-serif;color:#23333d;cursor:pointer}
+.el-faq-item>button span:last-child{color:#8e242e;font-size:24px;line-height:1.1;flex:none}
+.el-faq-item>div{padding:0 35px 24px 0;color:#536f8a}
+.el-faq-item p{margin:0}
+.el-contact-section{background:#e4f0f7;border-top:1px solid #b8d2e1}
+.el-contact-inner{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+.el-contact-inner p{max-width:550px;color:#536f8a}
+.el-contact-actions{display:flex;flex-direction:column;gap:12px}
+.el-category-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-block:30px 24px}
+.el-category-tabs button{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:10px 15px;border:1px solid #b8d2e1;border-radius:2px;background:#fff;font:500 15px/1.35 'Nunito EasyLine',sans-serif;color:#0f4d7a;cursor:pointer}
+.el-category-tabs button[aria-pressed=true]{background:#8e242e;border-color:#8e242e;color:#fff}
+.el-category-tabs button>span{font-size:12px;opacity:.85}
+.el-filter-bar{display:flex;gap:20px;flex-wrap:wrap;align-items:end;margin-block:24px 12px}
+.el-filter-bar>label{font-size:14px;font-weight:600;color:#23333d;flex:0 1 190px}
+.el-filter-bar>.el-search-label{flex:1 1 240px;max-width:460px}
+.el-refresh input:not([type=checkbox]),.el-refresh select,.el-refresh textarea{display:block;width:100%;min-height:48px;padding:12px 14px;margin-top:7px;border:1px solid #9ab5c5;border-radius:2px;background:#fff;color:#23333d;font:400 16px/1.4 'Nunito EasyLine',sans-serif}
+.el-filter-bar>.el-checkbox-label,.el-checkbox-label{display:flex;align-items:center;gap:10px;min-height:48px;font-size:15px;font-weight:400;flex:0 1 auto}
+.el-refresh input[type=checkbox]{width:20px;height:20px;margin:0;flex:none;accent-color:#8e242e}
+.el-result-count{font-size:14px;color:#536f8a;margin:18px 0!important}
+.el-empty-state{padding:52px 28px;background:#f8fbfd;border:1px solid #b8d2e1;max-width:760px;margin-block:28px}
+.el-empty-state p{margin-bottom:26px;color:#536f8a}
+.el-inline-actions{display:flex;gap:12px;flex-wrap:wrap}
+.el-link-button,.el-remove-button{border:0;background:transparent;text-decoration:underline;text-underline-offset:4px;color:#0f4d7a;font:500 15px/1.4 'Nunito EasyLine',sans-serif;cursor:pointer;min-height:44px;padding:8px}
+.el-checkout-layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:36px;align-items:start;margin-top:32px}
+.el-cart-lines{display:flex;flex-direction:column;gap:18px}
+.el-cart-line{border:1px solid #b8d2e1;padding:26px;background:#fff}
+.el-cart-line__top,.el-cart-line__bottom{display:flex;justify-content:space-between;gap:20px;align-items:start}
+.el-cart-line__top h2{font-size:28px;line-height:1.15}
+.el-cart-line__top p{font-size:16px;color:#536f8a}
+.el-cart-line__bottom{align-items:center;margin-top:22px}
+.el-quantity{display:inline-grid;grid-template-columns:44px minmax(44px,1fr) 44px;align-items:center;width:144px;max-width:100%;border:1px solid #8e242e;color:#8e242e;background:#fff;flex:none}
+.el-quantity button{min-width:0;width:44px;height:44px;display:grid;place-items:center;border:0;background:transparent;color:#8e242e;font:400 24px/1 'Nunito EasyLine',sans-serif;cursor:pointer}
+.el-quantity span{text-align:center;font:600 16px/1.3 'Podkova',serif}
+.el-quantity button:disabled{color:#8b9ba6;cursor:not-allowed}
+.el-cart-summary{position:sticky;top:108px;background:#f8fbfd;border:1px solid #8e242e;padding:28px}
+.el-cart-summary>h2{font:600 32px/1.2 'Podkova',serif}
+.el-cart-summary>.el-button{width:100%;margin-top:24px}
+.el-cart-summary>.el-text-link{margin-top:20px;font-size:15px}
+.el-order-totals{margin:24px 0 0;border-top:1px solid #b8d2e1}
+.el-order-totals>div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:16px;font-size:14px}
+.el-order-totals dd{margin:0;text-align:right;color:#536f8a}
+.el-order-items{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:16px}
+.el-order-items li{display:flex;justify-content:space-between;gap:16px;font-size:14px;line-height:1.5}
+.el-order-items strong{font-weight:600;white-space:nowrap}
+.el-checkout-form{display:flex;flex-direction:column;gap:28px;margin-top:32px}
+.el-checkout-form fieldset{padding:0;border:0;margin:0;min-width:0}
+.el-checkout-form legend{font:700 28px/1.2 'Bebas Neue',sans-serif;color:#8e242e;margin-bottom:20px}
+.el-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px}
+.el-checkout-form label{font-size:15px;font-weight:500}
+.el-checkout-form .el-consent{align-items:start;min-height:44px;font-size:14px;line-height:1.6}
+.el-consent input{margin-top:3px!important}
+.el-checkout-form>.el-button{align-self:start}
+#application{scroll-margin-top:100px}
+/* Keep editable controls and catalog results stable under the legacy motion runtime. */
+html:is([data-el-route-key=corporate-lunches],[data-el-route-key=assortment],[data-el-route-key=cart],[data-el-route-key=checkout]) main :is(.el-reveal,.el-parallax-layer,.el-page-enter){opacity:1!important;transform:none!important;translate:none!important;animation:none!important}
+.el-refresh :where(a,button,input,select,textarea):focus-visible{outline:3px solid #0f4d7a;outline-offset:3px}
+.el-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1080px){.el-home-lunches{grid-template-columns:repeat(2,minmax(0,1fr))}.el-direction-card{padding:24px}.el-checkout-layout{grid-template-columns:minmax(0,1fr) 290px;gap:24px}.el-cart-summary{top:92px;padding:22px}}
+@media(max-width:700px){
+ .el-refresh{font-size:17px}.el-section{padding-block:40px}.el-home-hero{grid-template-columns:1fr;padding-block:30px 44px;gap:34px}.el-home-hero h1{font-size:48px}.el-home-hero .el-lead{font-size:17px}.el-hero-choices{gap:10px;margin-top:26px}.el-hero-choices>.el-button{width:100%}.el-hero-choices>.el-text-link{margin-top:12px;padding-bottom:5px}.el-home-hero__visual{padding:6px}.el-home-hero__visual .el-photo-frame{aspect-ratio:4/3}.el-home-hero__visual .el-photo{object-position:center 44%}
+ .el-direction-grid{grid-template-columns:1fr;gap:16px}.el-direction-card{display:grid;grid-template-columns:92px minmax(0,1fr);column-gap:18px;padding:22px}.el-direction-card__number{grid-row:1/4;margin:0;font-size:38px}.el-direction-card__number small{display:block;margin-top:8px;font-size:12px}.el-direction-card h3{font-size:28px}.el-direction-card p{font-size:16px;margin:9px 0 18px}.el-direction-card>.el-text-link{grid-column:2;font-size:14px}
+ .el-section-heading{align-items:start;gap:16px;margin-bottom:26px}.el-section-heading>.el-text-link{font-size:15px}.el-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.el-home-lunches,.el-catalog:has(.el-catalog-notice):not(:has(.el-category-tabs)) .el-product-grid{grid-template-columns:1fr}.el-product-card__body{padding:16px}.el-product-card h3{font-size:24px}.el-product-card__detail{font-size:16px}.el-product-card .el-eyebrow{font-size:11px}.el-product-card__price{font-size:13px}.el-product-card__bottom{padding-top:22px}.el-product-add{font-size:14px;padding-inline:10px}.el-product-card .el-quantity{width:100%;grid-template-columns:44px minmax(28px,1fr) 44px}.el-bread-label{font-size:11px;padding:5px 7px}
+ .el-category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.el-category-card{padding:18px;align-content:start}.el-category-card h3{font-size:26px;grid-column:1/-1}.el-category-card__count{font-size:25px}.el-category-card__arrow{grid-column:2;grid-row:2}.el-steps-refresh{grid-template-columns:1fr;gap:22px}.el-steps-refresh>div{display:grid;grid-template-columns:46px minmax(0,1fr);column-gap:18px;padding-top:18px}.el-step-number{grid-row:1/3;font-size:38px;margin:0}.el-steps-refresh h3{font-size:26px}.el-steps-refresh p{grid-column:2;font-size:16px;margin-top:9px}.el-notice{padding:16px;font-size:14px}.el-service-grid{grid-template-columns:1fr;gap:36px}.el-contact-actions{width:100%}.el-faq-item>button{font-size:17px}.el-faq-item>div{font-size:16px;padding-right:20px}
+ .el-catalog h1,.el-cart-page h1{font-size:42px}.el-category-tabs{gap:7px}.el-category-tabs button{font-size:14px;padding:9px 12px}.el-filter-bar{gap:16px;align-items:start}.el-filter-bar>.el-search-label{max-width:none;flex-basis:100%}.el-filter-bar>label{flex:1 1 140px}.el-filter-bar>.el-checkbox-label{flex-basis:100%;min-height:44px}.el-checkout-layout{grid-template-columns:1fr;margin-top:24px}.el-cart-summary{position:static}.el-cart-line{padding:18px}.el-cart-line__top{gap:12px}.el-cart-line__top h2{font-size:26px}.el-cart-line__top p{font-size:15px}.el-remove-button{padding:4px;font-size:13px}.el-cart-line__bottom{gap:12px}.el-form-grid{grid-template-columns:1fr}.el-checkout-form>.el-button{width:100%}.el-cart-summary>h2{font-size:30px}.el-empty-state{padding:30px 22px}.el-inline-actions>.el-button{width:100%}#application{scroll-margin-top:80px}
+}
+@media(max-width:360px){.el-catalog .el-product-grid{grid-template-columns:1fr}.el-category-grid{grid-template-columns:1fr}.el-direction-card{grid-template-columns:74px minmax(0,1fr);gap:12px}.el-direction-card__number{font-size:32px}.el-cart-link{padding-inline:10px}.el-main-header__inner{gap:8px!important}.el-main-header__inner>div{gap:8px!important}}
+@media(prefers-reduced-motion:reduce){.el-refresh *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+/* Preserve readable button text against the existing global link overrides. */
+.sc-host a.el-button,.sc-host a.el-button:visited,.sc-host a.el-button:hover,.sc-host a.el-button:focus-visible{color:#fff!important}
+.sc-host a.el-button.el-button--outline,.sc-host a.el-button.el-button--outline:visited,.sc-host a.el-button.el-button--outline:hover,.sc-host a.el-button.el-button--outline:focus-visible{color:#8e242e!important}
+/* New components need their own hierarchy above the old broad heading rules. */
+.sc-host .el-refresh .el-cart-line h2{font-size:28px!important;line-height:1.15!important}
+.sc-host .el-refresh .el-cart-summary>h2{font-family:'Podkova',serif!important;font-size:32px!important;font-weight:600!important;line-height:1.2!important;text-transform:none!important}
+.sc-host .el-refresh p{font-size:17px!important;line-height:1.6!important}
+.sc-host .el-refresh .el-muted,.sc-host .el-refresh .el-notice,.sc-host .el-refresh .el-result-count{font-size:15px!important}
+.sc-host .el-refresh .el-product-card__detail,.sc-host .el-refresh .el-direction-card p,.sc-host .el-refresh .el-steps-refresh p{font-size:16px!important}
+@media(max-width:700px){
+ .sc-host .el-refresh .el-product-card h3{font-size:24px!important;line-height:1.12!important}
+ .sc-host .el-refresh .el-direction-card h3{font-size:28px!important}
+ .sc-host .el-refresh .el-category-card h3{font-size:26px!important}
+ .sc-host .el-refresh .el-cart-line h2{font-size:26px!important}
+ .sc-host .el-refresh .el-cart-summary>h2{font-size:30px!important}
+ .sc-host .el-refresh .el-notice,.sc-host .el-refresh .el-result-count{font-size:14px!important}
+}

@@ -1,0 +1,38 @@
+<!-- КОРЗИНА И ОФОРМЛЕНИЕ -->
+<sc-if value="{{ isCartPage }}">
+<div class="el-refresh">
+<section class="el-wrap el-section el-cart-page">
+  <sc-if value="{{ isCart }}"><a class="el-back-link" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">← Продолжить выбор</a><h1>Корзина</h1></sc-if>
+  <sc-if value="{{ isCheckout }}"><a class="el-back-link" href="{{ hrefCart }}" onClick="{{ goCart }}">← Корзина</a><h1>Оформление заказа</h1></sc-if>
+  <sc-if value="{{ catalogLoading }}"><p role="status" class="el-notice">Загружаем корзину…</p></sc-if>
+  <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice"><p>Не удалось открыть корзину. Сохранённые блюда не удалены.</p><button type="button" class="el-button" onClick="{{ retryCatalog }}">Повторить</button></div></sc-if>
+  <sc-if value="{{ cartSaveError }}"><p role="alert" class="el-notice">Браузер не сохранил корзину. Выбранные блюда могут потеряться после закрытия страницы.</p></sc-if>
+  <sc-if value="{{ cartEmpty }}"><div class="el-empty-state"><span class="el-eyebrow">Ваш выбор</span><h2>В корзине пока пусто</h2><p>Выберите готовый обед или блюда из ассортимента.</p><div class="el-inline-actions"><a class="el-button" href="{{ hrefLunches }}" onClick="{{ goLunches }}">Выбрать обед</a><a class="el-button el-button--outline" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">Открыть ассортимент</a></div></div></sc-if>
+  <sc-if value="{{ hasCart }}">
+    <div class="el-checkout-layout">
+      <div>
+        <sc-if value="{{ isCart }}"><div class="el-cart-lines"><sc-for list="{{ cartItems }}" as="item" hint-placeholder-count="3"><article class="el-cart-line" data-cart-id="{{ item.id }}"><div class="el-cart-line__top"><div><span class="el-eyebrow">{{ item.eyebrow }}</span><h2>{{ item.title }}</h2><sc-if value="{{ item.detail }}"><p>{{ item.detail }}</p></sc-if></div><button type="button" class="el-remove-button" aria-label="{{ item.removeLabel }}" onClick="{{ item.remove }}">Удалить</button></div><div class="el-cart-line__bottom"><span class="el-muted">{{ item.priceLabel }}</span><!-- QUANTITY_CONTROL --></div></article></sc-for></div></sc-if>
+        <sc-if value="{{ isCheckout }}">
+          <p id="checkout-availability" class="el-notice">Приём заказов из нового меню пока не открыт. Цены, доставка и способы оплаты уточняются.</p>
+          <form id="checkout-form" class="el-checkout-form" onSubmit="{{ preventCheckout }}" aria-describedby="checkout-availability" autocomplete="on">
+            <fieldset><legend>Контактные данные</legend><div class="el-form-grid"><label>Имя<input name="customerName" type="text" autocomplete="name" minlength="2" maxlength="80" required="{{ true }}"></label><label>Телефон<input name="customerPhone" type="tel" autocomplete="tel" inputmode="tel" required="{{ true }}" placeholder="+7 900 000-00-00"></label></div></fieldset>
+            <fieldset><legend>Адрес доставки</legend><div class="el-form-grid"><label>Город<input name="city" type="text" autocomplete="address-level2" required="{{ true }}"></label><label>Улица, дом, квартира<input name="address" type="text" autocomplete="street-address" required="{{ true }}"></label></div><label>Комментарий<textarea name="comment" rows="3" maxlength="1000" placeholder="Что нужно учесть при доставке"></textarea></label></fieldset>
+            <label class="el-checkbox-label el-consent"><input name="consent" type="checkbox" required="{{ true }}"><span>Согласен(а) на обработку персональных данных согласно <a class="el-text-link" href="{{ hrefPrivacy }}" onClick="{{ goPrivacy }}">политике обработки персональных данных</a>.</span></label>
+            <button class="el-button" type="submit" disabled="{{ true }}">Оформление скоро доступно</button>
+            <p class="el-muted">Заказ не отправлен. Контактные данные не сохраняются.</p>
+          </form>
+        </sc-if>
+      </div>
+      <aside class="el-cart-summary" aria-label="Состав и стоимость заказа">
+        <span class="el-eyebrow">Ваш заказ</span><h2>{{ cartCount }} шт.</h2>
+        <sc-if value="{{ isCheckout }}"><ul class="el-order-items"><sc-for list="{{ cartItems }}" as="item" hint-placeholder-count="3"><li><span>{{ item.name }}</span><strong>{{ item.quantity }} шт.</strong></li></sc-for></ul></sc-if>
+        <dl class="el-order-totals"><div><dt>Блюда</dt><dd>{{ cartTotal }}</dd></div><div><dt>Доставка</dt><dd>Уточняется</dd></div></dl>
+        <p class="el-muted">Итог появится после публикации цен и условий доставки.</p>
+        <sc-if value="{{ isCart }}"><a class="el-button" href="{{ hrefCheckout }}" onClick="{{ goCheckout }}">К оформлению</a><a class="el-text-link" href="{{ hrefLunches }}" onClick="{{ goLunches }}">Добавить обед →</a></sc-if>
+        <sc-if value="{{ isCheckout }}"><a class="el-text-link" href="{{ hrefCart }}" onClick="{{ goCart }}">Изменить заказ →</a></sc-if>
+      </aside>
+    </div>
+  </sc-if>
+</section>
+</div>
+</sc-if>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru" data-el-route-key="home">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
+<meta name="theme-color" content="#ffffff">
+<style id="easyline-light-only">
+:root{color-scheme:only light!important}
+@media (prefers-color-scheme:dark){:root{color-scheme:only light!important}html,body{background-color:#fff!important;background-image:linear-gradient(#fff,#fff)!important}}
+</style>
+<meta name="description" content="Протокол питания EasyLine на 28 дней: три приёма пищи, фиксированное меню и доставка в Махачкале, Каспийске, Избербаше и Дербенте.">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyLine">
+<meta property="og:title" content="Протокол 28 дней — EasyLine">
+<meta property="og:description" content="Протокол питания EasyLine на 28 дней: три приёма пищи, фиксированное меню и доставка в Махачкале, Каспийске, Избербаше и Дербенте.">
+<meta property="og:url" content="https://easyline.club/">
+<link rel="canonical" href="https://easyline.club/">
+<title>Протокол 28 дней — EasyLine</title>
+<link rel="icon" href="/easyline-site/assets/logo-Ddt-JyRw.svg" type="image/svg+xml">
+<script>window.__EASYLINE_VARIANT__ = "2.2.3";window.__EASYLINE_SITE_ORIGIN__ = "https://easyline.club";window.__EASYLINE_STATIC_ROUTE_KEY__ = "home";</script>
+<script src="/easyline-site/vendor/react.production.min.js"></script>
+<script src="/easyline-site/vendor/react-dom.production.min.js"></script>
+<link rel="preload" href="/easyline-site/assets/nunito-variable-cyrillic.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="/easyline-site/assets/bebas-neue-regular-mhMkEidK.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="/easyline-site/assets/bebas-neue-bold-DqarbXCh.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="/easyline-site/assets/podkova-variable-DYz2L4Pv.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="/easyline-site/assets/first-frame-init.css">
+<script src="/easyline-site/assets/first-frame-init.js"></script>
+<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=version-2.2.3-20260904"></script>
+<script src="/easyline-site/assets/static-route-head.js"></script>
+<script type="module">import {normalizePhone,submitInquiry} from "/easyline-site/lead-form.js";window.__EASYLINE_LEADS__=Object.freeze({normalizePhone,submitInquiry});</script>
+<link rel="stylesheet" crossorigin href="/easyline-site/assets/index-BmA-8PXs-v222.css">
+<link rel="stylesheet" href="/easyline-site/assets/readability-overrides.css">
+<link rel="stylesheet" href="/easyline-site/assets/light-mode-only.css">
+<link rel="stylesheet" href="/easyline-site/assets/accessible-digital.css">
+<link rel="stylesheet" href="/easyline-site/assets/layout-stage-preview.css">
+<meta name="x-easyline-color-variant" content="accessible-digital">
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#eef5f8;font-family:'Geologica',system-ui,sans-serif;color:#23333d;-webkit-font-smoothing:antialiased}
+a{color:#8e242e;text-decoration:none}
+a:hover{color:#719dc9}
+button{font-family:inherit}
+::selection{background:#bbdcef;color:#8e242e}
+@keyframes elpulse{0%,100%{opacity:.45}50%{opacity:.85}}
+</style>
+</helmet>
+
+<div style="display:flex;justify-content:flex-start;width:max-content;min-width:100%;background:#eef5f8">
+<div class="el-site-shell" style="container-type:inline-size;width:min({{ frameMax }},100vw);flex:0 0 auto;background:#ffffff;position:relative">
+<sc-if value="{{ is0131 }}">
+  <a class="el-skip-link" href="#main-content" style="position:fixed;left:12px;top:12px;z-index:120;transform:translateY(-160%);padding:10px 14px;background:#8e242e;color:#ffffff;font:500 13px/1 'Geologica',sans-serif" onFocus="{{ showSkipLink }}" onBlur="{{ hideSkipLink }}">Перейти к содержанию</a>
+</sc-if>
+
+<header class="el-main-header" style="position:sticky;top:0;z-index:40;background:#ffffff;border-bottom:1px solid #8e242e">
+  <div class="el-main-header__inner" style="max-width:1240px;margin:0 auto;padding:8px clamp(16px,3cqw,40px);display:flex;align-items:center;gap:clamp(10px,1.35cqw,20px)">
+    <a href="{{ hrefHome }}" onClick="{{ goHome }}" style="flex:0 0 auto;display:block;line-height:0"><img src="/easyline-site/assets/logo-Ddt-JyRw.svg" alt="EasyLine — Изи Лайн" style="width:clamp(72px,5.2cqw,78px);height:auto;display:block"></a>
+
+    <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Основная навигация" style="display:flex;flex:1 1 auto;align-items:center;flex-wrap:nowrap;gap:0 clamp(10px,1cqw,17px);margin-left:2px">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+          <a class="el-primary-nav__link" href="{{ item.href }}" onClick="{{ item.onClick }}" style="font:400 15px/1 'Geologica',sans-serif;color:{{ item.color }};white-space:nowrap;padding:10px 0;border-bottom:1px solid {{ item.rule }}" style-hover="color:#719dc9">{{ item.label }}</a>
+        </sc-for>
+      </nav>
+      <div class="el-more-menu" onKeyDown="{{ handleMoreMenuKeyDown }}">
+        <button class="el-more-menu__trigger" type="button" onClick="{{ toggleMore }}" onKeyDown="{{ handleMoreTriggerKeyDown }}" aria-haspopup="true" aria-expanded="{{ moreOpen }}" aria-controls="desktop-more-menu" style="padding:10px 11px;background:transparent;color:#8e242e;border:1px solid #b8d2e1;border-radius:2px;font:500 14px/1 'Geologica',sans-serif;cursor:pointer;white-space:nowrap">Ещё <span class="el-more-menu__chevron" aria-hidden="true">⌄</span></button>
+        <nav id="desktop-more-menu" class="el-more-menu__panel" hidden="{{ !moreOpen }}" aria-hidden="{{ !moreOpen }}" aria-label="Дополнительная навигация">
+          <sc-for list="{{ topNav }}" as="t" hint-placeholder-count="3">
+            <a class="el-more-menu__item" href="{{ t.href }}" onClick="{{ t.onClick }}" style="font:400 15px/1.25 'Geologica',sans-serif;color:{{ t.color }};white-space:nowrap;border-bottom:1px solid transparent">{{ t.label }}</a>
+          </sc-for>
+        </nav>
+      </div>
+      <a class="el-cart-link el-button" href="{{ hrefCart }}" onClick="{{ goCart }}" aria-label="{{ cartLabel }}">Корзина <span class="el-cart-count">{{ cartCount }}</span></a>
+    </sc-if>
+
+    <sc-if value="{{ isNarrow }}">
+      <div style="margin-left:auto;display:flex;align-items:center;gap:12px">
+        <a class="el-cart-link el-button" href="{{ hrefCart }}" onClick="{{ goCart }}" aria-label="{{ cartLabel }}">Корзина <span class="el-cart-count">{{ cartCount }}</span></a>
+        <button type="button" data-el-menu-toggle="true" onClick="{{ toggleMenu }}" aria-label="Меню" aria-expanded="{{ menuOpen }}" aria-controls="mobile-menu" style="width:44px;height:44px;display:grid;place-items:center;gap:5px;background:transparent;border:1px solid #8e242e;border-radius:2px;cursor:pointer;padding:12px">
+          <span style="display:block;width:18px;height:1.5px;background:#8e242e"></span>
+          <span style="display:block;width:18px;height:1.5px;background:#8e242e"></span>
+          <span style="display:block;width:18px;height:1.5px;background:#8e242e"></span>
+        </button>
+      </div>
+    </sc-if>
+  </div>
+
+  <nav id="mobile-menu" hidden="{{ !menuOpen }}" aria-hidden="{{ !menuOpen }}" aria-label="Мобильная навигация" style="border-top:1px solid #c8dce8;background:#ffffff;padding:12px clamp(16px,3cqw,40px) 24px;display:flex;flex-direction:column">
+    <sc-for list="{{ allNav }}" as="item" hint-placeholder-count="9">
+      <a href="{{ item.href }}" onClick="{{ item.onClick }}" style="font:400 17px/1 'Geologica',sans-serif;color:{{ item.color }};padding:15px 0;border-bottom:1px solid #e3edf3">{{ item.label }}</a>
+    </sc-for>
+  </nav>
+</header>
+
+<div class="el-sr-only" role="status" aria-live="polite" aria-atomic="true">{{ cartAnnouncement }}</div>
+<main id="main-content">
+
+<!-- NEW_HOME_AND_CATALOGS -->
+<!-- СТРАНИЦА ПРОТОКОЛА -->
+<sc-if value="{{ isProgram }}">
+<div class="el-photo-frame el-protocol-hero">
+  <img class="el-photo el-protocol-hero__image" data-el-src="{{ prog.image }}" alt="{{ prog.imageAlt }}" fetchpriority="high" decoding="async">
+</div>
+<section style="max-width:1240px;margin:0 auto;padding:clamp(32px,4cqw,56px) clamp(16px,3cqw,40px) 0;display:flex;flex-wrap:wrap;gap:clamp(24px,4cqw,64px)">
+  <div style="flex:1 1 400px;min-width:270px">
+    <div class="el-brand-kicker" style="font:400 11px/1 'Geologica',sans-serif;color:#6f8492;letter-spacing:.1em;text-transform:uppercase">{{ prog.goal }}</div>
+    <h1 style="font:600 clamp(30px,4.2cqw,58px)/1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:12px 0 0;text-wrap:balance">{{ prog.name }}</h1>
+    <p class="el-body-copy" style="font:300 clamp(15px,1.35cqw,18px)/1.65 'Geologica',sans-serif;color:#465a67;margin:18px 0 0;max-width:560px;text-wrap:pretty">{{ prog.long }}</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:24px">
+      <sc-for list="{{ prog.tags }}" as="t" hint-placeholder-count="4">
+        <span style="padding:8px 14px;background:#f8fbfd;border:1px solid #d2e3ed;border-radius:2px;font:300 13px/1 'Geologica',sans-serif;color:#465a67">{{ t }}</span>
+      </sc-for>
+    </div>
+  </div>
+  <div style="flex:0 1 320px;min-width:260px">
+    <div style="background:#f8fbfd;border:1px solid #8e242e;border-radius:2px;padding:26px">
+      <div class="el-brand-kicker el-brand-kicker--compact" style="font:400 11px/1 'Geologica',sans-serif;color:#6f8492;letter-spacing:.09em;text-transform:uppercase">Коротко о протоколе</div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin:18px 0 22px">
+        <sc-for list="{{ prog.facts }}" as="f" hint-placeholder-count="4">
+          <div style="display:flex;gap:12px;justify-content:space-between;border-bottom:1px solid #e3edf3;padding-bottom:10px">
+            <span class="el-protocol-fact-key" style="font:300 13px/1.4 'Geologica',sans-serif;color:#6f8492">{{ f.k }}</span>
+            <span style="font:400 13px/1.4 'Geologica',sans-serif;color:#23333d;text-align:right">{{ f.v }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <button data-el-app-intent="order" onClick="{{ openOrder }}" style="width:100%;padding:17px 24px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 16px/1 'Geologica',sans-serif;cursor:pointer" style-hover="background:#5f8dbb">Оставить заявку</button>
+      <div class="el-body-copy" style="font:300 12px/1.5 'Geologica',sans-serif;color:#7a909d;margin-top:12px;text-align:center">Перезвоним и уточним детали старта</div>
+    </div>
+  </div>
+</section>
+
+<section class="el-protocol-menu" style="max-width:1240px;margin:0 auto;padding:clamp(40px,5cqw,72px) clamp(16px,3cqw,40px) 0">
+  <h2 style="font:500 clamp(22px,2.6cqw,32px)/1.1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 20px">Меню на 28 дней</h2>
+  <p class="el-body-copy" style="font:300 15px/1.6 'Geologica',sans-serif;color:#465a67;margin:0 0 clamp(24px,3cqw,40px);max-width:700px">Все 28 рационов собраны в одном меню. Состав и порции уже зафиксированы; выбор блюд на сайте не предусмотрен.</p>
+  <div style="display:flex;flex-direction:column;gap:clamp(28px,4cqw,52px)">
+    <sc-for list="{{ menuDays }}" as="d" hint-placeholder-count="4">
+      <article class="el-menu-day">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(22px,3cqw,40px)">
+          <sc-for list="{{ d.meals }}" as="m" hint-placeholder-count="3">
+            <div>
+              <div class="el-brand-kicker el-brand-kicker--compact" style="font:500 12px/1 'Geologica',sans-serif;color:#719dc9;letter-spacing:.09em;text-transform:uppercase;border-bottom:2px solid #8e242e;padding-bottom:10px">{{ m.slot }}</div>
+              <ul style="margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px">
+                <sc-for list="{{ m.items }}" as="it" hint-placeholder-count="5">
+                  <li style="font:300 14px/1.45 'Geologica',sans-serif;color:#394c58">{{ it }}</li>
+                </sc-for>
+              </ul>
+            </div>
+          </sc-for>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section style="max-width:1240px;margin:0 auto;padding:clamp(40px,5cqw,72px) clamp(16px,3cqw,40px) 0">
+  <h2 style="font:500 clamp(22px,2.6cqw,32px)/1.1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 20px">Особые условия протокола</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px">
+    <sc-for list="{{ prog.rules }}" as="r" hint-placeholder-count="6">
+      <div style="display:flex;gap:14px;background:#f8fbfd;border:1px solid #d2e3ed;border-radius:2px;padding:18px">
+        <span aria-hidden="true" style="flex:0 0 auto;width:7px;height:7px;margin-top:7px;background:#719dc9;border-radius:50%"></span>
+        <span class="el-card-description" style="font:300 14px/1.6 'Geologica',sans-serif;color:#394c58;text-wrap:pretty">{{ r }}</span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section style="max-width:1240px;margin:0 auto;padding:clamp(40px,5cqw,72px) clamp(16px,3cqw,40px) 0">
+  <div style="background:#bddced;border-radius:2px;padding:clamp(24px,3cqw,44px);display:flex;flex-wrap:wrap;gap:clamp(20px,3cqw,56px)">
+    <div style="flex:1 1 260px">
+      <h2 style="font:500 clamp(20px,2.2cqw,28px)/1.1 'Oswald',sans-serif;text-transform:uppercase;color:#0f4d7a;margin:0">Доставка</h2>
+      <p style="font:300 15px/1.65 'Geologica',sans-serif;color:#28455c;margin:14px 0 0;text-wrap:pretty">Привозим рационы каждый день с 6:00 до 9:00 по Махачкале — бесплатно. В Каспийск, Избербаш и Дербент доставляем через день, также с 6:00 до 9:00.</p>
+    </div>
+    <div style="flex:1 1 260px">
+      <h3 style="font:500 clamp(20px,2.2cqw,28px)/1.1 'Oswald',sans-serif;text-transform:uppercase;color:#0f4d7a;margin:0">Оплата</h3>
+      <p style="font:300 15px/1.65 'Geologica',sans-serif;color:#28455c;margin:14px 0 0;text-wrap:pretty">Онлайн картой при оформлении или 50/50: половина суммы при заказе, вторая — в середине цикла.</p>
+    </div>
+  </div>
+  <a href="{{ hrefHome }}" onClick="{{ goHome }}" style="display:inline-block;margin:clamp(32px,4cqw,52px) 0 clamp(80px,9cqw,140px);font:400 15px/1 'Geologica',sans-serif;color:#8e242e;border-bottom:1px solid #b8d2e1;padding-bottom:3px">← Вернуться на главную</a>
+</section>
+
+<div class="el-protocol-sticky" style="position:sticky;bottom:0;z-index:30;background:#ffffff;border-top:1px solid #8e242e;padding:14px clamp(16px,3cqw,40px)">
+  <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <div class="el-protocol-sticky__summary">
+      <div style="font:300 12px/1 'Geologica',sans-serif;color:#6f8492">{{ prog.name }}</div>
+      <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px">
+        <span style="font:700 clamp(18px,2cqw,24px)/1 'Podkova',serif;color:#8e242e">Фиксированное меню</span>
+        <span style="font:300 13px/1 'Geologica',sans-serif;color:#6f8492">28 дней</span>
+      </div>
+    </div>
+    <button data-el-app-intent="order" onClick="{{ openOrder }}" style="padding:15px 30px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer;white-space:nowrap" style-hover="background:#5f8dbb">Оставить заявку</button>
+  </div>
+</div>
+</sc-if>
+
+<!-- ТЕКСТОВАЯ СТРАНИЦА ИЗ CMS -->
+<sc-if value="{{ isText }}">
+<section style="max-width:1240px;margin:0 auto;padding:clamp(32px,4cqw,64px) clamp(16px,3cqw,40px) clamp(56px,7cqw,100px)">
+  <h1 style="font:600 clamp(32px,4.6cqw,64px)/1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 clamp(28px,3.4cqw,48px);max-width:900px;text-wrap:balance">{{ textPage.title }}</h1>
+  <div style="max-width:760px">
+    <sc-for list="{{ textPage.body }}" as="b" hint-placeholder-count="6">
+      <sc-if value="{{ b.isH }}">
+        <h2 style="font:500 clamp(20px,2.2cqw,28px)/1.15 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:clamp(32px,3.4cqw,48px) 0 14px">{{ b.text }}</h2>
+      </sc-if>
+      <sc-if value="{{ b.isP }}">
+        <p style="font:300 clamp(15px,1.3cqw,17px)/1.75 'Geologica',sans-serif;color:#394c58;margin:0 0 16px;text-wrap:pretty">{{ b.text }}</p>
+      </sc-if>
+      <sc-if value="{{ b.isList }}">
+        <ul style="margin:0 0 16px;padding-left:20px;display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ b.items }}" as="li" hint-placeholder-count="3">
+            <li style="font:300 clamp(15px,1.3cqw,17px)/1.7 'Geologica',sans-serif;color:#394c58">{{ li }}</li>
+          </sc-for>
+        </ul>
+      </sc-if>
+      <sc-if value="{{ b.isPhoto }}">
+        <div class="el-photo-frame" style="aspect-ratio:16/9;margin:24px 0 28px;border:1px solid #d2e3ed">
+          <sc-if value="{{ b.hasImage }}"><img class="el-photo" data-el-src="{{ b.image }}" alt="{{ b.alt }}" loading="lazy" decoding="async"></sc-if>
+          <sc-if value="{{ !b.hasImage }}"><span class="el-photo-placeholder-label">{{ b.text }}</span></sc-if>
+        </div>
+      </sc-if>
+      <sc-if value="{{ b.isFacts }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:8px 0 28px">
+          <sc-for list="{{ b.items }}" as="f" hint-placeholder-count="3">
+            <div style="background:#f8fbfd;border:1px solid #d2e3ed;border-radius:2px;padding:18px">
+              <div style="font:400 11px/1 'Geologica',sans-serif;color:#6f8492;letter-spacing:.08em;text-transform:uppercase">{{ f.k }}</div>
+              <div style="font:400 16px/1.45 'Geologica',sans-serif;color:#23333d;margin-top:8px">{{ f.v }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </sc-for>
+  </div>
+</section>
+</sc-if>
+
+<!-- ОТЗЫВЫ -->
+<sc-if value="{{ isReviews }}">
+<section style="max-width:1240px;margin:0 auto;padding:clamp(32px,4cqw,64px) clamp(16px,3cqw,40px) clamp(56px,7cqw,100px)">
+  <h1 style="font:600 clamp(32px,4.6cqw,64px)/1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 clamp(28px,3.4cqw,48px)">Отзывы</h1>
+  <sc-if value="{{ hasReviews }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(16px,2.2cqw,28px)">
+      <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="6">
+        <div style="background:#f8fbfd;border:1px solid #d2e3ed;border-radius:2px;padding:26px">
+          <div style="font:400 15px/1 'Geologica',sans-serif;color:#719dc9;letter-spacing:.14em">{{ r.stars }}</div>
+          <p style="font:300 15px/1.65 'Geologica',sans-serif;color:#394c58;margin:14px 0 18px;text-wrap:pretty">{{ r.text }}</p>
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:10px">
+            <span style="font:500 14px/1 'Geologica',sans-serif;color:#8e242e">{{ r.name }}</span>
+            <span style="font:300 13px/1 'Geologica',sans-serif;color:#7a909d">{{ r.program }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{ reviewsEmpty }}" hint-placeholder-val="{{ true }}">
+    <div style="max-width:640px;background:#f8fbfd;border:1px solid #d2e3ed;border-radius:2px;padding:clamp(32px,4cqw,60px);text-align:center">
+      <img src="/easyline-site/assets/mascot-line-CpwpY2Zd.svg" alt="" style="width:clamp(96px,10cqw,132px);height:auto;margin:0 auto 20px;display:block;opacity:.85">
+      <div style="font:500 clamp(20px,2.2cqw,28px)/1.15 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e">Отзывов пока нет</div>
+      <p style="font:300 15px/1.7 'Geologica',sans-serif;color:#465a67;margin:14px auto 26px;max-width:420px;text-wrap:pretty">Мы только начали работать в Махачкале. Первые отзывы появятся здесь, когда клиенты закончат первый цикл — публикуем всё без правок.</p>
+      <button data-el-app-intent="order" onClick="{{ openOrder }}" style="padding:16px 28px;background:#719dc9;color:#ffffff;border:none;border-radius:2px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer" style-hover="background:#5f8dbb">Начать протокол</button>
+    </div>
+  </sc-if>
+</section>
+</sc-if>
+
+<!-- FAQ -->
+<sc-if value="{{ isFaq }}">
+<section style="max-width:900px;margin:0 auto;padding:clamp(32px,4cqw,64px) clamp(16px,3cqw,40px) clamp(56px,7cqw,100px)">
+  <h1 style="font:600 clamp(32px,4.6cqw,64px)/1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 clamp(24px,3cqw,40px)">Частые вопросы</h1>
+  <sc-for list="{{ faq }}" as="f" hint-placeholder-count="8">
+    <div style="border-bottom:1px solid #c8dce8">
+      <button id="{{ f.buttonId }}" onClick="{{ f.toggle }}" aria-expanded="{{ f.isOpen }}" aria-controls="{{ f.panelId }}" style="width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:22px 0;background:transparent;border:none;cursor:pointer;text-align:left">
+        <span style="font:400 clamp(16px,1.5cqw,19px)/1.4 'Geologica',sans-serif;color:#23333d">{{ f.q }}</span>
+        <span style="font:400 22px/1 'Oswald',sans-serif;color:#719dc9;flex:0 0 auto">{{ f.sign }}</span>
+      </button>
+      <p id="{{ f.panelId }}" hidden="{{ !f.isOpen }}" aria-hidden="{{ !f.isOpen }}" role="region" aria-labelledby="{{ f.buttonId }}" style="font:300 15px/1.7 'Geologica',sans-serif;color:#465a67;margin:0;padding:0 40px 24px 0;text-wrap:pretty">{{ f.a }}</p>
+    </div>
+  </sc-for>
+</section>
+</sc-if>
+
+<!-- ЮР-ДОКУМЕНТЫ -->
+<sc-if value="{{ isLegal }}">
+<section style="max-width:1240px;margin:0 auto;padding:clamp(32px,4cqw,64px) clamp(16px,3cqw,40px) clamp(56px,7cqw,100px);display:flex;flex-wrap:wrap;gap:clamp(28px,4cqw,64px)">
+  <aside style="flex:0 1 260px;min-width:220px">
+    <div class="el-brand-kicker el-brand-kicker--compact" style="font:400 11px/1 'Geologica',sans-serif;color:#6f8492;letter-spacing:.09em;text-transform:uppercase;margin-bottom:14px">Документы</div>
+    <nav aria-label="Юридические документы" style="display:flex;flex-direction:column">
+      <sc-for list="{{ legalDocs }}" as="d" hint-placeholder-count="9">
+        <a href="{{ d.href }}" onClick="{{ d.open }}" aria-current="{{ d.current }}" style="font:300 14px/1.45 'Geologica',sans-serif;color:{{ d.color }};padding:10px 0;border-bottom:1px solid #e3edf3">{{ d.title }}</a>
+      </sc-for>
+    </nav>
+  </aside>
+  <div style="flex:1 1 460px;min-width:280px;max-width:760px">
+    <h1 style="font:600 clamp(26px,3.4cqw,44px)/1.05 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 10px;text-wrap:balance">{{ legal.title }}</h1>
+    <div style="font:300 13px/1.5 'Geologica',sans-serif;color:#7a909d;margin-bottom:24px">{{ legal.note }}</div>
+    <sc-for list="{{ legal.body }}" as="b" hint-placeholder-count="6">
+      <sc-if value="{{ b.isH }}">
+        <h2 style="font:500 clamp(17px,1.7cqw,21px)/1.2 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:30px 0 12px">{{ b.text }}</h2>
+      </sc-if>
+      <sc-if value="{{ b.isP }}">
+        <p style="font:300 15px/1.75 'Geologica',sans-serif;color:#394c58;margin:0 0 14px;text-wrap:pretty">{{ b.text }}</p>
+      </sc-if>
+    </sc-for>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px">
+      <a href="{{ legal.pdfHref }}" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;padding:14px 22px;background:#8e242e;color:#ffffff;border:1px solid #8e242e;border-radius:2px;font:500 14px/1 'Geologica',sans-serif">Открыть PDF</a>
+      <a href="{{ legal.docxHref }}" download style="display:inline-flex;align-items:center;padding:14px 22px;background:#ffffff;color:#8e242e;border:1px solid #8e242e;border-radius:2px;font:500 14px/1 'Geologica',sans-serif">Скачать DOCX</a>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ showApplicationForm }}">
+  <section id="application" style="background:#e4f0f7;border-top:1px solid #c8dce8">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(44px,6cqw,84px) clamp(16px,3cqw,40px);display:flex;flex-wrap:wrap;gap:clamp(28px,5cqw,76px);align-items:flex-start">
+      <div style="flex:1 1 360px;max-width:540px">
+        <h2 style="font:600 clamp(28px,3.8cqw,52px)/1.02 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0;text-wrap:balance">Оставьте заявку</h2>
+        <p style="font:300 clamp(15px,1.3cqw,17px)/1.65 'Geologica',sans-serif;color:#465a67;margin:18px 0 0;max-width:520px;text-wrap:pretty">Оставьте имя и телефон. Мы перезвоним, ответим на вопросы и уточним детали старта протокола.</p>
+        <p style="font:300 14px/1.65 'Geologica',sans-serif;color:#465a67;margin:22px 0 0">Или свяжитесь напрямую: <a href="tel:+79640182373" style="font-weight:500;text-decoration:underline;text-underline-offset:4px">+7 964 018-23-73</a> · <a href="https://wa.me/79640182373" target="_blank" rel="noreferrer" style="font-weight:500;text-decoration:underline;text-underline-offset:4px">WhatsApp</a></p>
+      </div>
+      <form id="application-form" onSubmit="{{ submitApplication }}" style="flex:1 1 360px;max-width:560px;background:#ffffff;border:1px solid #8e242e;padding:clamp(22px,3cqw,36px);display:flex;flex-direction:column;gap:18px">
+        <label style="font:400 14px/1.4 'Geologica',sans-serif;color:#23333d">Имя
+          <input name="name" type="text" autocomplete="name" minlength="2" maxlength="80" required="{{ true }}" placeholder="Как к вам обращаться" style="display:block;width:100%;margin-top:8px;padding:15px 16px;background:#ffffff;border:1px solid #9ab5c5;border-radius:2px;font:400 16px/1 'Geologica',sans-serif;color:#23333d">
+        </label>
+        <label style="font:400 14px/1.4 'Geologica',sans-serif;color:#23333d">Номер телефона
+          <input name="phone" type="tel" autocomplete="tel" inputmode="tel" required="{{ true }}" placeholder="+7 900 000-00-00" style="display:block;width:100%;margin-top:8px;padding:15px 16px;background:#ffffff;border:1px solid #9ab5c5;border-radius:2px;font:400 16px/1 'Geologica',sans-serif;color:#23333d">
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:10px;font:300 13px/1.5 'Geologica',sans-serif;color:#465a67;cursor:pointer">
+          <input name="privacy" type="checkbox" required="{{ true }}" style="width:18px;height:18px;margin:1px 0 0;accent-color:#8e242e;flex:0 0 auto">
+          <span>Я согласен(а) на обработку персональных данных согласно <a href="{{ hrefPrivacy }}" onClick="{{ goPrivacy }}" style="text-decoration:underline;text-underline-offset:3px">политике обработки персональных данных</a>.</span>
+        </label>
+        <button type="submit" disabled="{{ applicationSending }}" style="padding:16px 24px;background:#8e242e;color:#ffffff;border:1px solid #8e242e;border-radius:2px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer">{{ applicationButton }}</button>
+        <sc-if value="{{ applicationError }}"><p role="alert" style="font:400 13px/1.55 'Geologica',sans-serif;color:#8e242e;margin:0">{{ applicationError }}</p></sc-if>
+        <sc-if value="{{ applicationSent }}"><p role="status" style="font:400 13px/1.55 'Geologica',sans-serif;color:#0f4d7a;margin:0">Заявка отправлена. Скоро мы вам позвоним.</p></sc-if>
+      </form>
+    </div>
+  </section>
+</sc-if>
+
+<sc-if value="{{ isNotFound }}">
+  <section style="min-height:62vh;max-width:900px;margin:0 auto;padding:clamp(64px,9cqw,130px) clamp(16px,3cqw,40px);text-align:center;display:grid;place-items:center"><div><div style="font:700 clamp(70px,10cqw,140px)/.8 'Podkova',serif;color:#719dc9">404</div><h1 style="font:600 clamp(32px,4.6cqw,64px)/1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:24px 0 0">Такой страницы нет</h1><p style="font:300 16px/1.65 'Geologica',sans-serif;color:#465a67;margin:18px auto 28px;max-width:520px">Ссылка могла устареть. Вернитесь на главную и выберите нужное направление.</p><div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px"><button onClick="{{ goHome }}" style="padding:15px 26px;background:#719dc9;color:#ffffff;border:0;font:500 15px/1 'Geologica',sans-serif;cursor:pointer">На главную</button><button onClick="{{ goPrograms }}" style="padding:15px 26px;background:transparent;color:#8e242e;border:1px solid #8e242e;font:500 15px/1 'Geologica',sans-serif;cursor:pointer">Протокол 28 дней</button></div></div></section>
+</sc-if>
+</main>
+
+<footer style="background:#8e242e;color:#ffffff;position:relative">
+  <div style="height:14px;background:repeating-linear-gradient(90deg,#bddced 0 18px,#ffffff 18px 36px,#bbdcef 36px 54px,#ffffff 54px 72px,#d8e8f2 72px 90px,#ffffff 90px 108px,#a9cadf 108px 126px,#ffffff 126px 144px)"></div>
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(40px,5cqw,72px) clamp(16px,3cqw,40px) clamp(28px,3cqw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(28px,3.4cqw,56px)">
+    <div>
+      <img src="/easyline-site/assets/logo-cream-D09r1U-t.svg" alt="EasyLine" style="width:clamp(112px,11cqw,148px);height:auto;display:block">
+      <p style="font:300 14px/1.65 'Geologica',sans-serif;color:#dbe9f1;margin:20px 0 0;max-width:300px;text-wrap:pretty">Протокол питания на 28 дней, корпоративные обеды и готовые блюда на каждый день.</p>
+      <div style="font:300 13px/1.7 'Geologica',sans-serif;color:#c9dce8;margin-top:18px"><a href="tel:+79640182373" style="color:#ffffff;text-decoration:underline;text-underline-offset:4px">+7 964 018-23-73</a><br><a href="https://wa.me/79640182373" target="_blank" rel="noreferrer" style="color:#ffffff;text-decoration:underline;text-underline-offset:4px">WhatsApp</a> · <a href="mailto:hello@easyline.club" style="color:#ffffff;text-decoration:underline;text-underline-offset:4px">hello@easyline.club</a><br>Ежедневно 8:00–20:00</div>
+      <div aria-label="Социальные сети" style="display:flex;align-items:center;gap:10px;margin-top:18px">
+        <a data-el-social="telegram" href="" aria-disabled="true" tabindex="-1" onClick="{{ disableSocial }}" aria-label="Telegram — ссылка скоро появится" title="Telegram — ссылка скоро появится" style="width:38px;height:38px;display:grid;place-items:center;color:#ffffff;border:1px solid #b55b66;border-radius:2px;opacity:.55;cursor:not-allowed">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M21.4 3.3 3.8 10.1c-1.2.5-1.2 1.1-.2 1.4l4.5 1.4 1.7 5.3c.2.6.1.9.8.9.5 0 .8-.2 1-.5l2.5-2.4 5 3.7c.9.5 1.6.2 1.8-.9l3-14.2c.3-1.4-.5-2-1.5-1.5ZM9.8 12.6l8.7-5.5c.4-.3.8-.1.5.2l-7.2 6.5-.3 3.4-1.7-4.6Z"/></svg>
+        </a>
+        <a data-el-social="instagram" href="" aria-disabled="true" tabindex="-1" onClick="{{ disableSocial }}" aria-label="Instagram — ссылка скоро появится" title="Instagram — ссылка скоро появится" style="width:38px;height:38px;display:grid;place-items:center;color:#ffffff;border:1px solid #b55b66;border-radius:2px;opacity:.55;cursor:not-allowed">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div style="font:500 11px/1 'Geologica',sans-serif;color:#b7d2e2;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px">Разделы</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <sc-for list="{{ footerSections }}" as="s" hint-placeholder-count="5">
+          <a href="{{ s.href }}" onClick="{{ s.onClick }}" style="font:300 15px/1.3 'Geologica',sans-serif;color:#ffffff" style-hover="color:#bbdcef">{{ s.label }}</a>
+        </sc-for>
+      </div>
+    </div>
+    <div>
+      <div style="font:500 11px/1 'Geologica',sans-serif;color:#b7d2e2;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px">Документы</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <sc-for list="{{ footerDocs }}" as="d" hint-placeholder-count="4">
+          <a href="{{ d.href }}" onClick="{{ d.onClick }}" style="font:300 15px/1.3 'Geologica',sans-serif;color:#ffffff" style-hover="color:#bbdcef">{{ d.label }}</a>
+        </sc-for>
+      </div>
+    </div>
+    <div class="el-removed-art" style="display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;gap:14px">
+      <img src="/easyline-site/assets/mascot-line-cream-BrTVyh0a.svg" alt="" style="width:clamp(128px,13cqw,190px);height:auto;display:block">
+      <div style="font:300 12px/1.5 'Geologica',sans-serif;color:#b7d2e2;letter-spacing:.06em;text-transform:uppercase;text-align:right">Барс — символ EasyLine</div>
+    </div>
+  </div>
+  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(16px,3cqw,40px) clamp(32px,4cqw,52px);display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;border-top:1px solid #b55b66;padding-top:24px">
+    <div style="font:300 13px/1.5 'Geologica',sans-serif;color:#c9dce8;min-width:0;overflow-wrap:anywhere">© 2026 EasyLine · ИП Ибрагимов Рамазан Расулович · ИНН 054600890467 · ОГРНИП 326050000092094</div>
+    <img src="/easyline-site/assets/script-be-easy-yellow-Y0GVzQ1M.svg" alt="be easy" style="width:96px;height:auto;opacity:.9">
+  </div>
+</footer>
+
+</div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1200},&quot;viewport&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;tablet&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Прототип&quot;},&quot;showStickers&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Стиль&quot;}}">
+<!-- EASYLINE_LOGIC -->
+</script>
+<script src="/easyline-site/assets/nunito-typography.js"></script>
+<script src="/easyline-site/assets/accessible-digital.js"></script>
+</body>
+</html>

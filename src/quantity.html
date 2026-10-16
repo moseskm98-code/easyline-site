@@ -1,0 +1,5 @@
+<div class="el-quantity" role="group" aria-label="{{ item.name }}">
+  <button type="button" onClick="{{ item.minus }}" aria-label="{{ item.minusLabel }}">−</button>
+  <span aria-label="Количество">{{ item.quantity }}</span>
+  <button type="button" onClick="{{ item.add }}" disabled="{{ item.atLimit }}" aria-label="{{ item.plusLabel }}">+</button>
+</div>
