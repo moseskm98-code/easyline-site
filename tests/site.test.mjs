@@ -8,7 +8,7 @@ const readability = await readFile(new URL("assets/readability-overrides.css", r
 const menuSource = await readFile(new URL("assets/menu-data-6F787N4k.js", root), "utf8");
 
 test("menu refresh retains the protocol and adds two catalog directions", async () => {
-  assert.match(index, /window\.__EASYLINE_VARIANT__ = "2\.3\.0-preview"/);
+  assert.match(index, /window\.__EASYLINE_VARIANT__ = "2\.3\.0-images-preview"/);
   assert.match(index, /<form[^>]+onSubmit="\{\{ submitApplication \}\}"/);
   assert.ok(index.includes("history.replaceState({},'',PAGES_BASE + '/programs/protokol-28')"), 'legacy programs URL resolves to protocol');
   assert.doesNotMatch(index, /data-el-app-intent="auth"|>Войти</);

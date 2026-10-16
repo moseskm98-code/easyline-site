@@ -196,7 +196,7 @@ class Component extends DCLogic {
     const card = item => {
       const quantity = S.cart[item.id] || 0;
       return { ...item, quantity, inCart:quantity > 0, atLimit:quantity >= 99,
-        hasImage:!!item.image, imageAlt:item.name,
+        hasImage:!!item.image, imageAlt:(item.imageNote ? 'Предварительная иллюстрация: ' : '') + item.name,
         priceLabel:item.priceRub == null ? 'Цена уточняется' : item.priceRub.toLocaleString('ru-RU') + ' ₽',
         eyebrow:item.direction === 'corporate-lunches' ? 'Обед ' + item.number : (M?.CATEGORIES.find(category => category.id === item.category)?.label || ''),
         addLabel:'Добавить в корзину: ' + item.name,

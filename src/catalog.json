@@ -43,7 +43,9 @@
       "protein": null,
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/lunch-01.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "lunch-02",
@@ -56,7 +58,9 @@
       "protein": null,
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/lunch-02.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "lunch-03",
@@ -69,7 +73,9 @@
       "protein": null,
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/lunch-03.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "lunch-04",
@@ -82,7 +88,9 @@
       "protein": null,
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/lunch-04.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "lunch-05",
@@ -95,7 +103,9 @@
       "protein": null,
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/lunch-05.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "lunch-06",
@@ -108,7 +118,9 @@
       "protein": null,
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/lunch-06.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "lunch-07",
@@ -121,7 +133,9 @@
       "protein": null,
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/lunch-07.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "lunch-08",
@@ -134,7 +148,9 @@
       "protein": null,
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/lunch-08.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "lunch-09",
@@ -147,7 +163,9 @@
       "protein": null,
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/lunch-09.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "lunch-10",
@@ -160,7 +178,9 @@
       "protein": null,
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/lunch-10.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "lunch-11",
@@ -173,7 +193,9 @@
       "protein": null,
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/lunch-11.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "lunch-12",
@@ -186,7 +208,9 @@
       "protein": null,
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/lunch-12.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "lunch-13",
@@ -199,7 +223,9 @@
       "protein": null,
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/lunch-13.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-01",
@@ -212,7 +238,9 @@
       "protein": "turkey",
       "wholegrain": false,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-01.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-02",
@@ -225,7 +253,9 @@
       "protein": "beef",
       "wholegrain": false,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-02.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-03",
@@ -238,7 +268,9 @@
       "protein": "chicken",
       "wholegrain": false,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-03.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-04",
@@ -251,7 +283,9 @@
       "protein": "chicken",
       "wholegrain": false,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-04.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-05",
@@ -264,7 +298,9 @@
       "protein": "turkey",
       "wholegrain": false,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-05.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-06",
@@ -277,7 +313,9 @@
       "protein": "beef",
       "wholegrain": false,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-06.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-07",
@@ -290,7 +328,9 @@
       "protein": null,
       "wholegrain": false,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-07.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-08",
@@ -303,7 +343,9 @@
       "protein": "beef",
       "wholegrain": false,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-08.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-09",
@@ -316,7 +358,9 @@
       "protein": "chicken",
       "wholegrain": false,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-09.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-10",
@@ -329,7 +373,9 @@
       "protein": null,
       "wholegrain": false,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-10.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-11",
@@ -342,7 +388,9 @@
       "protein": "chicken",
       "wholegrain": true,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-11.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-12",
@@ -355,7 +403,9 @@
       "protein": "beef",
       "wholegrain": true,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-12.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-13",
@@ -368,7 +418,9 @@
       "protein": "chicken",
       "wholegrain": true,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-13.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-14",
@@ -381,7 +433,9 @@
       "protein": "beef",
       "wholegrain": true,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-14.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-15",
@@ -394,7 +448,9 @@
       "protein": "turkey",
       "wholegrain": true,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-15.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-16",
@@ -407,7 +463,9 @@
       "protein": "chicken",
       "wholegrain": true,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-16.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-17",
@@ -420,7 +478,9 @@
       "protein": "turkey",
       "wholegrain": true,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-17.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-18",
@@ -433,7 +493,9 @@
       "protein": "beef",
       "wholegrain": true,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-18.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-19",
@@ -446,7 +508,9 @@
       "protein": "turkey",
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-19.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-20",
@@ -459,7 +523,9 @@
       "protein": "chicken",
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-20.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-21",
@@ -472,7 +538,9 @@
       "protein": null,
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-21.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-22",
@@ -485,7 +553,9 @@
       "protein": null,
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-22.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-23",
@@ -498,7 +568,9 @@
       "protein": "chicken",
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-23.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-24",
@@ -511,7 +583,9 @@
       "protein": "turkey",
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-24.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     },
     {
       "id": "assortment-25",
@@ -524,7 +598,9 @@
       "protein": "shrimp",
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-25.jpg",
+      "imageStatus": "reference-based",
+      "imageNote": null
     },
     {
       "id": "assortment-26",
@@ -537,7 +613,9 @@
       "protein": null,
       "wholegrain": null,
       "priceRub": null,
-      "image": null
+      "image": "/easyline-site/assets/menu-images/assortment-26.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
     }
   ]
 }

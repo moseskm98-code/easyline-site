@@ -1,0 +1,283 @@
+{
+  "date": "2026-10-17",
+  "generationTool": "built-in image_gen",
+  "assetDirectory": "assets/menu-images",
+  "originals": "../outputs/food-images-all-39-2026-10-17/images",
+  "prompts": "../outputs/food-images-all-39-2026-10-17/prompts-final.json",
+  "sourceNote": "Предварительные иллюстрации разрешены пользователем. Рецептура, размеры порций и подача не подтверждены.",
+  "items": [
+    {
+      "id": "lunch-01",
+      "name": "Пюре с куриной котлетой + салат, хлеб",
+      "image": "/easyline-site/assets/menu-images/lunch-01.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "lunch-02",
+      "name": "Макароны с говяжьей котлетой + квашеная капуста",
+      "image": "/easyline-site/assets/menu-images/lunch-02.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "lunch-03",
+      "name": "Голубцы, салат + хлеб",
+      "image": "/easyline-site/assets/menu-images/lunch-03.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "lunch-04",
+      "name": "Плов с курицей, салат",
+      "image": "/easyline-site/assets/menu-images/lunch-04.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "lunch-05",
+      "name": "Плов с говядиной, салат",
+      "image": "/easyline-site/assets/menu-images/lunch-05.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "lunch-06",
+      "name": "Гречка с подливой, салат",
+      "image": "/easyline-site/assets/menu-images/lunch-06.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "lunch-07",
+      "name": "Оливье, пшёнка с подливой",
+      "image": "/easyline-site/assets/menu-images/lunch-07.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "lunch-08",
+      "name": "Крабовый салат, киноа, котлета",
+      "image": "/easyline-site/assets/menu-images/lunch-08.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "lunch-09",
+      "name": "Спагетти и говяжий фарш, квашеная капуста",
+      "image": "/easyline-site/assets/menu-images/lunch-09.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "lunch-10",
+      "name": "Запеканка, квашеная капуста",
+      "image": "/easyline-site/assets/menu-images/lunch-10.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "lunch-11",
+      "name": "Борщ, хлеб, овощи",
+      "image": "/easyline-site/assets/menu-images/lunch-11.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "lunch-12",
+      "name": "Запечённые грибы, овощи, курица, амарант",
+      "image": "/easyline-site/assets/menu-images/lunch-12.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "lunch-13",
+      "name": "Рис с говяжьим фаршем, квашеная капуста",
+      "image": "/easyline-site/assets/menu-images/lunch-13.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-01",
+      "name": "Чиабатта с индейкой",
+      "image": "/easyline-site/assets/menu-images/assortment-01.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-02",
+      "name": "Чиабатта с говядиной",
+      "image": "/easyline-site/assets/menu-images/assortment-02.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-03",
+      "name": "Чиабатта с курицей",
+      "image": "/easyline-site/assets/menu-images/assortment-03.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-04",
+      "name": "Сэндвич с курицей",
+      "image": "/easyline-site/assets/menu-images/assortment-04.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-05",
+      "name": "Сэндвич с индейкой",
+      "image": "/easyline-site/assets/menu-images/assortment-05.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-06",
+      "name": "Сэндвич с говядиной",
+      "image": "/easyline-site/assets/menu-images/assortment-06.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-07",
+      "name": "Сэндвич с томлёным мясом",
+      "image": "/easyline-site/assets/menu-images/assortment-07.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-08",
+      "name": "Бургер с говядиной",
+      "image": "/easyline-site/assets/menu-images/assortment-08.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-09",
+      "name": "Бургер с курицей",
+      "image": "/easyline-site/assets/menu-images/assortment-09.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-10",
+      "name": "Чизбургер",
+      "image": "/easyline-site/assets/menu-images/assortment-10.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-11",
+      "name": "Цельнозерновой бургер с курицей",
+      "image": "/easyline-site/assets/menu-images/assortment-11.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-12",
+      "name": "Цельнозерновой бургер с говядиной",
+      "image": "/easyline-site/assets/menu-images/assortment-12.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-13",
+      "name": "Цельнозерновая чиабатта с курицей",
+      "image": "/easyline-site/assets/menu-images/assortment-13.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-14",
+      "name": "Цельнозерновая чиабатта с говядиной",
+      "image": "/easyline-site/assets/menu-images/assortment-14.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-15",
+      "name": "Цельнозерновая чиабатта с индейкой",
+      "image": "/easyline-site/assets/menu-images/assortment-15.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-16",
+      "name": "Цельнозерновой сэндвич с курицей",
+      "image": "/easyline-site/assets/menu-images/assortment-16.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-17",
+      "name": "Цельнозерновой сэндвич с индейкой",
+      "image": "/easyline-site/assets/menu-images/assortment-17.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-18",
+      "name": "Цельнозерновой сэндвич с говядиной",
+      "image": "/easyline-site/assets/menu-images/assortment-18.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-19",
+      "name": "Тортилья с индейкой",
+      "image": "/easyline-site/assets/menu-images/assortment-19.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-20",
+      "name": "Тортилья с курицей",
+      "image": "/easyline-site/assets/menu-images/assortment-20.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-21",
+      "name": "Хот-дог",
+      "image": "/easyline-site/assets/menu-images/assortment-21.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-22",
+      "name": "Острый хот-дог",
+      "image": "/easyline-site/assets/menu-images/assortment-22.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-23",
+      "name": "Боул с курицей",
+      "image": "/easyline-site/assets/menu-images/assortment-23.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-24",
+      "name": "Боул с индейкой",
+      "image": "/easyline-site/assets/menu-images/assortment-24.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    },
+    {
+      "id": "assortment-25",
+      "name": "Боул с креветкой",
+      "image": "/easyline-site/assets/menu-images/assortment-25.jpg",
+      "imageStatus": "reference-based",
+      "imageNote": null
+    },
+    {
+      "id": "assortment-26",
+      "name": "Сосиска в тесте",
+      "image": "/easyline-site/assets/menu-images/assortment-26.jpg",
+      "imageStatus": "preliminary",
+      "imageNote": "Изображение предварительное. Состав и подачу нужно уточнить."
+    }
+  ]
+}

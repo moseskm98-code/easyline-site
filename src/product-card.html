@@ -1,5 +1,6 @@
 <article class="el-product-card" data-product-id="{{ item.id }}">
-  <sc-if value="{{ item.hasImage }}"><div class="el-product-card__photo"><img src="{{ item.image }}" alt="{{ item.imageAlt }}" loading="lazy" decoding="async"></div></sc-if>
+  <sc-if value="{{ item.hasImage }}"><div class="el-product-card__photo"><img src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></div></sc-if>
+  <sc-if value="{{ item.imageNote }}"><p class="el-product-card__image-note">{{ item.imageNote }}</p></sc-if>
   <div class="el-product-card__body">
     <div class="el-eyebrow">{{ item.eyebrow }}</div>
     <h3>{{ item.title }}</h3>

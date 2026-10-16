@@ -20,7 +20,7 @@
 <link rel="canonical" href="https://easyline.club/contacts/">
 <title>Контакты — EasyLine</title>
 <link rel="icon" href="/easyline-site/assets/logo-Ddt-JyRw.svg" type="image/svg+xml">
-<script>window.__EASYLINE_VARIANT__ = "2.3.0-preview";window.__EASYLINE_SITE_ORIGIN__ = "https://easyline.club";window.__EASYLINE_STATIC_ROUTE_KEY__ = "contacts";</script>
+<script>window.__EASYLINE_VARIANT__ = "2.3.0-images-preview";window.__EASYLINE_SITE_ORIGIN__ = "https://easyline.club";window.__EASYLINE_STATIC_ROUTE_KEY__ = "contacts";</script>
 <script src="/easyline-site/vendor/react.production.min.js"></script>
 <script src="/easyline-site/vendor/react-dom.production.min.js"></script>
 <link rel="preload" href="/easyline-site/assets/nunito-variable-cyrillic.ttf" as="font" type="font/ttf" crossorigin>
@@ -133,7 +133,8 @@ button{font-family:inherit}
 <section class="el-wrap el-section">
   <div class="el-section-heading"><div><span class="el-eyebrow">Обед для рабочего дня</span><h2>Корпоративные обеды</h2></div><a class="el-text-link" href="{{ hrefLunches }}" onClick="{{ goLunches }}">Все 13 комплектов →</a></div>
   <div class="el-product-grid el-home-lunches"><sc-for list="{{ homeLunches }}" as="item" hint-placeholder-count="4"><article class="el-product-card" data-product-id="{{ item.id }}">
-  <sc-if value="{{ item.hasImage }}"><div class="el-product-card__photo"><img src="{{ item.image }}" alt="{{ item.imageAlt }}" loading="lazy" decoding="async"></div></sc-if>
+  <sc-if value="{{ item.hasImage }}"><div class="el-product-card__photo"><img src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></div></sc-if>
+  <sc-if value="{{ item.imageNote }}"><p class="el-product-card__image-note">{{ item.imageNote }}</p></sc-if>
   <div class="el-product-card__body">
     <div class="el-eyebrow">{{ item.eyebrow }}</div>
     <h3>{{ item.title }}</h3>
@@ -204,7 +205,8 @@ button{font-family:inherit}
   <sc-if value="{{ catalogLoading }}"><p role="status" class="el-notice">Загружаем меню…</p></sc-if>
   <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice"><p>Меню не загрузилось. Проверьте соединение и повторите попытку.</p><button type="button" class="el-button" onClick="{{ retryCatalog }}">Загрузить меню</button></div></sc-if>
   <div class="el-product-grid" data-catalog-grid="true"><sc-for list="{{ catalogItems }}" as="item" hint-placeholder-count="6"><article class="el-product-card" data-product-id="{{ item.id }}">
-  <sc-if value="{{ item.hasImage }}"><div class="el-product-card__photo"><img src="{{ item.image }}" alt="{{ item.imageAlt }}" loading="lazy" decoding="async"></div></sc-if>
+  <sc-if value="{{ item.hasImage }}"><div class="el-product-card__photo"><img src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></div></sc-if>
+  <sc-if value="{{ item.imageNote }}"><p class="el-product-card__image-note">{{ item.imageNote }}</p></sc-if>
   <div class="el-product-card__body">
     <div class="el-eyebrow">{{ item.eyebrow }}</div>
     <h3>{{ item.title }}</h3>
@@ -698,7 +700,7 @@ class Component extends DCLogic {
   loadCatalog() {
     this.setState({ catalogLoading:true, catalogError:false });
     const attempt = this._catalogAttempt || 0; this._catalogAttempt = attempt + 1;
-    const url = '/easyline-site/assets/menu-catalog-087459599fa3.js' + (attempt ? '?retry=' + attempt : '');
+    const url = '/easyline-site/assets/menu-catalog-b2e59bfdb87f.js' + (attempt ? '?retry=' + attempt : '');
     import(url)
       .then(module => {
         this.catalogModule = module;
@@ -822,7 +824,7 @@ class Component extends DCLogic {
     const card = item => {
       const quantity = S.cart[item.id] || 0;
       return { ...item, quantity, inCart:quantity > 0, atLimit:quantity >= 99,
-        hasImage:!!item.image, imageAlt:item.name,
+        hasImage:!!item.image, imageAlt:(item.imageNote ? 'Предварительная иллюстрация: ' : '') + item.name,
         priceLabel:item.priceRub == null ? 'Цена уточняется' : item.priceRub.toLocaleString('ru-RU') + ' ₽',
         eyebrow:item.direction === 'corporate-lunches' ? 'Обед ' + item.number : (M?.CATEGORIES.find(category => category.id === item.category)?.label || ''),
         addLabel:'Добавить в корзину: ' + item.name,

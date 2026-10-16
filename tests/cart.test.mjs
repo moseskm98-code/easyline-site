@@ -8,12 +8,17 @@ assert.ok(asset,'built catalog module is referenced');
 const module = await import(new URL('../assets/' + asset,import.meta.url));
 const { CATALOG,CATEGORIES,sanitizeCart,decodeCart,setQuantity,summarizeCart,filterCatalog } = module;
 
-test('all supplied positions remain distinct, with no invented prices or photographs',() => {
+test('all supplied positions remain distinct, with no invented prices and labeled preliminary images',() => {
   assert.equal(CATALOG.length,39);
   assert.equal(new Set(CATALOG.map(item => item.id)).size,39);
   assert.equal(CATALOG.filter(item => item.direction === 'corporate-lunches').length,13);
   assert.equal(CATEGORIES.reduce((sum,item) => sum + item.count,0),26);
-  assert.ok(CATALOG.every(item => item.priceRub === null && item.image === null));
+  assert.ok(CATALOG.every(item => item.priceRub === null));
+  assert.ok(CATALOG.every(item => /^\/easyline-site\/assets\/menu-images\/[a-z0-9-]+\.jpg$/.test(item.image)));
+  assert.equal(new Set(CATALOG.map(item => item.image)).size,39);
+  assert.ok(CATALOG.filter(item => item.id !== 'assortment-25').every(item => item.imageNote?.includes('нужно уточнить')));
+  assert.equal(CATALOG.find(item => item.id === 'assortment-25').imageNote,null);
+  assert.ok(index.includes('el-product-card__image-note'));
   assert.equal(CATALOG.find(item => item.id === 'lunch-08').name,'Крабовый салат, киноа, котлета');
 });
 
