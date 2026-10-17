@@ -1,8 +1,17 @@
 /* Customer flow, approved mockups — 2.4.0 preview. Existing brand assets stay intact. */
-.el-home-lunches-cta{flex:none;gap:12px}
-.el-home-lunches-cta img{flex:none;filter:brightness(0) invert(1)}
-#home-lunches{scroll-margin-top:100px}
-@media(max-width:700px){.el-home-lunches-heading{flex-direction:column;align-items:stretch}.el-home-lunches-cta{width:100%}}
+.el-catalog-cta{position:relative;isolation:isolate;overflow:hidden;flex:none;gap:12px;transition:background-color 180ms ease,transform 220ms cubic-bezier(.2,.72,.2,1),box-shadow 220ms ease}
+.el-catalog-cta::before{content:"";position:absolute;z-index:0;pointer-events:none;top:-30%;bottom:-30%;left:-65%;width:45%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);opacity:0;transform:translateX(0) skewX(-18deg);animation:el-catalog-cta-shine 7s ease-in-out infinite}
+.el-catalog-cta__label,.el-catalog-cta__arrow{position:relative;z-index:1}
+.el-catalog-cta__arrow{display:grid;place-items:center;flex:none;animation:el-catalog-cta-arrow 7s cubic-bezier(.2,.72,.2,1) infinite;transition:transform 220ms ease}
+.el-catalog-cta img{display:block;filter:brightness(0) invert(1)}
+@keyframes el-catalog-cta-shine{0%,3%{transform:translateX(0) skewX(-18deg);opacity:0}6%{opacity:1}18%,100%{transform:translateX(440%) skewX(-18deg);opacity:0}}
+@keyframes el-catalog-cta-arrow{0%,3%,13%,23%,100%{transform:translateX(0)}8%,18%{transform:translateX(6px)}}
+@media(hover:hover){.el-catalog-cta:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(90,23,32,.18)}.el-catalog-cta:hover::before{animation:none;opacity:0}.el-catalog-cta:hover .el-catalog-cta__arrow{animation:none;transform:translateX(5px)}}
+.el-catalog-cta:focus-visible .el-catalog-cta__arrow{animation:none;transform:translateX(5px)}
+.el-catalog-cta:active{transform:translateY(0);box-shadow:none}
+#home-lunches,#home-fastfood{scroll-margin-top:100px}
+@media(max-width:700px){.el-catalog-preview-heading{flex-direction:column;align-items:stretch}.el-catalog-cta{width:100%}}
+@media(prefers-reduced-motion:reduce){.el-catalog-cta,.el-catalog-cta__arrow{animation:none!important;transition:none!important;transform:none!important}.el-catalog-cta::before{animation:none!important;opacity:0!important}}
 .sc-host .el-catalog{padding-top:36px;position:relative}
 .sc-host .el-catalog-heading{margin-bottom:22px}
 .sc-host .el-catalog-heading h1{font-size:56px!important;line-height:1.05!important;font-weight:400!important}

@@ -20,27 +20,27 @@
 <link rel="canonical" href="https://easyline.club/">
 <title>EasyLine — готовое питание, обеды и ПП-фастфуд</title>
 <link rel="icon" href="/easyline-site/assets/logo-Ddt-JyRw.svg" type="image/svg+xml">
-<script>window.__EASYLINE_VARIANT__ = "2.4.2-preview";window.__EASYLINE_SITE_ORIGIN__ = "https://easyline.club";window.__EASYLINE_STATIC_ROUTE_KEY__ = "home";</script>
+<script>window.__EASYLINE_VARIANT__ = "2.4.3-preview";window.__EASYLINE_SITE_ORIGIN__ = "https://easyline.club";window.__EASYLINE_STATIC_ROUTE_KEY__ = "home";</script>
 <script src="/easyline-site/vendor/react.production.min.js"></script>
 <script src="/easyline-site/vendor/react-dom.production.min.js"></script>
 <link rel="preload" href="/easyline-site/assets/nunito-variable-cyrillic.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/bebas-neue-regular-mhMkEidK.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/bebas-neue-bold-DqarbXCh.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/podkova-variable-DYz2L4Pv.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="/easyline-site/assets/first-frame-init.css?v=2.4.2-preview">
-<script src="/easyline-site/assets/first-frame-init.js?v=2.4.2-preview"></script>
-<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=2.4.2-preview"></script>
+<link rel="stylesheet" href="/easyline-site/assets/first-frame-init.css?v=2.4.3-preview">
+<script src="/easyline-site/assets/first-frame-init.js?v=2.4.3-preview"></script>
+<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=2.4.3-preview"></script>
 <script src="/easyline-site/assets/static-route-head.js"></script>
 <script type="module">import {normalizePhone,submitInquiry} from "/easyline-site/lead-form.js";window.__EASYLINE_LEADS__=Object.freeze({normalizePhone,submitInquiry});</script>
 <link rel="stylesheet" crossorigin href="/easyline-site/assets/index-BmA-8PXs-v222.css">
 <link rel="stylesheet" href="/easyline-site/assets/readability-overrides.css">
 <link rel="stylesheet" href="/easyline-site/assets/light-mode-only.css">
-<link rel="stylesheet" href="/easyline-site/assets/accessible-digital.css?v=2.4.2-preview">
+<link rel="stylesheet" href="/easyline-site/assets/accessible-digital.css?v=2.4.3-preview">
 <link rel="stylesheet" href="/easyline-site/assets/layout-stage-preview.css">
-<link rel="stylesheet" href="/easyline-site/assets/menu-refresh.css?v=2.4.2-preview">
-<link rel="stylesheet" href="/easyline-site/assets/gentle-motion.css?v=2.4.2-preview">
-<link rel="stylesheet" href="/easyline-site/assets/customer-experience.css?v=2.4.2-preview">
-<script defer src="/easyline-site/assets/gentle-motion.js?v=2.4.2-preview"></script>
+<link rel="stylesheet" href="/easyline-site/assets/menu-refresh.css?v=2.4.3-preview">
+<link rel="stylesheet" href="/easyline-site/assets/gentle-motion.css?v=2.4.3-preview">
+<link rel="stylesheet" href="/easyline-site/assets/customer-experience.css?v=2.4.3-preview">
+<script defer src="/easyline-site/assets/gentle-motion.js?v=2.4.3-preview"></script>
 <meta name="x-easyline-color-variant" content="accessible-digital">
 </head>
 <body>
@@ -132,7 +132,7 @@ button{font-family:inherit}
   </div>
 </section>
 <section class="el-wrap el-section" id="home-lunches">
-  <div class="el-section-heading el-home-lunches-heading"><div><span class="el-eyebrow">Обед для рабочего дня</span><h2>Корпоративные обеды</h2></div><a class="el-button el-home-lunches-cta" href="{{ hrefLunches }}" onClick="{{ goLunches }}">Открыть полное меню<img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="20" height="20" alt="" aria-hidden="true"></a></div>
+  <div class="el-section-heading el-catalog-preview-heading el-home-lunches-heading"><div><span class="el-eyebrow">Обед для рабочего дня</span><h2>Корпоративные обеды</h2></div><a class="el-button el-catalog-cta el-home-lunches-cta" href="{{ hrefLunches }}" onClick="{{ goLunches }}"><span class="el-catalog-cta__label">Открыть полное меню</span><span class="el-catalog-cta__arrow" aria-hidden="true"><img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="20" height="20" alt=""></span></a></div>
   <div class="el-product-grid el-home-lunches"><sc-for list="{{ homeLunches }}" as="item" hint-placeholder-count="4"><article class="el-product-card" data-product-id="{{ item.id }}">
   <sc-if value="{{ item.hasImage }}"><div class="el-product-card__photo"><img data-el-src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></div></sc-if>
   <sc-if value="{{ item.imageNote }}"><p class="el-product-card__image-note">{{ item.imageNote }}</p></sc-if>
@@ -165,9 +165,9 @@ button{font-family:inherit}
   <sc-if value="{{ catalogLoading }}"><p role="status" class="el-muted">Загружаем меню…</p></sc-if>
   <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice">Не удалось загрузить меню. <button type="button" class="el-link-button" onClick="{{ retryCatalog }}">Повторить</button></div></sc-if>
 </section>
-<section class="el-section el-surface">
+<section class="el-section el-surface" id="home-fastfood">
   <div class="el-wrap">
-    <div class="el-section-heading"><div><span class="el-eyebrow">Блюда поштучно</span><h2>ПП-фастфуд на каждый день</h2></div><a class="el-text-link" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">Весь ПП-фастфуд →</a></div>
+    <div class="el-section-heading el-catalog-preview-heading"><div><span class="el-eyebrow">Блюда поштучно</span><h2>ПП-фастфуд на каждый день</h2></div><a class="el-button el-catalog-cta el-home-fastfood-cta" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}"><span class="el-catalog-cta__label">Открыть весь каталог</span><span class="el-catalog-cta__arrow" aria-hidden="true"><img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="20" height="20" alt=""></span></a></div>
     <p class="el-section-intro">Выберите любимую начинку. Обычный или цельнозерновой хлеб — в одном каталоге.</p>
     <div class="el-category-grid"><sc-for list="{{ homeCategories }}" as="category" hint-placeholder-count="6"><a class="el-category-card" href="{{ category.href }}" onClick="{{ category.open }}"><h3>{{ category.label }}</h3><span class="el-category-card__count">{{ category.count }}</span><span class="el-category-card__arrow" aria-hidden="true">→</span></a></sc-for></div>
     <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice">Не удалось загрузить категории. <button type="button" class="el-link-button" onClick="{{ retryCatalog }}">Повторить</button></div></sc-if>
@@ -685,7 +685,7 @@ class Component extends DCLogic {
   loadProtocol() {
     this.setState({ loading:true, error:false });
     const attempt = this._protocolAttempt || 0; this._protocolAttempt = attempt + 1;
-    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.2-preview') + (attempt ? '&retry=' + attempt : '');
+    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.3-preview') + (attempt ? '&retry=' + attempt : '');
     import(url)
       .then(module => this.setState({ data:{ protocols:module.PROTOCOLS }, loading:false }))
       .catch(() => this.setState({ loading:false, error:true }));
