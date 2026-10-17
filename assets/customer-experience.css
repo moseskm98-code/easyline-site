@@ -1,4 +1,8 @@
 /* Customer flow, approved mockups — 2.4.0 preview. Existing brand assets stay intact. */
+.el-home-lunches-cta{flex:none;gap:12px}
+.el-home-lunches-cta img{flex:none;filter:brightness(0) invert(1)}
+#home-lunches{scroll-margin-top:100px}
+@media(max-width:700px){.el-home-lunches-heading{flex-direction:column;align-items:stretch}.el-home-lunches-cta{width:100%}}
 .sc-host .el-catalog{padding-top:36px;position:relative}
 .sc-host .el-catalog-heading{margin-bottom:22px}
 .sc-host .el-catalog-heading h1{font-size:56px!important;line-height:1.05!important;font-weight:400!important}

@@ -24,8 +24,8 @@
     </div>
   </div>
 </section>
-<section class="el-wrap el-section">
-  <div class="el-section-heading"><div><span class="el-eyebrow">Обед для рабочего дня</span><h2>Корпоративные обеды</h2></div><a class="el-text-link" href="{{ hrefLunches }}" onClick="{{ goLunches }}">Все 13 комплектов →</a></div>
+<section class="el-wrap el-section" id="home-lunches">
+  <div class="el-section-heading el-home-lunches-heading"><div><span class="el-eyebrow">Обед для рабочего дня</span><h2>Корпоративные обеды</h2></div><a class="el-button el-home-lunches-cta" href="{{ hrefLunches }}" onClick="{{ goLunches }}">Открыть полное меню<img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="20" height="20" alt="" aria-hidden="true"></a></div>
   <div class="el-product-grid el-home-lunches"><sc-for list="{{ homeLunches }}" as="item" hint-placeholder-count="4"><!-- PRODUCT_CARD --></sc-for></div>
   <sc-if value="{{ catalogLoading }}"><p role="status" class="el-muted">Загружаем меню…</p></sc-if>
   <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice">Не удалось загрузить меню. <button type="button" class="el-link-button" onClick="{{ retryCatalog }}">Повторить</button></div></sc-if>
