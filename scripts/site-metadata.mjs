@@ -1,6 +1,6 @@
 export const SITE_ORIGIN = "https://easyline.club";
 export const SITE_BASE = "/easyline-site";
-export const SITE_VERSION = "2.4.8";
+export const SITE_VERSION = "2.4.9";
 
 function canonicalUrl(routePath) {
   const path = routePath === "/" ? "/" : `${routePath.replace(/\/+$/, "")}/`;
@@ -19,21 +19,21 @@ function entry(file, routeKey, routePath, title, description, options = {}) {
   };
 }
 
-const protocolDescription = "Протокол питания EasyLine на 28 дней: три приёма пищи, фиксированное меню и доставка в Махачкале, Каспийске, Избербаше и Дербенте.";
+const protocolDescription = "Рацион питания EasyLine на 28 дней: три приёма пищи, фиксированное меню и доставка в Махачкале, Каспийске, Избербаше и Дербенте.";
 
 export const ROUTE_ENTRIES = [
-  entry("index.html", "home", "/", "EasyLine — готовое питание, обеды и ПП-фастфуд", "Протокол питания на 28 дней, 13 корпоративных обедов, 23 позиции ПП-фастфуда и 3 боула EasyLine. Выберите свой формат питания."),
+  entry("index.html", "home", "/", "EasyLine — готовое питание, обеды и ПП-фастфуд", "Рацион питания на 28 дней, 13 корпоративных обедов, 23 позиции ПП-фастфуда и 3 боула EasyLine. Выберите свой формат питания."),
   entry("corporate-lunches/index.html", "corporate-lunches", "/corporate-lunches", "Корпоративные обеды — EasyLine", "13 готовых обеденных комплектов EasyLine. Выберите блюда и количество для рабочего дня."),
   entry("assortment/index.html", "assortment", "/assortment", "ПП-фастфуд — EasyLine", "Чиабатты, сэндвичи, бургеры, тортильи, хот-доги и выпечка EasyLine. 23 позиции с фильтрами по категории, начинке и хлебу."),
   entry("bowls/index.html", "bowls", "/bowls", "Боулы — EasyLine", "Три боула EasyLine: с курицей, индейкой и креветкой. Выберите блюдо в отдельном каталоге."),
   entry("cart/index.html", "cart", "/cart", "Корзина — EasyLine", "Выбранные блюда EasyLine и их количество.", { noindex: true }),
   entry("checkout/index.html", "checkout", "/checkout", "Оформление заказа — EasyLine", "Состав заказа, контакты и адрес доставки EasyLine.", { noindex: true }),
-  entry("programs/index.html", "program-protokol-28", "/programs", "Протокол 28 дней — EasyLine", protocolDescription, { noindex: true, canonicalPath: "/programs/protokol-28" }),
-  entry("programs/protokol-28/index.html", "program-protokol-28", "/programs/protokol-28", "Протокол 28 дней — EasyLine", protocolDescription),
-  entry("reviews/index.html", "reviews", "/reviews", "Отзывы — EasyLine", "Отзывы клиентов EasyLine о протоколе питания на 28 дней и доставке."),
-  entry("faq/index.html", "faq", "/faq", "Частые вопросы — EasyLine", "Ответы о протоколе на 28 дней, корпоративных обедах, ПП-фастфуде, боулах и корзине EasyLine."),
+  entry("programs/index.html", "program-protokol-28", "/programs", "Рацион 28 дней — EasyLine", protocolDescription, { noindex: true, canonicalPath: "/programs/protokol-28" }),
+  entry("programs/protokol-28/index.html", "program-protokol-28", "/programs/protokol-28", "Рацион 28 дней — EasyLine", protocolDescription),
+  entry("reviews/index.html", "reviews", "/reviews", "Отзывы — EasyLine", "Отзывы клиентов EasyLine о рационе питания на 28 дней и доставке."),
+  entry("faq/index.html", "faq", "/faq", "Частые вопросы — EasyLine", "Ответы о рационе на 28 дней, корпоративных обедах, ПП-фастфуде, боулах и корзине EasyLine."),
   entry("about-production/index.html", "about-production", "/about-production", "О производстве — EasyLine", "Собственная кухня EasyLine: закупка сырья, приготовление, фасовка рационов и контроль качества."),
-  entry("delivery-payment/index.html", "delivery-payment", "/delivery-payment", "Доставка и оплата — EasyLine", "График доставки протокола EasyLine по Махачкале, Каспийску, Избербашу и Дербенту, способы оплаты и перенос дней."),
+  entry("delivery-payment/index.html", "delivery-payment", "/delivery-payment", "Доставка и оплата — EasyLine", "График доставки рациона EasyLine по Махачкале, Каспийску, Избербашу и Дербенту, способы оплаты и перенос дней."),
   entry("contacts/index.html", "contacts", "/contacts", "Контакты — EasyLine", "Телефон, WhatsApp, часы работы и реквизиты ИП EasyLine."),
   entry("legal/privacy/index.html", "legal-privacy", "/legal/privacy", "Политика обработки персональных данных — EasyLine", "Официальная политика обработки персональных данных EasyLine."),
   entry("legal/terms/index.html", "legal-terms", "/legal/terms", "Пользовательское соглашение — EasyLine", "Официальное пользовательское соглашение EasyLine."),

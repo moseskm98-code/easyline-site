@@ -47,7 +47,7 @@ function buildHead(entryItem) {
 <script src="/easyline-site/assets/first-frame-init.js?v=${SITE_VERSION}"></script>
 <script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=${SITE_VERSION}"></script>
 <script src="/easyline-site/assets/static-route-head.js"></script>
-<script type="module">import {normalizePhone,submitInquiry} from "/easyline-site/lead-form.js";window.__EASYLINE_LEADS__=Object.freeze({normalizePhone,submitInquiry});</script>
+<script type="module">import {normalizePhone,submitInquiry} from "/easyline-site/lead-form.js?v=${SITE_VERSION}";window.__EASYLINE_LEADS__=Object.freeze({normalizePhone,submitInquiry});</script>
 <link rel="stylesheet" crossorigin href="/easyline-site/assets/index-BmA-8PXs-v222.css">
 <link rel="stylesheet" href="/easyline-site/assets/readability-overrides.css">
 <link rel="stylesheet" href="/easyline-site/assets/light-mode-only.css">
@@ -127,7 +127,7 @@ function buildRuntime() {
 
 async function patchCompiledBundle() {
   const original = await readFile(compiledBundlePath, "utf8");
-  let patched = original;
+  let patched = original.replaceAll("Протокол", "Рацион").replaceAll("протокол", "рацион");
   const patchedSignature = `function at(){${bundleDelegator}var z,v;`;
   if (!patched.includes(patchedSignature)) {
     const unpatchedSignature = "function at(){var z,v;";

@@ -29,6 +29,6 @@
 <sc-if value="{{ showTeamSelection }}"><aside class="el-team-selection" aria-label="Выбранные обеды"><div class="el-wrap"><div><strong>{{ teamSelectionLabel }}</strong><span>{{ teamLineLabel }}</span></div><a class="el-button" href="{{ hrefCart }}" onClick="{{ goCart }}">Перейти к выбранным</a></div></aside></sc-if>
 </div>
 </sc-if>
-<!-- ЗАГРУЗКА ПРОТОКОЛА -->
-<sc-if value="{{ loading }}"><section class="el-refresh el-wrap el-section"><p role="status">Загружаем протокол на 28 дней…</p></section></sc-if>
+<!-- ЗАГРУЗКА РАЦИОНА -->
+<sc-if value="{{ loading }}"><section class="el-refresh el-wrap el-section"><p role="status">Загружаем рацион на 28 дней…</p></section></sc-if>
 <sc-if value="{{ showProtocolError }}"><section class="el-refresh el-wrap el-section"><h1>Меню не загрузилось</h1><p role="alert">Проверьте соединение и повторите попытку.</p><button type="button" class="el-button" onClick="{{ retry }}">Загрузить меню</button></section></sc-if>

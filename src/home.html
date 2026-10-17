@@ -10,7 +10,7 @@
       <a class="el-button" href="{{ hrefLunches }}" onClick="{{ goLunches }}">Корпоративные обеды</a>
       <a class="el-button el-button--outline" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">ПП-фастфуд</a>
       <a class="el-button el-button--outline" href="{{ hrefBowls }}" onClick="{{ goBowls }}">Боулы</a>
-      <a class="el-text-link" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}">Протокол на 28 дней →</a>
+      <a class="el-text-link" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}">Рацион на 28 дней →</a>
     </nav>
   </div>
   <div class="el-home-hero__visual"><div class="el-photo-frame"><img class="el-photo" src="/easyline-site/assets/home-hero-ration-day-KbJLqsW8.jpg" alt="Готовые рационы EasyLine в контейнерах" fetchpriority="high" decoding="async"></div></div>
@@ -21,7 +21,7 @@
     <div class="el-direction-grid">
       <a class="el-direction-card" href="{{ hrefLunches }}" onClick="{{ goLunches }}"><span class="el-direction-card__number">13 <small>комплектов</small></span><h3>Корпоративные обеды</h3><p>Готовые комплекты для рабочего дня. Выбирайте блюда и количество.</p><span class="el-text-link">Выбрать обед →</span></a>
       <a class="el-direction-card" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}"><span class="el-direction-card__number">23 <small>позиции</small></span><h3>ПП-фастфуд</h3><p>Чиабатты, сэндвичи, бургеры, тортильи, хот-доги и выпечка.</p><span class="el-text-link">Перейти в каталог →</span></a>
-      <a class="el-direction-card" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}"><span class="el-direction-card__number">28 <small>дней</small></span><h3>Протокол питания</h3><p>Завтрак, обед и ужин. Полное меню уже собрано на весь цикл.</p><span class="el-text-link">О протоколе →</span></a>
+      <a class="el-direction-card" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}"><span class="el-direction-card__number">28 <small>дней</small></span><h3>Рацион питания</h3><p>Завтрак, обед и ужин. Полное меню уже собрано на весь цикл.</p><span class="el-text-link">О рационе →</span></a>
       <a class="el-direction-card" href="{{ hrefBowls }}" onClick="{{ goBowls }}"><span class="el-direction-card__number">3 <small>боула</small></span><h3>Боулы</h3><p>С курицей, индейкой или креветкой. Выберите любимую начинку.</p><span class="el-text-link">Выбрать боул →</span></a>
     </div>
   </div>
@@ -55,18 +55,18 @@
     <div><span class="el-step-number">3</span><h3>Оформите заказ</h3><p>Проверьте состав заказа и заполните контактные данные.</p></div>
   </div>
   <p class="el-notice el-order-availability">Цены и условия доставки новых блюд уточняются. Оформление заказа пока недоступно.</p>
-  <p class="el-muted">Для протокола на 28 дней — <a class="el-text-link" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}">отдельная заявка</a>.</p>
+  <p class="el-muted">Для рациона на 28 дней — <a class="el-text-link" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}">отдельная заявка</a>.</p>
 </section>
 <section class="el-section el-surface">
   <div class="el-wrap el-service-grid">
     <div><span class="el-eyebrow">Своя кухня</span><h2>Готовим в EasyLine</h2><p>Закупаем продукты, готовим и упаковываем еду на собственном производстве.</p><a class="el-text-link" href="{{ hrefProduction }}" onClick="{{ goProduction }}">О производстве →</a></div>
-    <div><span class="el-eyebrow">Условия заказа</span><h2>Доставка</h2><p>График доставки протокола и способы оплаты собраны на отдельной странице. Условия для новых блюд добавим отдельно.</p><a class="el-text-link" href="{{ hrefDelivery }}" onClick="{{ goDelivery }}">Доставка и оплата →</a></div>
+    <div><span class="el-eyebrow">Условия заказа</span><h2>Доставка</h2><p>График доставки рациона и способы оплаты собраны на отдельной странице. Условия для новых блюд добавим отдельно.</p><a class="el-text-link" href="{{ hrefDelivery }}" onClick="{{ goDelivery }}">Доставка и оплата →</a></div>
   </div>
 </section>
 <section class="el-wrap el-section">
   <div class="el-section-heading"><h2>Частые вопросы</h2><a class="el-text-link" href="{{ hrefFaq }}" onClick="{{ goFaq }}">Все вопросы →</a></div>
   <sc-for list="{{ homeFaq }}" as="f" hint-placeholder-count="5"><div class="el-faq-item"><button type="button" id="{{ f.buttonId }}" onClick="{{ f.toggle }}" aria-expanded="{{ f.isOpen }}" aria-controls="{{ f.panelId }}"><span>{{ f.q }}</span><span aria-hidden="true">{{ f.sign }}</span></button><div id="{{ f.panelId }}" hidden="{{ !f.isOpen }}" role="region" aria-labelledby="{{ f.buttonId }}"><p>{{ f.a }}</p></div></div></sc-for>
 </section>
-<section class="el-section el-contact-section"><div class="el-wrap el-contact-inner"><div><span class="el-eyebrow">Поможем с выбором</span><h2>Остались вопросы?</h2><p>Позвоните или напишите нам. Ответим на вопросы о меню и протоколе.</p></div><div class="el-contact-actions"><a class="el-button" href="tel:+79640182373">+7 964 018-23-73</a><a class="el-button el-button--outline" href="https://wa.me/79640182373" target="_blank" rel="noreferrer">Написать в WhatsApp</a></div></div></section>
+<section class="el-section el-contact-section"><div class="el-wrap el-contact-inner"><div><span class="el-eyebrow">Поможем с выбором</span><h2>Остались вопросы?</h2><p>Позвоните или напишите нам. Ответим на вопросы о меню и рационе.</p></div><div class="el-contact-actions"><a class="el-button" href="tel:+79640182373">+7 964 018-23-73</a><a class="el-button el-button--outline" href="https://wa.me/79640182373" target="_blank" rel="noreferrer">Написать в WhatsApp</a></div></div></section>
 </div>
 </sc-if>

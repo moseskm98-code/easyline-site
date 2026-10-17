@@ -77,7 +77,7 @@ assert.deepEqual(
     idempotencyKey: "11111111-1111-4111-8111-111111111111",
     fullName: "Рамазан",
     phone: "+79640182373",
-    message: "Заявка на протокол питания на 28 дней",
+    message: "Заявка на рацион питания на 28 дней",
     consent: true,
     personalDataVersion: "12 мая 2026",
     website: "",

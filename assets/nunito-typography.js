@@ -63,10 +63,10 @@
   window.setTimeout(() => wrapHeadingCurrency(), 250);
 
   if (document.fonts) {
-    document.fonts.load('400 16px "Nunito EasyLine"', "Протокол питания 0 ₽");
+    document.fonts.load('400 16px "Nunito EasyLine"', "Рацион питания 0 ₽");
     document.fonts.load('600 16px "Nunito EasyLine"', "Кнопка и навигация");
     document.fonts.load('700 16px "Nunito EasyLine"', "Цена 1 000 ₽");
-    document.fonts.load('400 32px "Bebas Neue"', "ПРОТОКОЛ ПИТАНИЯ");
+    document.fonts.load('400 32px "Bebas Neue"', "РАЦИОН ПИТАНИЯ");
     document.fonts.load('700 24px "Bebas Neue"', "КАРТОЧКА ПРОГРАММЫ");
   }
 })();

@@ -19,7 +19,7 @@ test("menu refresh retains the protocol and provides three catalog directions", 
   assert.match(index, /path === '\/assortment'/);
   assert.match(index, /path === '\/bowls'/);
   assert.match(index, /class="el-direction-grid"/);
-  assert.doesNotMatch(index, /Один протокол\. Полный цикл|Начните протокол на 28 дней/);
+  assert.doesNotMatch(index, /Один рацион\. Полный цикл|Начните рацион на 28 дней/);
 
   const leads = await import(new URL("lead-form.js", root));
   assert.equal(leads.LEAD_ENDPOINT, "https://api.easyline.club/inquiries");
@@ -51,7 +51,7 @@ test("delivery includes both Izberbash and Derbent", () => {
 test("the protocol keeps its source data and inquiry form without a daily menu", async () => {
   const { PROTOCOLS } = await import(new URL("../assets/menu-data-6F787N4k.js", import.meta.url));
   const protocol = PROTOCOLS.find(({ slug }) => slug === "protokol-28");
-  const protocolPage = index.match(/<!-- СТРАНИЦА ПРОТОКОЛА -->([\s\S]*?)<!-- ТЕКСТОВАЯ СТРАНИЦА ИЗ CMS/)[1];
+  const protocolPage = index.match(/<!-- СТРАНИЦА РАЦИОНА -->([\s\S]*?)<!-- ТЕКСТОВАЯ СТРАНИЦА ИЗ CMS/)[1];
 
   assert.equal(protocol.days.length, 28);
   assert.deepEqual(protocol.days[0].meals[0].items, [

@@ -24,7 +24,7 @@ export function buildInquiryPayload({ idempotencyKey, name, phone }) {
     idempotencyKey,
     fullName,
     phone: normalizedPhone,
-    message: "Заявка на протокол питания на 28 дней",
+    message: "Заявка на рацион питания на 28 дней",
     consent: true,
     personalDataVersion: PERSONAL_DATA_VERSION,
     website: "",

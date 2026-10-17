@@ -1,9 +1,9 @@
 const PAGES_BASE = window.location.hostname.endsWith('github.io') ? '/easyline-site' : '';
 const IS_0131 = true;
 const GENERAL_FAQ = [
-  { q:'Какие направления есть в EasyLine?', a:'Корпоративные обеды, ПП-фастфуд, протокол питания на 28 дней и отдельный раздел боулов. В ПП-фастфуде — чиабатты, сэндвичи, бургеры, тортильи, хот-доги и выпечка.' },
-  { q:'Чем обеды отличаются от протокола?', a:'В протоколе заранее составлены все 28 дней: завтрак, обед и ужин. Корпоративные обеды — отдельные комплекты, которые можно выбрать поштучно.' },
-  { q:'Как выбрать блюда?', a:'Откройте корпоративные обеды, ПП-фастфуд или боулы, добавьте нужные позиции в корзину и укажите количество. В протоколе меню фиксировано. Подробности уточним перед стартом.' },
+  { q:'Какие направления есть в EasyLine?', a:'Корпоративные обеды, ПП-фастфуд, рацион питания на 28 дней и отдельный раздел боулов. В ПП-фастфуде — чиабатты, сэндвичи, бургеры, тортильи, хот-доги и выпечка.' },
+  { q:'Чем обеды отличаются от рациона?', a:'В рационе заранее составлены все 28 дней: завтрак, обед и ужин. Корпоративные обеды — отдельные комплекты, которые можно выбрать поштучно.' },
+  { q:'Как выбрать блюда?', a:'Откройте корпоративные обеды, ПП-фастфуд или боулы, добавьте нужные позиции в корзину и укажите количество. В рационе меню фиксировано. Подробности уточним перед стартом.' },
   { q:'Где посмотреть стоимость?', a:'Цены корпоративных обедов, ПП-фастфуда и боулов пока уточняются. Итоговая сумма и оформление заказа появятся после публикации цен и условий доставки.' },
   { q:'Как узнать состав и сообщить об аллергии?', a:'В карточках обедов перечислены части комплекта. Полный состав и возможные аллергены уточняйте до заказа по телефону +7 964 018-23-73 или в WhatsApp.' },
 ];
@@ -72,7 +72,7 @@ class Component extends DCLogic {
   loadProtocol() {
     this.setState({ loading:true, error:false });
     const attempt = this._protocolAttempt || 0; this._protocolAttempt = attempt + 1;
-    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.8') + (attempt ? '&retry=' + attempt : '');
+    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.9') + (attempt ? '&retry=' + attempt : '');
     import(url)
       .then(module => this.setState({ data:{ protocols:module.PROTOCOLS }, loading:false }))
       .catch(() => this.setState({ loading:false, error:true }));
@@ -264,7 +264,7 @@ class Component extends DCLogic {
   renderVals() {
     const S = this.state, M = this.catalogModule;
     const href = (route,slug) => this.pathFor(route,slug);
-    const primary = [ ['Протокол 28 дней','program','protokol-28'], ['Корпоративные обеды','lunches'], ['ПП-фастфуд','assortment'], ['Боулы','bowls'] ];
+    const primary = [ ['Рацион 28 дней','program','protokol-28'], ['Корпоративные обеды','lunches'], ['ПП-фастфуд','assortment'], ['Боулы','bowls'] ];
     const secondary = [ ['FAQ','faq'], ['О производстве','text','about-production'], ['Доставка и оплата','text','delivery-payment'], ['Контакты','text','contacts'] ];
     const nav = ([label,route,slug]) => ({ label, href:href(route,slug), onClick:this.link(route,slug),
       color:S.route === route && (!slug || S.slug === slug) ? '#0f4d7a' : '#8e242e',
@@ -305,7 +305,7 @@ class Component extends DCLogic {
       select:() => this.setCatalogFilters({ category:category.id }), href:href('assortment') + '?category=' + category.id, open:this.link('assortment',null,category.id) }));
     const filtered = M ? M.filterCatalog({ direction:S.route === 'lunches' ? 'corporate-lunches' : S.route === 'bowls' ? 'bowls' : 'assortment', category:S.route === 'assortment' ? S.category : 'all',
       protein:S.route === 'lunches' ? 'all' : S.protein, wholegrain:S.route === 'assortment' && S.wholegrain, search:S.search }) : [];
-    const faqItems = GENERAL_FAQ.concat(FAQ.map(item => ({ ...item, q:item.q === 'Когда привозят еду?' ? 'Когда доставляют протокол на 28 дней?' : item.q })));
+    const faqItems = GENERAL_FAQ.concat(FAQ.map(item => ({ ...item, q:item.q === 'Когда привозят еду?' ? 'Когда доставляют рацион на 28 дней?' : item.q })));
     const faqBuild = (key,items) => items.map((item,i) => ({ ...item, isOpen:S[key] === i, sign:S[key] === i ? '−' : '+',
       buttonId:key + '-question-' + i, panelId:key + '-answer-' + i, toggle:() => this.setState({ [key]:this.state[key] === i ? -1 : i }) }));
     const selectedLegal = LEGAL.find(item => item.type === S.slug) || LEGAL[0];
@@ -342,7 +342,7 @@ class Component extends DCLogic {
       applicationSending:S.applicationSending, applicationSent:S.applicationSent, applicationError:S.applicationError,
       applicationButton:S.applicationSending ? 'Отправляем…' : 'Отправить заявку',
       loading:S.loading && S.route === 'program', showProtocolError, retry:() => this.loadProtocol(),
-      prog:prog ? { ...prog, image:'/easyline-site/assets/photos/protocol-protokol-28.jpg', imageAlt:'Протокол 28 дней: готовый рацион EasyLine' } : {},
+      prog:prog ? { ...prog, image:'/easyline-site/assets/photos/protocol-protokol-28.jpg', imageAlt:'Рацион 28 дней: готовый рацион EasyLine' } : {},
       goStorage:event => { event.preventDefault(); this.go('faq'); const index=faqItems.findIndex(item => item.q === 'Как хранить и разогревать рационы?'); this.setState({faqOpen:index},() => requestAnimationFrame(() => { const question=document.getElementById('faqOpen-question-'+index); question?.focus(); })); },
 
       homeLunches:catalog.filter(item => item.direction === 'corporate-lunches').slice(0,4).map(card),
