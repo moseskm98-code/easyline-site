@@ -68,7 +68,7 @@ class Component extends DCLogic {
   loadProtocol() {
     this.setState({ loading:true, error:false });
     const attempt = this._protocolAttempt || 0; this._protocolAttempt = attempt + 1;
-    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.0-preview') + (attempt ? '&retry=' + attempt : '');
+    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.1-preview') + (attempt ? '&retry=' + attempt : '');
     import(url)
       .then(module => this.setState({ data:{ protocols:module.PROTOCOLS }, loading:false }))
       .catch(() => this.setState({ loading:false, error:true }));
@@ -257,9 +257,14 @@ class Component extends DCLogic {
         quantityLabel:'Количество: ' + item.name, quantityCaption:item.direction === 'corporate-lunches' ? 'Порций' : '',
         setQuantity:event => { const quantity = parseItemQuantity(event.target.value); if (quantity !== null) this.changeQuantity(item.id,quantity); },
         restoreQuantity:event => { event.target.value = String(this.state.cart[item.id] || 0); },
-        detailsId:'details-' + item.id, detailsOpen:S.detailsId === item.id, detailsLabel:'Подробнее: ' + item.name,
+        detailsId:'details-' + item.id, detailsOpen:S.detailsId === item.id, detailsTabIndex:S.detailsId === item.id ? 0 : -1, detailsLabel:'Подробнее: ' + item.name,
         detailsText:S.route === 'lunches' ? 'Состав и порция' : 'Подробнее о блюде',
         toggleDetails:() => this.setState({ detailsId:this.state.detailsId === item.id ? null : item.id }),
+        closeDetailsLabel:'Закрыть состав: ' + item.name,
+        closeDetails:() => {
+          document.getElementById('details-' + item.id)?.closest('.el-product-card')?.querySelector('.el-product-details-link')?.focus({ preventScroll:true });
+          this.setState({ detailsId:null });
+        },
         inquiryHref:'https://wa.me/79640182373?text=' + encodeURIComponent('Здравствуйте! Подскажите полный состав, массу порции и аллергены блюда «' + item.name + '».'),
 
         hasImage:!!item.image, imageAlt:(item.imageNote ? 'Предварительная иллюстрация: ' : '') + item.name,
