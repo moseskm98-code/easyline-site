@@ -54,6 +54,8 @@ function buildHead(entryItem) {
 <link rel="stylesheet" href="/easyline-site/assets/accessible-digital.css?v=${SITE_VERSION}">
 <link rel="stylesheet" href="/easyline-site/assets/layout-stage-preview.css">
 <link rel="stylesheet" href="/easyline-site/assets/menu-refresh.css?v=${SITE_VERSION}">
+<link rel="stylesheet" href="/easyline-site/assets/gentle-motion.css?v=${SITE_VERSION}">
+<script defer src="/easyline-site/assets/gentle-motion.js?v=${SITE_VERSION}"></script>
 <meta name="x-easyline-color-variant" content="accessible-digital">
 </head>`;
 }
