@@ -36,7 +36,7 @@ function buildHead(entryItem) {
 <link rel="canonical" href="${entryItem.canonicalUrl}">
 <title>${entryItem.title}</title>
 <link rel="icon" href="/easyline-site/assets/logo-Ddt-JyRw.svg" type="image/svg+xml">
-<script>window.__EASYLINE_VARIANT__ = "${SITE_VERSION}";window.__EASYLINE_SITE_ORIGIN__ = "${SITE_ORIGIN}";window.__EASYLINE_STATIC_ROUTE_KEY__ = "${entryItem.routeKey}";</script>
+<script>window.__EASYLINE_VARIANT__ = "${SITE_VERSION}";window.__EASYLINE_SITE_ORIGIN__ = "${SITE_ORIGIN}";window.__EASYLINE_STATIC_ROUTE_KEY__ = "${entryItem.routeKey}";window.__EASYLINE_MOTION_OWNER__ = "gentle";</script>
 <script src="/easyline-site/vendor/react.production.min.js"></script>
 <script src="/easyline-site/vendor/react-dom.production.min.js"></script>
 <link rel="preload" href="/easyline-site/assets/nunito-variable-cyrillic.ttf" as="font" type="font/ttf" crossorigin>
@@ -143,6 +143,15 @@ async function patchCompiledBundle() {
     const matches = patched.split(previousMotion).length - 1;
     if (matches !== 1) throw new Error(`Expected one published motion configuration, found ${matches}`);
     patched = patched.replace(previousMotion, immediateMotion);
+  }
+  // Static pages use one motion controller. The old one also registers classes
+  // and scroll listeners when all of its effects are configured as disabled.
+  const legacyMotionStart = '(()=>{const j=document.documentElement,G=window.matchMedia("(prefers-reduced-motion: reduce)"),L=Object.freeze(';
+  const ownedMotionStart = '(()=>{if(window.__EASYLINE_MOTION_OWNER__==="gentle")return;const j=document.documentElement,G=window.matchMedia("(prefers-reduced-motion: reduce)"),L=Object.freeze(';
+  if (!patched.includes(ownedMotionStart)) {
+    const matches = patched.split(legacyMotionStart).length - 1;
+    if (matches !== 1) throw new Error(`Expected one legacy motion controller, found ${matches}`);
+    patched = patched.replace(legacyMotionStart, ownedMotionStart);
   }
   if (patched !== original) await writeFile(compiledBundlePath, patched);
 }

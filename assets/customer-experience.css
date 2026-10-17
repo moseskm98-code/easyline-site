@@ -1,4 +1,6 @@
 /* Customer flow, approved mockups — 2.4.0 preview. Existing brand assets stay intact. */
+html{scroll-padding-top:100px}
+.sc-host #application{scroll-margin-top:0}
 .el-catalog-cta{position:relative;isolation:isolate;overflow:hidden;flex:none;gap:12px;transition:background-color 180ms ease,transform 220ms cubic-bezier(.2,.72,.2,1),box-shadow 220ms ease}
 .el-catalog-cta::before{content:"";position:absolute;z-index:0;pointer-events:none;top:-30%;bottom:-30%;left:-65%;width:45%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);opacity:0;transform:translateX(0) skewX(-18deg);animation:el-catalog-cta-shine 7s ease-in-out infinite}
 .el-catalog-cta__label,.el-catalog-cta__arrow{position:relative;z-index:1}
@@ -9,7 +11,7 @@
 @media(hover:hover){.el-catalog-cta:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(90,23,32,.18)}.el-catalog-cta:hover::before{animation:none;opacity:0}.el-catalog-cta:hover .el-catalog-cta__arrow{animation:none;transform:translateX(5px)}}
 .el-catalog-cta:focus-visible .el-catalog-cta__arrow{animation:none;transform:translateX(5px)}
 .el-catalog-cta:active{transform:translateY(0);box-shadow:none}
-#home-lunches,#home-fastfood{scroll-margin-top:100px}
+#home-lunches,#home-fastfood{scroll-margin-top:0}
 @media(max-width:700px){.el-catalog-preview-heading{flex-direction:column;align-items:stretch}.el-catalog-cta{width:100%}}
 @media(prefers-reduced-motion:reduce){.el-catalog-cta,.el-catalog-cta__arrow{animation:none!important;transition:none!important;transform:none!important}.el-catalog-cta::before{animation:none!important;opacity:0!important}}
 .sc-host .el-catalog{padding-top:36px;position:relative}
@@ -112,7 +114,7 @@ html[data-el-route-key=corporate-lunches] .el-product-details-link{font-size:14p
 .el-protocol-quick-links a{display:flex;justify-content:center;align-items:center;gap:12px;font-size:15px;min-height:32px;padding:0 14px}
 .el-protocol-quick-links a+a{border-left:1px solid #9ab5c5}
 .el-protocol-quick-links img{flex:none}
-#protocol-rules{scroll-margin-top:100px}
+#protocol-rules{scroll-margin-top:0}
 .sc-host .el-protocol-rules h2{font-size:36px!important;font-weight:400!important}
 .el-protocol-rules>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
 .sc-host .el-protocol-rules p{padding:18px;background:#f8fbfd;border:1px solid #d2e3ed;border-radius:16px;font-size:15px!important;margin:0!important;color:#536f8a}
@@ -211,7 +213,7 @@ html[data-el-route-key=corporate-lunches] .el-product-details-link{font-size:14p
  .el-protocol-intro{padding-top:28px;padding-bottom:24px}
 }
 .sc-host .el-protocol-menu__heading .el-all-days{display:inline;padding:3px 0;margin:0 0 0 5px!important;min-height:30px;font-size:15px;line-height:1.5}
-html[data-el-route-key=program-protokol-28],html[data-el-route-key=corporate-lunches]{scroll-padding-bottom:110px;scroll-padding-top:100px}
+html[data-el-route-key=program-protokol-28],html[data-el-route-key=corporate-lunches]{scroll-padding-bottom:110px}
 .sc-host .el-protocol-intro .el-protocol-hero{background:#fff}
 /* Protocol facts are information, not capsule controls. */
 .sc-host .el-protocol-facts{display:grid;grid-template-columns:.8fr 1.1fr 1.15fr;gap:0;margin:20px 0 0;padding:0;background:none;border:0;border-radius:0}

@@ -19,6 +19,7 @@ class Component extends DCLogic {
   };
 
   componentDidMount() {
+    this._viewportWidth = innerWidth;
     this.syncRouteFromLocation();
     this._onPopState = () => this.syncRouteFromLocation();
     this._onDocumentPointerDown = (event) => {
@@ -34,7 +35,11 @@ class Component extends DCLogic {
     };
     this._onResize = () => {
       cancelAnimationFrame(this._resizeFrame);
-      this._resizeFrame = requestAnimationFrame(() => this.setState(s => ({ viewportTick:s.viewportTick + 1, moreOpen:false })));
+      this._resizeFrame = requestAnimationFrame(() => {
+        if (this._viewportWidth === innerWidth) return;
+        this._viewportWidth = innerWidth;
+        this.setState(s => ({ viewportTick:s.viewportTick + 1, moreOpen:false }));
+      });
     };
     this._onStorage = (event) => {
       if (this.catalogModule && event.key === this.catalogModule.CART_STORAGE_KEY) {
@@ -67,7 +72,7 @@ class Component extends DCLogic {
   loadProtocol() {
     this.setState({ loading:true, error:false });
     const attempt = this._protocolAttempt || 0; this._protocolAttempt = attempt + 1;
-    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.5') + (attempt ? '&retry=' + attempt : '');
+    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.6') + (attempt ? '&retry=' + attempt : '');
     import(url)
       .then(module => this.setState({ data:{ protocols:module.PROTOCOLS }, loading:false }))
       .catch(() => this.setState({ loading:false, error:true }));
@@ -139,6 +144,7 @@ class Component extends DCLogic {
   }
 
   syncRouteFromLocation() {
+    window.dispatchEvent(new CustomEvent('easyline:navigation-start'));
     if (location.pathname.replace(/\/+$/,'') === PAGES_BASE + '/programs') history.replaceState({},'',PAGES_BASE + '/programs/protokol-28');
     const route = this.routeFromPath(location.pathname);
     const isCatalog = ['assortment','lunches'].includes(route.route);
@@ -146,12 +152,16 @@ class Component extends DCLogic {
     this.setState({ ...route, ...(isCatalog ? readCatalogFilters(location.search) : {}),
       menuOpen:false, moreOpen:false, detailsId:null, filtersOpen:context?.filtersOpen || false, faqOpen:0, homeFaqOpen:0 },() => {
       window.__EASYLINE_STATIC_HEAD_SYNC__?.();
-      if (isCatalog && context?.route === route.route) requestAnimationFrame(() => window.scrollTo(0,context.scroll || 0));
+      requestAnimationFrame(() => {
+        if (isCatalog && context?.route === route.route) window.scrollTo({ left:0, top:context.scroll || 0, behavior:'instant' });
+        window.dispatchEvent(new CustomEvent('easyline:navigation-end'));
+      });
     });
   }
 
   go(route,slug,category,options={}) {
     this.rememberCatalog();
+    window.dispatchEvent(new CustomEvent('easyline:navigation-start'));
     const isCatalog = ['assortment','lunches'].includes(route);
     const saved = this._catalogContexts?.[route];
     const filters = category != null ? { ...CATALOG_FILTER_DEFAULTS, category } : saved?.filters || { ...CATALOG_FILTER_DEFAULTS };
@@ -162,16 +172,17 @@ class Component extends DCLogic {
       window.__EASYLINE_STATIC_HEAD_SYNC__?.();
       requestAnimationFrame(() => {
         if (options.restore && saved) {
-          window.scrollTo(0,saved.scroll || 0);
+          window.scrollTo({ left:0, top:saved.scroll || 0, behavior:'instant' });
           const heading = document.querySelector('.el-catalog h1');
           heading?.setAttribute('tabindex','-1');
           heading?.focus({ preventScroll:true });
         } else {
-          window.scrollTo(0,0);
+          window.scrollTo({ left:0, top:0, behavior:'instant' });
           const heading = document.querySelector('main h1');
           heading?.setAttribute('tabindex','-1');
           heading?.focus({ preventScroll:true });
         }
+        window.dispatchEvent(new CustomEvent('easyline:navigation-end'));
       });
     });
   }

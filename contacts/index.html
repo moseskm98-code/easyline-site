@@ -20,27 +20,27 @@
 <link rel="canonical" href="https://easyline.club/contacts/">
 <title>Контакты — EasyLine</title>
 <link rel="icon" href="/easyline-site/assets/logo-Ddt-JyRw.svg" type="image/svg+xml">
-<script>window.__EASYLINE_VARIANT__ = "2.4.5";window.__EASYLINE_SITE_ORIGIN__ = "https://easyline.club";window.__EASYLINE_STATIC_ROUTE_KEY__ = "contacts";</script>
+<script>window.__EASYLINE_VARIANT__ = "2.4.6";window.__EASYLINE_SITE_ORIGIN__ = "https://easyline.club";window.__EASYLINE_STATIC_ROUTE_KEY__ = "contacts";window.__EASYLINE_MOTION_OWNER__ = "gentle";</script>
 <script src="/easyline-site/vendor/react.production.min.js"></script>
 <script src="/easyline-site/vendor/react-dom.production.min.js"></script>
 <link rel="preload" href="/easyline-site/assets/nunito-variable-cyrillic.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/bebas-neue-regular-mhMkEidK.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/bebas-neue-bold-DqarbXCh.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/podkova-variable-DYz2L4Pv.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="/easyline-site/assets/first-frame-init.css?v=2.4.5">
-<script src="/easyline-site/assets/first-frame-init.js?v=2.4.5"></script>
-<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=2.4.5"></script>
+<link rel="stylesheet" href="/easyline-site/assets/first-frame-init.css?v=2.4.6">
+<script src="/easyline-site/assets/first-frame-init.js?v=2.4.6"></script>
+<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=2.4.6"></script>
 <script src="/easyline-site/assets/static-route-head.js"></script>
 <script type="module">import {normalizePhone,submitInquiry} from "/easyline-site/lead-form.js";window.__EASYLINE_LEADS__=Object.freeze({normalizePhone,submitInquiry});</script>
 <link rel="stylesheet" crossorigin href="/easyline-site/assets/index-BmA-8PXs-v222.css">
 <link rel="stylesheet" href="/easyline-site/assets/readability-overrides.css">
 <link rel="stylesheet" href="/easyline-site/assets/light-mode-only.css">
-<link rel="stylesheet" href="/easyline-site/assets/accessible-digital.css?v=2.4.5">
+<link rel="stylesheet" href="/easyline-site/assets/accessible-digital.css?v=2.4.6">
 <link rel="stylesheet" href="/easyline-site/assets/layout-stage-preview.css">
-<link rel="stylesheet" href="/easyline-site/assets/menu-refresh.css?v=2.4.5">
-<link rel="stylesheet" href="/easyline-site/assets/gentle-motion.css?v=2.4.5">
-<link rel="stylesheet" href="/easyline-site/assets/customer-experience.css?v=2.4.5">
-<script defer src="/easyline-site/assets/gentle-motion.js?v=2.4.5"></script>
+<link rel="stylesheet" href="/easyline-site/assets/menu-refresh.css?v=2.4.6">
+<link rel="stylesheet" href="/easyline-site/assets/gentle-motion.css?v=2.4.6">
+<link rel="stylesheet" href="/easyline-site/assets/customer-experience.css?v=2.4.6">
+<script defer src="/easyline-site/assets/gentle-motion.js?v=2.4.6"></script>
 <meta name="x-easyline-color-variant" content="accessible-digital">
 </head>
 <body>
@@ -628,6 +628,7 @@ class Component extends DCLogic {
   };
 
   componentDidMount() {
+    this._viewportWidth = innerWidth;
     this.syncRouteFromLocation();
     this._onPopState = () => this.syncRouteFromLocation();
     this._onDocumentPointerDown = (event) => {
@@ -643,7 +644,11 @@ class Component extends DCLogic {
     };
     this._onResize = () => {
       cancelAnimationFrame(this._resizeFrame);
-      this._resizeFrame = requestAnimationFrame(() => this.setState(s => ({ viewportTick:s.viewportTick + 1, moreOpen:false })));
+      this._resizeFrame = requestAnimationFrame(() => {
+        if (this._viewportWidth === innerWidth) return;
+        this._viewportWidth = innerWidth;
+        this.setState(s => ({ viewportTick:s.viewportTick + 1, moreOpen:false }));
+      });
     };
     this._onStorage = (event) => {
       if (this.catalogModule && event.key === this.catalogModule.CART_STORAGE_KEY) {
@@ -676,7 +681,7 @@ class Component extends DCLogic {
   loadProtocol() {
     this.setState({ loading:true, error:false });
     const attempt = this._protocolAttempt || 0; this._protocolAttempt = attempt + 1;
-    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.5') + (attempt ? '&retry=' + attempt : '');
+    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.6') + (attempt ? '&retry=' + attempt : '');
     import(url)
       .then(module => this.setState({ data:{ protocols:module.PROTOCOLS }, loading:false }))
       .catch(() => this.setState({ loading:false, error:true }));
@@ -748,6 +753,7 @@ class Component extends DCLogic {
   }
 
   syncRouteFromLocation() {
+    window.dispatchEvent(new CustomEvent('easyline:navigation-start'));
     if (location.pathname.replace(/\/+$/,'') === PAGES_BASE + '/programs') history.replaceState({},'',PAGES_BASE + '/programs/protokol-28');
     const route = this.routeFromPath(location.pathname);
     const isCatalog = ['assortment','lunches'].includes(route.route);
@@ -755,12 +761,16 @@ class Component extends DCLogic {
     this.setState({ ...route, ...(isCatalog ? readCatalogFilters(location.search) : {}),
       menuOpen:false, moreOpen:false, detailsId:null, filtersOpen:context?.filtersOpen || false, faqOpen:0, homeFaqOpen:0 },() => {
       window.__EASYLINE_STATIC_HEAD_SYNC__?.();
-      if (isCatalog && context?.route === route.route) requestAnimationFrame(() => window.scrollTo(0,context.scroll || 0));
+      requestAnimationFrame(() => {
+        if (isCatalog && context?.route === route.route) window.scrollTo({ left:0, top:context.scroll || 0, behavior:'instant' });
+        window.dispatchEvent(new CustomEvent('easyline:navigation-end'));
+      });
     });
   }
 
   go(route,slug,category,options={}) {
     this.rememberCatalog();
+    window.dispatchEvent(new CustomEvent('easyline:navigation-start'));
     const isCatalog = ['assortment','lunches'].includes(route);
     const saved = this._catalogContexts?.[route];
     const filters = category != null ? { ...CATALOG_FILTER_DEFAULTS, category } : saved?.filters || { ...CATALOG_FILTER_DEFAULTS };
@@ -771,16 +781,17 @@ class Component extends DCLogic {
       window.__EASYLINE_STATIC_HEAD_SYNC__?.();
       requestAnimationFrame(() => {
         if (options.restore && saved) {
-          window.scrollTo(0,saved.scroll || 0);
+          window.scrollTo({ left:0, top:saved.scroll || 0, behavior:'instant' });
           const heading = document.querySelector('.el-catalog h1');
           heading?.setAttribute('tabindex','-1');
           heading?.focus({ preventScroll:true });
         } else {
-          window.scrollTo(0,0);
+          window.scrollTo({ left:0, top:0, behavior:'instant' });
           const heading = document.querySelector('main h1');
           heading?.setAttribute('tabindex','-1');
           heading?.focus({ preventScroll:true });
         }
+        window.dispatchEvent(new CustomEvent('easyline:navigation-end'));
       });
     });
   }

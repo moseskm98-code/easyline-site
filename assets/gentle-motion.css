@@ -6,7 +6,7 @@
   from { translate: 0 20px; }
   to { translate: 0 0; }
 }
-.sc-host main img.el-gentle-photo {
+.sc-host main .el-photo-frame:not(.el-protocol-hero) > img {
   transform: translate3d(0, var(--el-gentle-photo-y, 0px), 0) scale(1.14);
   transform-origin: center;
 }
@@ -15,5 +15,5 @@
     animation: none !important;
     translate: none !important;
   }
-  .sc-host main img.el-gentle-photo { transform: none !important; }
+  .sc-host main .el-photo-frame:not(.el-protocol-hero) > img { transform: none !important; }
 }

@@ -16,7 +16,7 @@ function appFixture() {
     DCLogic:class { setState(patch,callback) { this.state={...this.state,...(typeof patch === 'function' ? patch(this.state) : patch)}; callback?.(); } },
   };
   const setLocation = path => { context.location=new URL(path,'http://127.0.0.1:4190'); context.window.location=context.location; };
-  context.window={scrollY:0, scrollTo:(_x,y) => {context.window.scrollY=y;}, dispatchEvent:() => {}, matchMedia:() => ({matches:false})};
+  context.window={scrollY:0, scrollTo:(x,y) => {context.window.scrollY=typeof x === 'object' ? x.top : y;}, dispatchEvent:() => {}, matchMedia:() => ({matches:false})};
   context.history={state:{},replaceState:(state,_title,url) => {context.history.state=state;setLocation(url);},pushState:(state,_title,url) => {context.history.state=state;setLocation(url);}};
   setLocation('/assortment');
   vm.createContext(context);
