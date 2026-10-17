@@ -43,9 +43,9 @@ function buildHead(entryItem) {
 <link rel="preload" href="/easyline-site/assets/bebas-neue-regular-mhMkEidK.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/bebas-neue-bold-DqarbXCh.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/podkova-variable-DYz2L4Pv.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="/easyline-site/assets/first-frame-init.css">
-<script src="/easyline-site/assets/first-frame-init.js"></script>
-<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=version-2.2.3-20260904"></script>
+<link rel="stylesheet" href="/easyline-site/assets/first-frame-init.css?v=${SITE_VERSION}">
+<script src="/easyline-site/assets/first-frame-init.js?v=${SITE_VERSION}"></script>
+<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=${SITE_VERSION}"></script>
 <script src="/easyline-site/assets/static-route-head.js"></script>
 <script type="module">import {normalizePhone,submitInquiry} from "/easyline-site/lead-form.js";window.__EASYLINE_LEADS__=Object.freeze({normalizePhone,submitInquiry});</script>
 <link rel="stylesheet" crossorigin href="/easyline-site/assets/index-BmA-8PXs-v222.css">
@@ -124,13 +124,24 @@ function buildRuntime() {
 
 async function patchCompiledBundle() {
   const original = await readFile(compiledBundlePath, "utf8");
+  let patched = original;
   const patchedSignature = `function at(){${bundleDelegator}var z,v;`;
-  if (original.includes(patchedSignature)) return;
+  if (!patched.includes(patchedSignature)) {
+    const unpatchedSignature = "function at(){var z,v;";
+    const matches = patched.split(unpatchedSignature).length - 1;
+    if (matches !== 1) throw new Error(`Expected one compiled at() signature, found ${matches}`);
+    patched = patched.replace(unpatchedSignature, patchedSignature);
+  }
 
-  const unpatchedSignature = "function at(){var z,v;";
-  const matches = original.split(unpatchedSignature).length - 1;
-  if (matches !== 1) throw new Error(`Expected one compiled at() signature, found ${matches}`);
-  await writeFile(compiledBundlePath, original.replace(unpatchedSignature, patchedSignature));
+  // Published content must never wait for scroll thresholds or motion timers.
+  const previousMotion = 'L=Object.freeze({motionPreset:"soft",motionDuration:650,motionDistance:28,motionStagger:80,scrollReveal:!0,repeatReveal:!0,parallaxPreset:"depth",parallaxStrength:38,parallaxSmoothing:10,ambientPreset:"breathe",ambientSpeed:9,ambientIntensity:6})';
+  const immediateMotion = 'L=Object.freeze({motionPreset:"none",motionDuration:0,motionDistance:0,motionStagger:0,scrollReveal:!1,repeatReveal:!1,parallaxPreset:"none",parallaxStrength:0,parallaxSmoothing:10,ambientPreset:"none",ambientSpeed:9,ambientIntensity:0})';
+  if (!patched.includes(immediateMotion)) {
+    const matches = patched.split(previousMotion).length - 1;
+    if (matches !== 1) throw new Error(`Expected one published motion configuration, found ${matches}`);
+    patched = patched.replace(previousMotion, immediateMotion);
+  }
+  if (patched !== original) await writeFile(compiledBundlePath, patched);
 }
 
 async function writePages() {

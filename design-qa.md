@@ -68,3 +68,12 @@ final result: passed
 - Кэширование восстановлено, временная вкладка Ego закрыта. Публичный сайт не публиковался.
 
 final result: passed
+
+## Исправление задержки секций — версия 2.3.1
+- Причина: IntersectionObserver с threshold 0.1 и rootMargin -7%, повторное скрытие секций, переход 650 ms и дополнительная задержка до 400 ms. Большая секция могла занимать экран до достижения порога.
+- Отключены scroll reveal, repeat reveal, parallax, ambient и анимация первого экрана. Bootstrap сразу показывает готовый main и сохраняет fallback при ошибке загрузки. Новые URL версий CSS/JS исключают использование старых настроек из кэша.
+- Ego TaskSpace 5: локальный сайт при первом готовом DOM имеет boot=ready, reveal=off, parallax=none. Все 8 секций до и после быстрого перехода к каждой секции: opacity=1, visibility=visible, animation=none, transition=0s.
+- Мобильный снимок ../work/scroll-visibility-fix/local-mobile.png открыт и проверен. Блок «Как заказать» виден сразу, следующий блок присутствует без пустого промежутка.
+- Генерация и проверка статики прошли; 10 тестов passed, 0 failed.
+
+final result: passed
