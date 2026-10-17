@@ -153,3 +153,54 @@ html:is([data-el-route-key=corporate-lunches],[data-el-route-key=assortment],[da
  .sc-host .el-refresh .el-cart-summary>h2{font-size:30px!important}
  .sc-host .el-refresh .el-notice,.sc-host .el-refresh .el-result-count{font-size:14px!important}
 }
+
+/* Approved capsule direction (visual option 2), 17 October 2026. */
+.el-refresh{--el-radius-card:20px;--el-radius-field:16px;--el-radius-pill:999px}
+.sc-host .el-button{border-radius:999px}
+.sc-host .el-main-header .el-cart-link{border-radius:999px;padding-inline:16px}
+.el-menu-toggle{width:44px;height:44px;display:grid;place-items:center;border:1.5px solid #8e242e;border-radius:50%;background:#fff;padding:0;cursor:pointer;flex:none}
+.el-menu-toggle img{display:block;width:24px;height:24px}
+.el-menu-toggle:hover{background:#f9eef0}
+.el-menu-toggle:focus-visible,.el-more-menu__trigger:focus-visible{outline:3px solid #0f4d7a;outline-offset:3px}
+.sc-host .el-more-menu__trigger{border-radius:999px!important}
+.el-more-menu__panel{border-radius:16px;overflow:hidden}
+.sc-host .el-refresh .el-category-tabs{gap:10px}
+.sc-host .el-refresh .el-category-tabs button{border-radius:999px;border:1px solid transparent;background:#eaf4f9;color:#233d4e;padding:11px 18px;min-height:46px;font-weight:600;transition:background-color .16s ease,color .16s ease}
+.sc-host .el-refresh .el-category-tabs button>span:not(.sc-interp){color:#536f8a;font-size:inherit;font-weight:500;opacity:1}
+.sc-host .el-refresh .el-category-tabs button:hover{background:#dcecf5}
+.sc-host .el-refresh .el-category-tabs button[aria-pressed=true]{background:#8e242e;color:#fff;border-color:#8e242e}
+.sc-host .el-refresh .el-category-tabs button[aria-pressed=true]>span:not(.sc-interp){color:#f2dce0}
+.sc-host .el-refresh input:not([type=checkbox]),.sc-host .el-refresh select,.sc-host .el-refresh textarea{border-radius:16px;border-color:#8eafc2;background:#fff}
+.sc-host .el-refresh input[type=search]{padding-left:46px;background-image:url('/easyline-site/assets/icons/feather/search.svg');background-repeat:no-repeat;background-size:22px 22px;background-position:15px center}
+.sc-host .el-refresh select{appearance:none;padding-right:45px;background-image:url('/easyline-site/assets/icons/feather/chevron-down.svg');background-repeat:no-repeat;background-position:right 15px center;background-size:20px 20px}
+.sc-host .el-refresh input::placeholder,.sc-host .el-refresh textarea::placeholder{color:#617484;opacity:1}
+.sc-host .el-refresh .el-wholegrain-toggle{gap:12px;cursor:pointer}
+.sc-host .el-refresh .el-wholegrain-toggle input{appearance:none;position:relative;display:inline-block;width:44px;height:26px;border:0;border-radius:999px;background:#b3b6b8;margin:0;cursor:pointer;transition:background-color .16s ease;flex:0 0 44px}
+.sc-host .el-refresh .el-wholegrain-toggle input::before{content:'';position:absolute;left:3px;top:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:transform .16s ease}
+.sc-host .el-refresh .el-wholegrain-toggle input:checked{background:#8e242e}
+.sc-host .el-refresh .el-wholegrain-toggle input:checked::before{transform:translateX(18px)}
+.sc-host .el-refresh .el-notice{border-radius:20px;border-color:transparent;background:#edf6fb}
+.el-refresh :is(.el-product-card,.el-direction-card,.el-category-card,.el-cart-line,.el-cart-summary,.el-empty-state){border-radius:20px}
+.el-refresh .el-product-card{overflow:hidden}
+.el-refresh .el-quantity{border-radius:999px;overflow:hidden}
+.el-refresh .el-bread-label,.el-refresh .el-eyebrow--badge{border-radius:999px}
+.el-refresh .el-photo-frame{border-radius:20px;overflow:hidden}
+.el-refresh .el-home-hero__visual .el-photo-frame{box-shadow:none;border:1px solid #bddced}
+.sc-host .el-refresh .el-category-tabs button:focus-visible{outline:3px solid #0f4d7a;outline-offset:3px}
+@media(max-width:700px){
+ .sc-host .el-refresh .el-category-tabs{gap:8px}
+ .sc-host .el-refresh .el-category-tabs button{padding:10px 16px;font-size:14px;min-height:44px}
+ .sc-host .el-main-header .el-cart-link{padding-inline:14px}
+}
+@media(prefers-reduced-motion:reduce){.sc-host .el-refresh .el-wholegrain-toggle input,.sc-host .el-refresh .el-wholegrain-toggle input::before{transition:none}}
+
+/* Preserve selected mock's readable labels and a compact switch under legacy broad rules. */
+.sc-host .el-refresh .el-category-tabs button .sc-interp{color:inherit!important;font-size:inherit!important;font-family:inherit!important;font-weight:inherit!important}
+.sc-host main .el-refresh .el-category-tabs button{font-size:15px!important}
+.sc-host .el-refresh .el-wholegrain-toggle input{min-height:26px!important;max-height:26px;height:26px!important}
+@media(max-width:700px){.sc-host main .el-refresh .el-category-tabs button{font-size:14px!important}}
+
+.sc-host .el-refresh .el-category-tabs{margin-top:18px}
+.sc-host .el-refresh .el-catalog-notice{font-weight:500}
+
+.sc-host .el-refresh .el-quantity:focus-within{outline:3px solid #0f4d7a;outline-offset:3px}
