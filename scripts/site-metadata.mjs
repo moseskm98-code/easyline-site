@@ -1,6 +1,6 @@
 export const SITE_ORIGIN = "https://easyline.club";
 export const SITE_BASE = "/easyline-site";
-export const SITE_VERSION = "2.3.0-rounded-preview";
+export const SITE_VERSION = "2.3.0";
 
 function canonicalUrl(routePath) {
   const path = routePath === "/" ? "/" : `${routePath.replace(/\/+$/, "")}/`;

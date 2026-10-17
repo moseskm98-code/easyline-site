@@ -51,9 +51,9 @@ function buildHead(entryItem) {
 <link rel="stylesheet" crossorigin href="/easyline-site/assets/index-BmA-8PXs-v222.css">
 <link rel="stylesheet" href="/easyline-site/assets/readability-overrides.css">
 <link rel="stylesheet" href="/easyline-site/assets/light-mode-only.css">
-<link rel="stylesheet" href="/easyline-site/assets/accessible-digital.css">
+<link rel="stylesheet" href="/easyline-site/assets/accessible-digital.css?v=${SITE_VERSION}">
 <link rel="stylesheet" href="/easyline-site/assets/layout-stage-preview.css">
-<link rel="stylesheet" href="/easyline-site/assets/menu-refresh.css">
+<link rel="stylesheet" href="/easyline-site/assets/menu-refresh.css?v=${SITE_VERSION}">
 <meta name="x-easyline-color-variant" content="accessible-digital">
 </head>`;
 }
