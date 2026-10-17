@@ -20,27 +20,27 @@
 <link rel="canonical" href="https://easyline.club/">
 <title>EasyLine — готовое питание, обеды и ПП-фастфуд</title>
 <link rel="icon" href="/easyline-site/assets/logo-Ddt-JyRw.svg" type="image/svg+xml">
-<script>window.__EASYLINE_VARIANT__ = "2.4.4";window.__EASYLINE_SITE_ORIGIN__ = "https://easyline.club";window.__EASYLINE_STATIC_ROUTE_KEY__ = "home";</script>
+<script>window.__EASYLINE_VARIANT__ = "2.4.5";window.__EASYLINE_SITE_ORIGIN__ = "https://easyline.club";window.__EASYLINE_STATIC_ROUTE_KEY__ = "home";</script>
 <script src="/easyline-site/vendor/react.production.min.js"></script>
 <script src="/easyline-site/vendor/react-dom.production.min.js"></script>
 <link rel="preload" href="/easyline-site/assets/nunito-variable-cyrillic.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/bebas-neue-regular-mhMkEidK.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/bebas-neue-bold-DqarbXCh.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/podkova-variable-DYz2L4Pv.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="/easyline-site/assets/first-frame-init.css?v=2.4.4">
-<script src="/easyline-site/assets/first-frame-init.js?v=2.4.4"></script>
-<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=2.4.4"></script>
+<link rel="stylesheet" href="/easyline-site/assets/first-frame-init.css?v=2.4.5">
+<script src="/easyline-site/assets/first-frame-init.js?v=2.4.5"></script>
+<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=2.4.5"></script>
 <script src="/easyline-site/assets/static-route-head.js"></script>
 <script type="module">import {normalizePhone,submitInquiry} from "/easyline-site/lead-form.js";window.__EASYLINE_LEADS__=Object.freeze({normalizePhone,submitInquiry});</script>
 <link rel="stylesheet" crossorigin href="/easyline-site/assets/index-BmA-8PXs-v222.css">
 <link rel="stylesheet" href="/easyline-site/assets/readability-overrides.css">
 <link rel="stylesheet" href="/easyline-site/assets/light-mode-only.css">
-<link rel="stylesheet" href="/easyline-site/assets/accessible-digital.css?v=2.4.4">
+<link rel="stylesheet" href="/easyline-site/assets/accessible-digital.css?v=2.4.5">
 <link rel="stylesheet" href="/easyline-site/assets/layout-stage-preview.css">
-<link rel="stylesheet" href="/easyline-site/assets/menu-refresh.css?v=2.4.4">
-<link rel="stylesheet" href="/easyline-site/assets/gentle-motion.css?v=2.4.4">
-<link rel="stylesheet" href="/easyline-site/assets/customer-experience.css?v=2.4.4">
-<script defer src="/easyline-site/assets/gentle-motion.js?v=2.4.4"></script>
+<link rel="stylesheet" href="/easyline-site/assets/menu-refresh.css?v=2.4.5">
+<link rel="stylesheet" href="/easyline-site/assets/gentle-motion.css?v=2.4.5">
+<link rel="stylesheet" href="/easyline-site/assets/customer-experience.css?v=2.4.5">
+<script defer src="/easyline-site/assets/gentle-motion.js?v=2.4.5"></script>
 <meta name="x-easyline-color-variant" content="accessible-digital">
 </head>
 <body>
@@ -125,9 +125,9 @@ button{font-family:inherit}
   <div class="el-wrap">
     <div class="el-section-heading"><div><span class="el-eyebrow">Три направления</span><h2>Выберите свой формат</h2></div></div>
     <div class="el-direction-grid">
-      <a class="el-direction-card" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}"><span class="el-direction-card__number">28 <small>дней</small></span><h3>Протокол питания</h3><p>Завтрак, обед и ужин. Полное меню уже собрано на весь цикл.</p><span class="el-text-link">О протоколе →</span></a>
       <a class="el-direction-card" href="{{ hrefLunches }}" onClick="{{ goLunches }}"><span class="el-direction-card__number">13 <small>комплектов</small></span><h3>Корпоративные обеды</h3><p>Готовые комплекты для рабочего дня. Выбирайте блюда и количество.</p><span class="el-text-link">Выбрать обед →</span></a>
       <a class="el-direction-card" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}"><span class="el-direction-card__number">26 <small>позиций</small></span><h3>ПП-фастфуд</h3><p>Чиабатты, сэндвичи, бургеры, тортильи, боулы и выпечка.</p><span class="el-text-link">Перейти в каталог →</span></a>
+      <a class="el-direction-card" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}"><span class="el-direction-card__number">28 <small>дней</small></span><h3>Протокол питания</h3><p>Завтрак, обед и ужин. Полное меню уже собрано на весь цикл.</p><span class="el-text-link">О протоколе →</span></a>
     </div>
   </div>
 </section>
@@ -676,7 +676,7 @@ class Component extends DCLogic {
   loadProtocol() {
     this.setState({ loading:true, error:false });
     const attempt = this._protocolAttempt || 0; this._protocolAttempt = attempt + 1;
-    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.4') + (attempt ? '&retry=' + attempt : '');
+    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.5') + (attempt ? '&retry=' + attempt : '');
     import(url)
       .then(module => this.setState({ data:{ protocols:module.PROTOCOLS }, loading:false }))
       .catch(() => this.setState({ loading:false, error:true }));
