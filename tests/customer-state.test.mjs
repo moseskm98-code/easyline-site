@@ -71,6 +71,27 @@ test('the application draft survives policy navigation without persistent storag
   assert.equal(values.applicationPrivacy,true);
 });
 
+test('legacy bowl links open the separate catalog and cart return keeps its filters',() => {
+  const {app,context,setLocation}=appFixture();
+  setLocation('/assortment?category=bowls&protein=shrimp&wholegrain=1&q=%D0%B1%D0%BE%D1%83%D0%BB');
+  app.syncRouteFromLocation();
+  assert.equal(app.state.route,'bowls');
+  assert.equal(context.location.pathname,'/bowls');
+  assert.equal(app.state.category,'all');
+  assert.equal(app.state.wholegrain,false);
+  assert.equal(app.state.protein,'shrimp');
+  assert.equal(context.location.search,'?protein=shrimp&q=%D0%B1%D0%BE%D1%83%D0%BB');
+  context.window.scrollY=950;
+  app.go('cart');
+  app.resumeCatalog({preventDefault(){}});
+  assert.equal(app.state.route,'bowls');
+  assert.equal(context.window.scrollY,950);
+  assert.equal(app.state.protein,'shrimp');
+  app.go('assortment');
+  assert.equal(app.state.category,'all');
+  assert.equal(app.state.protein,'all');
+});
+
 test('application CTA transfers focus and honors reduced motion',() => {
   const {app,context}=appFixture();
   app.state.route='program';

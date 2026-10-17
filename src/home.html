@@ -9,6 +9,7 @@
     <nav class="el-hero-choices" aria-label="Выберите формат питания">
       <a class="el-button" href="{{ hrefLunches }}" onClick="{{ goLunches }}">Корпоративные обеды</a>
       <a class="el-button el-button--outline" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">ПП-фастфуд</a>
+      <a class="el-button el-button--outline" href="{{ hrefBowls }}" onClick="{{ goBowls }}">Боулы</a>
       <a class="el-text-link" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}">Протокол на 28 дней →</a>
     </nav>
   </div>
@@ -16,11 +17,12 @@
 </section>
 <section id="directions" class="el-section el-surface">
   <div class="el-wrap">
-    <div class="el-section-heading"><div><span class="el-eyebrow">Три направления</span><h2>Выберите свой формат</h2></div></div>
+    <div class="el-section-heading"><div><span class="el-eyebrow">Четыре направления</span><h2>Выберите свой формат</h2></div></div>
     <div class="el-direction-grid">
       <a class="el-direction-card" href="{{ hrefLunches }}" onClick="{{ goLunches }}"><span class="el-direction-card__number">13 <small>комплектов</small></span><h3>Корпоративные обеды</h3><p>Готовые комплекты для рабочего дня. Выбирайте блюда и количество.</p><span class="el-text-link">Выбрать обед →</span></a>
-      <a class="el-direction-card" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}"><span class="el-direction-card__number">26 <small>позиций</small></span><h3>ПП-фастфуд</h3><p>Чиабатты, сэндвичи, бургеры, тортильи, боулы и выпечка.</p><span class="el-text-link">Перейти в каталог →</span></a>
+      <a class="el-direction-card" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}"><span class="el-direction-card__number">23 <small>позиции</small></span><h3>ПП-фастфуд</h3><p>Чиабатты, сэндвичи, бургеры, тортильи, хот-доги и выпечка.</p><span class="el-text-link">Перейти в каталог →</span></a>
       <a class="el-direction-card" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}"><span class="el-direction-card__number">28 <small>дней</small></span><h3>Протокол питания</h3><p>Завтрак, обед и ужин. Полное меню уже собрано на весь цикл.</p><span class="el-text-link">О протоколе →</span></a>
+      <a class="el-direction-card" href="{{ hrefBowls }}" onClick="{{ goBowls }}"><span class="el-direction-card__number">3 <small>боула</small></span><h3>Боулы</h3><p>С курицей, индейкой или креветкой. Выберите любимую начинку.</p><span class="el-text-link">Выбрать боул →</span></a>
     </div>
   </div>
 </section>
@@ -34,14 +36,21 @@
   <div class="el-wrap">
     <div class="el-section-heading el-catalog-preview-heading"><div><span class="el-eyebrow">Блюда поштучно</span><h2>ПП-фастфуд на каждый день</h2></div><a class="el-button el-catalog-cta el-home-fastfood-cta" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}"><span class="el-catalog-cta__label">Открыть весь каталог</span><span class="el-catalog-cta__arrow" aria-hidden="true"><img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="20" height="20" alt=""></span></a></div>
     <p class="el-section-intro">Выберите любимую начинку. Обычный или цельнозерновой хлеб — в одном каталоге.</p>
-    <div class="el-category-grid"><sc-for list="{{ homeCategories }}" as="category" hint-placeholder-count="6"><a class="el-category-card" href="{{ category.href }}" onClick="{{ category.open }}"><h3>{{ category.label }}</h3><span class="el-category-card__count">{{ category.count }}</span><span class="el-category-card__arrow" aria-hidden="true">→</span></a></sc-for></div>
+    <div class="el-category-grid"><sc-for list="{{ homeCategories }}" as="category" hint-placeholder-count="5"><a class="el-category-card" href="{{ category.href }}" onClick="{{ category.open }}"><h3>{{ category.label }}</h3><span class="el-category-card__count">{{ category.count }}</span><span class="el-category-card__arrow" aria-hidden="true">→</span></a></sc-for></div>
     <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice">Не удалось загрузить категории. <button type="button" class="el-link-button" onClick="{{ retryCatalog }}">Повторить</button></div></sc-if>
   </div>
 </section>
+<section class="el-wrap el-section" id="home-bowls">
+  <div class="el-section-heading el-catalog-preview-heading"><div><span class="el-eyebrow">Блюда поштучно</span><h2>Боулы</h2></div><a class="el-button el-catalog-cta" href="{{ hrefBowls }}" onClick="{{ goBowls }}"><span class="el-catalog-cta__label">Выбрать боул</span><span class="el-catalog-cta__arrow" aria-hidden="true"><img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="20" height="20" alt=""></span></a></div>
+  <p class="el-section-intro">Три варианта: с курицей, индейкой и креветкой.</p>
+  <div class="el-product-grid el-home-bowls"><sc-for list="{{ homeBowls }}" as="item" hint-placeholder-count="3"><!-- PRODUCT_CARD --></sc-for></div>
+  <sc-if value="{{ catalogLoading }}"><p role="status" class="el-muted">Загружаем боулы…</p></sc-if>
+  <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice">Не удалось загрузить боулы. <button type="button" class="el-link-button" onClick="{{ retryCatalog }}">Повторить</button></div></sc-if>
+</section>
 <section class="el-wrap el-section">
-  <div class="el-section-heading"><div><span class="el-eyebrow">Обеды и ПП-фастфуд</span><h2>Как заказать</h2></div></div>
+  <div class="el-section-heading"><div><span class="el-eyebrow">Обеды, ПП-фастфуд и боулы</span><h2>Как заказать</h2></div></div>
   <div class="el-steps-refresh">
-    <div><span class="el-step-number">1</span><h3>Выберите блюда</h3><p>Откройте обеды или ПП-фастфуд. Найдите нужные позиции в каталоге.</p></div>
+    <div><span class="el-step-number">1</span><h3>Выберите блюда</h3><p>Откройте обеды, ПП-фастфуд или боулы. Найдите нужные позиции в каталоге.</p></div>
     <div><span class="el-step-number">2</span><h3>Соберите корзину</h3><p>Добавьте блюда и укажите количество для себя или команды.</p></div>
     <div><span class="el-step-number">3</span><h3>Оформите заказ</h3><p>Проверьте состав заказа и заполните контактные данные.</p></div>
   </div>

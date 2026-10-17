@@ -8,7 +8,7 @@ const index = await readFile(new URL("index.html", root), "utf8");
 const readability = await readFile(new URL("assets/readability-overrides.css", root), "utf8");
 const menuSource = await readFile(new URL("assets/menu-data-6F787N4k.js", root), "utf8");
 
-test("menu refresh retains the protocol and adds two catalog directions", async () => {
+test("menu refresh retains the protocol and provides three catalog directions", async () => {
   assert.ok(index.includes(`window.__EASYLINE_VARIANT__ = "${SITE_VERSION}"`));
   assert.match(index, /<form[^>]+onSubmit="\{\{ submitApplication \}\}"/);
   assert.ok(index.includes("history.replaceState({},'',PAGES_BASE + '/programs/protokol-28')"), 'legacy programs URL resolves to protocol');
@@ -17,6 +17,7 @@ test("menu refresh retains the protocol and adds two catalog directions", async 
 
   assert.match(index, /path === '\/corporate-lunches'/);
   assert.match(index, /path === '\/assortment'/);
+  assert.match(index, /path === '\/bowls'/);
   assert.match(index, /class="el-direction-grid"/);
   assert.doesNotMatch(index, /Один протокол\. Полный цикл|Начните протокол на 28 дней/);
 

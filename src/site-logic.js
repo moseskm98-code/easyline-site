@@ -1,10 +1,10 @@
 const PAGES_BASE = window.location.hostname.endsWith('github.io') ? '/easyline-site' : '';
 const IS_0131 = true;
 const GENERAL_FAQ = [
-  { q:'Какие направления есть в EasyLine?', a:'Протокол питания на 28 дней, корпоративные обеды и ПП-фастфуд: чиабатты, сэндвичи, бургеры, тортильи, боулы и выпечка.' },
+  { q:'Какие направления есть в EasyLine?', a:'Корпоративные обеды, ПП-фастфуд, протокол питания на 28 дней и отдельный раздел боулов. В ПП-фастфуде — чиабатты, сэндвичи, бургеры, тортильи, хот-доги и выпечка.' },
   { q:'Чем обеды отличаются от протокола?', a:'В протоколе заранее составлены все 28 дней: завтрак, обед и ужин. Корпоративные обеды — отдельные комплекты, которые можно выбрать поштучно.' },
-  { q:'Как выбрать блюда?', a:'Откройте корпоративные обеды или ПП-фастфуд, добавьте нужные позиции в корзину и укажите количество. В протоколе меню фиксировано. Подробности уточним перед стартом.' },
-  { q:'Где посмотреть стоимость?', a:'Цены корпоративных обедов и ПП-фастфуда пока уточняются. Итоговая сумма и оформление заказа появятся после публикации цен и условий доставки.' },
+  { q:'Как выбрать блюда?', a:'Откройте корпоративные обеды, ПП-фастфуд или боулы, добавьте нужные позиции в корзину и укажите количество. В протоколе меню фиксировано. Подробности уточним перед стартом.' },
+  { q:'Где посмотреть стоимость?', a:'Цены корпоративных обедов, ПП-фастфуда и боулов пока уточняются. Итоговая сумма и оформление заказа появятся после публикации цен и условий доставки.' },
   { q:'Как узнать состав и сообщить об аллергии?', a:'В карточках обедов перечислены части комплекта. Полный состав и возможные аллергены уточняйте до заказа по телефону +7 964 018-23-73 или в WhatsApp.' },
 ];
 
@@ -72,7 +72,7 @@ class Component extends DCLogic {
   loadProtocol() {
     this.setState({ loading:true, error:false });
     const attempt = this._protocolAttempt || 0; this._protocolAttempt = attempt + 1;
-    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.7') + (attempt ? '&retry=' + attempt : '');
+    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.8') + (attempt ? '&retry=' + attempt : '');
     import(url)
       .then(module => this.setState({ data:{ protocols:module.PROTOCOLS }, loading:false }))
       .catch(() => this.setState({ loading:false, error:true }));
@@ -98,6 +98,7 @@ class Component extends DCLogic {
     if (path === '/programs' || path === '/programs/protokol-28') return { route:'program', slug:'protokol-28' };
     if (path === '/corporate-lunches') return { route:'lunches', slug:null };
     if (path === '/assortment') return { route:'assortment', slug:null };
+    if (path === '/bowls') return { route:'bowls', slug:null };
     if (path === '/cart') return { route:'cart', slug:null };
     if (path === '/checkout') return { route:'checkout', slug:null };
     if (path === '/faq') return { route:'faq', slug:null };
@@ -108,20 +109,21 @@ class Component extends DCLogic {
   }
 
   pathFor(route,slug) {
-    const paths = { home:'/', lunches:'/corporate-lunches', assortment:'/assortment', cart:'/cart', checkout:'/checkout', faq:'/faq', reviews:'/reviews' };
+    const paths = { home:'/', lunches:'/corporate-lunches', assortment:'/assortment', bowls:'/bowls', cart:'/cart', checkout:'/checkout', faq:'/faq', reviews:'/reviews' };
     if (route === 'program') return PAGES_BASE + '/programs/protokol-28';
     if (route === 'text') return PAGES_BASE + '/' + slug;
     if (route === 'legal') return PAGES_BASE + '/legal/' + slug;
     return PAGES_BASE + (paths[route] || '/404');
   }
 
-  catalogFilters() {
-    const { category, protein, wholegrain, search } = this.state;
-    return { category, protein, wholegrain, search };
+  catalogFilters(route=this.state.route, filters=this.state) {
+    const { category, protein, wholegrain, search } = filters;
+    return { category:route === 'assortment' ? category : 'all', protein:route === 'lunches' ? 'all' : protein,
+      wholegrain:route === 'assortment' && wholegrain, search };
   }
 
   rememberCatalog() {
-    if (!['assortment','lunches'].includes(this.state.route)) return;
+    if (!['assortment','lunches','bowls'].includes(this.state.route)) return;
     const context = { route:this.state.route, filters:this.catalogFilters(), scroll:window.scrollY, filtersOpen:this.state.filtersOpen };
     this._catalogContexts ||= {};
     this._catalogContexts[context.route] = context;
@@ -148,10 +150,14 @@ class Component extends DCLogic {
     this._routeNavigationPending = true;
     window.dispatchEvent(new CustomEvent('easyline:navigation-start'));
     if (location.pathname.replace(/\/+$/,'') === PAGES_BASE + '/programs') history.replaceState({},'',PAGES_BASE + '/programs/protokol-28');
-    const route = this.routeFromPath(location.pathname);
-    const isCatalog = ['assortment','lunches'].includes(route.route);
+    let route = this.routeFromPath(location.pathname);
+    if (route.route === 'assortment' && new URLSearchParams(location.search).get('category') === 'bowls') {
+      history.replaceState({},'',this.pathFor('bowls') + catalogQuery(this.catalogFilters('bowls',readCatalogFilters(location.search))));
+      route = this.routeFromPath(location.pathname);
+    }
+    const isCatalog = ['assortment','lunches','bowls'].includes(route.route);
     const context = history.state?.easylineCatalog;
-    this.setState({ ...route, ...(isCatalog ? readCatalogFilters(location.search) : {}),
+    this.setState({ ...route, ...(isCatalog ? this.catalogFilters(route.route,readCatalogFilters(location.search)) : {}),
       menuOpen:false, moreOpen:false, detailsId:null, filtersOpen:context?.filtersOpen || false, faqOpen:0, homeFaqOpen:0 },() => {
       window.__EASYLINE_STATIC_HEAD_SYNC__?.();
       requestAnimationFrame(() => {
@@ -167,9 +173,9 @@ class Component extends DCLogic {
     this._routeNavigationPending = true;
     if (route !== 'program') this._applicationFocusPending = false;
     window.dispatchEvent(new CustomEvent('easyline:navigation-start'));
-    const isCatalog = ['assortment','lunches'].includes(route);
+    const isCatalog = ['assortment','lunches','bowls'].includes(route);
     const saved = this._catalogContexts?.[route];
-    const filters = category != null ? { ...CATALOG_FILTER_DEFAULTS, category } : saved?.filters || { ...CATALOG_FILTER_DEFAULTS };
+    const filters = this.catalogFilters(route,category != null ? { ...CATALOG_FILTER_DEFAULTS, category } : saved?.filters || { ...CATALOG_FILTER_DEFAULTS });
     const path = this.pathFor(route,slug) + (isCatalog ? catalogQuery(filters) : '');
     if (location.pathname.replace(/\/+$/,'') + location.search !== path.replace(/\/+$/,'')) history.pushState({},'',path);
     this.setState({ route, slug:slug || null, menuOpen:false, moreOpen:false, detailsId:null, faqOpen:0, homeFaqOpen:0,
@@ -258,7 +264,7 @@ class Component extends DCLogic {
   renderVals() {
     const S = this.state, M = this.catalogModule;
     const href = (route,slug) => this.pathFor(route,slug);
-    const primary = [ ['Протокол 28 дней','program','protokol-28'], ['Корпоративные обеды','lunches'], ['ПП-фастфуд','assortment'] ];
+    const primary = [ ['Протокол 28 дней','program','protokol-28'], ['Корпоративные обеды','lunches'], ['ПП-фастфуд','assortment'], ['Боулы','bowls'] ];
     const secondary = [ ['FAQ','faq'], ['О производстве','text','about-production'], ['Доставка и оплата','text','delivery-payment'], ['Контакты','text','contacts'] ];
     const nav = ([label,route,slug]) => ({ label, href:href(route,slug), onClick:this.link(route,slug),
       color:S.route === route && (!slug || S.slug === slug) ? '#0f4d7a' : '#8e242e',
@@ -286,7 +292,7 @@ class Component extends DCLogic {
 
         hasImage:!!item.image, imageAlt:(item.imageNote ? 'Предварительная иллюстрация: ' : '') + item.name,
         priceLabel:item.priceRub == null ? 'Цена уточняется' : item.priceRub.toLocaleString('ru-RU') + ' ₽',
-        eyebrow:item.direction === 'corporate-lunches' ? 'Обед ' + item.number : (M?.CATEGORIES.find(category => category.id === item.category)?.label || ''),
+        eyebrow:item.direction === 'corporate-lunches' ? 'Обед ' + item.number : item.direction === 'bowls' ? 'Боулы' : (M?.CATEGORIES.find(category => category.id === item.category)?.label || ''),
         addLabel:'Добавить в корзину: ' + item.name,
         plusLabel:'Увеличить количество: ' + item.name, minusLabel:'Уменьшить количество: ' + item.name, removeLabel:'Удалить: ' + item.name,
         add:() => this.changeQuantity(item.id,(this.state.cart[item.id] || 0) + 1),
@@ -294,10 +300,10 @@ class Component extends DCLogic {
         remove:() => this.changeQuantity(item.id,0),
       };
     };
-    const allCategories = [{ id:'all', label:'Все', count:26 }, ...(M?.CATEGORIES || [])];
+    const allCategories = [{ id:'all', label:'Все', count:M ? catalog.filter(item => item.direction === 'assortment').length : 23 }, ...(M?.CATEGORIES || [])];
     const categories = allCategories.map(category => ({ ...category, selected:S.category === category.id,
       select:() => this.setCatalogFilters({ category:category.id }), href:href('assortment') + '?category=' + category.id, open:this.link('assortment',null,category.id) }));
-    const filtered = M ? M.filterCatalog({ direction:S.route === 'lunches' ? 'corporate-lunches' : 'assortment', category:S.route === 'lunches' ? 'all' : S.category,
+    const filtered = M ? M.filterCatalog({ direction:S.route === 'lunches' ? 'corporate-lunches' : S.route === 'bowls' ? 'bowls' : 'assortment', category:S.route === 'assortment' ? S.category : 'all',
       protein:S.route === 'lunches' ? 'all' : S.protein, wholegrain:S.route === 'assortment' && S.wholegrain, search:S.search }) : [];
     const faqItems = GENERAL_FAQ.concat(FAQ.map(item => ({ ...item, q:item.q === 'Когда привозят еду?' ? 'Когда доставляют протокол на 28 дней?' : item.q })));
     const faqBuild = (key,items) => items.map((item,i) => ({ ...item, isOpen:S[key] === i, sign:S[key] === i ? '−' : '+',
@@ -313,9 +319,9 @@ class Component extends DCLogic {
     return {
       frameMax:'100vw', isWide:innerWidth > 1080, isNarrow:innerWidth <= 1080, is0131:true,
       isHome:S.route === 'home', isProgram:S.route === 'program' && !!prog, isText:S.route === 'text', isLegal:S.route === 'legal',
-      isFaq:S.route === 'faq', isReviews:S.route === 'reviews', isNotFound, isCatalog:['lunches','assortment'].includes(S.route),
+      isFaq:S.route === 'faq', isReviews:S.route === 'reviews', isNotFound, isCatalog:['lunches','assortment','bowls'].includes(S.route),
       showTeamSearchCount:S.route === 'lunches' && !!S.search,
-      isCartPage:['cart','checkout'].includes(S.route), isAssortment:S.route === 'assortment', isLunches:S.route === 'lunches', isCart:S.route === 'cart', isCheckout:S.route === 'checkout',
+      isCartPage:['cart','checkout'].includes(S.route), isAssortment:S.route === 'assortment', isBowls:S.route === 'bowls', isIndividualCatalog:['assortment','bowls'].includes(S.route), isLunches:S.route === 'lunches', isCart:S.route === 'cart', isCheckout:S.route === 'checkout',
       showApplicationForm:S.route === 'program' && !!prog,
       navItems:primary.map(nav), topNav:secondary.map(nav), allNav:primary.concat(secondary).map(nav),
       menuOpen:S.menuOpen, moreOpen:S.moreOpen,
@@ -327,6 +333,7 @@ class Component extends DCLogic {
       hideSkipLink:event => event.currentTarget.style.transform = 'translateY(-160%)', disableSocial:event => event.preventDefault(),
       hrefHome:href('home'), goHome:this.link('home'), hrefPrograms:href('program','protokol-28'), goPrograms:this.link('program','protokol-28'),
       hrefLunches:href('lunches'), goLunches:this.link('lunches'), hrefAssortment:href('assortment'), goAssortment:this.link('assortment'),
+      hrefBowls:href('bowls'), goBowls:this.link('bowls'),
       hrefCart:href('cart'), goCart:this.link('cart'), hrefCheckout:href('checkout'), goCheckout:this.link('checkout'),
       hrefFaq:href('faq'), goFaq:this.link('faq'), hrefPrivacy:href('legal','privacy'), goPrivacy:this.link('legal','privacy'),
       hrefProduction:href('text','about-production'), goProduction:this.link('text','about-production'),
@@ -339,16 +346,17 @@ class Component extends DCLogic {
       goStorage:event => { event.preventDefault(); this.go('faq'); const index=faqItems.findIndex(item => item.q === 'Как хранить и разогревать рационы?'); this.setState({faqOpen:index},() => requestAnimationFrame(() => { const question=document.getElementById('faqOpen-question-'+index); question?.focus(); })); },
 
       homeLunches:catalog.filter(item => item.direction === 'corporate-lunches').slice(0,4).map(card),
+      homeBowls:catalog.filter(item => item.direction === 'bowls').map(card),
       catalogItems:filtered.map(card), catalogEmpty:!S.catalogLoading && !S.catalogError && !filtered.length,
       catalogReady:!S.catalogLoading && !S.catalogError, catalogLoading:S.catalogLoading, catalogError:S.catalogError, retryCatalog:() => this.loadCatalog(),
-      catalogTitle:S.route === 'lunches' ? 'Корпоративные обеды' : 'ПП-фастфуд',
-      catalogIntro:S.route === 'lunches' ? '13 готовых комплектов для обеда. Выберите блюда и укажите количество.' : '26 позиций для вашего дня. Выберите категорию, начинку и хлеб.',
+      catalogTitle:S.route === 'lunches' ? 'Корпоративные обеды' : S.route === 'bowls' ? 'Боулы' : 'ПП-фастфуд',
+      catalogIntro:S.route === 'lunches' ? '13 готовых комплектов для обеда. Выберите блюда и укажите количество.' : S.route === 'bowls' ? 'Боулы с курицей, индейкой или креветкой.' : '23 позиции для вашего дня. Выберите категорию, начинку и хлеб.',
       resultCount:filtered.length + ' ' + (filtered.length % 100 >= 11 && filtered.length % 100 <= 14 ? 'позиций' : filtered.length % 10 === 1 ? 'позиция' : [2,3,4].includes(filtered.length % 10) ? 'позиции' : 'позиций'), search:S.search, setSearch:event => this.setCatalogFilters({ search:event.target.value }),
       categories, homeCategories:categories.slice(1), protein:S.protein, setProtein:event => this.setCatalogFilters({ protein:event.target.value }),
       wholegrain:S.wholegrain, setWholegrain:event => this.setCatalogFilters({ wholegrain:event.target.checked }),
       clearFilters:() => this.setCatalogFilters({ ...CATALOG_FILTER_DEFAULTS }),
       filtersOpen:S.filtersOpen, toggleFilters:() => this.setState({ filtersOpen:!this.state.filtersOpen }),
-      activeFilterCount:Number(S.protein !== 'all') + Number(S.wholegrain), hasProteinFilter:S.protein !== 'all', proteinLabel:proteinNames[S.protein] || '',
+      activeFilterCount:Number(S.protein !== 'all') + Number(S.route === 'assortment' && S.wholegrain), hasProteinFilter:S.protein !== 'all', proteinLabel:proteinNames[S.protein] || '',
       clearProteinLabel:'Убрать фильтр: ' + (proteinNames[S.protein] || ''), clearProtein:() => this.setCatalogFilters({ protein:'all' }),
       clearWholegrain:() => this.setCatalogFilters({ wholegrain:false }), clearSecondaryFilters:() => this.setCatalogFilters({ protein:'all', wholegrain:false }),
       showTeamSelection:S.route === 'lunches' && teamCount > 0,

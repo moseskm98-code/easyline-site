@@ -12,7 +12,9 @@ test('all supplied positions remain distinct, with no invented prices and labele
   assert.equal(CATALOG.length,39);
   assert.equal(new Set(CATALOG.map(item => item.id)).size,39);
   assert.equal(CATALOG.filter(item => item.direction === 'corporate-lunches').length,13);
-  assert.equal(CATEGORIES.reduce((sum,item) => sum + item.count,0),26);
+  assert.equal(CATALOG.filter(item => item.direction === 'assortment').length,23);
+  assert.equal(CATALOG.filter(item => item.direction === 'bowls').length,3);
+  assert.equal(CATEGORIES.reduce((sum,item) => sum + item.count,0),23);
   assert.ok(CATALOG.every(item => item.priceRub === null));
   assert.ok(CATALOG.every(item => /^\/easyline-site\/assets\/menu-images\/[a-z0-9-]+\.jpg$/.test(item.image)));
   assert.equal(new Set(CATALOG.map(item => item.image)).size,39);
@@ -29,6 +31,20 @@ test('old, corrupted and hostile saved carts cannot create unknown products or u
   assert.deepEqual(sanitizeCart({ 'lunch-01':100000,'lunch-02':-3,'lunch-03':'2','lunch-04':1.5,'unknown':1 }),{'lunch-01':99});
   assert.deepEqual(decodeCart('{"version":1,"items":{"__proto__":{"polluted":true},"lunch-01":2}}'),{'lunch-01':2});
   assert.equal({}.polluted,undefined);
+});
+
+test('bowls have a separate catalog while existing bowl cart IDs retain their quantities',() => {
+  const bowls=filterCatalog({direction:'bowls'}),fastfood=filterCatalog({direction:'assortment'});
+  assert.deepEqual(bowls.map(item=>item.id),['assortment-23','assortment-24','assortment-25']);
+  assert.ok(!fastfood.some(item=>item.category==='bowls'));
+  assert.ok(!CATEGORIES.some(category=>category.id==='bowls'));
+  assert.deepEqual(filterCatalog({direction:'assortment',search:'боул'}),[]);
+  assert.deepEqual(filterCatalog({direction:'bowls',protein:'shrimp'}).map(item=>item.id),['assortment-25']);
+  const saved=decodeCart('{"version":1,"items":{"assortment-25":2,"lunch-01":1}}');
+  const summary=summarizeCart(saved);
+  assert.equal(summary.count,3);
+  assert.equal(summary.lines.find(item=>item.id==='assortment-25').direction,'bowls');
+  assert.equal(summary.lines.find(item=>item.id==='assortment-25').quantity,2);
 });
 
 test('mixed catalog orders preserve quantities, removal, reload encoding, and unknown total',() => {

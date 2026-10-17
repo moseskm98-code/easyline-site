@@ -21,11 +21,6 @@
       "count": 2
     },
     {
-      "id": "bowls",
-      "label": "Боулы",
-      "count": 3
-    },
-    {
       "id": "hotdogs-and-bakery",
       "label": "Хот-доги и выпечка",
       "count": 3
@@ -560,7 +555,7 @@
     {
       "id": "assortment-23",
       "number": 23,
-      "direction": "assortment",
+      "direction": "bowls",
       "category": "bowls",
       "name": "Боул с курицей",
       "title": "Боул с курицей",
@@ -575,7 +570,7 @@
     {
       "id": "assortment-24",
       "number": 24,
-      "direction": "assortment",
+      "direction": "bowls",
       "category": "bowls",
       "name": "Боул с индейкой",
       "title": "Боул с индейкой",
@@ -590,7 +585,7 @@
     {
       "id": "assortment-25",
       "number": 25,
-      "direction": "assortment",
+      "direction": "bowls",
       "category": "bowls",
       "name": "Боул с креветкой",
       "title": "Боул с креветкой",

@@ -2,7 +2,7 @@
 <sc-if value="{{ isCatalog }}">
 <div class="el-refresh">
 <section class="el-wrap el-section el-catalog">
-  <sc-if value="{{ isAssortment }}"><div class="el-catalog-heading"><h1>ПП-фастфуд</h1><p>Выберите блюдо для себя</p></div></sc-if>
+  <sc-if value="{{ isIndividualCatalog }}"><div class="el-catalog-heading"><h1>{{ catalogTitle }}</h1><p>Выберите блюдо для себя</p></div></sc-if>
   <sc-if value="{{ isLunches }}">
     <div class="el-team-hero">
       <span class="el-eyebrow el-eyebrow--badge">Питание для команды</span><h1>Обеды для вашей команды</h1>
@@ -13,11 +13,11 @@
     </div>
     <div class="el-team-catalog-title"><h2>13 готовых комплектов</h2><div class="el-catalog-search"><label class="el-search-label"><span class="el-sr-only">Найти блюдо</span><input type="search" value="{{ search }}" onInput="{{ setSearch }}" placeholder="Найти блюдо" autocomplete="off" maxlength="100"></label></div></div>
   </sc-if>
-  <sc-if value="{{ isAssortment }}"><div class="el-catalog-search"><label class="el-search-label"><span class="el-sr-only">Найти блюдо</span><input type="search" value="{{ search }}" onInput="{{ setSearch }}" placeholder="Найти блюдо" autocomplete="off" maxlength="100"></label></div></sc-if>
-  <sc-if value="{{ isAssortment }}">
-    <nav class="el-category-tabs" aria-label="Категории ПП-фастфуда"><sc-for list="{{ categories }}" as="category" hint-placeholder-count="7"><button type="button" aria-pressed="{{ category.selected }}" onClick="{{ category.select }}">{{ category.label }} <span>{{ category.count }}</span></button></sc-for></nav>
+  <sc-if value="{{ isIndividualCatalog }}"><div class="el-catalog-search"><label class="el-search-label"><span class="el-sr-only">Найти блюдо</span><input type="search" value="{{ search }}" onInput="{{ setSearch }}" placeholder="Найти блюдо" autocomplete="off" maxlength="100"></label></div></sc-if>
+  <sc-if value="{{ isIndividualCatalog }}">
+    <sc-if value="{{ isAssortment }}"><nav class="el-category-tabs" aria-label="Категории ПП-фастфуда"><sc-for list="{{ categories }}" as="category" hint-placeholder-count="6"><button type="button" aria-pressed="{{ category.selected }}" onClick="{{ category.select }}">{{ category.label }} <span>{{ category.count }}</span></button></sc-for></nav></sc-if>
     <div class="el-catalog-tools"><p class="el-result-count" role="status" aria-live="polite">{{ resultCount }}</p><button type="button" class="el-filter-trigger" aria-expanded="{{ filtersOpen }}" aria-controls="catalog-secondary-filters" onClick="{{ toggleFilters }}"><img src="/easyline-site/assets/icons/feather/sliders.svg" width="20" height="20" alt="" aria-hidden="true">Фильтры<sc-if value="{{ activeFilterCount }}"><span>{{ activeFilterCount }}</span></sc-if></button></div>
-    <div id="catalog-secondary-filters" class="el-filter-panel" hidden="{{ !filtersOpen }}"><label>Начинка<select value="{{ protein }}" onChange="{{ setProtein }}"><option value="all">Любая</option><option value="chicken">Курица</option><option value="turkey">Индейка</option><option value="beef">Говядина</option><option value="shrimp">Креветка</option></select></label><label class="el-checkbox-label el-wholegrain-toggle"><input type="checkbox" role="switch" checked="{{ wholegrain }}" onChange="{{ setWholegrain }}"><span>Цельнозерновой хлеб</span></label><button type="button" class="el-link-button" onClick="{{ clearSecondaryFilters }}">Сбросить фильтры</button></div>
+    <div id="catalog-secondary-filters" class="el-filter-panel" hidden="{{ !filtersOpen }}"><label>Начинка<select value="{{ protein }}" onChange="{{ setProtein }}"><option value="all">Любая</option><option value="chicken">Курица</option><option value="turkey">Индейка</option><sc-if value="{{ isAssortment }}"><option value="beef">Говядина</option></sc-if><sc-if value="{{ isBowls }}"><option value="shrimp">Креветка</option></sc-if></select></label><sc-if value="{{ isAssortment }}"><label class="el-checkbox-label el-wholegrain-toggle"><input type="checkbox" role="switch" checked="{{ wholegrain }}" onChange="{{ setWholegrain }}"><span>Цельнозерновой хлеб</span></label></sc-if><button type="button" class="el-link-button" onClick="{{ clearSecondaryFilters }}">Сбросить фильтры</button></div>
     <sc-if value="{{ activeFilterCount }}"><div class="el-active-filters"><sc-if value="{{ hasProteinFilter }}"><button type="button" onClick="{{ clearProtein }}" aria-label="{{ clearProteinLabel }}">{{ proteinLabel }} <span aria-hidden="true">×</span></button></sc-if><sc-if value="{{ wholegrain }}"><button type="button" onClick="{{ clearWholegrain }}" aria-label="Убрать фильтр цельнозернового хлеба">Цельнозерновой хлеб <span aria-hidden="true">×</span></button></sc-if></div></sc-if>
   </sc-if>
   <sc-if value="{{ showTeamSearchCount }}"><p class="el-result-count" role="status" aria-live="polite">Найдено: {{ resultCount }}</p></sc-if>

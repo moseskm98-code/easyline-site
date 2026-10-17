@@ -11,7 +11,9 @@ html{scroll-padding-top:100px}
 @media(hover:hover){.el-catalog-cta:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(90,23,32,.18)}.el-catalog-cta:hover::before{animation:none;opacity:0}.el-catalog-cta:hover .el-catalog-cta__arrow{animation:none;transform:translateX(5px)}}
 .el-catalog-cta:focus-visible .el-catalog-cta__arrow{animation:none;transform:translateX(5px)}
 .el-catalog-cta:active{transform:translateY(0);box-shadow:none}
-#home-lunches,#home-fastfood{scroll-margin-top:0}
+#home-lunches,#home-fastfood,#home-bowls{scroll-margin-top:0}
+@media(min-width:701px){.el-direction-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.el-home-bowls{grid-template-columns:1fr}}
 @media(max-width:700px){.el-catalog-preview-heading{flex-direction:column;align-items:stretch}.el-catalog-cta{width:100%}}
 @media(prefers-reduced-motion:reduce){.el-catalog-cta,.el-catalog-cta__arrow{animation:none!important;transition:none!important;transform:none!important}.el-catalog-cta::before{animation:none!important;opacity:0!important}}
 .sc-host .el-catalog{padding-top:36px;position:relative}

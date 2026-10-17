@@ -42,7 +42,7 @@ for (const item of ROUTE_ENTRIES) {
   await ensureLocalAssetsExist(html, item.file);
 }
 
-assert.equal(PUBLIC_ROUTE_ENTRIES.length, 12, "public route count mismatch");
+assert.equal(PUBLIC_ROUTE_ENTRIES.length, 13, "public route count mismatch");
 const sitemap = await readFile(path.join(root, "sitemap.xml"), "utf8");
 assert.deepEqual(
   [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]),
