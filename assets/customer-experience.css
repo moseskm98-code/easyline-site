@@ -108,6 +108,7 @@ html[data-el-route-key=corporate-lunches] .el-product-details-link{font-size:14p
 .sc-host .el-day-meals li{font-size:16px!important;line-height:1.4!important;color:#536f8a}
 .el-all-days{padding-left:0;margin-bottom:16px}
 .el-protocol-quick-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:#e4f0f7;border-radius:16px;padding:12px 0}
+.el-protocol-links{padding-top:12px}
 .el-protocol-quick-links a{display:flex;justify-content:center;align-items:center;gap:12px;font-size:15px;min-height:32px;padding:0 14px}
 .el-protocol-quick-links a+a{border-left:1px solid #9ab5c5}
 .el-protocol-quick-links img{flex:none}

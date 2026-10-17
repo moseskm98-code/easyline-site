@@ -3,7 +3,7 @@ const IS_0131 = true;
 const GENERAL_FAQ = [
   { q:'Какие направления есть в EasyLine?', a:'Протокол питания на 28 дней, корпоративные обеды и ПП-фастфуд: чиабатты, сэндвичи, бургеры, тортильи, боулы и выпечка.' },
   { q:'Чем обеды отличаются от протокола?', a:'В протоколе заранее составлены все 28 дней: завтрак, обед и ужин. Корпоративные обеды — отдельные комплекты, которые можно выбрать поштучно.' },
-  { q:'Как выбрать блюда?', a:'Откройте корпоративные обеды или ПП-фастфуд, добавьте нужные позиции в корзину и укажите количество. В протоколе меню фиксировано, его состав можно посмотреть на отдельной странице.' },
+  { q:'Как выбрать блюда?', a:'Откройте корпоративные обеды или ПП-фастфуд, добавьте нужные позиции в корзину и укажите количество. В протоколе меню фиксировано. Подробности уточним перед стартом.' },
   { q:'Где посмотреть стоимость?', a:'Цены корпоративных обедов и ПП-фастфуда пока уточняются. Итоговая сумма и оформление заказа появятся после публикации цен и условий доставки.' },
   { q:'Как узнать состав и сообщить об аллергии?', a:'В карточках обедов перечислены части комплекта. Полный состав и возможные аллергены уточняйте до заказа по телефону +7 964 018-23-73 или в WhatsApp.' },
 ];
@@ -14,7 +14,6 @@ class Component extends DCLogic {
     faqOpen:0, homeFaqOpen:0, data:null, loading:true, error:false,
     catalogLoading:true, catalogError:false, cart:{}, cartAnnouncement:'', cartSaveError:false,
     category:'all', protein:'all', wholegrain:false, search:'', filtersOpen:false, detailsId:null,
-    protocolDay:1, protocolWeek:1, showAllDays:false,
     applicationName:'', applicationPhone:'', applicationPrivacy:false,
     applicationSending:false, applicationSent:false, applicationError:'',
   };
@@ -68,7 +67,7 @@ class Component extends DCLogic {
   loadProtocol() {
     this.setState({ loading:true, error:false });
     const attempt = this._protocolAttempt || 0; this._protocolAttempt = attempt + 1;
-    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.3-preview') + (attempt ? '&retry=' + attempt : '');
+    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.4') + (attempt ? '&retry=' + attempt : '');
     import(url)
       .then(module => this.setState({ data:{ protocols:module.PROTOCOLS }, loading:false }))
       .catch(() => this.setState({ loading:false, error:true }));
@@ -290,10 +289,6 @@ class Component extends DCLogic {
     const teamLines = summary.lines.filter(item => item.direction === 'corporate-lunches');
     const teamCount = teamLines.reduce((sum,item) => sum + item.quantity,0);
     const lastCatalog = this._lastCatalogContext;
-    const weekTabs = [1,2,3,4].map(n => ({ n, selected:S.protocolWeek === n, select:() => this.setState({ protocolWeek:n, protocolDay:(n-1)*7+1, showAllDays:false }) }));
-    const weekDays = (prog?.days || []).filter(day => Math.ceil(day.n/7) === S.protocolWeek).map(day => ({
-      n:day.n, selected:S.protocolDay === day.n, select:() => this.setState({ protocolDay:day.n, showAllDays:false }),
-    }));
 
     const isNotFound = S.route === 'notfound';
     const showProtocolError = S.route === 'program' && S.error;
@@ -323,10 +318,6 @@ class Component extends DCLogic {
       applicationButton:S.applicationSending ? 'Отправляем…' : 'Отправить заявку',
       loading:S.loading && S.route === 'program', showProtocolError, retry:() => this.loadProtocol(),
       prog:prog ? { ...prog, image:'/easyline-site/assets/photos/protocol-protokol-28.jpg', imageAlt:'Протокол 28 дней: готовый рацион EasyLine' } : {},
-      menuDays:visibleProtocolDays(prog?.days || [],S.protocolDay,S.showAllDays), weekTabs, weekDays,
-      showAllDays:S.showAllDays, toggleAllDays:() => this.setState({ showAllDays:!this.state.showAllDays }),
-      allDaysLabel:S.showAllDays ? 'Показать один день' : 'Открыть весь цикл',
-      goExample:event => { event.preventDefault(); const heading=document.getElementById('protocol-menu-title'); heading?.focus({preventScroll:true}); document.getElementById('protocol-menu')?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}); },
       goStorage:event => { event.preventDefault(); this.go('faq'); const index=faqItems.findIndex(item => item.q === 'Как хранить и разогревать рационы?'); this.setState({faqOpen:index},() => requestAnimationFrame(() => { const question=document.getElementById('faqOpen-question-'+index); question?.focus(); })); },
 
       homeLunches:catalog.filter(item => item.direction === 'corporate-lunches').slice(0,4).map(card),

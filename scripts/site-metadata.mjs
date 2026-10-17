@@ -1,6 +1,6 @@
 export const SITE_ORIGIN = "https://easyline.club";
 export const SITE_BASE = "/easyline-site";
-export const SITE_VERSION = "2.4.3-preview";
+export const SITE_VERSION = "2.4.4";
 
 function canonicalUrl(routePath) {
   const path = routePath === "/" ? "/" : `${routePath.replace(/\/+$/, "")}/`;
@@ -28,7 +28,7 @@ export const ROUTE_ENTRIES = [
   entry("cart/index.html", "cart", "/cart", "Корзина — EasyLine", "Выбранные блюда EasyLine и их количество.", { noindex: true }),
   entry("checkout/index.html", "checkout", "/checkout", "Оформление заказа — EasyLine", "Состав заказа, контакты и адрес доставки EasyLine.", { noindex: true }),
   entry("programs/index.html", "program-protokol-28", "/programs", "Протокол 28 дней — EasyLine", protocolDescription, { noindex: true, canonicalPath: "/programs/protokol-28" }),
-  entry("programs/protokol-28/index.html", "program-protokol-28", "/programs/protokol-28", "Протокол 28 дней — EasyLine", "Фиксированное меню протокола EasyLine на 28 дней: завтрак, обед и ужин с просмотром меню по неделям и дням."),
+  entry("programs/protokol-28/index.html", "program-protokol-28", "/programs/protokol-28", "Протокол 28 дней — EasyLine", protocolDescription),
   entry("reviews/index.html", "reviews", "/reviews", "Отзывы — EasyLine", "Отзывы клиентов EasyLine о протоколе питания на 28 дней и доставке."),
   entry("faq/index.html", "faq", "/faq", "Частые вопросы — EasyLine", "Ответы о протоколе на 28 дней, корпоративных обедах, ПП-фастфуде и корзине EasyLine."),
   entry("about-production/index.html", "about-production", "/about-production", "О производстве — EasyLine", "Собственная кухня EasyLine: закупка сырья, приготовление, фасовка рационов и контроль качества."),

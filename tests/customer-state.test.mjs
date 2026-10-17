@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import vm from 'node:vm';
 import test from 'node:test';
-import { CATALOG_FILTER_DEFAULTS, readCatalogFilters, catalogQuery, parseItemQuantity, visibleProtocolDays } from '../src/customer-state.mjs';
+import { CATALOG_FILTER_DEFAULTS, readCatalogFilters, catalogQuery, parseItemQuantity } from '../src/customer-state.mjs';
 import { PROTOCOLS } from '../assets/menu-data-6F787N4k.js';
 
 const helper = await readFile(new URL('../src/customer-state.mjs',import.meta.url),'utf8');
@@ -54,21 +54,6 @@ test('cart continuation and browser return preserve the actual catalog controlle
   app.resumeCatalog({preventDefault(){}});
   assert.equal(context.location.href,catalogUrl);
   assert.equal(app.state.protein,'chicken');
-});
-
-test('week and day navigation preserves the supplied meals and can reveal the complete cycle',() => {
-  const {app}=appFixture();
-  app.state.route='program';
-  const before=JSON.stringify(PROTOCOLS[0].days);
-  app.renderVals().weekTabs[2].select();
-  assert.equal(app.state.protocolDay,15);
-  assert.equal(app.renderVals().menuDays[0].n,15);
-  app.renderVals().weekDays[3].select();
-  assert.equal(app.renderVals().menuDays[0].n,18);
-  app.renderVals().toggleAllDays();
-  assert.equal(app.renderVals().menuDays.length,28);
-  assert.equal(visibleProtocolDays(PROTOCOLS[0].days,28,false)[0].n,28);
-  assert.equal(JSON.stringify(PROTOCOLS[0].days),before);
 });
 
 test('the application draft survives policy navigation without persistent storage',() => {

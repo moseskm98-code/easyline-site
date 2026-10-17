@@ -18,9 +18,6 @@ export function parseItemQuantity(value) {
   const quantity = Number(text);
   return Number.isSafeInteger(quantity) && quantity >= 0 && quantity <= 99 ? quantity : null;
 }
-export function visibleProtocolDays(days, selectedDay, showAll) {
-  return showAll ? days : days.filter(day => day.n === selectedDay);
-}
 export function quantityWord(count, one, few, many) {
   return count % 100 >= 11 && count % 100 <= 14 ? many : count % 10 === 1 ? one : [2,3,4].includes(count % 10) ? few : many;
 }

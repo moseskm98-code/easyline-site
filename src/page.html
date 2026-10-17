@@ -112,16 +112,11 @@ button{font-family:inherit}
     <p>Завтрак, обед и ужин по готовому меню. Не нужно каждый день решать, что приготовить.</p>
     <dl class="el-protocol-facts"><div><dt>Длительность</dt><dd>28 дней</dd></div><div><dt>Питание</dt><dd>3 приёма пищи</dd></div><div><dt>Меню</dt><dd>Фиксированное</dd></div></dl>
     <p class="el-protocol-explanation">Блюда внутри цикла не выбираются. Ограничения обсудим до старта.</p>
-    <div class="el-protocol-actions"><button type="button" class="el-button" data-el-app-intent="order" onClick="{{ openOrder }}">Обсудить протокол</button><a class="el-text-link" href="#protocol-menu" onClick="{{ goExample }}">Посмотреть пример дня</a></div>
+    <div class="el-protocol-actions"><button type="button" class="el-button" data-el-app-intent="order" onClick="{{ openOrder }}">Обсудить протокол</button></div>
   </div>
   <div class="el-photo-frame el-protocol-hero"><img class="el-photo el-protocol-hero__image" data-el-src="{{ prog.image }}" alt="{{ prog.imageAlt }}" fetchpriority="high" decoding="async"></div>
 </section>
-<section id="protocol-menu" class="el-wrap el-protocol-menu">
-  <div class="el-protocol-menu__heading"><div><h2 id="protocol-menu-title" tabindex="-1">Меню по дням</h2><p>Посмотрите пример дня. <button type="button" class="el-link-button el-all-days" aria-expanded="{{ showAllDays }}" onClick="{{ toggleAllDays }}">{{ allDaysLabel }}</button></p></div>
-    <div class="el-protocol-navigation"><nav class="el-week-tabs" aria-label="Недели меню"><sc-for list="{{ weekTabs }}" as="w"><button type="button" aria-pressed="{{ w.selected }}" aria-controls="protocol-days" onClick="{{ w.select }}">Неделя {{ w.n }}</button></sc-for></nav>
-    <nav class="el-day-tabs" aria-label="Дни меню"><sc-for list="{{ weekDays }}" as="d"><button type="button" aria-pressed="{{ d.selected }}" aria-controls="protocol-days" onClick="{{ d.select }}">День {{ d.n }}</button></sc-for></nav></div>
-  </div>
-  <div id="protocol-days"><sc-for list="{{ menuDays }}" as="d"><article class="el-menu-day"><h3>День {{ d.n }}</h3><div class="el-day-meals"><sc-for list="{{ d.meals }}" as="m"><div><h4>{{ m.slot }}</h4><ul><sc-for list="{{ m.items }}" as="it"><li>{{ it }}</li></sc-for></ul></div></sc-for></div></article></sc-for></div>
+<section class="el-wrap el-protocol-links">
   <nav class="el-protocol-quick-links" aria-label="Условия протокола"><a href="{{ hrefDelivery }}" onClick="{{ goDelivery }}">Доставка<img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="18" height="18" alt="" aria-hidden="true"></a><a href="{{ hrefFaq }}" onClick="{{ goStorage }}">Хранение<img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="18" height="18" alt="" aria-hidden="true"></a><a href="#protocol-rules">Замены и ограничения<img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="18" height="18" alt="" aria-hidden="true"></a></nav>
 </section>
 <section id="protocol-rules" class="el-wrap el-section el-protocol-rules"><h2>Особые условия протокола</h2><div><sc-for list="{{ prog.rules }}" as="r"><p>{{ r }}</p></sc-for></div></section>
