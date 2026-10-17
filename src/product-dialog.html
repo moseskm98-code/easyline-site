@@ -1,0 +1,17 @@
+<!-- ШИРОКАЯ ПАНЕЛЬ БЛЮДА -->
+<div class="el-refresh"><sc-if value="{{ showProductDetails }}">
+<dialog id="product-details-dialog" class="el-product-dialog" aria-labelledby="product-details-title" onCancel="{{ closeProductDetails }}" onClick="{{ productBackdropClick }}">
+  <button class="el-product-dialog__close" type="button" aria-label="Закрыть блюдо" onClick="{{ closeProductDetails }}"><img src="/easyline-site/assets/icons/feather/x.svg" width="22" height="22" alt=""></button>
+  <sc-for list="{{ detailItems }}" as="item" hint-placeholder-count="1">
+    <div class="el-product-dialog__content"><div class="el-product-dialog__layout">
+      <div><sc-if value="{{ item.hasImage }}"><img class="el-product-dialog__photo" data-el-src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800"></sc-if><sc-if value="{{ item.imageNote }}"><p class="el-product-card__image-note">{{ item.imageNote }}</p></sc-if></div>
+      <div class="el-product-dialog__info"><h2 id="product-details-title">{{ item.title }}</h2>
+        <sc-if value="{{ item.detail }}"><p class="el-product-dialog__detail">{{ item.detail }}</p></sc-if>
+        <sc-if value="{{ item.wholegrain }}"><span class="el-bread-label">Цельнозерновой хлеб</span></sc-if>
+        <dl><div><dt>Блюдо</dt><dd>{{ item.name }}</dd></div><div><dt>Масса порции</dt><dd>Уточняется</dd></div><div><dt>Ингредиенты и аллергены</dt><dd>Полный состав уточняется. Сообщите нам об ограничениях до заказа.</dd></div></dl>
+        <a class="el-text-link" href="{{ item.inquiryHref }}" target="_blank" rel="noreferrer">Уточнить состав</a>
+      </div>
+    </div></div>
+    <div class="el-product-dialog__actions"><span>Количество</span><sc-if value="{{ !item.showQuantity }}"><button type="button" class="el-button el-product-add" aria-label="{{ item.addLabel }}" onClick="{{ item.add }}">В корзину</button></sc-if><sc-if value="{{ item.showQuantity }}"><!-- QUANTITY_CONTROL --></sc-if></div>
+  </sc-for>
+</dialog></sc-if></div>

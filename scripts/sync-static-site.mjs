@@ -56,6 +56,9 @@ function buildHead(entryItem) {
 <link rel="stylesheet" href="/easyline-site/assets/menu-refresh.css?v=${SITE_VERSION}">
 <link rel="stylesheet" href="/easyline-site/assets/gentle-motion.css?v=${SITE_VERSION}">
 <link rel="stylesheet" href="/easyline-site/assets/customer-experience.css?v=${SITE_VERSION}">
+<link rel="stylesheet" href="/easyline-site/assets/catalog-experience.css?v=${SITE_VERSION}">
+<link rel="stylesheet" href="/easyline-site/assets/home-menu.css?v=${SITE_VERSION}">
+<script defer src="/easyline-site/assets/home-menu.js?v=${SITE_VERSION}"></script>
 <script defer src="/easyline-site/assets/gentle-motion.js?v=${SITE_VERSION}"></script>
 <meta name="x-easyline-color-variant" content="accessible-digital">
 </head>`;
@@ -157,8 +160,8 @@ async function patchCompiledBundle() {
 }
 
 async function writePages() {
-  const [page, retained, logic, cart, rawCatalog, home, catalogs, cartPages, productCard, quantity, customerState] = await Promise.all(
-    ["page.html", "retained-content.js", "site-logic.js", "cart.js", "catalog.json", "home.html", "catalogs.html", "cart-pages.html", "product-card.html", "quantity.html", "customer-state.mjs"]
+  const [page, retained, logic, cart, rawCatalog, home, catalogs, cartPages, productCard, quantity, customerState, productDialog] = await Promise.all(
+    ["page.html", "retained-content.js", "site-logic.js", "cart.js", "catalog.json", "home.html", "catalogs.html", "cart-pages.html", "product-card.html", "quantity.html", "customer-state.mjs", "product-dialog.html"]
       .map((file) => readFile(path.join(root, "src", file), "utf8")),
   );
   const catalog = JSON.parse(rawCatalog);
@@ -173,7 +176,7 @@ async function writePages() {
   const catalogAsset = `menu-catalog-${createHash("sha256").update(catalogModule).digest("hex").slice(0, 12)}.js`;
   await writeFile(path.join(root, "assets", catalogAsset), catalogModule);
   const template = page
-    .replace("<!-- NEW_HOME_AND_CATALOGS -->", [home, catalogs, cartPages].join("\n"))
+    .replace("<!-- NEW_HOME_AND_CATALOGS -->", [home, catalogs, cartPages, productDialog].join("\n"))
     .replaceAll("<!-- PRODUCT_CARD -->", productCard)
     .replaceAll("<!-- QUANTITY_CONTROL -->", quantity)
     .replace("<!-- EASYLINE_LOGIC -->", retained + "\n" + customerState.replace(/^export /gm, "") + "\n" + logic.replace("__CATALOG_ASSET__", catalogAsset));

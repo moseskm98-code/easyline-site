@@ -18,6 +18,14 @@ export function parseItemQuantity(value) {
   const quantity = Number(text);
   return Number.isSafeInteger(quantity) && quantity >= 0 && quantity <= 99 ? quantity : null;
 }
+export function readCatalogContext(value) {
+  if (!value || !['home','assortment','lunches','bowls'].includes(value.route)) return null;
+  const filters = value.filters && typeof value.filters === 'object' ? value.filters : {};
+  return { route:value.route, filters:readCatalogFilters(catalogQuery(filters)),
+    scroll:Number.isFinite(value.scroll) ? Math.max(0,Math.min(value.scroll,1e7)) : 0,
+    hash:typeof value.hash === 'string' && /^#home-[a-z-]+$/.test(value.hash) ? value.hash : '',
+    filtersOpen:value.filtersOpen === true };
+}
 export function quantityWord(count, one, few, many) {
   return count % 100 >= 11 && count % 100 <= 14 ? many : count % 10 === 1 ? one : [2,3,4].includes(count % 10) ? few : many;
 }

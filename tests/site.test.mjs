@@ -11,14 +11,15 @@ const menuSource = await readFile(new URL("assets/menu-data-6F787N4k.js", root),
 test("menu refresh retains the protocol and provides three catalog directions", async () => {
   assert.ok(index.includes(`window.__EASYLINE_VARIANT__ = "${SITE_VERSION}"`));
   assert.match(index, /<form[^>]+onSubmit="\{\{ submitApplication \}\}"/);
-  assert.ok(index.includes("history.replaceState({},'',PAGES_BASE + '/programs/protokol-28')"), 'legacy programs URL resolves to protocol');
+  assert.ok(index.includes("history.replaceState({},'',this.pathFor('program'))"), 'legacy programs URL resolves to protocol');
   assert.doesNotMatch(index, /data-el-app-intent="auth"|>Войти</);
   assert.doesNotMatch(index, /\{ label:'Боксы'|\{ label:'Витрина'|\{ label:'Блог'/);
 
   assert.match(index, /path === '\/corporate-lunches'/);
   assert.match(index, /path === '\/assortment'/);
   assert.match(index, /path === '\/bowls'/);
-  assert.match(index, /class="el-direction-grid"/);
+  assert.match(index, /class="el-wrap el-stories-track"/);
+  assert.match(index, /aria-label="Категории меню"/);
   assert.doesNotMatch(index, /Один рацион\. Полный цикл|Начните рацион на 28 дней/);
 
   const leads = await import(new URL("lead-form.js", root));

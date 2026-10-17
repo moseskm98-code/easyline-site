@@ -20,27 +20,30 @@
 <link rel="canonical" href="https://easyline.club/checkout/">
 <title>Оформление заказа — EasyLine</title>
 <link rel="icon" href="/easyline-site/assets/logo-Ddt-JyRw.svg" type="image/svg+xml">
-<script>window.__EASYLINE_VARIANT__ = "2.4.9";window.__EASYLINE_SITE_ORIGIN__ = "https://easyline.club";window.__EASYLINE_STATIC_ROUTE_KEY__ = "checkout";window.__EASYLINE_MOTION_OWNER__ = "gentle";</script>
+<script>window.__EASYLINE_VARIANT__ = "2.6.5";window.__EASYLINE_SITE_ORIGIN__ = "https://easyline.club";window.__EASYLINE_STATIC_ROUTE_KEY__ = "checkout";window.__EASYLINE_MOTION_OWNER__ = "gentle";</script>
 <script src="/easyline-site/vendor/react.production.min.js"></script>
 <script src="/easyline-site/vendor/react-dom.production.min.js"></script>
 <link rel="preload" href="/easyline-site/assets/nunito-variable-cyrillic.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/bebas-neue-regular-mhMkEidK.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/bebas-neue-bold-DqarbXCh.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/podkova-variable-DYz2L4Pv.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="/easyline-site/assets/first-frame-init.css?v=2.4.9">
-<script src="/easyline-site/assets/first-frame-init.js?v=2.4.9"></script>
-<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=2.4.9"></script>
+<link rel="stylesheet" href="/easyline-site/assets/first-frame-init.css?v=2.6.5">
+<script src="/easyline-site/assets/first-frame-init.js?v=2.6.5"></script>
+<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=2.6.5"></script>
 <script src="/easyline-site/assets/static-route-head.js"></script>
-<script type="module">import {normalizePhone,submitInquiry} from "/easyline-site/lead-form.js?v=2.4.9";window.__EASYLINE_LEADS__=Object.freeze({normalizePhone,submitInquiry});</script>
+<script type="module">import {normalizePhone,submitInquiry} from "/easyline-site/lead-form.js?v=2.6.5";window.__EASYLINE_LEADS__=Object.freeze({normalizePhone,submitInquiry});</script>
 <link rel="stylesheet" crossorigin href="/easyline-site/assets/index-BmA-8PXs-v222.css">
 <link rel="stylesheet" href="/easyline-site/assets/readability-overrides.css">
 <link rel="stylesheet" href="/easyline-site/assets/light-mode-only.css">
-<link rel="stylesheet" href="/easyline-site/assets/accessible-digital.css?v=2.4.9">
+<link rel="stylesheet" href="/easyline-site/assets/accessible-digital.css?v=2.6.5">
 <link rel="stylesheet" href="/easyline-site/assets/layout-stage-preview.css">
-<link rel="stylesheet" href="/easyline-site/assets/menu-refresh.css?v=2.4.9">
-<link rel="stylesheet" href="/easyline-site/assets/gentle-motion.css?v=2.4.9">
-<link rel="stylesheet" href="/easyline-site/assets/customer-experience.css?v=2.4.9">
-<script defer src="/easyline-site/assets/gentle-motion.js?v=2.4.9"></script>
+<link rel="stylesheet" href="/easyline-site/assets/menu-refresh.css?v=2.6.5">
+<link rel="stylesheet" href="/easyline-site/assets/gentle-motion.css?v=2.6.5">
+<link rel="stylesheet" href="/easyline-site/assets/customer-experience.css?v=2.6.5">
+<link rel="stylesheet" href="/easyline-site/assets/catalog-experience.css?v=2.6.5">
+<link rel="stylesheet" href="/easyline-site/assets/home-menu.css?v=2.6.5">
+<script defer src="/easyline-site/assets/home-menu.js?v=2.6.5"></script>
+<script defer src="/easyline-site/assets/gentle-motion.js?v=2.6.5"></script>
 <meta name="x-easyline-color-variant" content="accessible-digital">
 </head>
 <body>
@@ -107,43 +110,42 @@ button{font-family:inherit}
 
 <!-- ГЛАВНАЯ -->
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-<div class="el-refresh">
+<div class="el-refresh el-home-menu">
 <section class="el-wrap el-home-hero">
   <div class="el-home-hero__copy">
     <span class="el-eyebrow el-eyebrow--badge">EasyLine · готовая еда</span>
     <h1>Питание<br>под ваш день</h1>
     <p class="el-lead">Рацион на 28 дней, обед для рабочего дня или любимые блюда поштучно. Выберите свой формат — приготовление возьмём на себя.</p>
-    <nav class="el-hero-choices" aria-label="Выберите формат питания">
-      <a class="el-button" href="{{ hrefLunches }}" onClick="{{ goLunches }}">Корпоративные обеды</a>
-      <a class="el-button el-button--outline" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">ПП-фастфуд</a>
-      <a class="el-button el-button--outline" href="{{ hrefBowls }}" onClick="{{ goBowls }}">Боулы</a>
-      <a class="el-text-link" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}">Рацион на 28 дней →</a>
-    </nav>
   </div>
   <div class="el-home-hero__visual"><div class="el-photo-frame"><img class="el-photo" src="/easyline-site/assets/home-hero-ration-day-KbJLqsW8.jpg" alt="Готовые рационы EasyLine в контейнерах" fetchpriority="high" decoding="async"></div></div>
 </section>
-<section id="directions" class="el-section el-surface">
-  <div class="el-wrap">
-    <div class="el-section-heading"><div><span class="el-eyebrow">Четыре направления</span><h2>Выберите свой формат</h2></div></div>
-    <div class="el-direction-grid">
-      <a class="el-direction-card" href="{{ hrefLunches }}" onClick="{{ goLunches }}"><span class="el-direction-card__number">13 <small>комплектов</small></span><h3>Корпоративные обеды</h3><p>Готовые комплекты для рабочего дня. Выбирайте блюда и количество.</p><span class="el-text-link">Выбрать обед →</span></a>
-      <a class="el-direction-card" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}"><span class="el-direction-card__number">23 <small>позиции</small></span><h3>ПП-фастфуд</h3><p>Чиабатты, сэндвичи, бургеры, тортильи, хот-доги и выпечка.</p><span class="el-text-link">Перейти в каталог →</span></a>
-      <a class="el-direction-card" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}"><span class="el-direction-card__number">28 <small>дней</small></span><h3>Рацион питания</h3><p>Завтрак, обед и ужин. Полное меню уже собрано на весь цикл.</p><span class="el-text-link">О рационе →</span></a>
-      <a class="el-direction-card" href="{{ hrefBowls }}" onClick="{{ goBowls }}"><span class="el-direction-card__number">3 <small>боула</small></span><h3>Боулы</h3><p>С курицей, индейкой или креветкой. Выберите любимую начинку.</p><span class="el-text-link">Выбрать боул →</span></a>
-    </div>
+<section id="directions" class="el-format-stories" aria-label="Форматы питания">
+  <div class="el-wrap el-stories-track">
+    <article class="el-story"><a class="el-story__card" href="#home-lunches" data-home-anchor="home-lunches"><img src="/easyline-site/assets/menu-images/lunch-01.jpg" alt="Предварительная иллюстрация корпоративного обеда" width="1200" height="800" loading="lazy"><span class="el-story__badge">13 комплектов</span><span class="el-story__copy"><strong>Корпоративные<br>обеды</strong><span>Для рабочего дня <img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="18" height="18" alt=""></span></span></a><p class="el-story__note">фото, состав и подача уточнить</p></article>
+    <article class="el-story"><a class="el-story__card" href="#home-bowls" data-home-anchor="home-bowls"><img src="/easyline-site/assets/menu-images/assortment-23.jpg" alt="Предварительная иллюстрация боула" width="1200" height="800" loading="lazy"><span class="el-story__badge">3 боула</span><span class="el-story__copy"><strong>Боулы</strong><span>Всё в одной чаше <img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="18" height="18" alt=""></span></span></a><p class="el-story__note">фото, состав и подача уточнить</p></article>
+    <article class="el-story"><a class="el-story__card" href="#home-fastfood" data-home-anchor="home-fastfood"><img src="/easyline-site/assets/menu-images/assortment-08.jpg" alt="Предварительная иллюстрация ПП-бургера" width="1200" height="800" loading="lazy"><span class="el-story__badge">23 позиции</span><span class="el-story__copy"><strong>ПП-фастфуд</strong><span>Любимое поштучно <img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="18" height="18" alt=""></span></span></a><p class="el-story__note">фото, состав и подача уточнить</p></article>
+    <article class="el-story"><a class="el-story__card el-story__card--ration" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}"><img src="/easyline-site/assets/home-hero-ration-day-KbJLqsW8.jpg" alt="Готовый рацион EasyLine на день" width="900" height="1200" loading="lazy"><span class="el-story__badge">28 дней</span><span class="el-story__copy"><strong>Рацион<br>питания</strong><span>День уже собран <img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="18" height="18" alt=""></span></span></a></article>
   </div>
 </section>
-<section class="el-wrap el-section" id="home-lunches">
-  <div class="el-section-heading el-catalog-preview-heading el-home-lunches-heading"><div><span class="el-eyebrow">Обед для рабочего дня</span><h2>Корпоративные обеды</h2></div><a class="el-button el-catalog-cta el-home-lunches-cta" href="{{ hrefLunches }}" onClick="{{ goLunches }}"><span class="el-catalog-cta__label">Открыть полное меню</span><span class="el-catalog-cta__arrow" aria-hidden="true"><img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="20" height="20" alt=""></span></a></div>
-  <div class="el-product-grid el-home-lunches"><sc-for list="{{ homeLunches }}" as="item" hint-placeholder-count="4"><article class="el-product-card" data-product-id="{{ item.id }}">
-  <sc-if value="{{ item.hasImage }}"><div class="el-product-card__photo"><img data-el-src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></div></sc-if>
+<nav class="el-home-category-nav" aria-label="Категории меню" data-home-menu-ready="{{ catalogReady }}">
+  <div class="el-wrap">
+    <div class="el-home-category-nav__primary"><a href="#home-lunches" data-home-anchor="home-lunches">Корпоративные обеды</a><a href="#home-bowls" data-home-anchor="home-bowls">Боулы</a><a href="#home-fastfood" data-home-anchor="home-fastfood">ПП-фастфуд</a></div>
+  </div>
+</nav>
+<div class="el-home-menu-content">
+<section class="el-wrap el-section el-home-menu-section" id="home-lunches" data-home-section="lunches" aria-labelledby="home-lunches-title">
+  <div class="el-section-heading"><div><span class="el-eyebrow">13 готовых комплектов</span><h2 id="home-lunches-title" tabindex="-1">Корпоративные обеды</h2></div><p class="el-menu-heading-note">Для себя или команды.<br>Укажите число порций.</p></div>
+  <div class="el-product-grid el-home-lunches el-large-photo-cards"><sc-for list="{{ homeLunches }}" as="item" hint-placeholder-count="13"><article class="el-product-card" data-product-id="{{ item.id }}">
+  <div class="el-product-card__media">
+  <sc-if value="{{ item.hasImage }}"><button type="button" class="el-product-card__photo el-product-card__photo-button" aria-label="{{ item.photoDetailsLabel }}" aria-expanded="{{ item.detailsOpen }}" aria-controls="product-details-dialog" aria-haspopup="dialog" onClick="{{ item.toggleDetails }}"><img data-el-src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></button></sc-if>
   <sc-if value="{{ item.imageNote }}"><p class="el-product-card__image-note">{{ item.imageNote }}</p></sc-if>
+  </div>
   <div class="el-product-card__body">
     <div class="el-eyebrow">{{ item.eyebrow }}</div><h3>{{ item.title }}</h3>
     <sc-if value="{{ item.detail }}"><p class="el-product-card__detail">{{ item.detail }}</p></sc-if>
     <sc-if value="{{ item.wholegrain }}"><span class="el-bread-label">Цельнозерновой хлеб</span></sc-if>
     <div class="el-product-card__bottom">
-      <button class="el-product-details-link" type="button" aria-label="{{ item.detailsLabel }}" aria-expanded="{{ item.detailsOpen }}" aria-controls="{{ item.detailsId }}" onClick="{{ item.toggleDetails }}">{{ item.detailsText }}</button>
+      <button class="el-product-details-link" type="button" aria-label="{{ item.detailsLabel }}" aria-expanded="{{ item.detailsOpen }}" aria-controls="product-details-dialog" aria-haspopup="dialog" onClick="{{ item.toggleDetails }}">{{ item.detailsText }}</button>
       <sc-if value="{{ item.hasPrice }}"><span class="el-product-card__price">{{ item.priceLabel }}</span></sc-if>
       <sc-if value="{{ !item.showQuantity }}"><button type="button" class="el-button el-product-add" aria-label="{{ item.addLabel }}" onClick="{{ item.add }}">В корзину</button></sc-if>
       <sc-if value="{{ item.showQuantity }}"><div class="el-quantity-field"><sc-if value="{{ item.quantityCaption }}"><span class="el-quantity-caption">{{ item.quantityCaption }}</span></sc-if>
@@ -155,38 +157,27 @@ button{font-family:inherit}
 </div>
 </sc-if>
     </div>
-    <div class="el-product-details" id="{{ item.detailsId }}" data-open="{{ item.detailsOpen }}" role="region" aria-label="{{ item.detailsLabel }}" aria-hidden="{{ !item.detailsOpen }}">
-      <div class="el-product-details__clip"><div class="el-product-details__content">
-        <dl><div><dt>Блюдо</dt><dd>{{ item.name }}</dd></div><div><dt>Масса порции</dt><dd>Уточняется</dd></div><div><dt>Ингредиенты и аллергены</dt><dd>Полный состав уточняется. Сообщите нам об ограничениях до заказа.</dd></div></dl>
-        <div class="el-product-details__footer"><a class="el-text-link" href="{{ item.inquiryHref }}" target="_blank" rel="noreferrer" tabindex="{{ item.detailsTabIndex }}">Уточнить состав</a><button class="el-product-details-close" type="button" aria-label="{{ item.closeDetailsLabel }}" tabindex="{{ item.detailsTabIndex }}" onClick="{{ item.closeDetails }}"><span class="el-product-details-close__icon" aria-hidden="true"><img src="/easyline-site/assets/icons/feather/x.svg" width="20" height="20" alt=""></span></button></div>
-      </div></div>
-    </div>
+
   </div>
 </article>
 </sc-for></div>
   <sc-if value="{{ catalogLoading }}"><p role="status" class="el-muted">Загружаем меню…</p></sc-if>
   <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice">Не удалось загрузить меню. <button type="button" class="el-link-button" onClick="{{ retryCatalog }}">Повторить</button></div></sc-if>
 </section>
-<section class="el-section el-surface" id="home-fastfood">
-  <div class="el-wrap">
-    <div class="el-section-heading el-catalog-preview-heading"><div><span class="el-eyebrow">Блюда поштучно</span><h2>ПП-фастфуд на каждый день</h2></div><a class="el-button el-catalog-cta el-home-fastfood-cta" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}"><span class="el-catalog-cta__label">Открыть весь каталог</span><span class="el-catalog-cta__arrow" aria-hidden="true"><img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="20" height="20" alt=""></span></a></div>
-    <p class="el-section-intro">Выберите любимую начинку. Обычный или цельнозерновой хлеб — в одном каталоге.</p>
-    <div class="el-category-grid"><sc-for list="{{ homeCategories }}" as="category" hint-placeholder-count="5"><a class="el-category-card" href="{{ category.href }}" onClick="{{ category.open }}"><h3>{{ category.label }}</h3><span class="el-category-card__count">{{ category.count }}</span><span class="el-category-card__arrow" aria-hidden="true">→</span></a></sc-for></div>
-    <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice">Не удалось загрузить категории. <button type="button" class="el-link-button" onClick="{{ retryCatalog }}">Повторить</button></div></sc-if>
-  </div>
-</section>
-<section class="el-wrap el-section" id="home-bowls">
-  <div class="el-section-heading el-catalog-preview-heading"><div><span class="el-eyebrow">Блюда поштучно</span><h2>Боулы</h2></div><a class="el-button el-catalog-cta" href="{{ hrefBowls }}" onClick="{{ goBowls }}"><span class="el-catalog-cta__label">Выбрать боул</span><span class="el-catalog-cta__arrow" aria-hidden="true"><img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="20" height="20" alt=""></span></a></div>
-  <p class="el-section-intro">Три варианта: с курицей, индейкой и креветкой.</p>
-  <div class="el-product-grid el-home-bowls"><sc-for list="{{ homeBowls }}" as="item" hint-placeholder-count="3"><article class="el-product-card" data-product-id="{{ item.id }}">
-  <sc-if value="{{ item.hasImage }}"><div class="el-product-card__photo"><img data-el-src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></div></sc-if>
+<section class="el-section el-surface el-home-menu-section" id="home-bowls" data-home-section="bowls" aria-labelledby="home-bowls-title">
+  <div class="el-wrap"><div class="el-section-heading"><div><span class="el-eyebrow">3 варианта</span><h2 id="home-bowls-title" tabindex="-1">Боулы</h2></div></div>
+  <p class="el-section-intro">С курицей, индейкой или креветкой.</p>
+  <div class="el-product-grid el-home-bowls el-large-photo-cards"><sc-for list="{{ homeBowls }}" as="item" hint-placeholder-count="3"><article class="el-product-card" data-product-id="{{ item.id }}">
+  <div class="el-product-card__media">
+  <sc-if value="{{ item.hasImage }}"><button type="button" class="el-product-card__photo el-product-card__photo-button" aria-label="{{ item.photoDetailsLabel }}" aria-expanded="{{ item.detailsOpen }}" aria-controls="product-details-dialog" aria-haspopup="dialog" onClick="{{ item.toggleDetails }}"><img data-el-src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></button></sc-if>
   <sc-if value="{{ item.imageNote }}"><p class="el-product-card__image-note">{{ item.imageNote }}</p></sc-if>
+  </div>
   <div class="el-product-card__body">
     <div class="el-eyebrow">{{ item.eyebrow }}</div><h3>{{ item.title }}</h3>
     <sc-if value="{{ item.detail }}"><p class="el-product-card__detail">{{ item.detail }}</p></sc-if>
     <sc-if value="{{ item.wholegrain }}"><span class="el-bread-label">Цельнозерновой хлеб</span></sc-if>
     <div class="el-product-card__bottom">
-      <button class="el-product-details-link" type="button" aria-label="{{ item.detailsLabel }}" aria-expanded="{{ item.detailsOpen }}" aria-controls="{{ item.detailsId }}" onClick="{{ item.toggleDetails }}">{{ item.detailsText }}</button>
+      <button class="el-product-details-link" type="button" aria-label="{{ item.detailsLabel }}" aria-expanded="{{ item.detailsOpen }}" aria-controls="product-details-dialog" aria-haspopup="dialog" onClick="{{ item.toggleDetails }}">{{ item.detailsText }}</button>
       <sc-if value="{{ item.hasPrice }}"><span class="el-product-card__price">{{ item.priceLabel }}</span></sc-if>
       <sc-if value="{{ !item.showQuantity }}"><button type="button" class="el-button el-product-add" aria-label="{{ item.addLabel }}" onClick="{{ item.add }}">В корзину</button></sc-if>
       <sc-if value="{{ item.showQuantity }}"><div class="el-quantity-field"><sc-if value="{{ item.quantityCaption }}"><span class="el-quantity-caption">{{ item.quantityCaption }}</span></sc-if>
@@ -198,22 +189,53 @@ button{font-family:inherit}
 </div>
 </sc-if>
     </div>
-    <div class="el-product-details" id="{{ item.detailsId }}" data-open="{{ item.detailsOpen }}" role="region" aria-label="{{ item.detailsLabel }}" aria-hidden="{{ !item.detailsOpen }}">
-      <div class="el-product-details__clip"><div class="el-product-details__content">
-        <dl><div><dt>Блюдо</dt><dd>{{ item.name }}</dd></div><div><dt>Масса порции</dt><dd>Уточняется</dd></div><div><dt>Ингредиенты и аллергены</dt><dd>Полный состав уточняется. Сообщите нам об ограничениях до заказа.</dd></div></dl>
-        <div class="el-product-details__footer"><a class="el-text-link" href="{{ item.inquiryHref }}" target="_blank" rel="noreferrer" tabindex="{{ item.detailsTabIndex }}">Уточнить состав</a><button class="el-product-details-close" type="button" aria-label="{{ item.closeDetailsLabel }}" tabindex="{{ item.detailsTabIndex }}" onClick="{{ item.closeDetails }}"><span class="el-product-details-close__icon" aria-hidden="true"><img src="/easyline-site/assets/icons/feather/x.svg" width="20" height="20" alt=""></span></button></div>
-      </div></div>
-    </div>
+
   </div>
 </article>
 </sc-for></div>
-  <sc-if value="{{ catalogLoading }}"><p role="status" class="el-muted">Загружаем боулы…</p></sc-if>
-  <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice">Не удалось загрузить боулы. <button type="button" class="el-link-button" onClick="{{ retryCatalog }}">Повторить</button></div></sc-if>
+  <sc-if value="{{ catalogLoading }}"><p role="status" class="el-muted">Загружаем меню…</p></sc-if>
+  <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice">Не удалось загрузить меню. <button type="button" class="el-link-button" onClick="{{ retryCatalog }}">Повторить</button></div></sc-if></div>
 </section>
+<section class="el-section el-home-menu-section" id="home-fastfood" data-home-section="fastfood" aria-labelledby="home-fastfood-title">
+  <div class="el-wrap"><div class="el-section-heading"><div><span class="el-eyebrow">23 позиции поштучно</span><h2 id="home-fastfood-title" tabindex="-1">ПП-фастфуд</h2></div></div>
+  <sc-if value="{{ catalogLoading }}"><p role="status" class="el-muted">Загружаем меню…</p></sc-if>
+  <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice">Не удалось загрузить меню. <button type="button" class="el-link-button" onClick="{{ retryCatalog }}">Повторить</button></div></sc-if>
+  </div>
+  <nav class="el-home-subcategories" aria-label="Подкатегории ПП-фастфуда" data-home-subcategories="fastfood"><div class="el-wrap"><div class="el-home-subcategories__track"><sc-for list="{{ homeMenuGroups }}" as="group" hint-placeholder-count="5"><a href="{{ group.href }}" data-home-anchor="{{ group.target }}">{{ group.label }}</a></sc-for></div></div></nav>
+  <div class="el-wrap">
+  <sc-for list="{{ homeMenuGroups }}" as="group" hint-placeholder-count="5"><section class="el-home-menu-group" id="{{ group.target }}" data-home-section="fastfood" aria-labelledby="{{ group.headingId }}"><div class="el-home-group-heading"><h3 id="{{ group.headingId }}" tabindex="-1">{{ group.label }}</h3><span>{{ group.count }}</span></div><div class="el-product-grid"><sc-for list="{{ group.items }}" as="item" hint-placeholder-count="3"><article class="el-product-card" data-product-id="{{ item.id }}">
+  <div class="el-product-card__media">
+  <sc-if value="{{ item.hasImage }}"><button type="button" class="el-product-card__photo el-product-card__photo-button" aria-label="{{ item.photoDetailsLabel }}" aria-expanded="{{ item.detailsOpen }}" aria-controls="product-details-dialog" aria-haspopup="dialog" onClick="{{ item.toggleDetails }}"><img data-el-src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></button></sc-if>
+  <sc-if value="{{ item.imageNote }}"><p class="el-product-card__image-note">{{ item.imageNote }}</p></sc-if>
+  </div>
+  <div class="el-product-card__body">
+    <div class="el-eyebrow">{{ item.eyebrow }}</div><h3>{{ item.title }}</h3>
+    <sc-if value="{{ item.detail }}"><p class="el-product-card__detail">{{ item.detail }}</p></sc-if>
+    <sc-if value="{{ item.wholegrain }}"><span class="el-bread-label">Цельнозерновой хлеб</span></sc-if>
+    <div class="el-product-card__bottom">
+      <button class="el-product-details-link" type="button" aria-label="{{ item.detailsLabel }}" aria-expanded="{{ item.detailsOpen }}" aria-controls="product-details-dialog" aria-haspopup="dialog" onClick="{{ item.toggleDetails }}">{{ item.detailsText }}</button>
+      <sc-if value="{{ item.hasPrice }}"><span class="el-product-card__price">{{ item.priceLabel }}</span></sc-if>
+      <sc-if value="{{ !item.showQuantity }}"><button type="button" class="el-button el-product-add" aria-label="{{ item.addLabel }}" onClick="{{ item.add }}">В корзину</button></sc-if>
+      <sc-if value="{{ item.showQuantity }}"><div class="el-quantity-field"><sc-if value="{{ item.quantityCaption }}"><span class="el-quantity-caption">{{ item.quantityCaption }}</span></sc-if>
+<div class="el-quantity" role="group" aria-label="{{ item.name }}">
+  <button type="button" onClick="{{ item.minus }}" disabled="{{ item.atZero }}" aria-label="{{ item.minusLabel }}">−</button>
+  <input type="number" inputmode="numeric" min="0" max="99" step="1" value="{{ item.quantity }}" onChange="{{ item.setQuantity }}" onBlur="{{ item.restoreQuantity }}" aria-label="{{ item.quantityLabel }}">
+  <button type="button" onClick="{{ item.add }}" disabled="{{ item.atLimit }}" aria-label="{{ item.plusLabel }}">+</button>
+</div>
+</div>
+</sc-if>
+    </div>
+
+  </div>
+</article>
+</sc-for></div></section></sc-for>
+  </div>
+</section>
+</div>
 <section class="el-wrap el-section">
   <div class="el-section-heading"><div><span class="el-eyebrow">Обеды, ПП-фастфуд и боулы</span><h2>Как заказать</h2></div></div>
   <div class="el-steps-refresh">
-    <div><span class="el-step-number">1</span><h3>Выберите блюда</h3><p>Откройте обеды, ПП-фастфуд или боулы. Найдите нужные позиции в каталоге.</p></div>
+    <div><span class="el-step-number">1</span><h3>Выберите блюда</h3><p>Найдите нужные блюда на главной. Перейти к разделу можно в меню категорий.</p></div>
     <div><span class="el-step-number">2</span><h3>Соберите корзину</h3><p>Добавьте блюда и укажите количество для себя или команды.</p></div>
     <div><span class="el-step-number">3</span><h3>Оформите заказ</h3><p>Проверьте состав заказа и заполните контактные данные.</p></div>
   </div>
@@ -249,8 +271,8 @@ button{font-family:inherit}
     </div>
     <div class="el-team-catalog-title"><h2>13 готовых комплектов</h2><div class="el-catalog-search"><label class="el-search-label"><span class="el-sr-only">Найти блюдо</span><input type="search" value="{{ search }}" onInput="{{ setSearch }}" placeholder="Найти блюдо" autocomplete="off" maxlength="100"></label></div></div>
   </sc-if>
-  <sc-if value="{{ isIndividualCatalog }}"><div class="el-catalog-search"><label class="el-search-label"><span class="el-sr-only">Найти блюдо</span><input type="search" value="{{ search }}" onInput="{{ setSearch }}" placeholder="Найти блюдо" autocomplete="off" maxlength="100"></label></div></sc-if>
-  <sc-if value="{{ isIndividualCatalog }}">
+  <sc-if value="{{ isAssortment }}"><div class="el-catalog-search"><label class="el-search-label"><span class="el-sr-only">Найти блюдо</span><input type="search" value="{{ search }}" onInput="{{ setSearch }}" placeholder="Найти блюдо" autocomplete="off" maxlength="100"></label></div></sc-if>
+  <sc-if value="{{ isAssortment }}">
     <sc-if value="{{ isAssortment }}"><nav class="el-category-tabs" aria-label="Категории ПП-фастфуда"><sc-for list="{{ categories }}" as="category" hint-placeholder-count="6"><button type="button" aria-pressed="{{ category.selected }}" onClick="{{ category.select }}">{{ category.label }} <span>{{ category.count }}</span></button></sc-for></nav></sc-if>
     <div class="el-catalog-tools"><p class="el-result-count" role="status" aria-live="polite">{{ resultCount }}</p><button type="button" class="el-filter-trigger" aria-expanded="{{ filtersOpen }}" aria-controls="catalog-secondary-filters" onClick="{{ toggleFilters }}"><img src="/easyline-site/assets/icons/feather/sliders.svg" width="20" height="20" alt="" aria-hidden="true">Фильтры<sc-if value="{{ activeFilterCount }}"><span>{{ activeFilterCount }}</span></sc-if></button></div>
     <div id="catalog-secondary-filters" class="el-filter-panel" hidden="{{ !filtersOpen }}"><label>Начинка<select value="{{ protein }}" onChange="{{ setProtein }}"><option value="all">Любая</option><option value="chicken">Курица</option><option value="turkey">Индейка</option><sc-if value="{{ isAssortment }}"><option value="beef">Говядина</option></sc-if><sc-if value="{{ isBowls }}"><option value="shrimp">Креветка</option></sc-if></select></label><sc-if value="{{ isAssortment }}"><label class="el-checkbox-label el-wholegrain-toggle"><input type="checkbox" role="switch" checked="{{ wholegrain }}" onChange="{{ setWholegrain }}"><span>Цельнозерновой хлеб</span></label></sc-if><button type="button" class="el-link-button" onClick="{{ clearSecondaryFilters }}">Сбросить фильтры</button></div>
@@ -259,15 +281,17 @@ button{font-family:inherit}
   <sc-if value="{{ showTeamSearchCount }}"><p class="el-result-count" role="status" aria-live="polite">Найдено: {{ resultCount }}</p></sc-if>
   <sc-if value="{{ catalogLoading }}"><p role="status" class="el-notice">Загружаем меню…</p></sc-if>
   <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice"><p>Меню не загрузилось. Проверьте соединение и повторите попытку.</p><button type="button" class="el-button" onClick="{{ retryCatalog }}">Загрузить меню</button></div></sc-if>
-  <div class="el-product-grid" data-catalog-grid="true"><sc-for list="{{ catalogItems }}" as="item" hint-placeholder-count="6"><article class="el-product-card" data-product-id="{{ item.id }}">
-  <sc-if value="{{ item.hasImage }}"><div class="el-product-card__photo"><img data-el-src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></div></sc-if>
+  <div class="{{ catalogGridClass }}" data-catalog-grid="true"><sc-for list="{{ catalogItems }}" as="item" hint-placeholder-count="6"><article class="el-product-card" data-product-id="{{ item.id }}">
+  <div class="el-product-card__media">
+  <sc-if value="{{ item.hasImage }}"><button type="button" class="el-product-card__photo el-product-card__photo-button" aria-label="{{ item.photoDetailsLabel }}" aria-expanded="{{ item.detailsOpen }}" aria-controls="product-details-dialog" aria-haspopup="dialog" onClick="{{ item.toggleDetails }}"><img data-el-src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></button></sc-if>
   <sc-if value="{{ item.imageNote }}"><p class="el-product-card__image-note">{{ item.imageNote }}</p></sc-if>
+  </div>
   <div class="el-product-card__body">
     <div class="el-eyebrow">{{ item.eyebrow }}</div><h3>{{ item.title }}</h3>
     <sc-if value="{{ item.detail }}"><p class="el-product-card__detail">{{ item.detail }}</p></sc-if>
     <sc-if value="{{ item.wholegrain }}"><span class="el-bread-label">Цельнозерновой хлеб</span></sc-if>
     <div class="el-product-card__bottom">
-      <button class="el-product-details-link" type="button" aria-label="{{ item.detailsLabel }}" aria-expanded="{{ item.detailsOpen }}" aria-controls="{{ item.detailsId }}" onClick="{{ item.toggleDetails }}">{{ item.detailsText }}</button>
+      <button class="el-product-details-link" type="button" aria-label="{{ item.detailsLabel }}" aria-expanded="{{ item.detailsOpen }}" aria-controls="product-details-dialog" aria-haspopup="dialog" onClick="{{ item.toggleDetails }}">{{ item.detailsText }}</button>
       <sc-if value="{{ item.hasPrice }}"><span class="el-product-card__price">{{ item.priceLabel }}</span></sc-if>
       <sc-if value="{{ !item.showQuantity }}"><button type="button" class="el-button el-product-add" aria-label="{{ item.addLabel }}" onClick="{{ item.add }}">В корзину</button></sc-if>
       <sc-if value="{{ item.showQuantity }}"><div class="el-quantity-field"><sc-if value="{{ item.quantityCaption }}"><span class="el-quantity-caption">{{ item.quantityCaption }}</span></sc-if>
@@ -279,20 +303,16 @@ button{font-family:inherit}
 </div>
 </sc-if>
     </div>
-    <div class="el-product-details" id="{{ item.detailsId }}" data-open="{{ item.detailsOpen }}" role="region" aria-label="{{ item.detailsLabel }}" aria-hidden="{{ !item.detailsOpen }}">
-      <div class="el-product-details__clip"><div class="el-product-details__content">
-        <dl><div><dt>Блюдо</dt><dd>{{ item.name }}</dd></div><div><dt>Масса порции</dt><dd>Уточняется</dd></div><div><dt>Ингредиенты и аллергены</dt><dd>Полный состав уточняется. Сообщите нам об ограничениях до заказа.</dd></div></dl>
-        <div class="el-product-details__footer"><a class="el-text-link" href="{{ item.inquiryHref }}" target="_blank" rel="noreferrer" tabindex="{{ item.detailsTabIndex }}">Уточнить состав</a><button class="el-product-details-close" type="button" aria-label="{{ item.closeDetailsLabel }}" tabindex="{{ item.detailsTabIndex }}" onClick="{{ item.closeDetails }}"><span class="el-product-details-close__icon" aria-hidden="true"><img src="/easyline-site/assets/icons/feather/x.svg" width="20" height="20" alt=""></span></button></div>
-      </div></div>
-    </div>
+
   </div>
 </article>
 </sc-for></div>
   <sc-if value="{{ catalogEmpty }}"><div class="el-empty-state"><h2>Таких блюд не нашли</h2><p>Измените название или сбросьте фильтры.</p><button type="button" class="el-button el-button--outline" onClick="{{ clearFilters }}">Сбросить фильтры</button></div></sc-if>
 </section>
-<sc-if value="{{ showTeamSelection }}"><aside class="el-team-selection" aria-label="Выбранные обеды"><div class="el-wrap"><div><strong>{{ teamSelectionLabel }}</strong><span>{{ teamLineLabel }}</span></div><a class="el-button" href="{{ hrefCart }}" onClick="{{ goCart }}">Перейти к выбранным</a></div></aside></sc-if>
+
 </div>
 </sc-if>
+<sc-if value="{{ showCartDock }}"><aside class="el-refresh el-cart-dock" aria-label="Выбранные блюда"><div class="el-wrap"><div><strong>{{ cartDockTitle }}</strong><span>{{ cartDockDetail }}</span></div><a class="el-button" href="{{ hrefCart }}" onClick="{{ goCart }}" aria-label="{{ cartDockLabel }}">В корзину<img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="18" height="18" alt="" aria-hidden="true"></a></div></aside></sc-if>
 <!-- ЗАГРУЗКА РАЦИОНА -->
 <sc-if value="{{ loading }}"><section class="el-refresh el-wrap el-section"><p role="status">Загружаем рацион на 28 дней…</p></section></sc-if>
 <sc-if value="{{ showProtocolError }}"><section class="el-refresh el-wrap el-section"><h1>Меню не загрузилось</h1><p role="alert">Проверьте соединение и повторите попытку.</p><button type="button" class="el-button" onClick="{{ retry }}">Загрузить меню</button></section></sc-if>
@@ -310,14 +330,14 @@ button{font-family:inherit}
   <sc-if value="{{ hasCart }}">
     <div class="el-checkout-layout">
       <div>
-        <sc-if value="{{ isCart }}"><div class="el-cart-lines"><sc-for list="{{ cartItems }}" as="item" hint-placeholder-count="3"><article class="el-cart-line" data-cart-id="{{ item.id }}"><div class="el-cart-line__top"><div><span class="el-eyebrow">{{ item.eyebrow }}</span><h2>{{ item.title }}</h2><sc-if value="{{ item.detail }}"><p>{{ item.detail }}</p></sc-if></div><button type="button" class="el-remove-button" aria-label="{{ item.removeLabel }}" onClick="{{ item.remove }}">Удалить</button></div><div class="el-cart-line__bottom"><span class="el-muted">{{ item.priceLabel }}</span><div class="el-quantity-field"><sc-if value="{{ item.quantityCaption }}"><span class="el-quantity-caption">{{ item.quantityCaption }}</span></sc-if>
+        <sc-if value="{{ isCart }}"><div class="el-cart-lines"><sc-for list="{{ cartItems }}" as="item" hint-placeholder-count="3"><article class="el-cart-line" data-cart-id="{{ item.id }}"><sc-if value="{{ item.hasImage }}"><img class="el-cart-line__photo" data-el-src="{{ item.image }}" alt="{{ item.imageAlt }}" width="96" height="80"></sc-if><div class="el-cart-line__content"><div class="el-cart-line__top"><div><span class="el-eyebrow">{{ item.eyebrow }}</span><h2>{{ item.title }}</h2><sc-if value="{{ item.detail }}"><p>{{ item.detail }}</p></sc-if></div><button type="button" class="el-remove-button" aria-label="{{ item.removeLabel }}" onClick="{{ item.remove }}"><img src="/easyline-site/assets/icons/feather/x.svg" width="18" height="18" alt=""><span class="el-sr-only">Удалить</span></button></div><div class="el-cart-line__bottom"><span class="el-muted">{{ item.priceLabel }}</span><div class="el-quantity-field"><sc-if value="{{ item.quantityCaption }}"><span class="el-quantity-caption">{{ item.quantityCaption }}</span></sc-if>
 <div class="el-quantity" role="group" aria-label="{{ item.name }}">
   <button type="button" onClick="{{ item.minus }}" disabled="{{ item.atZero }}" aria-label="{{ item.minusLabel }}">−</button>
   <input type="number" inputmode="numeric" min="0" max="99" step="1" value="{{ item.quantity }}" onChange="{{ item.setQuantity }}" onBlur="{{ item.restoreQuantity }}" aria-label="{{ item.quantityLabel }}">
   <button type="button" onClick="{{ item.add }}" disabled="{{ item.atLimit }}" aria-label="{{ item.plusLabel }}">+</button>
 </div>
 </div>
-</div></article></sc-for></div></sc-if>
+</div></div><sc-if value="{{ item.imageNote }}"><p class="el-cart-line__image-note">{{ item.imageNote }}</p></sc-if></article></sc-for></div></sc-if>
         <sc-if value="{{ isCheckout }}">
           <p id="checkout-availability" class="el-notice">Приём заказов из нового меню пока не открыт. Цены, доставка и способы оплаты уточняются.</p>
           <form id="checkout-form" class="el-checkout-form" onSubmit="{{ preventCheckout }}" aria-describedby="checkout-availability" autocomplete="on">
@@ -342,6 +362,31 @@ button{font-family:inherit}
 </section>
 </div>
 </sc-if>
+
+<!-- ШИРОКАЯ ПАНЕЛЬ БЛЮДА -->
+<div class="el-refresh"><sc-if value="{{ showProductDetails }}">
+<dialog id="product-details-dialog" class="el-product-dialog" aria-labelledby="product-details-title" onCancel="{{ closeProductDetails }}" onClick="{{ productBackdropClick }}">
+  <button class="el-product-dialog__close" type="button" aria-label="Закрыть блюдо" onClick="{{ closeProductDetails }}"><img src="/easyline-site/assets/icons/feather/x.svg" width="22" height="22" alt=""></button>
+  <sc-for list="{{ detailItems }}" as="item" hint-placeholder-count="1">
+    <div class="el-product-dialog__content"><div class="el-product-dialog__layout">
+      <div><sc-if value="{{ item.hasImage }}"><img class="el-product-dialog__photo" data-el-src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800"></sc-if><sc-if value="{{ item.imageNote }}"><p class="el-product-card__image-note">{{ item.imageNote }}</p></sc-if></div>
+      <div class="el-product-dialog__info"><h2 id="product-details-title">{{ item.title }}</h2>
+        <sc-if value="{{ item.detail }}"><p class="el-product-dialog__detail">{{ item.detail }}</p></sc-if>
+        <sc-if value="{{ item.wholegrain }}"><span class="el-bread-label">Цельнозерновой хлеб</span></sc-if>
+        <dl><div><dt>Блюдо</dt><dd>{{ item.name }}</dd></div><div><dt>Масса порции</dt><dd>Уточняется</dd></div><div><dt>Ингредиенты и аллергены</dt><dd>Полный состав уточняется. Сообщите нам об ограничениях до заказа.</dd></div></dl>
+        <a class="el-text-link" href="{{ item.inquiryHref }}" target="_blank" rel="noreferrer">Уточнить состав</a>
+      </div>
+    </div></div>
+    <div class="el-product-dialog__actions"><span>Количество</span><sc-if value="{{ !item.showQuantity }}"><button type="button" class="el-button el-product-add" aria-label="{{ item.addLabel }}" onClick="{{ item.add }}">В корзину</button></sc-if><sc-if value="{{ item.showQuantity }}"><div class="el-quantity-field"><sc-if value="{{ item.quantityCaption }}"><span class="el-quantity-caption">{{ item.quantityCaption }}</span></sc-if>
+<div class="el-quantity" role="group" aria-label="{{ item.name }}">
+  <button type="button" onClick="{{ item.minus }}" disabled="{{ item.atZero }}" aria-label="{{ item.minusLabel }}">−</button>
+  <input type="number" inputmode="numeric" min="0" max="99" step="1" value="{{ item.quantity }}" onChange="{{ item.setQuantity }}" onBlur="{{ item.restoreQuantity }}" aria-label="{{ item.quantityLabel }}">
+  <button type="button" onClick="{{ item.add }}" disabled="{{ item.atLimit }}" aria-label="{{ item.plusLabel }}">+</button>
+</div>
+</div>
+</sc-if></div>
+  </sc-for>
+</dialog></sc-if></div>
 
 <!-- СТРАНИЦА РАЦИОНА -->
 <sc-if value="{{ isProgram }}">
@@ -640,6 +685,14 @@ function parseItemQuantity(value) {
   const quantity = Number(text);
   return Number.isSafeInteger(quantity) && quantity >= 0 && quantity <= 99 ? quantity : null;
 }
+function readCatalogContext(value) {
+  if (!value || !['home','assortment','lunches','bowls'].includes(value.route)) return null;
+  const filters = value.filters && typeof value.filters === 'object' ? value.filters : {};
+  return { route:value.route, filters:readCatalogFilters(catalogQuery(filters)),
+    scroll:Number.isFinite(value.scroll) ? Math.max(0,Math.min(value.scroll,1e7)) : 0,
+    hash:typeof value.hash === 'string' && /^#home-[a-z-]+$/.test(value.hash) ? value.hash : '',
+    filtersOpen:value.filtersOpen === true };
+}
 function quantityWord(count, one, few, many) {
   return count % 100 >= 11 && count % 100 <= 14 ? many : count % 10 === 1 ? one : [2,3,4].includes(count % 10) ? few : many;
 }
@@ -668,12 +721,22 @@ class Component extends DCLogic {
     this._viewportWidth = innerWidth;
     this.syncRouteFromLocation();
     this._onPopState = () => this.syncRouteFromLocation();
+    this._onPageHide = () => this.rememberCatalog();
     this._onDocumentPointerDown = (event) => {
       const menu = document.querySelector('.el-more-menu');
       if (this.state.moreOpen && menu && !menu.contains(event.target)) this.setState({ moreOpen:false });
     };
     this._onKeyDown = (event) => {
+      if (event.key === 'Tab' && this.state.detailsId) {
+        const dialog = document.querySelector('.el-product-dialog');
+        const controls = dialog ? [...dialog.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex="0"]')].filter(node => node.getClientRects().length) : [];
+        const first = controls[0], last = controls[controls.length - 1];
+        if (event.shiftKey && (document.activeElement === first || !dialog?.contains(document.activeElement))) { event.preventDefault(); last?.focus(); }
+        else if (!event.shiftKey && (document.activeElement === last || !dialog?.contains(document.activeElement))) { event.preventDefault(); first?.focus(); }
+        return;
+      }
       if (event.key === 'Escape') {
+        if (this.state.detailsId) { this.closeProductDetails(event); return; }
         const mobileWasOpen = this.state.menuOpen;
         this.setState({ menuOpen:false, moreOpen:false });
         if (mobileWasOpen) requestAnimationFrame(() => document.querySelector('[data-el-menu-toggle]')?.focus());
@@ -684,7 +747,7 @@ class Component extends DCLogic {
       this._resizeFrame = requestAnimationFrame(() => {
         if (this._viewportWidth === innerWidth) return;
         this._viewportWidth = innerWidth;
-        this.setState(s => ({ viewportTick:s.viewportTick + 1, moreOpen:false }));
+        this.setState(s => ({ viewportTick:s.viewportTick + 1, moreOpen:false, menuOpen:false }));
       });
     };
     this._onStorage = (event) => {
@@ -693,32 +756,95 @@ class Component extends DCLogic {
       }
     };
     window.addEventListener('popstate',this._onPopState);
+    window.addEventListener('pagehide',this._onPageHide);
+    window.addEventListener('beforeunload',this._onPageHide);
     window.addEventListener('resize',this._onResize);
     window.addEventListener('storage',this._onStorage);
     document.addEventListener('pointerdown',this._onDocumentPointerDown);
     document.addEventListener('keydown',this._onKeyDown);
+    if (typeof ResizeObserver !== 'undefined') {
+      this._headerObserver = new ResizeObserver(() => this.syncCatalogChrome());
+      const header = document.querySelector('.el-main-header');
+      if (header) this._headerObserver.observe(header);
+    }
+    document.fonts?.ready.then(() => { this._categoryRevealKey = ''; this.syncCatalogChrome(); });
+    this.syncCatalogChrome();
     this.loadProtocol();
     this.loadCatalog();
   }
 
   componentWillUnmount() {
     window.removeEventListener('popstate',this._onPopState);
+    window.removeEventListener('pagehide',this._onPageHide);
+    window.removeEventListener('beforeunload',this._onPageHide);
     window.removeEventListener('resize',this._onResize);
     window.removeEventListener('storage',this._onStorage);
     document.removeEventListener('pointerdown',this._onDocumentPointerDown);
     document.removeEventListener('keydown',this._onKeyDown);
     cancelAnimationFrame(this._resizeFrame);
+    this._headerObserver?.disconnect();
+    document.documentElement?.classList.remove('el-product-open');
   }
 
   componentDidUpdate() {
     window.dispatchEvent(new CustomEvent('easyline:render'));
+    this.syncCatalogChrome();
     if (this._applicationFocusPending && !this._routeNavigationPending) this.focusApplication();
+  }
+
+  openProductDetails(id,event) {
+    this._detailsOpener = event?.currentTarget;
+    this._detailsReturnId = id;
+    this.setState({ detailsId:id });
+  }
+
+  closeProductDetails(event) {
+    event?.preventDefault();
+    const opener = this._detailsOpener;
+    const id = this._detailsReturnId;
+    document.querySelector('.el-product-dialog')?.close();
+    this.setState({ detailsId:null },() => requestAnimationFrame(() => {
+      const target = opener?.isConnected ? opener : document.querySelector('[data-product-id="' + id + '"] .el-product-details-link');
+      target?.focus({ preventScroll:true });
+    }));
+  }
+
+  productBackdropClick(event) {
+    if (event.target !== event.currentTarget) return;
+    const r = event.currentTarget.getBoundingClientRect();
+    if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) this.closeProductDetails(event);
+  }
+
+  syncCatalogChrome() {
+    const root = document.documentElement;
+    if (!root) return;
+    const header = document.querySelector('.el-main-header');
+    if (header) root.style.setProperty('--el-header-height',Math.ceil(header.getBoundingClientRect().height) + 'px');
+    const dock = document.querySelector('.el-cart-dock');
+    root.dataset.elCartDock = dock ? 'true' : 'false';
+    root.style.setProperty('--el-cart-dock-height',dock ? Math.ceil(dock.getBoundingClientRect().height) + 'px' : '0px');
+    const tabs = document.querySelector('.el-category-tabs');
+    const key = tabs ? this.state.route + ':' + this.state.category + ':' + innerWidth : '';
+    if (tabs && this._categoryRevealKey !== key) {
+      const selected = tabs.querySelector('[aria-pressed="true"]');
+      if (selected) {
+        const nav = tabs.getBoundingClientRect(), button = selected.getBoundingClientRect();
+        tabs.scrollLeft += button.left - nav.left - (nav.width - button.width) / 2;
+        this._categoryRevealKey = key;
+      } else this._categoryRevealKey = '';
+    } else if (!tabs) this._categoryRevealKey = '';
+    const dialog = document.querySelector('.el-product-dialog');
+    root.classList.toggle('el-product-open',!!this.state.detailsId);
+    if (dialog && this.state.detailsId && !dialog.open) {
+      dialog.showModal();
+      dialog.querySelector('.el-product-dialog__close')?.focus({ preventScroll:true });
+    }
   }
 
   loadProtocol() {
     this.setState({ loading:true, error:false });
     const attempt = this._protocolAttempt || 0; this._protocolAttempt = attempt + 1;
-    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.9') + (attempt ? '&retry=' + attempt : '');
+    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.6.5') + (attempt ? '&retry=' + attempt : '');
     import(url)
       .then(module => this.setState({ data:{ protocols:module.PROTOCOLS }, loading:false }))
       .catch(() => this.setState({ loading:false, error:true }));
@@ -732,7 +858,7 @@ class Component extends DCLogic {
       .then(module => {
         this.catalogModule = module;
         const category = new URLSearchParams(location.search).get('category') || this.state.category;
-        this.setState({ catalogLoading:false, cart:module.readCart(), category:module.CATEGORIES.some(item => item.id === category) ? category : 'all' });
+        this.setState({ catalogLoading:false, cart:module.readCart(), category:module.CATEGORIES.some(item => item.id === category) ? category : 'all' },() => this.restoreCatalogPosition());
       }).catch(() => this.setState({ catalogLoading:false, catalogError:true }));
   }
 
@@ -756,21 +882,21 @@ class Component extends DCLogic {
 
   pathFor(route,slug) {
     const paths = { home:'/', lunches:'/corporate-lunches', assortment:'/assortment', bowls:'/bowls', cart:'/cart', checkout:'/checkout', faq:'/faq', reviews:'/reviews' };
-    if (route === 'program') return PAGES_BASE + '/programs/protokol-28';
-    if (route === 'text') return PAGES_BASE + '/' + slug;
-    if (route === 'legal') return PAGES_BASE + '/legal/' + slug;
-    return PAGES_BASE + (paths[route] || '/404');
+    if (route === 'program') return PAGES_BASE + '/programs/protokol-28/';
+    if (route === 'text') return PAGES_BASE + '/' + slug + '/';
+    if (route === 'legal') return PAGES_BASE + '/legal/' + slug + '/';
+    return PAGES_BASE + (route === 'home' ? '/' : (paths[route] || '/404') + '/');
   }
 
   catalogFilters(route=this.state.route, filters=this.state) {
     const { category, protein, wholegrain, search } = filters;
-    return { category:route === 'assortment' ? category : 'all', protein:route === 'lunches' ? 'all' : protein,
-      wholegrain:route === 'assortment' && wholegrain, search };
+    return { category:route === 'assortment' ? category : 'all', protein:route === 'assortment' ? protein : 'all',
+      wholegrain:route === 'assortment' && wholegrain, search:route === 'bowls' ? '' : search };
   }
 
   rememberCatalog() {
-    if (!['assortment','lunches','bowls'].includes(this.state.route)) return;
-    const context = { route:this.state.route, filters:this.catalogFilters(), scroll:window.scrollY, filtersOpen:this.state.filtersOpen };
+    if (!['home','assortment','lunches','bowls'].includes(this.state.route)) return;
+    const context = { route:this.state.route, filters:this.catalogFilters(), scroll:window.scrollY, hash:location.hash, filtersOpen:this.state.filtersOpen };
     this._catalogContexts ||= {};
     this._catalogContexts[context.route] = context;
     this._lastCatalogContext = context;
@@ -778,10 +904,19 @@ class Component extends DCLogic {
   }
 
   setCatalogFilters(patch) {
+    const tabs = document.querySelector('.el-category-tabs');
+    const header = document.querySelector('.el-main-header');
+    const alignCategory = patch.category != null && tabs && header && tabs.getBoundingClientRect().top <= header.getBoundingClientRect().bottom + 2;
     this.setState({ ...patch, detailsId:null },() => {
       const filters = this.catalogFilters();
       history.replaceState({ ...history.state },'',this.pathFor(this.state.route) + catalogQuery(filters));
-      this.rememberCatalog();
+      if (alignCategory) requestAnimationFrame(() => {
+        const grid = document.querySelector('[data-catalog-grid]');
+        const currentHeader = document.querySelector('.el-main-header'), currentTabs = document.querySelector('.el-category-tabs');
+        if (grid && currentHeader && currentTabs) window.scrollTo({left:0,top:Math.max(0,window.scrollY + grid.getBoundingClientRect().top - currentHeader.getBoundingClientRect().height - currentTabs.getBoundingClientRect().height - 14),behavior:'instant'});
+        this.rememberCatalog();
+      });
+      else this.rememberCatalog();
     });
   }
 
@@ -791,25 +926,45 @@ class Component extends DCLogic {
     this.go(context?.route || 'assortment',null,undefined,{ restore:true });
   }
 
+  restoreCatalogPosition() {
+    const context = this._pendingCatalogRestore;
+    if (!context || !this.catalogModule) return;
+    // Wait for the full menu layout, rather than the short loading placeholder.
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      if (this._pendingCatalogRestore !== context || this.state.route !== context.route) return;
+      this._pendingCatalogRestore = null;
+      window.scrollTo({ left:0, top:context.scroll, behavior:'instant' });
+    }));
+  }
+
   syncRouteFromLocation() {
     this._applicationFocusPending = false;
     this._routeNavigationPending = true;
     window.dispatchEvent(new CustomEvent('easyline:navigation-start'));
-    if (location.pathname.replace(/\/+$/,'') === PAGES_BASE + '/programs') history.replaceState({},'',PAGES_BASE + '/programs/protokol-28');
+    if (location.pathname.replace(/\/+$/,'') === PAGES_BASE + '/programs') history.replaceState({},'',this.pathFor('program'));
     let route = this.routeFromPath(location.pathname);
     if (route.route === 'assortment' && new URLSearchParams(location.search).get('category') === 'bowls') {
       history.replaceState({},'',this.pathFor('bowls') + catalogQuery(this.catalogFilters('bowls',readCatalogFilters(location.search))));
       route = this.routeFromPath(location.pathname);
     }
     const isCatalog = ['assortment','lunches','bowls'].includes(route.route);
-    const context = history.state?.easylineCatalog;
+    const isMenu = isCatalog || route.route === 'home';
+    const context = readCatalogContext(history.state?.easylineCatalog);
+    const returnContext = readCatalogContext(history.state?.easylineCatalogReturn);
+    if (returnContext) {
+      this._catalogContexts ||= {};
+      this._catalogContexts[returnContext.route] = returnContext;
+      this._lastCatalogContext = returnContext;
+    }
+    this._pendingCatalogRestore = isMenu && context?.route === route.route ? context : null;
     this.setState({ ...route, ...(isCatalog ? this.catalogFilters(route.route,readCatalogFilters(location.search)) : {}),
       menuOpen:false, moreOpen:false, detailsId:null, filtersOpen:context?.filtersOpen || false, faqOpen:0, homeFaqOpen:0 },() => {
       window.__EASYLINE_STATIC_HEAD_SYNC__?.();
       requestAnimationFrame(() => {
-        if (isCatalog && context?.route === route.route) window.scrollTo({ left:0, top:context.scroll || 0, behavior:'instant' });
+        if (isMenu && context?.route === route.route) window.scrollTo({ left:0, top:context.scroll || 0, behavior:'instant' });
         this._routeNavigationPending = false;
         window.dispatchEvent(new CustomEvent('easyline:navigation-end'));
+        this.restoreCatalogPosition();
       });
     });
   }
@@ -822,15 +977,18 @@ class Component extends DCLogic {
     const isCatalog = ['assortment','lunches','bowls'].includes(route);
     const saved = this._catalogContexts?.[route];
     const filters = this.catalogFilters(route,category != null ? { ...CATALOG_FILTER_DEFAULTS, category } : saved?.filters || { ...CATALOG_FILTER_DEFAULTS });
-    const path = this.pathFor(route,slug) + (isCatalog ? catalogQuery(filters) : '');
-    if (location.pathname.replace(/\/+$/,'') + location.search !== path.replace(/\/+$/,'')) history.pushState({},'',path);
+    const path = this.pathFor(route,slug) + (isCatalog ? catalogQuery(filters) : options.restore && route === 'home' ? saved?.hash || '' : '');
+    const entryState = { easylineCatalogReturn:this._lastCatalogContext || null,
+      ...(options.restore && saved ? { easylineCatalog:saved } : {}) };
+    if (location.pathname + location.search + location.hash !== path) history.pushState(entryState,'',path);
+    this._pendingCatalogRestore = options.restore && saved && !this.catalogModule ? saved : null;
     this.setState({ route, slug:slug || null, menuOpen:false, moreOpen:false, detailsId:null, faqOpen:0, homeFaqOpen:0,
       ...(isCatalog ? filters : {}), filtersOpen:isCatalog && !!saved?.filtersOpen },() => {
       window.__EASYLINE_STATIC_HEAD_SYNC__?.();
       requestAnimationFrame(() => {
         if (options.restore && saved) {
           window.scrollTo({ left:0, top:saved.scroll || 0, behavior:'instant' });
-          const heading = document.querySelector('.el-catalog h1');
+          const heading = document.querySelector('.el-catalog h1, .el-home-menu h1');
           heading?.setAttribute('tabindex','-1');
           heading?.focus({ preventScroll:true });
         } else {
@@ -856,6 +1014,9 @@ class Component extends DCLogic {
 
   changeQuantity(id,quantity) {
     if (!this.catalogModule) return;
+    const active = document.activeElement;
+    const inDialog = !!active?.closest('.el-product-dialog');
+    const inQuantityControl = !!active?.closest('.el-product-card,.el-product-dialog,.el-cart-line');
     this.setState(state => {
       const cart = this.catalogModule.setQuantity(state.cart,id,quantity);
       const item = this.catalogModule.CATALOG.find(item => item.id === id);
@@ -863,9 +1024,11 @@ class Component extends DCLogic {
       return { cart, cartSaveError:!this.catalogModule.writeCart(cart),
         cartAnnouncement:count ? item.name + ': ' + count + ' шт. в корзине.' : item.name + ': удалено из корзины.' };
     }, () => {
-      if (quantity <= 0) requestAnimationFrame(() => {
-        const next = document.querySelector('[data-product-id="' + id + '"] .el-product-add')
-          || document.querySelector('[data-cart-id] .el-remove-button')
+      if (inQuantityControl && (!active.isConnected || active.disabled)) requestAnimationFrame(() => {
+        const scope = inDialog ? '.el-product-dialog' : '[data-product-id="' + id + '"]';
+        const next = document.querySelector(scope + ' .el-product-add')
+          || document.querySelector(scope + ' input[type=number]')
+          || document.querySelector('[data-cart-id] input[type=number]')
           || document.querySelector('.el-empty-state .el-button');
         next?.focus({ preventScroll:true });
       });
@@ -910,7 +1073,7 @@ class Component extends DCLogic {
   renderVals() {
     const S = this.state, M = this.catalogModule;
     const href = (route,slug) => this.pathFor(route,slug);
-    const primary = [ ['Рацион 28 дней','program','protokol-28'], ['Корпоративные обеды','lunches'], ['ПП-фастфуд','assortment'], ['Боулы','bowls'] ];
+    const primary = [ ['Корпоративные обеды','lunches'], ['ПП-фастфуд','assortment'], ['Рацион 28 дней','program','protokol-28'], ['Боулы','bowls'] ];
     const secondary = [ ['FAQ','faq'], ['О производстве','text','about-production'], ['Доставка и оплата','text','delivery-payment'], ['Контакты','text','contacts'] ];
     const nav = ([label,route,slug]) => ({ label, href:href(route,slug), onClick:this.link(route,slug),
       color:S.route === route && (!slug || S.slug === slug) ? '#0f4d7a' : '#8e242e',
@@ -922,18 +1085,15 @@ class Component extends DCLogic {
     const card = item => {
       const quantity = S.cart[item.id] || 0;
       return { ...item, quantity, inCart:quantity > 0, atLimit:quantity >= 99, atZero:quantity === 0,
-        showQuantity:quantity > 0 || S.route === 'lunches', hasPrice:Number.isFinite(item.priceRub),
+        showQuantity:quantity > 0 || S.route === 'lunches' || (S.route === 'home' && item.direction === 'corporate-lunches'), hasPrice:Number.isFinite(item.priceRub),
         quantityLabel:'Количество: ' + item.name, quantityCaption:item.direction === 'corporate-lunches' ? 'Порций' : '',
         setQuantity:event => { const quantity = parseItemQuantity(event.target.value); if (quantity !== null) this.changeQuantity(item.id,quantity); },
         restoreQuantity:event => { event.target.value = String(this.state.cart[item.id] || 0); },
-        detailsId:'details-' + item.id, detailsOpen:S.detailsId === item.id, detailsTabIndex:S.detailsId === item.id ? 0 : -1, detailsLabel:'Подробнее: ' + item.name,
-        detailsText:S.route === 'lunches' ? 'Состав и порция' : 'Подробнее о блюде',
-        toggleDetails:() => this.setState({ detailsId:this.state.detailsId === item.id ? null : item.id }),
+        detailsId:'details-' + item.id, detailsOpen:S.detailsId === item.id, detailsTabIndex:S.detailsId === item.id ? 0 : -1, detailsLabel:'Подробнее: ' + item.name, photoDetailsLabel:'Открыть блюдо: ' + item.name,
+        detailsText:item.direction === 'corporate-lunches' ? 'Состав и порция' : 'О блюде',
+        toggleDetails:event => this.openProductDetails(item.id,event),
         closeDetailsLabel:'Закрыть состав: ' + item.name,
-        closeDetails:() => {
-          document.getElementById('details-' + item.id)?.closest('.el-product-card')?.querySelector('.el-product-details-link')?.focus({ preventScroll:true });
-          this.setState({ detailsId:null });
-        },
+        closeDetails:event => this.closeProductDetails(event),
         inquiryHref:'https://wa.me/79640182373?text=' + encodeURIComponent('Здравствуйте! Подскажите полный состав, массу порции и аллергены блюда «' + item.name + '».'),
 
         hasImage:!!item.image, imageAlt:(item.imageNote ? 'Предварительная иллюстрация: ' : '') + item.name,
@@ -950,7 +1110,7 @@ class Component extends DCLogic {
     const categories = allCategories.map(category => ({ ...category, selected:S.category === category.id,
       select:() => this.setCatalogFilters({ category:category.id }), href:href('assortment') + '?category=' + category.id, open:this.link('assortment',null,category.id) }));
     const filtered = M ? M.filterCatalog({ direction:S.route === 'lunches' ? 'corporate-lunches' : S.route === 'bowls' ? 'bowls' : 'assortment', category:S.route === 'assortment' ? S.category : 'all',
-      protein:S.route === 'lunches' ? 'all' : S.protein, wholegrain:S.route === 'assortment' && S.wholegrain, search:S.search }) : [];
+      protein:S.route === 'assortment' ? S.protein : 'all', wholegrain:S.route === 'assortment' && S.wholegrain, search:S.route === 'bowls' ? '' : S.search }) : [];
     const faqItems = GENERAL_FAQ.concat(FAQ.map(item => ({ ...item, q:item.q === 'Когда привозят еду?' ? 'Когда доставляют рацион на 28 дней?' : item.q })));
     const faqBuild = (key,items) => items.map((item,i) => ({ ...item, isOpen:S[key] === i, sign:S[key] === i ? '−' : '+',
       buttonId:key + '-question-' + i, panelId:key + '-answer-' + i, toggle:() => this.setState({ [key]:this.state[key] === i ? -1 : i }) }));
@@ -991,8 +1151,10 @@ class Component extends DCLogic {
       prog:prog ? { ...prog, image:'/easyline-site/assets/photos/protocol-protokol-28.jpg', imageAlt:'Рацион 28 дней: готовый рацион EasyLine' } : {},
       goStorage:event => { event.preventDefault(); this.go('faq'); const index=faqItems.findIndex(item => item.q === 'Как хранить и разогревать рационы?'); this.setState({faqOpen:index},() => requestAnimationFrame(() => { const question=document.getElementById('faqOpen-question-'+index); question?.focus(); })); },
 
-      homeLunches:catalog.filter(item => item.direction === 'corporate-lunches').slice(0,4).map(card),
+      homeLunches:catalog.filter(item => item.direction === 'corporate-lunches').map(card),
+      homeMenuGroups:(M?.CATEGORIES || []).map(category => ({ ...category, target:'home-' + category.id, headingId:'home-' + category.id + '-title', href:'#home-' + category.id, items:catalog.filter(item => item.direction === 'assortment' && item.category === category.id).map(card) })),
       homeBowls:catalog.filter(item => item.direction === 'bowls').map(card),
+      catalogGridClass:'el-product-grid' + (S.route === 'bowls' ? ' el-large-photo-cards' : ''),
       catalogItems:filtered.map(card), catalogEmpty:!S.catalogLoading && !S.catalogError && !filtered.length,
       catalogReady:!S.catalogLoading && !S.catalogError, catalogLoading:S.catalogLoading, catalogError:S.catalogError, retryCatalog:() => this.loadCatalog(),
       catalogTitle:S.route === 'lunches' ? 'Корпоративные обеды' : S.route === 'bowls' ? 'Боулы' : 'ПП-фастфуд',
@@ -1006,9 +1168,16 @@ class Component extends DCLogic {
       clearProteinLabel:'Убрать фильтр: ' + (proteinNames[S.protein] || ''), clearProtein:() => this.setCatalogFilters({ protein:'all' }),
       clearWholegrain:() => this.setCatalogFilters({ wholegrain:false }), clearSecondaryFilters:() => this.setCatalogFilters({ protein:'all', wholegrain:false }),
       showTeamSelection:S.route === 'lunches' && teamCount > 0,
+      showCartDock:['home','lunches','assortment','bowls'].includes(S.route) && summary.count > 0,
+      cartDockTitle:'Корзина · ' + summary.count + ' шт.',
+      cartDockDetail:summary.lines.length + ' ' + quantityWord(summary.lines.length,'блюдо','блюда','блюд'),
+      cartDockLabel:'Открыть корзину: ' + summary.count + ' шт.',
+      showProductDetails:!!S.detailsId, detailItems:catalog.filter(item => item.id === S.detailsId).map(card),
+      closeProductDetails:event => this.closeProductDetails(event),
+      productBackdropClick:event => this.productBackdropClick(event),
       teamSelectionLabel:'Выбрано ' + teamCount + ' ' + quantityWord(teamCount,'обед','обеда','обедов'),
       teamLineLabel:teamLines.length + ' ' + quantityWord(teamLines.length,'комплект','комплекта','комплектов'),
-      hrefContinue:lastCatalog ? href(lastCatalog.route) + catalogQuery(lastCatalog.filters) : href('assortment'), goContinue:event => this.resumeCatalog(event),
+      hrefContinue:lastCatalog ? href(lastCatalog.route) + (lastCatalog.route === 'home' ? lastCatalog.hash || '' : catalogQuery(lastCatalog.filters)) : href('assortment'), goContinue:event => this.resumeCatalog(event),
       applicationName:S.applicationName, applicationPhone:S.applicationPhone, applicationPrivacy:S.applicationPrivacy,
       setApplicationName:event => this.setState({applicationName:event.target.value,applicationSent:false}),
       setApplicationPhone:event => this.setState({applicationPhone:event.target.value,applicationSent:false}),

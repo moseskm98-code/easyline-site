@@ -22,12 +22,22 @@ class Component extends DCLogic {
     this._viewportWidth = innerWidth;
     this.syncRouteFromLocation();
     this._onPopState = () => this.syncRouteFromLocation();
+    this._onPageHide = () => this.rememberCatalog();
     this._onDocumentPointerDown = (event) => {
       const menu = document.querySelector('.el-more-menu');
       if (this.state.moreOpen && menu && !menu.contains(event.target)) this.setState({ moreOpen:false });
     };
     this._onKeyDown = (event) => {
+      if (event.key === 'Tab' && this.state.detailsId) {
+        const dialog = document.querySelector('.el-product-dialog');
+        const controls = dialog ? [...dialog.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex="0"]')].filter(node => node.getClientRects().length) : [];
+        const first = controls[0], last = controls[controls.length - 1];
+        if (event.shiftKey && (document.activeElement === first || !dialog?.contains(document.activeElement))) { event.preventDefault(); last?.focus(); }
+        else if (!event.shiftKey && (document.activeElement === last || !dialog?.contains(document.activeElement))) { event.preventDefault(); first?.focus(); }
+        return;
+      }
       if (event.key === 'Escape') {
+        if (this.state.detailsId) { this.closeProductDetails(event); return; }
         const mobileWasOpen = this.state.menuOpen;
         this.setState({ menuOpen:false, moreOpen:false });
         if (mobileWasOpen) requestAnimationFrame(() => document.querySelector('[data-el-menu-toggle]')?.focus());
@@ -38,7 +48,7 @@ class Component extends DCLogic {
       this._resizeFrame = requestAnimationFrame(() => {
         if (this._viewportWidth === innerWidth) return;
         this._viewportWidth = innerWidth;
-        this.setState(s => ({ viewportTick:s.viewportTick + 1, moreOpen:false }));
+        this.setState(s => ({ viewportTick:s.viewportTick + 1, moreOpen:false, menuOpen:false }));
       });
     };
     this._onStorage = (event) => {
@@ -47,32 +57,95 @@ class Component extends DCLogic {
       }
     };
     window.addEventListener('popstate',this._onPopState);
+    window.addEventListener('pagehide',this._onPageHide);
+    window.addEventListener('beforeunload',this._onPageHide);
     window.addEventListener('resize',this._onResize);
     window.addEventListener('storage',this._onStorage);
     document.addEventListener('pointerdown',this._onDocumentPointerDown);
     document.addEventListener('keydown',this._onKeyDown);
+    if (typeof ResizeObserver !== 'undefined') {
+      this._headerObserver = new ResizeObserver(() => this.syncCatalogChrome());
+      const header = document.querySelector('.el-main-header');
+      if (header) this._headerObserver.observe(header);
+    }
+    document.fonts?.ready.then(() => { this._categoryRevealKey = ''; this.syncCatalogChrome(); });
+    this.syncCatalogChrome();
     this.loadProtocol();
     this.loadCatalog();
   }
 
   componentWillUnmount() {
     window.removeEventListener('popstate',this._onPopState);
+    window.removeEventListener('pagehide',this._onPageHide);
+    window.removeEventListener('beforeunload',this._onPageHide);
     window.removeEventListener('resize',this._onResize);
     window.removeEventListener('storage',this._onStorage);
     document.removeEventListener('pointerdown',this._onDocumentPointerDown);
     document.removeEventListener('keydown',this._onKeyDown);
     cancelAnimationFrame(this._resizeFrame);
+    this._headerObserver?.disconnect();
+    document.documentElement?.classList.remove('el-product-open');
   }
 
   componentDidUpdate() {
     window.dispatchEvent(new CustomEvent('easyline:render'));
+    this.syncCatalogChrome();
     if (this._applicationFocusPending && !this._routeNavigationPending) this.focusApplication();
+  }
+
+  openProductDetails(id,event) {
+    this._detailsOpener = event?.currentTarget;
+    this._detailsReturnId = id;
+    this.setState({ detailsId:id });
+  }
+
+  closeProductDetails(event) {
+    event?.preventDefault();
+    const opener = this._detailsOpener;
+    const id = this._detailsReturnId;
+    document.querySelector('.el-product-dialog')?.close();
+    this.setState({ detailsId:null },() => requestAnimationFrame(() => {
+      const target = opener?.isConnected ? opener : document.querySelector('[data-product-id="' + id + '"] .el-product-details-link');
+      target?.focus({ preventScroll:true });
+    }));
+  }
+
+  productBackdropClick(event) {
+    if (event.target !== event.currentTarget) return;
+    const r = event.currentTarget.getBoundingClientRect();
+    if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) this.closeProductDetails(event);
+  }
+
+  syncCatalogChrome() {
+    const root = document.documentElement;
+    if (!root) return;
+    const header = document.querySelector('.el-main-header');
+    if (header) root.style.setProperty('--el-header-height',Math.ceil(header.getBoundingClientRect().height) + 'px');
+    const dock = document.querySelector('.el-cart-dock');
+    root.dataset.elCartDock = dock ? 'true' : 'false';
+    root.style.setProperty('--el-cart-dock-height',dock ? Math.ceil(dock.getBoundingClientRect().height) + 'px' : '0px');
+    const tabs = document.querySelector('.el-category-tabs');
+    const key = tabs ? this.state.route + ':' + this.state.category + ':' + innerWidth : '';
+    if (tabs && this._categoryRevealKey !== key) {
+      const selected = tabs.querySelector('[aria-pressed="true"]');
+      if (selected) {
+        const nav = tabs.getBoundingClientRect(), button = selected.getBoundingClientRect();
+        tabs.scrollLeft += button.left - nav.left - (nav.width - button.width) / 2;
+        this._categoryRevealKey = key;
+      } else this._categoryRevealKey = '';
+    } else if (!tabs) this._categoryRevealKey = '';
+    const dialog = document.querySelector('.el-product-dialog');
+    root.classList.toggle('el-product-open',!!this.state.detailsId);
+    if (dialog && this.state.detailsId && !dialog.open) {
+      dialog.showModal();
+      dialog.querySelector('.el-product-dialog__close')?.focus({ preventScroll:true });
+    }
   }
 
   loadProtocol() {
     this.setState({ loading:true, error:false });
     const attempt = this._protocolAttempt || 0; this._protocolAttempt = attempt + 1;
-    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.9') + (attempt ? '&retry=' + attempt : '');
+    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.6.5') + (attempt ? '&retry=' + attempt : '');
     import(url)
       .then(module => this.setState({ data:{ protocols:module.PROTOCOLS }, loading:false }))
       .catch(() => this.setState({ loading:false, error:true }));
@@ -86,7 +159,7 @@ class Component extends DCLogic {
       .then(module => {
         this.catalogModule = module;
         const category = new URLSearchParams(location.search).get('category') || this.state.category;
-        this.setState({ catalogLoading:false, cart:module.readCart(), category:module.CATEGORIES.some(item => item.id === category) ? category : 'all' });
+        this.setState({ catalogLoading:false, cart:module.readCart(), category:module.CATEGORIES.some(item => item.id === category) ? category : 'all' },() => this.restoreCatalogPosition());
       }).catch(() => this.setState({ catalogLoading:false, catalogError:true }));
   }
 
@@ -110,21 +183,21 @@ class Component extends DCLogic {
 
   pathFor(route,slug) {
     const paths = { home:'/', lunches:'/corporate-lunches', assortment:'/assortment', bowls:'/bowls', cart:'/cart', checkout:'/checkout', faq:'/faq', reviews:'/reviews' };
-    if (route === 'program') return PAGES_BASE + '/programs/protokol-28';
-    if (route === 'text') return PAGES_BASE + '/' + slug;
-    if (route === 'legal') return PAGES_BASE + '/legal/' + slug;
-    return PAGES_BASE + (paths[route] || '/404');
+    if (route === 'program') return PAGES_BASE + '/programs/protokol-28/';
+    if (route === 'text') return PAGES_BASE + '/' + slug + '/';
+    if (route === 'legal') return PAGES_BASE + '/legal/' + slug + '/';
+    return PAGES_BASE + (route === 'home' ? '/' : (paths[route] || '/404') + '/');
   }
 
   catalogFilters(route=this.state.route, filters=this.state) {
     const { category, protein, wholegrain, search } = filters;
-    return { category:route === 'assortment' ? category : 'all', protein:route === 'lunches' ? 'all' : protein,
-      wholegrain:route === 'assortment' && wholegrain, search };
+    return { category:route === 'assortment' ? category : 'all', protein:route === 'assortment' ? protein : 'all',
+      wholegrain:route === 'assortment' && wholegrain, search:route === 'bowls' ? '' : search };
   }
 
   rememberCatalog() {
-    if (!['assortment','lunches','bowls'].includes(this.state.route)) return;
-    const context = { route:this.state.route, filters:this.catalogFilters(), scroll:window.scrollY, filtersOpen:this.state.filtersOpen };
+    if (!['home','assortment','lunches','bowls'].includes(this.state.route)) return;
+    const context = { route:this.state.route, filters:this.catalogFilters(), scroll:window.scrollY, hash:location.hash, filtersOpen:this.state.filtersOpen };
     this._catalogContexts ||= {};
     this._catalogContexts[context.route] = context;
     this._lastCatalogContext = context;
@@ -132,10 +205,19 @@ class Component extends DCLogic {
   }
 
   setCatalogFilters(patch) {
+    const tabs = document.querySelector('.el-category-tabs');
+    const header = document.querySelector('.el-main-header');
+    const alignCategory = patch.category != null && tabs && header && tabs.getBoundingClientRect().top <= header.getBoundingClientRect().bottom + 2;
     this.setState({ ...patch, detailsId:null },() => {
       const filters = this.catalogFilters();
       history.replaceState({ ...history.state },'',this.pathFor(this.state.route) + catalogQuery(filters));
-      this.rememberCatalog();
+      if (alignCategory) requestAnimationFrame(() => {
+        const grid = document.querySelector('[data-catalog-grid]');
+        const currentHeader = document.querySelector('.el-main-header'), currentTabs = document.querySelector('.el-category-tabs');
+        if (grid && currentHeader && currentTabs) window.scrollTo({left:0,top:Math.max(0,window.scrollY + grid.getBoundingClientRect().top - currentHeader.getBoundingClientRect().height - currentTabs.getBoundingClientRect().height - 14),behavior:'instant'});
+        this.rememberCatalog();
+      });
+      else this.rememberCatalog();
     });
   }
 
@@ -145,25 +227,45 @@ class Component extends DCLogic {
     this.go(context?.route || 'assortment',null,undefined,{ restore:true });
   }
 
+  restoreCatalogPosition() {
+    const context = this._pendingCatalogRestore;
+    if (!context || !this.catalogModule) return;
+    // Wait for the full menu layout, rather than the short loading placeholder.
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      if (this._pendingCatalogRestore !== context || this.state.route !== context.route) return;
+      this._pendingCatalogRestore = null;
+      window.scrollTo({ left:0, top:context.scroll, behavior:'instant' });
+    }));
+  }
+
   syncRouteFromLocation() {
     this._applicationFocusPending = false;
     this._routeNavigationPending = true;
     window.dispatchEvent(new CustomEvent('easyline:navigation-start'));
-    if (location.pathname.replace(/\/+$/,'') === PAGES_BASE + '/programs') history.replaceState({},'',PAGES_BASE + '/programs/protokol-28');
+    if (location.pathname.replace(/\/+$/,'') === PAGES_BASE + '/programs') history.replaceState({},'',this.pathFor('program'));
     let route = this.routeFromPath(location.pathname);
     if (route.route === 'assortment' && new URLSearchParams(location.search).get('category') === 'bowls') {
       history.replaceState({},'',this.pathFor('bowls') + catalogQuery(this.catalogFilters('bowls',readCatalogFilters(location.search))));
       route = this.routeFromPath(location.pathname);
     }
     const isCatalog = ['assortment','lunches','bowls'].includes(route.route);
-    const context = history.state?.easylineCatalog;
+    const isMenu = isCatalog || route.route === 'home';
+    const context = readCatalogContext(history.state?.easylineCatalog);
+    const returnContext = readCatalogContext(history.state?.easylineCatalogReturn);
+    if (returnContext) {
+      this._catalogContexts ||= {};
+      this._catalogContexts[returnContext.route] = returnContext;
+      this._lastCatalogContext = returnContext;
+    }
+    this._pendingCatalogRestore = isMenu && context?.route === route.route ? context : null;
     this.setState({ ...route, ...(isCatalog ? this.catalogFilters(route.route,readCatalogFilters(location.search)) : {}),
       menuOpen:false, moreOpen:false, detailsId:null, filtersOpen:context?.filtersOpen || false, faqOpen:0, homeFaqOpen:0 },() => {
       window.__EASYLINE_STATIC_HEAD_SYNC__?.();
       requestAnimationFrame(() => {
-        if (isCatalog && context?.route === route.route) window.scrollTo({ left:0, top:context.scroll || 0, behavior:'instant' });
+        if (isMenu && context?.route === route.route) window.scrollTo({ left:0, top:context.scroll || 0, behavior:'instant' });
         this._routeNavigationPending = false;
         window.dispatchEvent(new CustomEvent('easyline:navigation-end'));
+        this.restoreCatalogPosition();
       });
     });
   }
@@ -176,15 +278,18 @@ class Component extends DCLogic {
     const isCatalog = ['assortment','lunches','bowls'].includes(route);
     const saved = this._catalogContexts?.[route];
     const filters = this.catalogFilters(route,category != null ? { ...CATALOG_FILTER_DEFAULTS, category } : saved?.filters || { ...CATALOG_FILTER_DEFAULTS });
-    const path = this.pathFor(route,slug) + (isCatalog ? catalogQuery(filters) : '');
-    if (location.pathname.replace(/\/+$/,'') + location.search !== path.replace(/\/+$/,'')) history.pushState({},'',path);
+    const path = this.pathFor(route,slug) + (isCatalog ? catalogQuery(filters) : options.restore && route === 'home' ? saved?.hash || '' : '');
+    const entryState = { easylineCatalogReturn:this._lastCatalogContext || null,
+      ...(options.restore && saved ? { easylineCatalog:saved } : {}) };
+    if (location.pathname + location.search + location.hash !== path) history.pushState(entryState,'',path);
+    this._pendingCatalogRestore = options.restore && saved && !this.catalogModule ? saved : null;
     this.setState({ route, slug:slug || null, menuOpen:false, moreOpen:false, detailsId:null, faqOpen:0, homeFaqOpen:0,
       ...(isCatalog ? filters : {}), filtersOpen:isCatalog && !!saved?.filtersOpen },() => {
       window.__EASYLINE_STATIC_HEAD_SYNC__?.();
       requestAnimationFrame(() => {
         if (options.restore && saved) {
           window.scrollTo({ left:0, top:saved.scroll || 0, behavior:'instant' });
-          const heading = document.querySelector('.el-catalog h1');
+          const heading = document.querySelector('.el-catalog h1, .el-home-menu h1');
           heading?.setAttribute('tabindex','-1');
           heading?.focus({ preventScroll:true });
         } else {
@@ -210,6 +315,9 @@ class Component extends DCLogic {
 
   changeQuantity(id,quantity) {
     if (!this.catalogModule) return;
+    const active = document.activeElement;
+    const inDialog = !!active?.closest('.el-product-dialog');
+    const inQuantityControl = !!active?.closest('.el-product-card,.el-product-dialog,.el-cart-line');
     this.setState(state => {
       const cart = this.catalogModule.setQuantity(state.cart,id,quantity);
       const item = this.catalogModule.CATALOG.find(item => item.id === id);
@@ -217,9 +325,11 @@ class Component extends DCLogic {
       return { cart, cartSaveError:!this.catalogModule.writeCart(cart),
         cartAnnouncement:count ? item.name + ': ' + count + ' шт. в корзине.' : item.name + ': удалено из корзины.' };
     }, () => {
-      if (quantity <= 0) requestAnimationFrame(() => {
-        const next = document.querySelector('[data-product-id="' + id + '"] .el-product-add')
-          || document.querySelector('[data-cart-id] .el-remove-button')
+      if (inQuantityControl && (!active.isConnected || active.disabled)) requestAnimationFrame(() => {
+        const scope = inDialog ? '.el-product-dialog' : '[data-product-id="' + id + '"]';
+        const next = document.querySelector(scope + ' .el-product-add')
+          || document.querySelector(scope + ' input[type=number]')
+          || document.querySelector('[data-cart-id] input[type=number]')
           || document.querySelector('.el-empty-state .el-button');
         next?.focus({ preventScroll:true });
       });
@@ -264,7 +374,7 @@ class Component extends DCLogic {
   renderVals() {
     const S = this.state, M = this.catalogModule;
     const href = (route,slug) => this.pathFor(route,slug);
-    const primary = [ ['Рацион 28 дней','program','protokol-28'], ['Корпоративные обеды','lunches'], ['ПП-фастфуд','assortment'], ['Боулы','bowls'] ];
+    const primary = [ ['Корпоративные обеды','lunches'], ['ПП-фастфуд','assortment'], ['Рацион 28 дней','program','protokol-28'], ['Боулы','bowls'] ];
     const secondary = [ ['FAQ','faq'], ['О производстве','text','about-production'], ['Доставка и оплата','text','delivery-payment'], ['Контакты','text','contacts'] ];
     const nav = ([label,route,slug]) => ({ label, href:href(route,slug), onClick:this.link(route,slug),
       color:S.route === route && (!slug || S.slug === slug) ? '#0f4d7a' : '#8e242e',
@@ -276,18 +386,15 @@ class Component extends DCLogic {
     const card = item => {
       const quantity = S.cart[item.id] || 0;
       return { ...item, quantity, inCart:quantity > 0, atLimit:quantity >= 99, atZero:quantity === 0,
-        showQuantity:quantity > 0 || S.route === 'lunches', hasPrice:Number.isFinite(item.priceRub),
+        showQuantity:quantity > 0 || S.route === 'lunches' || (S.route === 'home' && item.direction === 'corporate-lunches'), hasPrice:Number.isFinite(item.priceRub),
         quantityLabel:'Количество: ' + item.name, quantityCaption:item.direction === 'corporate-lunches' ? 'Порций' : '',
         setQuantity:event => { const quantity = parseItemQuantity(event.target.value); if (quantity !== null) this.changeQuantity(item.id,quantity); },
         restoreQuantity:event => { event.target.value = String(this.state.cart[item.id] || 0); },
-        detailsId:'details-' + item.id, detailsOpen:S.detailsId === item.id, detailsTabIndex:S.detailsId === item.id ? 0 : -1, detailsLabel:'Подробнее: ' + item.name,
-        detailsText:S.route === 'lunches' ? 'Состав и порция' : 'Подробнее о блюде',
-        toggleDetails:() => this.setState({ detailsId:this.state.detailsId === item.id ? null : item.id }),
+        detailsId:'details-' + item.id, detailsOpen:S.detailsId === item.id, detailsTabIndex:S.detailsId === item.id ? 0 : -1, detailsLabel:'Подробнее: ' + item.name, photoDetailsLabel:'Открыть блюдо: ' + item.name,
+        detailsText:item.direction === 'corporate-lunches' ? 'Состав и порция' : 'О блюде',
+        toggleDetails:event => this.openProductDetails(item.id,event),
         closeDetailsLabel:'Закрыть состав: ' + item.name,
-        closeDetails:() => {
-          document.getElementById('details-' + item.id)?.closest('.el-product-card')?.querySelector('.el-product-details-link')?.focus({ preventScroll:true });
-          this.setState({ detailsId:null });
-        },
+        closeDetails:event => this.closeProductDetails(event),
         inquiryHref:'https://wa.me/79640182373?text=' + encodeURIComponent('Здравствуйте! Подскажите полный состав, массу порции и аллергены блюда «' + item.name + '».'),
 
         hasImage:!!item.image, imageAlt:(item.imageNote ? 'Предварительная иллюстрация: ' : '') + item.name,
@@ -304,7 +411,7 @@ class Component extends DCLogic {
     const categories = allCategories.map(category => ({ ...category, selected:S.category === category.id,
       select:() => this.setCatalogFilters({ category:category.id }), href:href('assortment') + '?category=' + category.id, open:this.link('assortment',null,category.id) }));
     const filtered = M ? M.filterCatalog({ direction:S.route === 'lunches' ? 'corporate-lunches' : S.route === 'bowls' ? 'bowls' : 'assortment', category:S.route === 'assortment' ? S.category : 'all',
-      protein:S.route === 'lunches' ? 'all' : S.protein, wholegrain:S.route === 'assortment' && S.wholegrain, search:S.search }) : [];
+      protein:S.route === 'assortment' ? S.protein : 'all', wholegrain:S.route === 'assortment' && S.wholegrain, search:S.route === 'bowls' ? '' : S.search }) : [];
     const faqItems = GENERAL_FAQ.concat(FAQ.map(item => ({ ...item, q:item.q === 'Когда привозят еду?' ? 'Когда доставляют рацион на 28 дней?' : item.q })));
     const faqBuild = (key,items) => items.map((item,i) => ({ ...item, isOpen:S[key] === i, sign:S[key] === i ? '−' : '+',
       buttonId:key + '-question-' + i, panelId:key + '-answer-' + i, toggle:() => this.setState({ [key]:this.state[key] === i ? -1 : i }) }));
@@ -345,8 +452,10 @@ class Component extends DCLogic {
       prog:prog ? { ...prog, image:'/easyline-site/assets/photos/protocol-protokol-28.jpg', imageAlt:'Рацион 28 дней: готовый рацион EasyLine' } : {},
       goStorage:event => { event.preventDefault(); this.go('faq'); const index=faqItems.findIndex(item => item.q === 'Как хранить и разогревать рационы?'); this.setState({faqOpen:index},() => requestAnimationFrame(() => { const question=document.getElementById('faqOpen-question-'+index); question?.focus(); })); },
 
-      homeLunches:catalog.filter(item => item.direction === 'corporate-lunches').slice(0,4).map(card),
+      homeLunches:catalog.filter(item => item.direction === 'corporate-lunches').map(card),
+      homeMenuGroups:(M?.CATEGORIES || []).map(category => ({ ...category, target:'home-' + category.id, headingId:'home-' + category.id + '-title', href:'#home-' + category.id, items:catalog.filter(item => item.direction === 'assortment' && item.category === category.id).map(card) })),
       homeBowls:catalog.filter(item => item.direction === 'bowls').map(card),
+      catalogGridClass:'el-product-grid' + (S.route === 'bowls' ? ' el-large-photo-cards' : ''),
       catalogItems:filtered.map(card), catalogEmpty:!S.catalogLoading && !S.catalogError && !filtered.length,
       catalogReady:!S.catalogLoading && !S.catalogError, catalogLoading:S.catalogLoading, catalogError:S.catalogError, retryCatalog:() => this.loadCatalog(),
       catalogTitle:S.route === 'lunches' ? 'Корпоративные обеды' : S.route === 'bowls' ? 'Боулы' : 'ПП-фастфуд',
@@ -360,9 +469,16 @@ class Component extends DCLogic {
       clearProteinLabel:'Убрать фильтр: ' + (proteinNames[S.protein] || ''), clearProtein:() => this.setCatalogFilters({ protein:'all' }),
       clearWholegrain:() => this.setCatalogFilters({ wholegrain:false }), clearSecondaryFilters:() => this.setCatalogFilters({ protein:'all', wholegrain:false }),
       showTeamSelection:S.route === 'lunches' && teamCount > 0,
+      showCartDock:['home','lunches','assortment','bowls'].includes(S.route) && summary.count > 0,
+      cartDockTitle:'Корзина · ' + summary.count + ' шт.',
+      cartDockDetail:summary.lines.length + ' ' + quantityWord(summary.lines.length,'блюдо','блюда','блюд'),
+      cartDockLabel:'Открыть корзину: ' + summary.count + ' шт.',
+      showProductDetails:!!S.detailsId, detailItems:catalog.filter(item => item.id === S.detailsId).map(card),
+      closeProductDetails:event => this.closeProductDetails(event),
+      productBackdropClick:event => this.productBackdropClick(event),
       teamSelectionLabel:'Выбрано ' + teamCount + ' ' + quantityWord(teamCount,'обед','обеда','обедов'),
       teamLineLabel:teamLines.length + ' ' + quantityWord(teamLines.length,'комплект','комплекта','комплектов'),
-      hrefContinue:lastCatalog ? href(lastCatalog.route) + catalogQuery(lastCatalog.filters) : href('assortment'), goContinue:event => this.resumeCatalog(event),
+      hrefContinue:lastCatalog ? href(lastCatalog.route) + (lastCatalog.route === 'home' ? lastCatalog.hash || '' : catalogQuery(lastCatalog.filters)) : href('assortment'), goContinue:event => this.resumeCatalog(event),
       applicationName:S.applicationName, applicationPhone:S.applicationPhone, applicationPrivacy:S.applicationPrivacy,
       setApplicationName:event => this.setState({applicationName:event.target.value,applicationSent:false}),
       setApplicationPhone:event => this.setState({applicationPhone:event.target.value,applicationSent:false}),
