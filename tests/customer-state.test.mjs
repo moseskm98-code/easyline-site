@@ -82,3 +82,30 @@ test('application CTA transfers focus and honors reduced motion',() => {
   assert.equal(behavior,'auto');
   assert.equal(app._applicationFocusPending,false);
 });
+
+test('cross-page application scrolling follows route restoration, including delayed protocol data',() => {
+  for (const delayed of [false,true]) {
+    const {app,context}=appFixture(),frames=[],actions=[];
+    app.state.route='reviews';
+    if (delayed) app.state.data=null;
+    context.requestAnimationFrame=callback => frames.push(callback);
+    context.window.scrollTo=() => actions.push('route-scroll');
+    context.document.getElementById=id => !app.state.data ? null
+      : id==='application-title' ? {focus:() => actions.push('application-focus')}
+      : id==='application' ? {scrollIntoView:() => actions.push('application-scroll')} : null;
+    app.setState=(patch,callback) => {
+      app.state={...app.state,...patch};
+      app.componentDidUpdate();
+      callback?.();
+    };
+    app.openOrder({preventDefault(){}});
+    assert.deepEqual(actions,[],'the application must wait for route scrolling');
+    while(frames.length) frames.shift()();
+    if (delayed) {
+      assert.deepEqual(actions,['route-scroll']);
+      app.setState({data:{protocols:PROTOCOLS}});
+    }
+    assert.deepEqual(actions,['route-scroll','application-focus','application-scroll']);
+    assert.equal(app._applicationFocusPending,false);
+  }
+});

@@ -66,13 +66,13 @@ class Component extends DCLogic {
 
   componentDidUpdate() {
     window.dispatchEvent(new CustomEvent('easyline:render'));
-    if (this._applicationFocusPending) this.focusApplication();
+    if (this._applicationFocusPending && !this._routeNavigationPending) this.focusApplication();
   }
 
   loadProtocol() {
     this.setState({ loading:true, error:false });
     const attempt = this._protocolAttempt || 0; this._protocolAttempt = attempt + 1;
-    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.6') + (attempt ? '&retry=' + attempt : '');
+    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.7') + (attempt ? '&retry=' + attempt : '');
     import(url)
       .then(module => this.setState({ data:{ protocols:module.PROTOCOLS }, loading:false }))
       .catch(() => this.setState({ loading:false, error:true }));
@@ -144,6 +144,8 @@ class Component extends DCLogic {
   }
 
   syncRouteFromLocation() {
+    this._applicationFocusPending = false;
+    this._routeNavigationPending = true;
     window.dispatchEvent(new CustomEvent('easyline:navigation-start'));
     if (location.pathname.replace(/\/+$/,'') === PAGES_BASE + '/programs') history.replaceState({},'',PAGES_BASE + '/programs/protokol-28');
     const route = this.routeFromPath(location.pathname);
@@ -154,6 +156,7 @@ class Component extends DCLogic {
       window.__EASYLINE_STATIC_HEAD_SYNC__?.();
       requestAnimationFrame(() => {
         if (isCatalog && context?.route === route.route) window.scrollTo({ left:0, top:context.scroll || 0, behavior:'instant' });
+        this._routeNavigationPending = false;
         window.dispatchEvent(new CustomEvent('easyline:navigation-end'));
       });
     });
@@ -161,6 +164,8 @@ class Component extends DCLogic {
 
   go(route,slug,category,options={}) {
     this.rememberCatalog();
+    this._routeNavigationPending = true;
+    if (route !== 'program') this._applicationFocusPending = false;
     window.dispatchEvent(new CustomEvent('easyline:navigation-start'));
     const isCatalog = ['assortment','lunches'].includes(route);
     const saved = this._catalogContexts?.[route];
@@ -182,7 +187,9 @@ class Component extends DCLogic {
           heading?.setAttribute('tabindex','-1');
           heading?.focus({ preventScroll:true });
         }
+        this._routeNavigationPending = false;
         window.dispatchEvent(new CustomEvent('easyline:navigation-end'));
+        if (this._applicationFocusPending) this.focusApplication();
       });
     });
   }

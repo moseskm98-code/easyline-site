@@ -20,27 +20,27 @@
 <link rel="canonical" href="https://easyline.club/404/">
 <title>Страница не найдена — EasyLine</title>
 <link rel="icon" href="/easyline-site/assets/logo-Ddt-JyRw.svg" type="image/svg+xml">
-<script>window.__EASYLINE_VARIANT__ = "2.4.6";window.__EASYLINE_SITE_ORIGIN__ = "https://easyline.club";window.__EASYLINE_STATIC_ROUTE_KEY__ = "not-found";window.__EASYLINE_MOTION_OWNER__ = "gentle";</script>
+<script>window.__EASYLINE_VARIANT__ = "2.4.7";window.__EASYLINE_SITE_ORIGIN__ = "https://easyline.club";window.__EASYLINE_STATIC_ROUTE_KEY__ = "not-found";window.__EASYLINE_MOTION_OWNER__ = "gentle";</script>
 <script src="/easyline-site/vendor/react.production.min.js"></script>
 <script src="/easyline-site/vendor/react-dom.production.min.js"></script>
 <link rel="preload" href="/easyline-site/assets/nunito-variable-cyrillic.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/bebas-neue-regular-mhMkEidK.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/bebas-neue-bold-DqarbXCh.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/podkova-variable-DYz2L4Pv.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="/easyline-site/assets/first-frame-init.css?v=2.4.6">
-<script src="/easyline-site/assets/first-frame-init.js?v=2.4.6"></script>
-<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=2.4.6"></script>
+<link rel="stylesheet" href="/easyline-site/assets/first-frame-init.css?v=2.4.7">
+<script src="/easyline-site/assets/first-frame-init.js?v=2.4.7"></script>
+<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=2.4.7"></script>
 <script src="/easyline-site/assets/static-route-head.js"></script>
 <script type="module">import {normalizePhone,submitInquiry} from "/easyline-site/lead-form.js";window.__EASYLINE_LEADS__=Object.freeze({normalizePhone,submitInquiry});</script>
 <link rel="stylesheet" crossorigin href="/easyline-site/assets/index-BmA-8PXs-v222.css">
 <link rel="stylesheet" href="/easyline-site/assets/readability-overrides.css">
 <link rel="stylesheet" href="/easyline-site/assets/light-mode-only.css">
-<link rel="stylesheet" href="/easyline-site/assets/accessible-digital.css?v=2.4.6">
+<link rel="stylesheet" href="/easyline-site/assets/accessible-digital.css?v=2.4.7">
 <link rel="stylesheet" href="/easyline-site/assets/layout-stage-preview.css">
-<link rel="stylesheet" href="/easyline-site/assets/menu-refresh.css?v=2.4.6">
-<link rel="stylesheet" href="/easyline-site/assets/gentle-motion.css?v=2.4.6">
-<link rel="stylesheet" href="/easyline-site/assets/customer-experience.css?v=2.4.6">
-<script defer src="/easyline-site/assets/gentle-motion.js?v=2.4.6"></script>
+<link rel="stylesheet" href="/easyline-site/assets/menu-refresh.css?v=2.4.7">
+<link rel="stylesheet" href="/easyline-site/assets/gentle-motion.css?v=2.4.7">
+<link rel="stylesheet" href="/easyline-site/assets/customer-experience.css?v=2.4.7">
+<script defer src="/easyline-site/assets/gentle-motion.js?v=2.4.7"></script>
 <meta name="x-easyline-color-variant" content="accessible-digital">
 </head>
 <body>
@@ -675,13 +675,13 @@ class Component extends DCLogic {
 
   componentDidUpdate() {
     window.dispatchEvent(new CustomEvent('easyline:render'));
-    if (this._applicationFocusPending) this.focusApplication();
+    if (this._applicationFocusPending && !this._routeNavigationPending) this.focusApplication();
   }
 
   loadProtocol() {
     this.setState({ loading:true, error:false });
     const attempt = this._protocolAttempt || 0; this._protocolAttempt = attempt + 1;
-    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.6') + (attempt ? '&retry=' + attempt : '');
+    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.7') + (attempt ? '&retry=' + attempt : '');
     import(url)
       .then(module => this.setState({ data:{ protocols:module.PROTOCOLS }, loading:false }))
       .catch(() => this.setState({ loading:false, error:true }));
@@ -753,6 +753,8 @@ class Component extends DCLogic {
   }
 
   syncRouteFromLocation() {
+    this._applicationFocusPending = false;
+    this._routeNavigationPending = true;
     window.dispatchEvent(new CustomEvent('easyline:navigation-start'));
     if (location.pathname.replace(/\/+$/,'') === PAGES_BASE + '/programs') history.replaceState({},'',PAGES_BASE + '/programs/protokol-28');
     const route = this.routeFromPath(location.pathname);
@@ -763,6 +765,7 @@ class Component extends DCLogic {
       window.__EASYLINE_STATIC_HEAD_SYNC__?.();
       requestAnimationFrame(() => {
         if (isCatalog && context?.route === route.route) window.scrollTo({ left:0, top:context.scroll || 0, behavior:'instant' });
+        this._routeNavigationPending = false;
         window.dispatchEvent(new CustomEvent('easyline:navigation-end'));
       });
     });
@@ -770,6 +773,8 @@ class Component extends DCLogic {
 
   go(route,slug,category,options={}) {
     this.rememberCatalog();
+    this._routeNavigationPending = true;
+    if (route !== 'program') this._applicationFocusPending = false;
     window.dispatchEvent(new CustomEvent('easyline:navigation-start'));
     const isCatalog = ['assortment','lunches'].includes(route);
     const saved = this._catalogContexts?.[route];
@@ -791,7 +796,9 @@ class Component extends DCLogic {
           heading?.setAttribute('tabindex','-1');
           heading?.focus({ preventScroll:true });
         }
+        this._routeNavigationPending = false;
         window.dispatchEvent(new CustomEvent('easyline:navigation-end'));
+        if (this._applicationFocusPending) this.focusApplication();
       });
     });
   }
