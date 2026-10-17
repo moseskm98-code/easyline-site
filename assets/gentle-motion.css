@@ -1,13 +1,13 @@
 /* Movement never controls content visibility. No opacity or delayed reveal. */
 .sc-host main section.el-gentle-enter {
-  animation: el-gentle-rise 200ms cubic-bezier(.2,.72,.2,1) both !important;
+  animation: el-gentle-rise 360ms cubic-bezier(.2,.72,.2,1) both !important;
 }
 @keyframes el-gentle-rise {
-  from { translate: 0 8px; }
+  from { translate: 0 20px; }
   to { translate: 0 0; }
 }
 .sc-host main img.el-gentle-photo {
-  transform: translate3d(0, var(--el-gentle-photo-y, 0px), 0) scale(1.06);
+  transform: translate3d(0, var(--el-gentle-photo-y, 0px), 0) scale(1.14);
   transform-origin: center;
 }
 @media (prefers-reduced-motion: reduce) {

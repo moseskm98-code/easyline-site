@@ -88,3 +88,13 @@ final result: passed
 - Сборка и verify прошли; 10 тестов passed.
 
 final result: passed
+
+## Усиленный эффект — 2.3.3
+- Сдвиг 8 → 20 px, длительность 200 → 360 ms; параллакс ±6 → ±14 px, ограничение малых фото 6% высоты. Overscan 1.14 покрывает смещение. Запас запуска 80 → 24 px, чтобы движение лучше читалось у края экрана.
+- Ego TaskSpace 7: события animationstart имеют opacity=1 и duration=0.36s. Все восемь секций видимы. Возврат к «Как заказать» не повторил запуск (count=1).
+- Нативная прокрутка: фото 3.28 → 10.30 px, оба положения полностью покрывают рамку.
+- Viewport 390×844 и 1386×900: горизонтального переполнения нет. prefers-reduced-motion: transform=none, активных анимаций 0.
+- Снимки ../work/gentle-motion-2026-10-17/strong-local-mobile.png и strong-local-desktop.png. Мобильный снимок открыт и проверен.
+- Сборка и verify прошли, 10 тестов passed.
+
+final result: passed

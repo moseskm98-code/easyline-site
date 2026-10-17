@@ -14,7 +14,7 @@
       entered.add(target);
       if (!reduced.matches) target.classList.add('el-gentle-enter');
     }
-  }, { threshold: 0, rootMargin: '0px 0px 80px 0px' }) : null;
+  }, { threshold: 0, rootMargin: '0px 0px 24px 0px' }) : null;
 
   function updatePhotos() {
     frame = 0;
@@ -29,9 +29,9 @@
       const bounds = photo.parentElement.getBoundingClientRect();
       if (bounds.bottom < -120 || bounds.top > height + 120) continue;
       // Overscan covers the offset even in the smallest mobile product photos.
-      const limit = Math.min(6, bounds.height * 0.025);
+      const limit = Math.min(14, bounds.height * 0.06);
       const progress = (height / 2 - bounds.top - bounds.height / 2) / height;
-      const offset = Math.max(-limit, Math.min(limit, progress * 12));
+      const offset = Math.max(-limit, Math.min(limit, progress * 28));
       photo.style.setProperty('--el-gentle-photo-y', `${offset.toFixed(2)}px`);
     }
   }
@@ -45,7 +45,7 @@
     document.querySelectorAll('.sc-host main section').forEach(section => {
       if (registered.has(section)) return;
       registered.add(section);
-      // Unobserved content is already visible; this only adds an 8px movement.
+      // Unobserved content is already visible; this only adds a 20px movement.
       observer?.observe(section);
     });
     photos = [...document.querySelectorAll('.sc-host main .el-photo-frame > img, .sc-host main .el-product-card__photo img')];
