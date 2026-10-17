@@ -2,12 +2,12 @@
 <sc-if value="{{ isCartPage }}">
 <div class="el-refresh">
 <section class="el-wrap el-section el-cart-page">
-  <sc-if value="{{ isCart }}"><a class="el-back-link" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">← Продолжить выбор</a><h1>Корзина</h1></sc-if>
+  <sc-if value="{{ isCart }}"><a class="el-back-link" href="{{ hrefContinue }}" onClick="{{ goContinue }}">← Продолжить выбор</a><h1>Корзина</h1></sc-if>
   <sc-if value="{{ isCheckout }}"><a class="el-back-link" href="{{ hrefCart }}" onClick="{{ goCart }}">← Корзина</a><h1>Оформление заказа</h1></sc-if>
   <sc-if value="{{ catalogLoading }}"><p role="status" class="el-notice">Загружаем корзину…</p></sc-if>
   <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice"><p>Не удалось открыть корзину. Сохранённые блюда не удалены.</p><button type="button" class="el-button" onClick="{{ retryCatalog }}">Повторить</button></div></sc-if>
   <sc-if value="{{ cartSaveError }}"><p role="alert" class="el-notice">Браузер не сохранил корзину. Выбранные блюда могут потеряться после закрытия страницы.</p></sc-if>
-  <sc-if value="{{ cartEmpty }}"><div class="el-empty-state"><span class="el-eyebrow">Ваш выбор</span><h2>В корзине пока пусто</h2><p>Выберите готовый обед или блюда из ассортимента.</p><div class="el-inline-actions"><a class="el-button" href="{{ hrefLunches }}" onClick="{{ goLunches }}">Выбрать обед</a><a class="el-button el-button--outline" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">Открыть ассортимент</a></div></div></sc-if>
+  <sc-if value="{{ cartEmpty }}"><div class="el-empty-state"><span class="el-eyebrow">Ваш выбор</span><h2>В корзине пока пусто</h2><p>Выберите готовый обед или блюда из ПП-фастфуда.</p><div class="el-inline-actions"><a class="el-button" href="{{ hrefLunches }}" onClick="{{ goLunches }}">Выбрать обед</a><a class="el-button el-button--outline" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">Открыть ПП-фастфуд</a></div></div></sc-if>
   <sc-if value="{{ hasCart }}">
     <div class="el-checkout-layout">
       <div>

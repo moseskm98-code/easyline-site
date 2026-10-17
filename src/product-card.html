@@ -1,15 +1,16 @@
 <article class="el-product-card" data-product-id="{{ item.id }}">
-  <sc-if value="{{ item.hasImage }}"><div class="el-product-card__photo"><img src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></div></sc-if>
+  <sc-if value="{{ item.hasImage }}"><div class="el-product-card__photo"><img data-el-src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></div></sc-if>
   <sc-if value="{{ item.imageNote }}"><p class="el-product-card__image-note">{{ item.imageNote }}</p></sc-if>
   <div class="el-product-card__body">
-    <div class="el-eyebrow">{{ item.eyebrow }}</div>
-    <h3>{{ item.title }}</h3>
+    <div class="el-eyebrow">{{ item.eyebrow }}</div><h3>{{ item.title }}</h3>
     <sc-if value="{{ item.detail }}"><p class="el-product-card__detail">{{ item.detail }}</p></sc-if>
     <sc-if value="{{ item.wholegrain }}"><span class="el-bread-label">Цельнозерновой хлеб</span></sc-if>
     <div class="el-product-card__bottom">
-      <span class="el-product-card__price">{{ item.priceLabel }}</span>
-      <sc-if value="{{ !item.inCart }}"><button type="button" class="el-button el-product-add" aria-label="{{ item.addLabel }}" onClick="{{ item.add }}">В корзину</button></sc-if>
-      <sc-if value="{{ item.inCart }}"><!-- QUANTITY_CONTROL --></sc-if>
+      <button class="el-product-details-link" type="button" aria-label="{{ item.detailsLabel }}" aria-expanded="{{ item.detailsOpen }}" aria-controls="{{ item.detailsId }}" onClick="{{ item.toggleDetails }}">{{ item.detailsText }}</button>
+      <sc-if value="{{ item.detailsOpen }}"><div class="el-product-details" id="{{ item.detailsId }}" role="region" aria-label="{{ item.detailsLabel }}"><dl><div><dt>Блюдо</dt><dd>{{ item.name }}</dd></div><div><dt>Масса порции</dt><dd>Уточняется</dd></div><div><dt>Ингредиенты и аллергены</dt><dd>Полный состав уточняется. Сообщите нам об ограничениях до заказа.</dd></div></dl><a class="el-text-link" href="{{ item.inquiryHref }}" target="_blank" rel="noreferrer">Уточнить состав</a></div></sc-if>
+      <sc-if value="{{ item.hasPrice }}"><span class="el-product-card__price">{{ item.priceLabel }}</span></sc-if>
+      <sc-if value="{{ !item.showQuantity }}"><button type="button" class="el-button el-product-add" aria-label="{{ item.addLabel }}" onClick="{{ item.add }}">В корзину</button></sc-if>
+      <sc-if value="{{ item.showQuantity }}"><!-- QUANTITY_CONTROL --></sc-if>
     </div>
   </div>
 </article>

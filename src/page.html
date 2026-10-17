@@ -104,97 +104,30 @@ button{font-family:inherit}
 <!-- NEW_HOME_AND_CATALOGS -->
 <!-- СТРАНИЦА ПРОТОКОЛА -->
 <sc-if value="{{ isProgram }}">
-<div class="el-photo-frame el-protocol-hero">
-  <img class="el-photo el-protocol-hero__image" data-el-src="{{ prog.image }}" alt="{{ prog.imageAlt }}" fetchpriority="high" decoding="async">
-</div>
-<section style="max-width:1240px;margin:0 auto;padding:clamp(32px,4cqw,56px) clamp(16px,3cqw,40px) 0;display:flex;flex-wrap:wrap;gap:clamp(24px,4cqw,64px)">
-  <div style="flex:1 1 400px;min-width:270px">
-    <div class="el-brand-kicker" style="font:400 11px/1 'Geologica',sans-serif;color:#6f8492;letter-spacing:.1em;text-transform:uppercase">{{ prog.goal }}</div>
-    <h1 style="font:600 clamp(30px,4.2cqw,58px)/1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:12px 0 0;text-wrap:balance">{{ prog.name }}</h1>
-    <p class="el-body-copy" style="font:300 clamp(15px,1.35cqw,18px)/1.65 'Geologica',sans-serif;color:#465a67;margin:18px 0 0;max-width:560px;text-wrap:pretty">{{ prog.long }}</p>
-    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:24px">
-      <sc-for list="{{ prog.tags }}" as="t" hint-placeholder-count="4">
-        <span style="padding:8px 14px;background:#f8fbfd;border:1px solid #d2e3ed;border-radius:999px;font:300 13px/1 'Geologica',sans-serif;color:#465a67">{{ t }}</span>
-      </sc-for>
-    </div>
+<div class="el-refresh el-protocol-page">
+<section class="el-wrap el-protocol-intro">
+  <div class="el-protocol-intro__copy">
+    <span class="el-eyebrow el-eyebrow--badge">Рацион на весь день</span>
+    <h1>Протокол<br>на 28 дней</h1>
+    <p>Завтрак, обед и ужин по готовому меню. Не нужно каждый день решать, что приготовить.</p>
+    <dl class="el-protocol-facts"><div><dt>Длительность</dt><dd>28 дней</dd></div><div><dt>Питание</dt><dd>3 приёма пищи</dd></div><div><dt>Меню</dt><dd>Фиксированное</dd></div></dl>
+    <p class="el-protocol-explanation">Блюда внутри цикла не выбираются. Ограничения обсудим до старта.</p>
+    <div class="el-protocol-actions"><button type="button" class="el-button" data-el-app-intent="order" onClick="{{ openOrder }}">Обсудить протокол</button><a class="el-text-link" href="#protocol-menu" onClick="{{ goExample }}">Посмотреть пример дня</a></div>
   </div>
-  <div style="flex:0 1 320px;min-width:260px">
-    <div style="background:#f8fbfd;border:1px solid #8e242e;border-radius:20px;padding:26px">
-      <div class="el-brand-kicker el-brand-kicker--compact" style="font:400 11px/1 'Geologica',sans-serif;color:#6f8492;letter-spacing:.09em;text-transform:uppercase">Коротко о протоколе</div>
-      <div style="display:flex;flex-direction:column;gap:12px;margin:18px 0 22px">
-        <sc-for list="{{ prog.facts }}" as="f" hint-placeholder-count="4">
-          <div style="display:flex;gap:12px;justify-content:space-between;border-bottom:1px solid #e3edf3;padding-bottom:10px">
-            <span class="el-protocol-fact-key" style="font:300 13px/1.4 'Geologica',sans-serif;color:#6f8492">{{ f.k }}</span>
-            <span style="font:400 13px/1.4 'Geologica',sans-serif;color:#23333d;text-align:right">{{ f.v }}</span>
-          </div>
-        </sc-for>
-      </div>
-      <button data-el-app-intent="order" onClick="{{ openOrder }}" style="width:100%;padding:17px 24px;background:#719dc9;color:#ffffff;border:none;border-radius:999px;font:500 16px/1 'Geologica',sans-serif;cursor:pointer" style-hover="background:#5f8dbb">Оставить заявку</button>
-      <div class="el-body-copy" style="font:300 12px/1.5 'Geologica',sans-serif;color:#7a909d;margin-top:12px;text-align:center">Перезвоним и уточним детали старта</div>
-    </div>
-  </div>
+  <div class="el-photo-frame el-protocol-hero"><img class="el-photo el-protocol-hero__image" data-el-src="{{ prog.image }}" alt="{{ prog.imageAlt }}" fetchpriority="high" decoding="async"></div>
 </section>
-
-<section class="el-protocol-menu" style="max-width:1240px;margin:0 auto;padding:clamp(40px,5cqw,72px) clamp(16px,3cqw,40px) 0">
-  <h2 style="font:500 clamp(22px,2.6cqw,32px)/1.1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 20px">Меню на 28 дней</h2>
-  <p class="el-body-copy" style="font:300 15px/1.6 'Geologica',sans-serif;color:#465a67;margin:0 0 clamp(24px,3cqw,40px);max-width:700px">Все 28 рационов собраны в одном меню. Состав и порции уже зафиксированы; выбор блюд на сайте не предусмотрен.</p>
-  <div style="display:flex;flex-direction:column;gap:clamp(28px,4cqw,52px)">
-    <sc-for list="{{ menuDays }}" as="d" hint-placeholder-count="4">
-      <article class="el-menu-day">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(22px,3cqw,40px)">
-          <sc-for list="{{ d.meals }}" as="m" hint-placeholder-count="3">
-            <div>
-              <div class="el-brand-kicker el-brand-kicker--compact" style="font:500 12px/1 'Geologica',sans-serif;color:#719dc9;letter-spacing:.09em;text-transform:uppercase;border-bottom:2px solid #8e242e;padding-bottom:10px">{{ m.slot }}</div>
-              <ul style="margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px">
-                <sc-for list="{{ m.items }}" as="it" hint-placeholder-count="5">
-                  <li style="font:300 14px/1.45 'Geologica',sans-serif;color:#394c58">{{ it }}</li>
-                </sc-for>
-              </ul>
-            </div>
-          </sc-for>
-        </div>
-      </article>
-    </sc-for>
+<section id="protocol-menu" class="el-wrap el-protocol-menu">
+  <div class="el-protocol-menu__heading"><div><h2 id="protocol-menu-title" tabindex="-1">Меню по дням</h2><p>Посмотрите пример дня. <button type="button" class="el-link-button el-all-days" aria-expanded="{{ showAllDays }}" onClick="{{ toggleAllDays }}">{{ allDaysLabel }}</button></p></div>
+    <div class="el-protocol-navigation"><nav class="el-week-tabs" aria-label="Недели меню"><sc-for list="{{ weekTabs }}" as="w"><button type="button" aria-pressed="{{ w.selected }}" aria-controls="protocol-days" onClick="{{ w.select }}">Неделя {{ w.n }}</button></sc-for></nav>
+    <nav class="el-day-tabs" aria-label="Дни меню"><sc-for list="{{ weekDays }}" as="d"><button type="button" aria-pressed="{{ d.selected }}" aria-controls="protocol-days" onClick="{{ d.select }}">День {{ d.n }}</button></sc-for></nav></div>
   </div>
+  <div id="protocol-days"><sc-for list="{{ menuDays }}" as="d"><article class="el-menu-day"><h3>День {{ d.n }}</h3><div class="el-day-meals"><sc-for list="{{ d.meals }}" as="m"><div><h4>{{ m.slot }}</h4><ul><sc-for list="{{ m.items }}" as="it"><li>{{ it }}</li></sc-for></ul></div></sc-for></div></article></sc-for></div>
+  <nav class="el-protocol-quick-links" aria-label="Условия протокола"><a href="{{ hrefDelivery }}" onClick="{{ goDelivery }}">Доставка<img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="18" height="18" alt="" aria-hidden="true"></a><a href="{{ hrefFaq }}" onClick="{{ goStorage }}">Хранение<img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="18" height="18" alt="" aria-hidden="true"></a><a href="#protocol-rules">Замены и ограничения<img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="18" height="18" alt="" aria-hidden="true"></a></nav>
 </section>
-
-<section style="max-width:1240px;margin:0 auto;padding:clamp(40px,5cqw,72px) clamp(16px,3cqw,40px) 0">
-  <h2 style="font:500 clamp(22px,2.6cqw,32px)/1.1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 20px">Особые условия протокола</h2>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px">
-    <sc-for list="{{ prog.rules }}" as="r" hint-placeholder-count="6">
-      <div style="display:flex;gap:14px;background:#f8fbfd;border:1px solid #d2e3ed;border-radius:20px;padding:18px">
-        <span aria-hidden="true" style="flex:0 0 auto;width:7px;height:7px;margin-top:7px;background:#719dc9;border-radius:50%"></span>
-        <span class="el-card-description" style="font:300 14px/1.6 'Geologica',sans-serif;color:#394c58;text-wrap:pretty">{{ r }}</span>
-      </div>
-    </sc-for>
-  </div>
-</section>
-
-<section style="max-width:1240px;margin:0 auto;padding:clamp(40px,5cqw,72px) clamp(16px,3cqw,40px) 0">
-  <div style="background:#bddced;border-radius:20px;padding:clamp(24px,3cqw,44px);display:flex;flex-wrap:wrap;gap:clamp(20px,3cqw,56px)">
-    <div style="flex:1 1 260px">
-      <h2 style="font:500 clamp(20px,2.2cqw,28px)/1.1 'Oswald',sans-serif;text-transform:uppercase;color:#0f4d7a;margin:0">Доставка</h2>
-      <p style="font:300 15px/1.65 'Geologica',sans-serif;color:#28455c;margin:14px 0 0;text-wrap:pretty">Привозим рационы каждый день с 6:00 до 9:00 по Махачкале — бесплатно. В Каспийск, Избербаш и Дербент доставляем через день, также с 6:00 до 9:00.</p>
-    </div>
-    <div style="flex:1 1 260px">
-      <h3 style="font:500 clamp(20px,2.2cqw,28px)/1.1 'Oswald',sans-serif;text-transform:uppercase;color:#0f4d7a;margin:0">Оплата</h3>
-      <p style="font:300 15px/1.65 'Geologica',sans-serif;color:#28455c;margin:14px 0 0;text-wrap:pretty">Онлайн картой при оформлении или 50/50: половина суммы при заказе, вторая — в середине цикла.</p>
-    </div>
-  </div>
-  <a href="{{ hrefHome }}" onClick="{{ goHome }}" style="display:inline-block;margin:clamp(32px,4cqw,52px) 0 clamp(80px,9cqw,140px);font:400 15px/1 'Geologica',sans-serif;color:#8e242e;border-bottom:1px solid #b8d2e1;padding-bottom:3px">← Вернуться на главную</a>
-</section>
-
-<div class="el-protocol-sticky" style="position:sticky;bottom:0;z-index:30;background:#ffffff;border-top:1px solid #8e242e;padding:14px clamp(16px,3cqw,40px)">
-  <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px">
-    <div class="el-protocol-sticky__summary">
-      <div style="font:300 12px/1 'Geologica',sans-serif;color:#6f8492">{{ prog.name }}</div>
-      <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px">
-        <span style="font:700 clamp(18px,2cqw,24px)/1 'Podkova',serif;color:#8e242e">Фиксированное меню</span>
-        <span style="font:300 13px/1 'Geologica',sans-serif;color:#6f8492">28 дней</span>
-      </div>
-    </div>
-    <button data-el-app-intent="order" onClick="{{ openOrder }}" style="padding:15px 30px;background:#719dc9;color:#ffffff;border:none;border-radius:999px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer;white-space:nowrap" style-hover="background:#5f8dbb">Оставить заявку</button>
-  </div>
+<section id="protocol-rules" class="el-wrap el-section el-protocol-rules"><h2>Особые условия протокола</h2><div><sc-for list="{{ prog.rules }}" as="r"><p>{{ r }}</p></sc-for></div></section>
+<section class="el-wrap el-protocol-delivery"><div><h2>Доставка</h2><p>Привозим рационы каждый день с 6:00 до 9:00 по Махачкале — бесплатно. В Каспийск, Избербаш и Дербент доставляем через день, также с 6:00 до 9:00.</p></div><div><h2>Оплата</h2><p>Оплата после подтверждения заявки или 50/50: половина суммы при заказе, вторая — в середине цикла.</p></div></section>
+<div class="el-wrap el-protocol-back"><a class="el-text-link" href="{{ hrefHome }}" onClick="{{ goHome }}">Вернуться на главную</a></div>
+<div class="el-protocol-sticky"><div class="el-wrap"><div class="el-protocol-sticky__summary"><span>Протокол 28 дней</span><strong>Фиксированное меню</strong></div><button type="button" class="el-button" data-el-app-intent="order" onClick="{{ openOrder }}">Обсудить протокол</button></div></div>
 </div>
 </sc-if>
 
@@ -228,7 +161,7 @@ button{font-family:inherit}
           <sc-for list="{{ b.items }}" as="f" hint-placeholder-count="3">
             <div style="background:#f8fbfd;border:1px solid #d2e3ed;border-radius:20px;padding:18px">
               <div style="font:400 11px/1 'Geologica',sans-serif;color:#6f8492;letter-spacing:.08em;text-transform:uppercase">{{ f.k }}</div>
-              <div style="font:400 16px/1.45 'Geologica',sans-serif;color:#23333d;margin-top:8px">{{ f.v }}</div>
+              <div style="font:400 16px/1.45 'Geologica',sans-serif;color:#23333d;margin-top:8px"><sc-if value="{{ f.href }}"><a href="{{ f.href }}" class="el-text-link">{{ f.v }}</a></sc-if><sc-if value="{{ !f.href }}">{{ f.v }}</sc-if></div>
             </div>
           </sc-for>
         </div>
@@ -317,19 +250,19 @@ button{font-family:inherit}
   <section id="application" style="background:#e4f0f7;border-top:1px solid #c8dce8">
     <div style="max-width:1240px;margin:0 auto;padding:clamp(44px,6cqw,84px) clamp(16px,3cqw,40px);display:flex;flex-wrap:wrap;gap:clamp(28px,5cqw,76px);align-items:flex-start">
       <div style="flex:1 1 360px;max-width:540px">
-        <h2 style="font:600 clamp(28px,3.8cqw,52px)/1.02 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0;text-wrap:balance">Оставьте заявку</h2>
+        <h2 id="application-title" tabindex="-1" style="font:600 clamp(28px,3.8cqw,52px)/1.02 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0;text-wrap:balance">Оставьте заявку</h2>
         <p style="font:300 clamp(15px,1.3cqw,17px)/1.65 'Geologica',sans-serif;color:#465a67;margin:18px 0 0;max-width:520px;text-wrap:pretty">Оставьте имя и телефон. Мы перезвоним, ответим на вопросы и уточним детали старта протокола.</p>
         <p style="font:300 14px/1.65 'Geologica',sans-serif;color:#465a67;margin:22px 0 0">Или свяжитесь напрямую: <a href="tel:+79640182373" style="font-weight:500;text-decoration:underline;text-underline-offset:4px">+7 964 018-23-73</a> · <a href="https://wa.me/79640182373" target="_blank" rel="noreferrer" style="font-weight:500;text-decoration:underline;text-underline-offset:4px">WhatsApp</a></p>
       </div>
       <form id="application-form" onSubmit="{{ submitApplication }}" style="flex:1 1 360px;max-width:560px;background:#ffffff;border:1px solid #8e242e;padding:clamp(22px,3cqw,36px);display:flex;flex-direction:column;gap:18px">
         <label style="font:400 14px/1.4 'Geologica',sans-serif;color:#23333d">Имя
-          <input name="name" type="text" autocomplete="name" minlength="2" maxlength="80" required="{{ true }}" placeholder="Как к вам обращаться" style="display:block;width:100%;margin-top:8px;padding:15px 16px;background:#ffffff;border:1px solid #9ab5c5;border-radius:16px;font:400 16px/1 'Geologica',sans-serif;color:#23333d">
+          <input name="name" type="text" value="{{ applicationName }}" onInput="{{ setApplicationName }}" autocomplete="name" minlength="2" maxlength="80" required="{{ true }}" placeholder="Как к вам обращаться" style="display:block;width:100%;margin-top:8px;padding:15px 16px;background:#ffffff;border:1px solid #9ab5c5;border-radius:16px;font:400 16px/1 'Geologica',sans-serif;color:#23333d">
         </label>
         <label style="font:400 14px/1.4 'Geologica',sans-serif;color:#23333d">Номер телефона
-          <input name="phone" type="tel" autocomplete="tel" inputmode="tel" required="{{ true }}" placeholder="+7 900 000-00-00" style="display:block;width:100%;margin-top:8px;padding:15px 16px;background:#ffffff;border:1px solid #9ab5c5;border-radius:16px;font:400 16px/1 'Geologica',sans-serif;color:#23333d">
+          <input name="phone" type="tel" value="{{ applicationPhone }}" onInput="{{ setApplicationPhone }}" autocomplete="tel" inputmode="tel" required="{{ true }}" placeholder="+7 900 000-00-00" style="display:block;width:100%;margin-top:8px;padding:15px 16px;background:#ffffff;border:1px solid #9ab5c5;border-radius:16px;font:400 16px/1 'Geologica',sans-serif;color:#23333d">
         </label>
         <label style="display:flex;align-items:flex-start;gap:10px;font:300 13px/1.5 'Geologica',sans-serif;color:#465a67;cursor:pointer">
-          <input name="privacy" type="checkbox" required="{{ true }}" style="width:18px;height:18px;margin:1px 0 0;accent-color:#8e242e;flex:0 0 auto">
+          <input name="privacy" type="checkbox" checked="{{ applicationPrivacy }}" onChange="{{ setApplicationPrivacy }}" required="{{ true }}" style="width:18px;height:18px;margin:1px 0 0;accent-color:#8e242e;flex:0 0 auto">
           <span>Я согласен(а) на обработку персональных данных согласно <a href="{{ hrefPrivacy }}" onClick="{{ goPrivacy }}" style="text-decoration:underline;text-underline-offset:3px">политике обработки персональных данных</a>.</span>
         </label>
         <button type="submit" disabled="{{ applicationSending }}" style="padding:16px 24px;background:#8e242e;color:#ffffff;border:1px solid #8e242e;border-radius:999px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer">{{ applicationButton }}</button>

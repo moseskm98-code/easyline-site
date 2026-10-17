@@ -20,26 +20,27 @@
 <link rel="canonical" href="https://easyline.club/about-production/">
 <title>О производстве — EasyLine</title>
 <link rel="icon" href="/easyline-site/assets/logo-Ddt-JyRw.svg" type="image/svg+xml">
-<script>window.__EASYLINE_VARIANT__ = "2.3.3";window.__EASYLINE_SITE_ORIGIN__ = "https://easyline.club";window.__EASYLINE_STATIC_ROUTE_KEY__ = "about-production";</script>
+<script>window.__EASYLINE_VARIANT__ = "2.4.0-preview";window.__EASYLINE_SITE_ORIGIN__ = "https://easyline.club";window.__EASYLINE_STATIC_ROUTE_KEY__ = "about-production";</script>
 <script src="/easyline-site/vendor/react.production.min.js"></script>
 <script src="/easyline-site/vendor/react-dom.production.min.js"></script>
 <link rel="preload" href="/easyline-site/assets/nunito-variable-cyrillic.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/bebas-neue-regular-mhMkEidK.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/bebas-neue-bold-DqarbXCh.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/easyline-site/assets/podkova-variable-DYz2L4Pv.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="/easyline-site/assets/first-frame-init.css?v=2.3.3">
-<script src="/easyline-site/assets/first-frame-init.js?v=2.3.3"></script>
-<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=2.3.3"></script>
+<link rel="stylesheet" href="/easyline-site/assets/first-frame-init.css?v=2.4.0-preview">
+<script src="/easyline-site/assets/first-frame-init.js?v=2.4.0-preview"></script>
+<script type="module" crossorigin src="/easyline-site/assets/index-Dwt8uDxZ.js?v=2.4.0-preview"></script>
 <script src="/easyline-site/assets/static-route-head.js"></script>
 <script type="module">import {normalizePhone,submitInquiry} from "/easyline-site/lead-form.js";window.__EASYLINE_LEADS__=Object.freeze({normalizePhone,submitInquiry});</script>
 <link rel="stylesheet" crossorigin href="/easyline-site/assets/index-BmA-8PXs-v222.css">
 <link rel="stylesheet" href="/easyline-site/assets/readability-overrides.css">
 <link rel="stylesheet" href="/easyline-site/assets/light-mode-only.css">
-<link rel="stylesheet" href="/easyline-site/assets/accessible-digital.css?v=2.3.3">
+<link rel="stylesheet" href="/easyline-site/assets/accessible-digital.css?v=2.4.0-preview">
 <link rel="stylesheet" href="/easyline-site/assets/layout-stage-preview.css">
-<link rel="stylesheet" href="/easyline-site/assets/menu-refresh.css?v=2.3.3">
-<link rel="stylesheet" href="/easyline-site/assets/gentle-motion.css?v=2.3.3">
-<script defer src="/easyline-site/assets/gentle-motion.js?v=2.3.3"></script>
+<link rel="stylesheet" href="/easyline-site/assets/menu-refresh.css?v=2.4.0-preview">
+<link rel="stylesheet" href="/easyline-site/assets/gentle-motion.css?v=2.4.0-preview">
+<link rel="stylesheet" href="/easyline-site/assets/customer-experience.css?v=2.4.0-preview">
+<script defer src="/easyline-site/assets/gentle-motion.js?v=2.4.0-preview"></script>
 <meta name="x-easyline-color-variant" content="accessible-digital">
 </head>
 <body>
@@ -114,7 +115,7 @@ button{font-family:inherit}
     <p class="el-lead">Рацион на 28 дней, обед для рабочего дня или любимые блюда поштучно. Выберите свой формат — приготовление возьмём на себя.</p>
     <nav class="el-hero-choices" aria-label="Выберите формат питания">
       <a class="el-button" href="{{ hrefLunches }}" onClick="{{ goLunches }}">Корпоративные обеды</a>
-      <a class="el-button el-button--outline" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">Ассортимент</a>
+      <a class="el-button el-button--outline" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">ПП-фастфуд</a>
       <a class="el-text-link" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}">Протокол на 28 дней →</a>
     </nav>
   </div>
@@ -126,27 +127,30 @@ button{font-family:inherit}
     <div class="el-direction-grid">
       <a class="el-direction-card" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}"><span class="el-direction-card__number">28 <small>дней</small></span><h3>Протокол питания</h3><p>Завтрак, обед и ужин. Полное меню уже собрано на весь цикл.</p><span class="el-text-link">Посмотреть меню →</span></a>
       <a class="el-direction-card" href="{{ hrefLunches }}" onClick="{{ goLunches }}"><span class="el-direction-card__number">13 <small>комплектов</small></span><h3>Корпоративные обеды</h3><p>Готовые комплекты для рабочего дня. Выбирайте блюда и количество.</p><span class="el-text-link">Выбрать обед →</span></a>
-      <a class="el-direction-card" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}"><span class="el-direction-card__number">26 <small>позиций</small></span><h3>Ассортимент</h3><p>Чиабатты, сэндвичи, бургеры, тортильи, боулы и выпечка.</p><span class="el-text-link">Перейти в каталог →</span></a>
+      <a class="el-direction-card" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}"><span class="el-direction-card__number">26 <small>позиций</small></span><h3>ПП-фастфуд</h3><p>Чиабатты, сэндвичи, бургеры, тортильи, боулы и выпечка.</p><span class="el-text-link">Перейти в каталог →</span></a>
     </div>
   </div>
 </section>
 <section class="el-wrap el-section">
   <div class="el-section-heading"><div><span class="el-eyebrow">Обед для рабочего дня</span><h2>Корпоративные обеды</h2></div><a class="el-text-link" href="{{ hrefLunches }}" onClick="{{ goLunches }}">Все 13 комплектов →</a></div>
   <div class="el-product-grid el-home-lunches"><sc-for list="{{ homeLunches }}" as="item" hint-placeholder-count="4"><article class="el-product-card" data-product-id="{{ item.id }}">
-  <sc-if value="{{ item.hasImage }}"><div class="el-product-card__photo"><img src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></div></sc-if>
+  <sc-if value="{{ item.hasImage }}"><div class="el-product-card__photo"><img data-el-src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></div></sc-if>
   <sc-if value="{{ item.imageNote }}"><p class="el-product-card__image-note">{{ item.imageNote }}</p></sc-if>
   <div class="el-product-card__body">
-    <div class="el-eyebrow">{{ item.eyebrow }}</div>
-    <h3>{{ item.title }}</h3>
+    <div class="el-eyebrow">{{ item.eyebrow }}</div><h3>{{ item.title }}</h3>
     <sc-if value="{{ item.detail }}"><p class="el-product-card__detail">{{ item.detail }}</p></sc-if>
     <sc-if value="{{ item.wholegrain }}"><span class="el-bread-label">Цельнозерновой хлеб</span></sc-if>
     <div class="el-product-card__bottom">
-      <span class="el-product-card__price">{{ item.priceLabel }}</span>
-      <sc-if value="{{ !item.inCart }}"><button type="button" class="el-button el-product-add" aria-label="{{ item.addLabel }}" onClick="{{ item.add }}">В корзину</button></sc-if>
-      <sc-if value="{{ item.inCart }}"><div class="el-quantity" role="group" aria-label="{{ item.name }}">
-  <button type="button" onClick="{{ item.minus }}" aria-label="{{ item.minusLabel }}">−</button>
-  <span aria-label="Количество">{{ item.quantity }}</span>
+      <button class="el-product-details-link" type="button" aria-label="{{ item.detailsLabel }}" aria-expanded="{{ item.detailsOpen }}" aria-controls="{{ item.detailsId }}" onClick="{{ item.toggleDetails }}">{{ item.detailsText }}</button>
+      <sc-if value="{{ item.detailsOpen }}"><div class="el-product-details" id="{{ item.detailsId }}" role="region" aria-label="{{ item.detailsLabel }}"><dl><div><dt>Блюдо</dt><dd>{{ item.name }}</dd></div><div><dt>Масса порции</dt><dd>Уточняется</dd></div><div><dt>Ингредиенты и аллергены</dt><dd>Полный состав уточняется. Сообщите нам об ограничениях до заказа.</dd></div></dl><a class="el-text-link" href="{{ item.inquiryHref }}" target="_blank" rel="noreferrer">Уточнить состав</a></div></sc-if>
+      <sc-if value="{{ item.hasPrice }}"><span class="el-product-card__price">{{ item.priceLabel }}</span></sc-if>
+      <sc-if value="{{ !item.showQuantity }}"><button type="button" class="el-button el-product-add" aria-label="{{ item.addLabel }}" onClick="{{ item.add }}">В корзину</button></sc-if>
+      <sc-if value="{{ item.showQuantity }}"><div class="el-quantity-field"><sc-if value="{{ item.quantityCaption }}"><span class="el-quantity-caption">{{ item.quantityCaption }}</span></sc-if>
+<div class="el-quantity" role="group" aria-label="{{ item.name }}">
+  <button type="button" onClick="{{ item.minus }}" disabled="{{ item.atZero }}" aria-label="{{ item.minusLabel }}">−</button>
+  <input type="number" inputmode="numeric" min="0" max="99" step="1" value="{{ item.quantity }}" onChange="{{ item.setQuantity }}" onBlur="{{ item.restoreQuantity }}" aria-label="{{ item.quantityLabel }}">
   <button type="button" onClick="{{ item.add }}" disabled="{{ item.atLimit }}" aria-label="{{ item.plusLabel }}">+</button>
+</div>
 </div>
 </sc-if>
     </div>
@@ -158,16 +162,16 @@ button{font-family:inherit}
 </section>
 <section class="el-section el-surface">
   <div class="el-wrap">
-    <div class="el-section-heading"><div><span class="el-eyebrow">Блюда поштучно</span><h2>Ассортимент на каждый день</h2></div><a class="el-text-link" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">Весь ассортимент →</a></div>
+    <div class="el-section-heading"><div><span class="el-eyebrow">Блюда поштучно</span><h2>ПП-фастфуд на каждый день</h2></div><a class="el-text-link" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">Весь ПП-фастфуд →</a></div>
     <p class="el-section-intro">Выберите любимую начинку. Обычный или цельнозерновой хлеб — в одном каталоге.</p>
     <div class="el-category-grid"><sc-for list="{{ homeCategories }}" as="category" hint-placeholder-count="6"><a class="el-category-card" href="{{ category.href }}" onClick="{{ category.open }}"><h3>{{ category.label }}</h3><span class="el-category-card__count">{{ category.count }}</span><span class="el-category-card__arrow" aria-hidden="true">→</span></a></sc-for></div>
     <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice">Не удалось загрузить категории. <button type="button" class="el-link-button" onClick="{{ retryCatalog }}">Повторить</button></div></sc-if>
   </div>
 </section>
 <section class="el-wrap el-section">
-  <div class="el-section-heading"><div><span class="el-eyebrow">Обеды и ассортимент</span><h2>Как заказать</h2></div></div>
+  <div class="el-section-heading"><div><span class="el-eyebrow">Обеды и ПП-фастфуд</span><h2>Как заказать</h2></div></div>
   <div class="el-steps-refresh">
-    <div><span class="el-step-number">1</span><h3>Выберите блюда</h3><p>Откройте обеды или ассортимент. Найдите нужные позиции в каталоге.</p></div>
+    <div><span class="el-step-number">1</span><h3>Выберите блюда</h3><p>Откройте обеды или ПП-фастфуд. Найдите нужные позиции в каталоге.</p></div>
     <div><span class="el-step-number">2</span><h3>Соберите корзину</h3><p>Добавьте блюда и укажите количество для себя или команды.</p></div>
     <div><span class="el-step-number">3</span><h3>Оформите заказ</h3><p>Проверьте состав заказа и заполните контактные данные.</p></div>
   </div>
@@ -192,32 +196,45 @@ button{font-family:inherit}
 <sc-if value="{{ isCatalog }}">
 <div class="el-refresh">
 <section class="el-wrap el-section el-catalog">
-  <a class="el-back-link" href="{{ hrefHome }}" onClick="{{ goHome }}">← Главная</a>
-  <div class="el-section-heading"><div><span class="el-eyebrow">Меню EasyLine</span><h1>{{ catalogTitle }}</h1></div><a class="el-button el-button--outline" href="{{ hrefCart }}" onClick="{{ goCart }}">Корзина · {{ cartCount }}</a></div>
-  <p class="el-section-intro">{{ catalogIntro }}</p>
-  <sc-if value="{{ isAssortment }}"><nav class="el-category-tabs" aria-label="Категории ассортимента"><sc-for list="{{ categories }}" as="category" hint-placeholder-count="7"><button type="button" aria-pressed="{{ category.selected }}" onClick="{{ category.select }}">{{ category.label }} <span>{{ category.count }}</span></button></sc-for></nav></sc-if>
-  <div class="el-filter-bar">
-    <label class="el-search-label">Найти блюдо<input type="search" value="{{ search }}" onInput="{{ setSearch }}" placeholder="Название блюда" autocomplete="off"></label>
-    <sc-if value="{{ isAssortment }}"><label>Начинка<select value="{{ protein }}" onChange="{{ setProtein }}"><option value="all">Любая</option><option value="chicken">Курица</option><option value="turkey">Индейка</option><option value="beef">Говядина</option><option value="shrimp">Креветка</option></select></label><label class="el-checkbox-label el-wholegrain-toggle"><input type="checkbox" role="switch" checked="{{ wholegrain }}" onChange="{{ setWholegrain }}"><span>Цельнозерновой хлеб</span></label></sc-if>
-  </div>
-  <sc-if value="{{ catalogReady }}"><p class="el-result-count" role="status" aria-live="polite">Найдено: {{ resultCount }}</p></sc-if>
+  <sc-if value="{{ isAssortment }}"><div class="el-catalog-heading"><h1>ПП-фастфуд</h1><p>Выберите блюдо для себя</p></div></sc-if>
+  <sc-if value="{{ isLunches }}">
+    <div class="el-team-hero">
+      <span class="el-eyebrow el-eyebrow--badge">Питание для команды</span><h1>Обеды для вашей команды</h1>
+      <div class="el-team-intro"><p>Выберите комплекты и количество. Дату, доставку и особые пожелания обсудим отдельно.</p>
+        <details class="el-team-discussion"><summary class="el-button el-button--outline">Обсудить питание команды</summary><div class="el-team-discussion__body"><p>Расскажите, на сколько человек нужны обеды и как часто. Обсудим меню и организацию доставки.</p><a class="el-text-link" href="tel:+79640182373">+7 964 018-23-73</a><a class="el-text-link" href="https://wa.me/79640182373" target="_blank" rel="noreferrer">Написать в WhatsApp</a><small>Ежедневно 8:00–20:00</small></div></details>
+      </div>
+      <ol class="el-team-steps" aria-label="Как выбрать обеды для команды"><li><span>1</span>Выберите обеды</li><li><span>2</span>Укажите количество</li><li><span>3</span>Обсудите детали</li></ol>
+    </div>
+    <div class="el-team-catalog-title"><h2>13 готовых комплектов</h2><div class="el-catalog-search"><label class="el-search-label"><span class="el-sr-only">Найти блюдо</span><input type="search" value="{{ search }}" onInput="{{ setSearch }}" placeholder="Найти блюдо" autocomplete="off" maxlength="100"></label></div></div>
+  </sc-if>
+  <sc-if value="{{ isAssortment }}"><div class="el-catalog-search"><label class="el-search-label"><span class="el-sr-only">Найти блюдо</span><input type="search" value="{{ search }}" onInput="{{ setSearch }}" placeholder="Найти блюдо" autocomplete="off" maxlength="100"></label></div></sc-if>
+  <sc-if value="{{ isAssortment }}">
+    <nav class="el-category-tabs" aria-label="Категории ПП-фастфуда"><sc-for list="{{ categories }}" as="category" hint-placeholder-count="7"><button type="button" aria-pressed="{{ category.selected }}" onClick="{{ category.select }}">{{ category.label }} <span>{{ category.count }}</span></button></sc-for></nav>
+    <div class="el-catalog-tools"><p class="el-result-count" role="status" aria-live="polite">{{ resultCount }}</p><button type="button" class="el-filter-trigger" aria-expanded="{{ filtersOpen }}" aria-controls="catalog-secondary-filters" onClick="{{ toggleFilters }}"><img src="/easyline-site/assets/icons/feather/sliders.svg" width="20" height="20" alt="" aria-hidden="true">Фильтры<sc-if value="{{ activeFilterCount }}"><span>{{ activeFilterCount }}</span></sc-if></button></div>
+    <div id="catalog-secondary-filters" class="el-filter-panel" hidden="{{ !filtersOpen }}"><label>Начинка<select value="{{ protein }}" onChange="{{ setProtein }}"><option value="all">Любая</option><option value="chicken">Курица</option><option value="turkey">Индейка</option><option value="beef">Говядина</option><option value="shrimp">Креветка</option></select></label><label class="el-checkbox-label el-wholegrain-toggle"><input type="checkbox" role="switch" checked="{{ wholegrain }}" onChange="{{ setWholegrain }}"><span>Цельнозерновой хлеб</span></label><button type="button" class="el-link-button" onClick="{{ clearSecondaryFilters }}">Сбросить фильтры</button></div>
+    <sc-if value="{{ activeFilterCount }}"><div class="el-active-filters"><sc-if value="{{ hasProteinFilter }}"><button type="button" onClick="{{ clearProtein }}" aria-label="{{ clearProteinLabel }}">{{ proteinLabel }} <span aria-hidden="true">×</span></button></sc-if><sc-if value="{{ wholegrain }}"><button type="button" onClick="{{ clearWholegrain }}" aria-label="Убрать фильтр цельнозернового хлеба">Цельнозерновой хлеб <span aria-hidden="true">×</span></button></sc-if></div></sc-if>
+  </sc-if>
+  <sc-if value="{{ showTeamSearchCount }}"><p class="el-result-count" role="status" aria-live="polite">Найдено: {{ resultCount }}</p></sc-if>
   <sc-if value="{{ catalogLoading }}"><p role="status" class="el-notice">Загружаем меню…</p></sc-if>
   <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice"><p>Меню не загрузилось. Проверьте соединение и повторите попытку.</p><button type="button" class="el-button" onClick="{{ retryCatalog }}">Загрузить меню</button></div></sc-if>
   <div class="el-product-grid" data-catalog-grid="true"><sc-for list="{{ catalogItems }}" as="item" hint-placeholder-count="6"><article class="el-product-card" data-product-id="{{ item.id }}">
-  <sc-if value="{{ item.hasImage }}"><div class="el-product-card__photo"><img src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></div></sc-if>
+  <sc-if value="{{ item.hasImage }}"><div class="el-product-card__photo"><img data-el-src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></div></sc-if>
   <sc-if value="{{ item.imageNote }}"><p class="el-product-card__image-note">{{ item.imageNote }}</p></sc-if>
   <div class="el-product-card__body">
-    <div class="el-eyebrow">{{ item.eyebrow }}</div>
-    <h3>{{ item.title }}</h3>
+    <div class="el-eyebrow">{{ item.eyebrow }}</div><h3>{{ item.title }}</h3>
     <sc-if value="{{ item.detail }}"><p class="el-product-card__detail">{{ item.detail }}</p></sc-if>
     <sc-if value="{{ item.wholegrain }}"><span class="el-bread-label">Цельнозерновой хлеб</span></sc-if>
     <div class="el-product-card__bottom">
-      <span class="el-product-card__price">{{ item.priceLabel }}</span>
-      <sc-if value="{{ !item.inCart }}"><button type="button" class="el-button el-product-add" aria-label="{{ item.addLabel }}" onClick="{{ item.add }}">В корзину</button></sc-if>
-      <sc-if value="{{ item.inCart }}"><div class="el-quantity" role="group" aria-label="{{ item.name }}">
-  <button type="button" onClick="{{ item.minus }}" aria-label="{{ item.minusLabel }}">−</button>
-  <span aria-label="Количество">{{ item.quantity }}</span>
+      <button class="el-product-details-link" type="button" aria-label="{{ item.detailsLabel }}" aria-expanded="{{ item.detailsOpen }}" aria-controls="{{ item.detailsId }}" onClick="{{ item.toggleDetails }}">{{ item.detailsText }}</button>
+      <sc-if value="{{ item.detailsOpen }}"><div class="el-product-details" id="{{ item.detailsId }}" role="region" aria-label="{{ item.detailsLabel }}"><dl><div><dt>Блюдо</dt><dd>{{ item.name }}</dd></div><div><dt>Масса порции</dt><dd>Уточняется</dd></div><div><dt>Ингредиенты и аллергены</dt><dd>Полный состав уточняется. Сообщите нам об ограничениях до заказа.</dd></div></dl><a class="el-text-link" href="{{ item.inquiryHref }}" target="_blank" rel="noreferrer">Уточнить состав</a></div></sc-if>
+      <sc-if value="{{ item.hasPrice }}"><span class="el-product-card__price">{{ item.priceLabel }}</span></sc-if>
+      <sc-if value="{{ !item.showQuantity }}"><button type="button" class="el-button el-product-add" aria-label="{{ item.addLabel }}" onClick="{{ item.add }}">В корзину</button></sc-if>
+      <sc-if value="{{ item.showQuantity }}"><div class="el-quantity-field"><sc-if value="{{ item.quantityCaption }}"><span class="el-quantity-caption">{{ item.quantityCaption }}</span></sc-if>
+<div class="el-quantity" role="group" aria-label="{{ item.name }}">
+  <button type="button" onClick="{{ item.minus }}" disabled="{{ item.atZero }}" aria-label="{{ item.minusLabel }}">−</button>
+  <input type="number" inputmode="numeric" min="0" max="99" step="1" value="{{ item.quantity }}" onChange="{{ item.setQuantity }}" onBlur="{{ item.restoreQuantity }}" aria-label="{{ item.quantityLabel }}">
   <button type="button" onClick="{{ item.add }}" disabled="{{ item.atLimit }}" aria-label="{{ item.plusLabel }}">+</button>
+</div>
 </div>
 </sc-if>
     </div>
@@ -226,6 +243,7 @@ button{font-family:inherit}
 </sc-for></div>
   <sc-if value="{{ catalogEmpty }}"><div class="el-empty-state"><h2>Таких блюд не нашли</h2><p>Измените название или сбросьте фильтры.</p><button type="button" class="el-button el-button--outline" onClick="{{ clearFilters }}">Сбросить фильтры</button></div></sc-if>
 </section>
+<sc-if value="{{ showTeamSelection }}"><aside class="el-team-selection" aria-label="Выбранные обеды"><div class="el-wrap"><div><strong>{{ teamSelectionLabel }}</strong><span>{{ teamLineLabel }}</span></div><a class="el-button" href="{{ hrefCart }}" onClick="{{ goCart }}">Перейти к выбранным</a></div></aside></sc-if>
 </div>
 </sc-if>
 <!-- ЗАГРУЗКА ПРОТОКОЛА -->
@@ -236,19 +254,21 @@ button{font-family:inherit}
 <sc-if value="{{ isCartPage }}">
 <div class="el-refresh">
 <section class="el-wrap el-section el-cart-page">
-  <sc-if value="{{ isCart }}"><a class="el-back-link" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">← Продолжить выбор</a><h1>Корзина</h1></sc-if>
+  <sc-if value="{{ isCart }}"><a class="el-back-link" href="{{ hrefContinue }}" onClick="{{ goContinue }}">← Продолжить выбор</a><h1>Корзина</h1></sc-if>
   <sc-if value="{{ isCheckout }}"><a class="el-back-link" href="{{ hrefCart }}" onClick="{{ goCart }}">← Корзина</a><h1>Оформление заказа</h1></sc-if>
   <sc-if value="{{ catalogLoading }}"><p role="status" class="el-notice">Загружаем корзину…</p></sc-if>
   <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice"><p>Не удалось открыть корзину. Сохранённые блюда не удалены.</p><button type="button" class="el-button" onClick="{{ retryCatalog }}">Повторить</button></div></sc-if>
   <sc-if value="{{ cartSaveError }}"><p role="alert" class="el-notice">Браузер не сохранил корзину. Выбранные блюда могут потеряться после закрытия страницы.</p></sc-if>
-  <sc-if value="{{ cartEmpty }}"><div class="el-empty-state"><span class="el-eyebrow">Ваш выбор</span><h2>В корзине пока пусто</h2><p>Выберите готовый обед или блюда из ассортимента.</p><div class="el-inline-actions"><a class="el-button" href="{{ hrefLunches }}" onClick="{{ goLunches }}">Выбрать обед</a><a class="el-button el-button--outline" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">Открыть ассортимент</a></div></div></sc-if>
+  <sc-if value="{{ cartEmpty }}"><div class="el-empty-state"><span class="el-eyebrow">Ваш выбор</span><h2>В корзине пока пусто</h2><p>Выберите готовый обед или блюда из ПП-фастфуда.</p><div class="el-inline-actions"><a class="el-button" href="{{ hrefLunches }}" onClick="{{ goLunches }}">Выбрать обед</a><a class="el-button el-button--outline" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">Открыть ПП-фастфуд</a></div></div></sc-if>
   <sc-if value="{{ hasCart }}">
     <div class="el-checkout-layout">
       <div>
-        <sc-if value="{{ isCart }}"><div class="el-cart-lines"><sc-for list="{{ cartItems }}" as="item" hint-placeholder-count="3"><article class="el-cart-line" data-cart-id="{{ item.id }}"><div class="el-cart-line__top"><div><span class="el-eyebrow">{{ item.eyebrow }}</span><h2>{{ item.title }}</h2><sc-if value="{{ item.detail }}"><p>{{ item.detail }}</p></sc-if></div><button type="button" class="el-remove-button" aria-label="{{ item.removeLabel }}" onClick="{{ item.remove }}">Удалить</button></div><div class="el-cart-line__bottom"><span class="el-muted">{{ item.priceLabel }}</span><div class="el-quantity" role="group" aria-label="{{ item.name }}">
-  <button type="button" onClick="{{ item.minus }}" aria-label="{{ item.minusLabel }}">−</button>
-  <span aria-label="Количество">{{ item.quantity }}</span>
+        <sc-if value="{{ isCart }}"><div class="el-cart-lines"><sc-for list="{{ cartItems }}" as="item" hint-placeholder-count="3"><article class="el-cart-line" data-cart-id="{{ item.id }}"><div class="el-cart-line__top"><div><span class="el-eyebrow">{{ item.eyebrow }}</span><h2>{{ item.title }}</h2><sc-if value="{{ item.detail }}"><p>{{ item.detail }}</p></sc-if></div><button type="button" class="el-remove-button" aria-label="{{ item.removeLabel }}" onClick="{{ item.remove }}">Удалить</button></div><div class="el-cart-line__bottom"><span class="el-muted">{{ item.priceLabel }}</span><div class="el-quantity-field"><sc-if value="{{ item.quantityCaption }}"><span class="el-quantity-caption">{{ item.quantityCaption }}</span></sc-if>
+<div class="el-quantity" role="group" aria-label="{{ item.name }}">
+  <button type="button" onClick="{{ item.minus }}" disabled="{{ item.atZero }}" aria-label="{{ item.minusLabel }}">−</button>
+  <input type="number" inputmode="numeric" min="0" max="99" step="1" value="{{ item.quantity }}" onChange="{{ item.setQuantity }}" onBlur="{{ item.restoreQuantity }}" aria-label="{{ item.quantityLabel }}">
   <button type="button" onClick="{{ item.add }}" disabled="{{ item.atLimit }}" aria-label="{{ item.plusLabel }}">+</button>
+</div>
 </div>
 </div></article></sc-for></div></sc-if>
         <sc-if value="{{ isCheckout }}">
@@ -278,97 +298,30 @@ button{font-family:inherit}
 
 <!-- СТРАНИЦА ПРОТОКОЛА -->
 <sc-if value="{{ isProgram }}">
-<div class="el-photo-frame el-protocol-hero">
-  <img class="el-photo el-protocol-hero__image" data-el-src="{{ prog.image }}" alt="{{ prog.imageAlt }}" fetchpriority="high" decoding="async">
-</div>
-<section style="max-width:1240px;margin:0 auto;padding:clamp(32px,4cqw,56px) clamp(16px,3cqw,40px) 0;display:flex;flex-wrap:wrap;gap:clamp(24px,4cqw,64px)">
-  <div style="flex:1 1 400px;min-width:270px">
-    <div class="el-brand-kicker" style="font:400 11px/1 'Geologica',sans-serif;color:#6f8492;letter-spacing:.1em;text-transform:uppercase">{{ prog.goal }}</div>
-    <h1 style="font:600 clamp(30px,4.2cqw,58px)/1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:12px 0 0;text-wrap:balance">{{ prog.name }}</h1>
-    <p class="el-body-copy" style="font:300 clamp(15px,1.35cqw,18px)/1.65 'Geologica',sans-serif;color:#465a67;margin:18px 0 0;max-width:560px;text-wrap:pretty">{{ prog.long }}</p>
-    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:24px">
-      <sc-for list="{{ prog.tags }}" as="t" hint-placeholder-count="4">
-        <span style="padding:8px 14px;background:#f8fbfd;border:1px solid #d2e3ed;border-radius:999px;font:300 13px/1 'Geologica',sans-serif;color:#465a67">{{ t }}</span>
-      </sc-for>
-    </div>
+<div class="el-refresh el-protocol-page">
+<section class="el-wrap el-protocol-intro">
+  <div class="el-protocol-intro__copy">
+    <span class="el-eyebrow el-eyebrow--badge">Рацион на весь день</span>
+    <h1>Протокол<br>на 28 дней</h1>
+    <p>Завтрак, обед и ужин по готовому меню. Не нужно каждый день решать, что приготовить.</p>
+    <dl class="el-protocol-facts"><div><dt>Длительность</dt><dd>28 дней</dd></div><div><dt>Питание</dt><dd>3 приёма пищи</dd></div><div><dt>Меню</dt><dd>Фиксированное</dd></div></dl>
+    <p class="el-protocol-explanation">Блюда внутри цикла не выбираются. Ограничения обсудим до старта.</p>
+    <div class="el-protocol-actions"><button type="button" class="el-button" data-el-app-intent="order" onClick="{{ openOrder }}">Обсудить протокол</button><a class="el-text-link" href="#protocol-menu" onClick="{{ goExample }}">Посмотреть пример дня</a></div>
   </div>
-  <div style="flex:0 1 320px;min-width:260px">
-    <div style="background:#f8fbfd;border:1px solid #8e242e;border-radius:20px;padding:26px">
-      <div class="el-brand-kicker el-brand-kicker--compact" style="font:400 11px/1 'Geologica',sans-serif;color:#6f8492;letter-spacing:.09em;text-transform:uppercase">Коротко о протоколе</div>
-      <div style="display:flex;flex-direction:column;gap:12px;margin:18px 0 22px">
-        <sc-for list="{{ prog.facts }}" as="f" hint-placeholder-count="4">
-          <div style="display:flex;gap:12px;justify-content:space-between;border-bottom:1px solid #e3edf3;padding-bottom:10px">
-            <span class="el-protocol-fact-key" style="font:300 13px/1.4 'Geologica',sans-serif;color:#6f8492">{{ f.k }}</span>
-            <span style="font:400 13px/1.4 'Geologica',sans-serif;color:#23333d;text-align:right">{{ f.v }}</span>
-          </div>
-        </sc-for>
-      </div>
-      <button data-el-app-intent="order" onClick="{{ openOrder }}" style="width:100%;padding:17px 24px;background:#719dc9;color:#ffffff;border:none;border-radius:999px;font:500 16px/1 'Geologica',sans-serif;cursor:pointer" style-hover="background:#5f8dbb">Оставить заявку</button>
-      <div class="el-body-copy" style="font:300 12px/1.5 'Geologica',sans-serif;color:#7a909d;margin-top:12px;text-align:center">Перезвоним и уточним детали старта</div>
-    </div>
-  </div>
+  <div class="el-photo-frame el-protocol-hero"><img class="el-photo el-protocol-hero__image" data-el-src="{{ prog.image }}" alt="{{ prog.imageAlt }}" fetchpriority="high" decoding="async"></div>
 </section>
-
-<section class="el-protocol-menu" style="max-width:1240px;margin:0 auto;padding:clamp(40px,5cqw,72px) clamp(16px,3cqw,40px) 0">
-  <h2 style="font:500 clamp(22px,2.6cqw,32px)/1.1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 20px">Меню на 28 дней</h2>
-  <p class="el-body-copy" style="font:300 15px/1.6 'Geologica',sans-serif;color:#465a67;margin:0 0 clamp(24px,3cqw,40px);max-width:700px">Все 28 рационов собраны в одном меню. Состав и порции уже зафиксированы; выбор блюд на сайте не предусмотрен.</p>
-  <div style="display:flex;flex-direction:column;gap:clamp(28px,4cqw,52px)">
-    <sc-for list="{{ menuDays }}" as="d" hint-placeholder-count="4">
-      <article class="el-menu-day">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(22px,3cqw,40px)">
-          <sc-for list="{{ d.meals }}" as="m" hint-placeholder-count="3">
-            <div>
-              <div class="el-brand-kicker el-brand-kicker--compact" style="font:500 12px/1 'Geologica',sans-serif;color:#719dc9;letter-spacing:.09em;text-transform:uppercase;border-bottom:2px solid #8e242e;padding-bottom:10px">{{ m.slot }}</div>
-              <ul style="margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px">
-                <sc-for list="{{ m.items }}" as="it" hint-placeholder-count="5">
-                  <li style="font:300 14px/1.45 'Geologica',sans-serif;color:#394c58">{{ it }}</li>
-                </sc-for>
-              </ul>
-            </div>
-          </sc-for>
-        </div>
-      </article>
-    </sc-for>
+<section id="protocol-menu" class="el-wrap el-protocol-menu">
+  <div class="el-protocol-menu__heading"><div><h2 id="protocol-menu-title" tabindex="-1">Меню по дням</h2><p>Посмотрите пример дня. <button type="button" class="el-link-button el-all-days" aria-expanded="{{ showAllDays }}" onClick="{{ toggleAllDays }}">{{ allDaysLabel }}</button></p></div>
+    <div class="el-protocol-navigation"><nav class="el-week-tabs" aria-label="Недели меню"><sc-for list="{{ weekTabs }}" as="w"><button type="button" aria-pressed="{{ w.selected }}" aria-controls="protocol-days" onClick="{{ w.select }}">Неделя {{ w.n }}</button></sc-for></nav>
+    <nav class="el-day-tabs" aria-label="Дни меню"><sc-for list="{{ weekDays }}" as="d"><button type="button" aria-pressed="{{ d.selected }}" aria-controls="protocol-days" onClick="{{ d.select }}">День {{ d.n }}</button></sc-for></nav></div>
   </div>
+  <div id="protocol-days"><sc-for list="{{ menuDays }}" as="d"><article class="el-menu-day"><h3>День {{ d.n }}</h3><div class="el-day-meals"><sc-for list="{{ d.meals }}" as="m"><div><h4>{{ m.slot }}</h4><ul><sc-for list="{{ m.items }}" as="it"><li>{{ it }}</li></sc-for></ul></div></sc-for></div></article></sc-for></div>
+  <nav class="el-protocol-quick-links" aria-label="Условия протокола"><a href="{{ hrefDelivery }}" onClick="{{ goDelivery }}">Доставка<img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="18" height="18" alt="" aria-hidden="true"></a><a href="{{ hrefFaq }}" onClick="{{ goStorage }}">Хранение<img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="18" height="18" alt="" aria-hidden="true"></a><a href="#protocol-rules">Замены и ограничения<img src="/easyline-site/assets/icons/feather/arrow-right.svg" width="18" height="18" alt="" aria-hidden="true"></a></nav>
 </section>
-
-<section style="max-width:1240px;margin:0 auto;padding:clamp(40px,5cqw,72px) clamp(16px,3cqw,40px) 0">
-  <h2 style="font:500 clamp(22px,2.6cqw,32px)/1.1 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 20px">Особые условия протокола</h2>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px">
-    <sc-for list="{{ prog.rules }}" as="r" hint-placeholder-count="6">
-      <div style="display:flex;gap:14px;background:#f8fbfd;border:1px solid #d2e3ed;border-radius:20px;padding:18px">
-        <span aria-hidden="true" style="flex:0 0 auto;width:7px;height:7px;margin-top:7px;background:#719dc9;border-radius:50%"></span>
-        <span class="el-card-description" style="font:300 14px/1.6 'Geologica',sans-serif;color:#394c58;text-wrap:pretty">{{ r }}</span>
-      </div>
-    </sc-for>
-  </div>
-</section>
-
-<section style="max-width:1240px;margin:0 auto;padding:clamp(40px,5cqw,72px) clamp(16px,3cqw,40px) 0">
-  <div style="background:#bddced;border-radius:20px;padding:clamp(24px,3cqw,44px);display:flex;flex-wrap:wrap;gap:clamp(20px,3cqw,56px)">
-    <div style="flex:1 1 260px">
-      <h2 style="font:500 clamp(20px,2.2cqw,28px)/1.1 'Oswald',sans-serif;text-transform:uppercase;color:#0f4d7a;margin:0">Доставка</h2>
-      <p style="font:300 15px/1.65 'Geologica',sans-serif;color:#28455c;margin:14px 0 0;text-wrap:pretty">Привозим рационы каждый день с 6:00 до 9:00 по Махачкале — бесплатно. В Каспийск, Избербаш и Дербент доставляем через день, также с 6:00 до 9:00.</p>
-    </div>
-    <div style="flex:1 1 260px">
-      <h3 style="font:500 clamp(20px,2.2cqw,28px)/1.1 'Oswald',sans-serif;text-transform:uppercase;color:#0f4d7a;margin:0">Оплата</h3>
-      <p style="font:300 15px/1.65 'Geologica',sans-serif;color:#28455c;margin:14px 0 0;text-wrap:pretty">Онлайн картой при оформлении или 50/50: половина суммы при заказе, вторая — в середине цикла.</p>
-    </div>
-  </div>
-  <a href="{{ hrefHome }}" onClick="{{ goHome }}" style="display:inline-block;margin:clamp(32px,4cqw,52px) 0 clamp(80px,9cqw,140px);font:400 15px/1 'Geologica',sans-serif;color:#8e242e;border-bottom:1px solid #b8d2e1;padding-bottom:3px">← Вернуться на главную</a>
-</section>
-
-<div class="el-protocol-sticky" style="position:sticky;bottom:0;z-index:30;background:#ffffff;border-top:1px solid #8e242e;padding:14px clamp(16px,3cqw,40px)">
-  <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px">
-    <div class="el-protocol-sticky__summary">
-      <div style="font:300 12px/1 'Geologica',sans-serif;color:#6f8492">{{ prog.name }}</div>
-      <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px">
-        <span style="font:700 clamp(18px,2cqw,24px)/1 'Podkova',serif;color:#8e242e">Фиксированное меню</span>
-        <span style="font:300 13px/1 'Geologica',sans-serif;color:#6f8492">28 дней</span>
-      </div>
-    </div>
-    <button data-el-app-intent="order" onClick="{{ openOrder }}" style="padding:15px 30px;background:#719dc9;color:#ffffff;border:none;border-radius:999px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer;white-space:nowrap" style-hover="background:#5f8dbb">Оставить заявку</button>
-  </div>
+<section id="protocol-rules" class="el-wrap el-section el-protocol-rules"><h2>Особые условия протокола</h2><div><sc-for list="{{ prog.rules }}" as="r"><p>{{ r }}</p></sc-for></div></section>
+<section class="el-wrap el-protocol-delivery"><div><h2>Доставка</h2><p>Привозим рационы каждый день с 6:00 до 9:00 по Махачкале — бесплатно. В Каспийск, Избербаш и Дербент доставляем через день, также с 6:00 до 9:00.</p></div><div><h2>Оплата</h2><p>Оплата после подтверждения заявки или 50/50: половина суммы при заказе, вторая — в середине цикла.</p></div></section>
+<div class="el-wrap el-protocol-back"><a class="el-text-link" href="{{ hrefHome }}" onClick="{{ goHome }}">Вернуться на главную</a></div>
+<div class="el-protocol-sticky"><div class="el-wrap"><div class="el-protocol-sticky__summary"><span>Протокол 28 дней</span><strong>Фиксированное меню</strong></div><button type="button" class="el-button" data-el-app-intent="order" onClick="{{ openOrder }}">Обсудить протокол</button></div></div>
 </div>
 </sc-if>
 
@@ -402,7 +355,7 @@ button{font-family:inherit}
           <sc-for list="{{ b.items }}" as="f" hint-placeholder-count="3">
             <div style="background:#f8fbfd;border:1px solid #d2e3ed;border-radius:20px;padding:18px">
               <div style="font:400 11px/1 'Geologica',sans-serif;color:#6f8492;letter-spacing:.08em;text-transform:uppercase">{{ f.k }}</div>
-              <div style="font:400 16px/1.45 'Geologica',sans-serif;color:#23333d;margin-top:8px">{{ f.v }}</div>
+              <div style="font:400 16px/1.45 'Geologica',sans-serif;color:#23333d;margin-top:8px"><sc-if value="{{ f.href }}"><a href="{{ f.href }}" class="el-text-link">{{ f.v }}</a></sc-if><sc-if value="{{ !f.href }}">{{ f.v }}</sc-if></div>
             </div>
           </sc-for>
         </div>
@@ -491,19 +444,19 @@ button{font-family:inherit}
   <section id="application" style="background:#e4f0f7;border-top:1px solid #c8dce8">
     <div style="max-width:1240px;margin:0 auto;padding:clamp(44px,6cqw,84px) clamp(16px,3cqw,40px);display:flex;flex-wrap:wrap;gap:clamp(28px,5cqw,76px);align-items:flex-start">
       <div style="flex:1 1 360px;max-width:540px">
-        <h2 style="font:600 clamp(28px,3.8cqw,52px)/1.02 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0;text-wrap:balance">Оставьте заявку</h2>
+        <h2 id="application-title" tabindex="-1" style="font:600 clamp(28px,3.8cqw,52px)/1.02 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0;text-wrap:balance">Оставьте заявку</h2>
         <p style="font:300 clamp(15px,1.3cqw,17px)/1.65 'Geologica',sans-serif;color:#465a67;margin:18px 0 0;max-width:520px;text-wrap:pretty">Оставьте имя и телефон. Мы перезвоним, ответим на вопросы и уточним детали старта протокола.</p>
         <p style="font:300 14px/1.65 'Geologica',sans-serif;color:#465a67;margin:22px 0 0">Или свяжитесь напрямую: <a href="tel:+79640182373" style="font-weight:500;text-decoration:underline;text-underline-offset:4px">+7 964 018-23-73</a> · <a href="https://wa.me/79640182373" target="_blank" rel="noreferrer" style="font-weight:500;text-decoration:underline;text-underline-offset:4px">WhatsApp</a></p>
       </div>
       <form id="application-form" onSubmit="{{ submitApplication }}" style="flex:1 1 360px;max-width:560px;background:#ffffff;border:1px solid #8e242e;padding:clamp(22px,3cqw,36px);display:flex;flex-direction:column;gap:18px">
         <label style="font:400 14px/1.4 'Geologica',sans-serif;color:#23333d">Имя
-          <input name="name" type="text" autocomplete="name" minlength="2" maxlength="80" required="{{ true }}" placeholder="Как к вам обращаться" style="display:block;width:100%;margin-top:8px;padding:15px 16px;background:#ffffff;border:1px solid #9ab5c5;border-radius:16px;font:400 16px/1 'Geologica',sans-serif;color:#23333d">
+          <input name="name" type="text" value="{{ applicationName }}" onInput="{{ setApplicationName }}" autocomplete="name" minlength="2" maxlength="80" required="{{ true }}" placeholder="Как к вам обращаться" style="display:block;width:100%;margin-top:8px;padding:15px 16px;background:#ffffff;border:1px solid #9ab5c5;border-radius:16px;font:400 16px/1 'Geologica',sans-serif;color:#23333d">
         </label>
         <label style="font:400 14px/1.4 'Geologica',sans-serif;color:#23333d">Номер телефона
-          <input name="phone" type="tel" autocomplete="tel" inputmode="tel" required="{{ true }}" placeholder="+7 900 000-00-00" style="display:block;width:100%;margin-top:8px;padding:15px 16px;background:#ffffff;border:1px solid #9ab5c5;border-radius:16px;font:400 16px/1 'Geologica',sans-serif;color:#23333d">
+          <input name="phone" type="tel" value="{{ applicationPhone }}" onInput="{{ setApplicationPhone }}" autocomplete="tel" inputmode="tel" required="{{ true }}" placeholder="+7 900 000-00-00" style="display:block;width:100%;margin-top:8px;padding:15px 16px;background:#ffffff;border:1px solid #9ab5c5;border-radius:16px;font:400 16px/1 'Geologica',sans-serif;color:#23333d">
         </label>
         <label style="display:flex;align-items:flex-start;gap:10px;font:300 13px/1.5 'Geologica',sans-serif;color:#465a67;cursor:pointer">
-          <input name="privacy" type="checkbox" required="{{ true }}" style="width:18px;height:18px;margin:1px 0 0;accent-color:#8e242e;flex:0 0 auto">
+          <input name="privacy" type="checkbox" checked="{{ applicationPrivacy }}" onChange="{{ setApplicationPrivacy }}" required="{{ true }}" style="width:18px;height:18px;margin:1px 0 0;accent-color:#8e242e;flex:0 0 auto">
           <span>Я согласен(а) на обработку персональных данных согласно <a href="{{ hrefPrivacy }}" onClick="{{ goPrivacy }}" style="text-decoration:underline;text-underline-offset:3px">политике обработки персональных данных</a>.</span>
         </label>
         <button type="submit" disabled="{{ applicationSending }}" style="padding:16px 24px;background:#8e242e;color:#ffffff;border:1px solid #8e242e;border-radius:999px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer">{{ applicationButton }}</button>
@@ -598,7 +551,7 @@ const TEXT_PAGES = {
     { isP:true, text:'Каждый приём пищи упакован отдельно, с наклейкой: название блюда, состав, калорийность и БЖУ. Контейнеры пригодны для микроволновки, коробка — из переработанного картона.' },
   ]},
   'delivery-payment': { title:'Доставка и оплата', body:[
-    { isP:true, text:'На этой странице указаны условия протокола на 28 дней. Условия доставки и оплаты корпоративных обедов и ассортимента уточняются.' },
+    { isP:true, text:'На этой странице указаны условия протокола на 28 дней. Условия доставки и оплаты корпоративных обедов и ПП-фастфуда уточняются.' },
     { isH:true, text:'Доставка протокола' },
     { isP:true, text:'Мы привозим рационы каждый день рано утром, чтобы к завтраку еда уже была дома. График и адрес согласуем при подтверждении заявки.' },
     { isH:true, text:'График доставки' },
@@ -610,7 +563,7 @@ const TEXT_PAGES = {
     { isP:true, text:'Паузу или перенос дня оформляйте не позднее 18:00 предыдущего дня. Отменить оставшуюся часть цикла можно в любой момент — деньги за неиспользованные дни вернутся на карту в течение 5 рабочих дней.' },
   ]},
   'contacts': { title:'Контакты', body:[
-    { isFacts:true, items:[{k:'Город',v:'Избербаш'},{k:'Телефон',v:'+7 964 018-23-73'},{k:'Почта',v:'hello@easyline.club'},{k:'Часы работы',v:'Ежедневно 8:00–20:00'}] },
+    { isFacts:true, items:[{k:'Город',v:'Избербаш'},{k:'Телефон',v:'+7 964 018-23-73',href:'tel:+79640182373'},{k:'Почта',v:'hello@easyline.club',href:'mailto:hello@easyline.club'},{k:'Часы работы',v:'Ежедневно 8:00–20:00'}] },
     { isH:true, text:'Реквизиты' },
     { isP:true, text:'ИП Ибрагимов Рамазан Расулович' },
     { isFacts:true, items:[{k:'ИНН',v:'054600890467'},{k:'ОГРНИП',v:'326050000092094'}] },
@@ -625,13 +578,40 @@ const LEGAL_BODY = [
 ];
 
 
+const CATALOG_FILTER_DEFAULTS = Object.freeze({ category:'all', protein:'all', wholegrain:false, search:'' });
+function readCatalogFilters(search) {
+  const params = new URLSearchParams(search);
+  return { category:params.get('category') || 'all', protein:['chicken','turkey','beef','shrimp'].includes(params.get('protein')) ? params.get('protein') : 'all',
+    wholegrain:params.get('wholegrain') === '1', search:(params.get('q') || '').slice(0,100) };
+}
+function catalogQuery(filters) {
+  const params = new URLSearchParams();
+  if (filters.category && filters.category !== 'all') params.set('category',filters.category);
+  if (filters.protein && filters.protein !== 'all') params.set('protein',filters.protein);
+  if (filters.wholegrain) params.set('wholegrain','1');
+  if (filters.search) params.set('q',filters.search);
+  return params.size ? '?' + params.toString() : '';
+}
+function parseItemQuantity(value) {
+  const text = String(value).trim();
+  if (!/^\d+$/.test(text)) return null;
+  const quantity = Number(text);
+  return Number.isSafeInteger(quantity) && quantity >= 0 && quantity <= 99 ? quantity : null;
+}
+function visibleProtocolDays(days, selectedDay, showAll) {
+  return showAll ? days : days.filter(day => day.n === selectedDay);
+}
+function quantityWord(count, one, few, many) {
+  return count % 100 >= 11 && count % 100 <= 14 ? many : count % 10 === 1 ? one : [2,3,4].includes(count % 10) ? few : many;
+}
+
 const PAGES_BASE = window.location.hostname.endsWith('github.io') ? '/easyline-site' : '';
 const IS_0131 = true;
 const GENERAL_FAQ = [
-  { q:'Какие направления есть в EasyLine?', a:'Протокол питания на 28 дней, корпоративные обеды и ассортимент готовых блюд: чиабатты, сэндвичи, бургеры, тортильи, боулы и выпечка.' },
+  { q:'Какие направления есть в EasyLine?', a:'Протокол питания на 28 дней, корпоративные обеды и ПП-фастфуд: чиабатты, сэндвичи, бургеры, тортильи, боулы и выпечка.' },
   { q:'Чем обеды отличаются от протокола?', a:'В протоколе заранее составлены все 28 дней: завтрак, обед и ужин. Корпоративные обеды — отдельные комплекты, которые можно выбрать поштучно.' },
-  { q:'Как выбрать блюда?', a:'Откройте корпоративные обеды или ассортимент, добавьте нужные позиции в корзину и укажите количество. В протоколе меню фиксировано, его состав можно посмотреть на отдельной странице.' },
-  { q:'Где посмотреть стоимость?', a:'Цены корпоративных обедов и ассортимента пока уточняются. Итоговая сумма и оформление заказа появятся после публикации цен и условий доставки.' },
+  { q:'Как выбрать блюда?', a:'Откройте корпоративные обеды или ПП-фастфуд, добавьте нужные позиции в корзину и укажите количество. В протоколе меню фиксировано, его состав можно посмотреть на отдельной странице.' },
+  { q:'Где посмотреть стоимость?', a:'Цены корпоративных обедов и ПП-фастфуда пока уточняются. Итоговая сумма и оформление заказа появятся после публикации цен и условий доставки.' },
   { q:'Как узнать состав и сообщить об аллергии?', a:'В карточках обедов перечислены части комплекта. Полный состав и возможные аллергены уточняйте до заказа по телефону +7 964 018-23-73 или в WhatsApp.' },
 ];
 
@@ -640,7 +620,9 @@ class Component extends DCLogic {
     route:'home', slug:null, menuOpen:false, moreOpen:false, viewportTick:0,
     faqOpen:0, homeFaqOpen:0, data:null, loading:true, error:false,
     catalogLoading:true, catalogError:false, cart:{}, cartAnnouncement:'', cartSaveError:false,
-    category:'all', protein:'all', wholegrain:false, search:'',
+    category:'all', protein:'all', wholegrain:false, search:'', filtersOpen:false, detailsId:null,
+    protocolDay:1, protocolWeek:1, showAllDays:false,
+    applicationName:'', applicationPhone:'', applicationPrivacy:false,
     applicationSending:false, applicationSent:false, applicationError:'',
   };
 
@@ -685,12 +667,15 @@ class Component extends DCLogic {
     cancelAnimationFrame(this._resizeFrame);
   }
 
-  componentDidUpdate() { window.dispatchEvent(new CustomEvent('easyline:render')); }
+  componentDidUpdate() {
+    window.dispatchEvent(new CustomEvent('easyline:render'));
+    if (this._applicationFocusPending) this.focusApplication();
+  }
 
   loadProtocol() {
     this.setState({ loading:true, error:false });
     const attempt = this._protocolAttempt || 0; this._protocolAttempt = attempt + 1;
-    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=version-2.2.3-20260904' + (attempt ? '&retry=' + attempt : '');
+    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.0-preview') + (attempt ? '&retry=' + attempt : '');
     import(url)
       .then(module => this.setState({ data:{ protocols:module.PROTOCOLS }, loading:false }))
       .catch(() => this.setState({ loading:false, error:true }));
@@ -733,24 +718,68 @@ class Component extends DCLogic {
     return PAGES_BASE + (paths[route] || '/404');
   }
 
-  syncRouteFromLocation() {
-    if (location.pathname.replace(/\/+$/,'') === PAGES_BASE + '/programs') history.replaceState({},'',PAGES_BASE + '/programs/protokol-28');
-    const category = new URLSearchParams(location.search).get('category') || 'all';
-    this.setState({ ...this.routeFromPath(location.pathname), category, menuOpen:false, moreOpen:false, faqOpen:0, homeFaqOpen:0 });
-    window.__EASYLINE_STATIC_HEAD_SYNC__?.();
+  catalogFilters() {
+    const { category, protein, wholegrain, search } = this.state;
+    return { category, protein, wholegrain, search };
   }
 
-  go(route,slug,category) {
-    const path = this.pathFor(route,slug) + (route === 'assortment' && category && category !== 'all' ? '?category=' + encodeURIComponent(category) : '');
-    if (location.pathname.replace(/\/+$/,'') + location.search !== path.replace(/\/+$/,'')) history.pushState({},'',path);
-    this.setState({ route, slug:slug || null, menuOpen:false, moreOpen:false, faqOpen:0, homeFaqOpen:0,
-      category:category || 'all', protein:'all', wholegrain:false, search:'' }, () => {
+  rememberCatalog() {
+    if (!['assortment','lunches'].includes(this.state.route)) return;
+    const context = { route:this.state.route, filters:this.catalogFilters(), scroll:window.scrollY, filtersOpen:this.state.filtersOpen };
+    this._catalogContexts ||= {};
+    this._catalogContexts[context.route] = context;
+    this._lastCatalogContext = context;
+    history.replaceState({ ...history.state, easylineCatalog:context },'',location.href);
+  }
+
+  setCatalogFilters(patch) {
+    this.setState({ ...patch, detailsId:null },() => {
+      const filters = this.catalogFilters();
+      history.replaceState({ ...history.state },'',this.pathFor(this.state.route) + catalogQuery(filters));
+      this.rememberCatalog();
+    });
+  }
+
+  resumeCatalog(event) {
+    event?.preventDefault();
+    const context = this._lastCatalogContext;
+    this.go(context?.route || 'assortment',null,undefined,{ restore:true });
+  }
+
+  syncRouteFromLocation() {
+    if (location.pathname.replace(/\/+$/,'') === PAGES_BASE + '/programs') history.replaceState({},'',PAGES_BASE + '/programs/protokol-28');
+    const route = this.routeFromPath(location.pathname);
+    const isCatalog = ['assortment','lunches'].includes(route.route);
+    const context = history.state?.easylineCatalog;
+    this.setState({ ...route, ...(isCatalog ? readCatalogFilters(location.search) : {}),
+      menuOpen:false, moreOpen:false, detailsId:null, filtersOpen:context?.filtersOpen || false, faqOpen:0, homeFaqOpen:0 },() => {
       window.__EASYLINE_STATIC_HEAD_SYNC__?.();
-      window.scrollTo(0,0);
+      if (isCatalog && context?.route === route.route) requestAnimationFrame(() => window.scrollTo(0,context.scroll || 0));
+    });
+  }
+
+  go(route,slug,category,options={}) {
+    this.rememberCatalog();
+    const isCatalog = ['assortment','lunches'].includes(route);
+    const saved = this._catalogContexts?.[route];
+    const filters = category != null ? { ...CATALOG_FILTER_DEFAULTS, category } : saved?.filters || { ...CATALOG_FILTER_DEFAULTS };
+    const path = this.pathFor(route,slug) + (isCatalog ? catalogQuery(filters) : '');
+    if (location.pathname.replace(/\/+$/,'') + location.search !== path.replace(/\/+$/,'')) history.pushState({},'',path);
+    this.setState({ route, slug:slug || null, menuOpen:false, moreOpen:false, detailsId:null, faqOpen:0, homeFaqOpen:0,
+      ...(isCatalog ? filters : {}), filtersOpen:isCatalog && !!saved?.filtersOpen },() => {
+      window.__EASYLINE_STATIC_HEAD_SYNC__?.();
       requestAnimationFrame(() => {
-        const heading = document.querySelector('main h1');
-        heading?.setAttribute('tabindex','-1');
-        heading?.focus({ preventScroll:true });
+        if (options.restore && saved) {
+          window.scrollTo(0,saved.scroll || 0);
+          const heading = document.querySelector('.el-catalog h1');
+          heading?.setAttribute('tabindex','-1');
+          heading?.focus({ preventScroll:true });
+        } else {
+          window.scrollTo(0,0);
+          const heading = document.querySelector('main h1');
+          heading?.setAttribute('tabindex','-1');
+          heading?.focus({ preventScroll:true });
+        }
       });
     });
   }
@@ -781,12 +810,20 @@ class Component extends DCLogic {
     });
   }
 
+  focusApplication() {
+    const heading = document.getElementById('application-title');
+    const section = document.getElementById('application');
+    if (!heading || !section) return;
+    this._applicationFocusPending = false;
+    heading.focus({ preventScroll:true });
+    section.scrollIntoView({ behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start' });
+  }
+
   openOrder(event) {
     event?.preventDefault();
-    if (this.state.route !== 'program') {
-      this.go('program','protokol-28');
-      requestAnimationFrame(() => document.getElementById('application')?.scrollIntoView({ behavior:'smooth', block:'start' }));
-    } else document.getElementById('application')?.scrollIntoView({ behavior:'smooth', block:'start' });
+    this._applicationFocusPending = true;
+    if (this.state.route !== 'program') this.go('program','protokol-28');
+    else this.focusApplication();
   }
 
   submitApplication(event) {
@@ -802,7 +839,7 @@ class Component extends DCLogic {
     this.setState({ applicationSending:true, applicationSent:false, applicationError:'' });
     client.submitInquiry({ idempotencyKey, name:payload.name, phone:payload.phone }).then(() => {
       form.reset(); delete form.dataset.idempotencyKey;
-      this.setState({ applicationSending:false, applicationSent:true });
+      this.setState({ applicationSending:false, applicationSent:true, applicationName:'', applicationPhone:'', applicationPrivacy:false });
     }).catch(error => this.setState({ applicationSending:false, applicationError:error?.code === 'rate_limited'
       ? 'Слишком много попыток. Попробуйте позже или напишите в WhatsApp.'
       : 'Не удалось отправить заявку. Проверьте данные или свяжитесь с нами.' }));
@@ -811,7 +848,7 @@ class Component extends DCLogic {
   renderVals() {
     const S = this.state, M = this.catalogModule;
     const href = (route,slug) => this.pathFor(route,slug);
-    const primary = [ ['Протокол 28 дней','program','protokol-28'], ['Корпоративные обеды','lunches'], ['Ассортимент','assortment'] ];
+    const primary = [ ['Протокол 28 дней','program','protokol-28'], ['Корпоративные обеды','lunches'], ['ПП-фастфуд','assortment'] ];
     const secondary = [ ['FAQ','faq'], ['О производстве','text','about-production'], ['Доставка и оплата','text','delivery-payment'], ['Контакты','text','contacts'] ];
     const nav = ([label,route,slug]) => ({ label, href:href(route,slug), onClick:this.link(route,slug),
       color:S.route === route && (!slug || S.slug === slug) ? '#0f4d7a' : '#8e242e',
@@ -822,7 +859,16 @@ class Component extends DCLogic {
     const summary = M ? M.summarizeCart(S.cart) : { lines:[], count:0, totalRub:null };
     const card = item => {
       const quantity = S.cart[item.id] || 0;
-      return { ...item, quantity, inCart:quantity > 0, atLimit:quantity >= 99,
+      return { ...item, quantity, inCart:quantity > 0, atLimit:quantity >= 99, atZero:quantity === 0,
+        showQuantity:quantity > 0 || S.route === 'lunches', hasPrice:Number.isFinite(item.priceRub),
+        quantityLabel:'Количество: ' + item.name, quantityCaption:item.direction === 'corporate-lunches' ? 'Порций' : '',
+        setQuantity:event => { const quantity = parseItemQuantity(event.target.value); if (quantity !== null) this.changeQuantity(item.id,quantity); },
+        restoreQuantity:event => { event.target.value = String(this.state.cart[item.id] || 0); },
+        detailsId:'details-' + item.id, detailsOpen:S.detailsId === item.id, detailsLabel:'Подробнее: ' + item.name,
+        detailsText:S.route === 'lunches' ? 'Состав и порция' : 'Подробнее о блюде',
+        toggleDetails:() => this.setState({ detailsId:this.state.detailsId === item.id ? null : item.id }),
+        inquiryHref:'https://wa.me/79640182373?text=' + encodeURIComponent('Здравствуйте! Подскажите полный состав, массу порции и аллергены блюда «' + item.name + '».'),
+
         hasImage:!!item.image, imageAlt:(item.imageNote ? 'Предварительная иллюстрация: ' : '') + item.name,
         priceLabel:item.priceRub == null ? 'Цена уточняется' : item.priceRub.toLocaleString('ru-RU') + ' ₽',
         eyebrow:item.direction === 'corporate-lunches' ? 'Обед ' + item.number : (M?.CATEGORIES.find(category => category.id === item.category)?.label || ''),
@@ -835,22 +881,29 @@ class Component extends DCLogic {
     };
     const allCategories = [{ id:'all', label:'Все', count:26 }, ...(M?.CATEGORIES || [])];
     const categories = allCategories.map(category => ({ ...category, selected:S.category === category.id,
-      select:() => {
-        history.replaceState({},'',href('assortment') + (category.id === 'all' ? '' : '?category=' + encodeURIComponent(category.id)));
-        this.setState({ category:category.id });
-      }, href:href('assortment') + '?category=' + category.id, open:this.link('assortment',null,category.id) }));
+      select:() => this.setCatalogFilters({ category:category.id }), href:href('assortment') + '?category=' + category.id, open:this.link('assortment',null,category.id) }));
     const filtered = M ? M.filterCatalog({ direction:S.route === 'lunches' ? 'corporate-lunches' : 'assortment', category:S.route === 'lunches' ? 'all' : S.category,
       protein:S.route === 'lunches' ? 'all' : S.protein, wholegrain:S.route === 'assortment' && S.wholegrain, search:S.search }) : [];
     const faqItems = GENERAL_FAQ.concat(FAQ.map(item => ({ ...item, q:item.q === 'Когда привозят еду?' ? 'Когда доставляют протокол на 28 дней?' : item.q })));
     const faqBuild = (key,items) => items.map((item,i) => ({ ...item, isOpen:S[key] === i, sign:S[key] === i ? '−' : '+',
       buttonId:key + '-question-' + i, panelId:key + '-answer-' + i, toggle:() => this.setState({ [key]:this.state[key] === i ? -1 : i }) }));
     const selectedLegal = LEGAL.find(item => item.type === S.slug) || LEGAL[0];
+    const proteinNames = { chicken:'Курица', turkey:'Индейка', beef:'Говядина', shrimp:'Креветка' };
+    const teamLines = summary.lines.filter(item => item.direction === 'corporate-lunches');
+    const teamCount = teamLines.reduce((sum,item) => sum + item.quantity,0);
+    const lastCatalog = this._lastCatalogContext;
+    const weekTabs = [1,2,3,4].map(n => ({ n, selected:S.protocolWeek === n, select:() => this.setState({ protocolWeek:n, protocolDay:(n-1)*7+1, showAllDays:false }) }));
+    const weekDays = (prog?.days || []).filter(day => Math.ceil(day.n/7) === S.protocolWeek).map(day => ({
+      n:day.n, selected:S.protocolDay === day.n, select:() => this.setState({ protocolDay:day.n, showAllDays:false }),
+    }));
+
     const isNotFound = S.route === 'notfound';
     const showProtocolError = S.route === 'program' && S.error;
     return {
       frameMax:'100vw', isWide:innerWidth > 1080, isNarrow:innerWidth <= 1080, is0131:true,
       isHome:S.route === 'home', isProgram:S.route === 'program' && !!prog, isText:S.route === 'text', isLegal:S.route === 'legal',
       isFaq:S.route === 'faq', isReviews:S.route === 'reviews', isNotFound, isCatalog:['lunches','assortment'].includes(S.route),
+      showTeamSearchCount:S.route === 'lunches' && !!S.search,
       isCartPage:['cart','checkout'].includes(S.route), isAssortment:S.route === 'assortment', isLunches:S.route === 'lunches', isCart:S.route === 'cart', isCheckout:S.route === 'checkout',
       showApplicationForm:S.route === 'program' && !!prog,
       navItems:primary.map(nav), topNav:secondary.map(nav), allNav:primary.concat(secondary).map(nav),
@@ -872,16 +925,34 @@ class Component extends DCLogic {
       applicationButton:S.applicationSending ? 'Отправляем…' : 'Отправить заявку',
       loading:S.loading && S.route === 'program', showProtocolError, retry:() => this.loadProtocol(),
       prog:prog ? { ...prog, image:'/easyline-site/assets/photos/protocol-protokol-28.jpg', imageAlt:'Протокол 28 дней: готовый рацион EasyLine' } : {},
-      menuDays:prog?.days || [],
+      menuDays:visibleProtocolDays(prog?.days || [],S.protocolDay,S.showAllDays), weekTabs, weekDays,
+      showAllDays:S.showAllDays, toggleAllDays:() => this.setState({ showAllDays:!this.state.showAllDays }),
+      allDaysLabel:S.showAllDays ? 'Показать один день' : 'Открыть весь цикл',
+      goExample:event => { event.preventDefault(); const heading=document.getElementById('protocol-menu-title'); heading?.focus({preventScroll:true}); document.getElementById('protocol-menu')?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}); },
+      goStorage:event => { event.preventDefault(); this.go('faq'); const index=faqItems.findIndex(item => item.q === 'Как хранить и разогревать рационы?'); this.setState({faqOpen:index},() => requestAnimationFrame(() => { const question=document.getElementById('faqOpen-question-'+index); question?.focus(); })); },
+
       homeLunches:catalog.filter(item => item.direction === 'corporate-lunches').slice(0,4).map(card),
       catalogItems:filtered.map(card), catalogEmpty:!S.catalogLoading && !S.catalogError && !filtered.length,
       catalogReady:!S.catalogLoading && !S.catalogError, catalogLoading:S.catalogLoading, catalogError:S.catalogError, retryCatalog:() => this.loadCatalog(),
-      catalogTitle:S.route === 'lunches' ? 'Корпоративные обеды' : 'Ассортимент',
+      catalogTitle:S.route === 'lunches' ? 'Корпоративные обеды' : 'ПП-фастфуд',
       catalogIntro:S.route === 'lunches' ? '13 готовых комплектов для обеда. Выберите блюда и укажите количество.' : '26 позиций для вашего дня. Выберите категорию, начинку и хлеб.',
-      resultCount:filtered.length + ' ' + (filtered.length % 100 >= 11 && filtered.length % 100 <= 14 ? 'позиций' : filtered.length % 10 === 1 ? 'позиция' : [2,3,4].includes(filtered.length % 10) ? 'позиции' : 'позиций'), search:S.search, setSearch:event => this.setState({ search:event.target.value }),
-      categories, homeCategories:categories.slice(1), protein:S.protein, setProtein:event => this.setState({ protein:event.target.value }),
-      wholegrain:S.wholegrain, setWholegrain:event => this.setState({ wholegrain:event.target.checked }),
-      clearFilters:() => { history.replaceState({},'',this.pathFor(S.route)); this.setState({ category:'all', protein:'all', wholegrain:false, search:'' }); },
+      resultCount:filtered.length + ' ' + (filtered.length % 100 >= 11 && filtered.length % 100 <= 14 ? 'позиций' : filtered.length % 10 === 1 ? 'позиция' : [2,3,4].includes(filtered.length % 10) ? 'позиции' : 'позиций'), search:S.search, setSearch:event => this.setCatalogFilters({ search:event.target.value }),
+      categories, homeCategories:categories.slice(1), protein:S.protein, setProtein:event => this.setCatalogFilters({ protein:event.target.value }),
+      wholegrain:S.wholegrain, setWholegrain:event => this.setCatalogFilters({ wholegrain:event.target.checked }),
+      clearFilters:() => this.setCatalogFilters({ ...CATALOG_FILTER_DEFAULTS }),
+      filtersOpen:S.filtersOpen, toggleFilters:() => this.setState({ filtersOpen:!this.state.filtersOpen }),
+      activeFilterCount:Number(S.protein !== 'all') + Number(S.wholegrain), hasProteinFilter:S.protein !== 'all', proteinLabel:proteinNames[S.protein] || '',
+      clearProteinLabel:'Убрать фильтр: ' + (proteinNames[S.protein] || ''), clearProtein:() => this.setCatalogFilters({ protein:'all' }),
+      clearWholegrain:() => this.setCatalogFilters({ wholegrain:false }), clearSecondaryFilters:() => this.setCatalogFilters({ protein:'all', wholegrain:false }),
+      showTeamSelection:S.route === 'lunches' && teamCount > 0,
+      teamSelectionLabel:'Выбрано ' + teamCount + ' ' + quantityWord(teamCount,'обед','обеда','обедов'),
+      teamLineLabel:teamLines.length + ' ' + quantityWord(teamLines.length,'комплект','комплекта','комплектов'),
+      hrefContinue:lastCatalog ? href(lastCatalog.route) + catalogQuery(lastCatalog.filters) : href('assortment'), goContinue:event => this.resumeCatalog(event),
+      applicationName:S.applicationName, applicationPhone:S.applicationPhone, applicationPrivacy:S.applicationPrivacy,
+      setApplicationName:event => this.setState({applicationName:event.target.value,applicationSent:false}),
+      setApplicationPhone:event => this.setState({applicationPhone:event.target.value,applicationSent:false}),
+      setApplicationPrivacy:event => this.setState({applicationPrivacy:event.target.checked}),
+
       cartCount:summary.count, cartLabel:'Корзина: ' + summary.count + ' шт.', cartAnnouncement:S.cartAnnouncement,
       cartItems:summary.lines.map(card), hasCart:summary.lines.length > 0, cartEmpty:!S.catalogLoading && !S.catalogError && !summary.lines.length,
       cartTotal:summary.totalRub == null ? 'Стоимость уточняется' : summary.totalRub.toLocaleString('ru-RU') + ' ₽',

@@ -2,20 +2,31 @@
 <sc-if value="{{ isCatalog }}">
 <div class="el-refresh">
 <section class="el-wrap el-section el-catalog">
-  <a class="el-back-link" href="{{ hrefHome }}" onClick="{{ goHome }}">← Главная</a>
-  <div class="el-section-heading"><div><span class="el-eyebrow">Меню EasyLine</span><h1>{{ catalogTitle }}</h1></div><a class="el-button el-button--outline" href="{{ hrefCart }}" onClick="{{ goCart }}">Корзина · {{ cartCount }}</a></div>
-  <p class="el-section-intro">{{ catalogIntro }}</p>
-  <sc-if value="{{ isAssortment }}"><nav class="el-category-tabs" aria-label="Категории ассортимента"><sc-for list="{{ categories }}" as="category" hint-placeholder-count="7"><button type="button" aria-pressed="{{ category.selected }}" onClick="{{ category.select }}">{{ category.label }} <span>{{ category.count }}</span></button></sc-for></nav></sc-if>
-  <div class="el-filter-bar">
-    <label class="el-search-label">Найти блюдо<input type="search" value="{{ search }}" onInput="{{ setSearch }}" placeholder="Название блюда" autocomplete="off"></label>
-    <sc-if value="{{ isAssortment }}"><label>Начинка<select value="{{ protein }}" onChange="{{ setProtein }}"><option value="all">Любая</option><option value="chicken">Курица</option><option value="turkey">Индейка</option><option value="beef">Говядина</option><option value="shrimp">Креветка</option></select></label><label class="el-checkbox-label el-wholegrain-toggle"><input type="checkbox" role="switch" checked="{{ wholegrain }}" onChange="{{ setWholegrain }}"><span>Цельнозерновой хлеб</span></label></sc-if>
-  </div>
-  <sc-if value="{{ catalogReady }}"><p class="el-result-count" role="status" aria-live="polite">Найдено: {{ resultCount }}</p></sc-if>
+  <sc-if value="{{ isAssortment }}"><div class="el-catalog-heading"><h1>ПП-фастфуд</h1><p>Выберите блюдо для себя</p></div></sc-if>
+  <sc-if value="{{ isLunches }}">
+    <div class="el-team-hero">
+      <span class="el-eyebrow el-eyebrow--badge">Питание для команды</span><h1>Обеды для вашей команды</h1>
+      <div class="el-team-intro"><p>Выберите комплекты и количество. Дату, доставку и особые пожелания обсудим отдельно.</p>
+        <details class="el-team-discussion"><summary class="el-button el-button--outline">Обсудить питание команды</summary><div class="el-team-discussion__body"><p>Расскажите, на сколько человек нужны обеды и как часто. Обсудим меню и организацию доставки.</p><a class="el-text-link" href="tel:+79640182373">+7 964 018-23-73</a><a class="el-text-link" href="https://wa.me/79640182373" target="_blank" rel="noreferrer">Написать в WhatsApp</a><small>Ежедневно 8:00–20:00</small></div></details>
+      </div>
+      <ol class="el-team-steps" aria-label="Как выбрать обеды для команды"><li><span>1</span>Выберите обеды</li><li><span>2</span>Укажите количество</li><li><span>3</span>Обсудите детали</li></ol>
+    </div>
+    <div class="el-team-catalog-title"><h2>13 готовых комплектов</h2><div class="el-catalog-search"><label class="el-search-label"><span class="el-sr-only">Найти блюдо</span><input type="search" value="{{ search }}" onInput="{{ setSearch }}" placeholder="Найти блюдо" autocomplete="off" maxlength="100"></label></div></div>
+  </sc-if>
+  <sc-if value="{{ isAssortment }}"><div class="el-catalog-search"><label class="el-search-label"><span class="el-sr-only">Найти блюдо</span><input type="search" value="{{ search }}" onInput="{{ setSearch }}" placeholder="Найти блюдо" autocomplete="off" maxlength="100"></label></div></sc-if>
+  <sc-if value="{{ isAssortment }}">
+    <nav class="el-category-tabs" aria-label="Категории ПП-фастфуда"><sc-for list="{{ categories }}" as="category" hint-placeholder-count="7"><button type="button" aria-pressed="{{ category.selected }}" onClick="{{ category.select }}">{{ category.label }} <span>{{ category.count }}</span></button></sc-for></nav>
+    <div class="el-catalog-tools"><p class="el-result-count" role="status" aria-live="polite">{{ resultCount }}</p><button type="button" class="el-filter-trigger" aria-expanded="{{ filtersOpen }}" aria-controls="catalog-secondary-filters" onClick="{{ toggleFilters }}"><img src="/easyline-site/assets/icons/feather/sliders.svg" width="20" height="20" alt="" aria-hidden="true">Фильтры<sc-if value="{{ activeFilterCount }}"><span>{{ activeFilterCount }}</span></sc-if></button></div>
+    <div id="catalog-secondary-filters" class="el-filter-panel" hidden="{{ !filtersOpen }}"><label>Начинка<select value="{{ protein }}" onChange="{{ setProtein }}"><option value="all">Любая</option><option value="chicken">Курица</option><option value="turkey">Индейка</option><option value="beef">Говядина</option><option value="shrimp">Креветка</option></select></label><label class="el-checkbox-label el-wholegrain-toggle"><input type="checkbox" role="switch" checked="{{ wholegrain }}" onChange="{{ setWholegrain }}"><span>Цельнозерновой хлеб</span></label><button type="button" class="el-link-button" onClick="{{ clearSecondaryFilters }}">Сбросить фильтры</button></div>
+    <sc-if value="{{ activeFilterCount }}"><div class="el-active-filters"><sc-if value="{{ hasProteinFilter }}"><button type="button" onClick="{{ clearProtein }}" aria-label="{{ clearProteinLabel }}">{{ proteinLabel }} <span aria-hidden="true">×</span></button></sc-if><sc-if value="{{ wholegrain }}"><button type="button" onClick="{{ clearWholegrain }}" aria-label="Убрать фильтр цельнозернового хлеба">Цельнозерновой хлеб <span aria-hidden="true">×</span></button></sc-if></div></sc-if>
+  </sc-if>
+  <sc-if value="{{ showTeamSearchCount }}"><p class="el-result-count" role="status" aria-live="polite">Найдено: {{ resultCount }}</p></sc-if>
   <sc-if value="{{ catalogLoading }}"><p role="status" class="el-notice">Загружаем меню…</p></sc-if>
   <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice"><p>Меню не загрузилось. Проверьте соединение и повторите попытку.</p><button type="button" class="el-button" onClick="{{ retryCatalog }}">Загрузить меню</button></div></sc-if>
   <div class="el-product-grid" data-catalog-grid="true"><sc-for list="{{ catalogItems }}" as="item" hint-placeholder-count="6"><!-- PRODUCT_CARD --></sc-for></div>
   <sc-if value="{{ catalogEmpty }}"><div class="el-empty-state"><h2>Таких блюд не нашли</h2><p>Измените название или сбросьте фильтры.</p><button type="button" class="el-button el-button--outline" onClick="{{ clearFilters }}">Сбросить фильтры</button></div></sc-if>
 </section>
+<sc-if value="{{ showTeamSelection }}"><aside class="el-team-selection" aria-label="Выбранные обеды"><div class="el-wrap"><div><strong>{{ teamSelectionLabel }}</strong><span>{{ teamLineLabel }}</span></div><a class="el-button" href="{{ hrefCart }}" onClick="{{ goCart }}">Перейти к выбранным</a></div></aside></sc-if>
 </div>
 </sc-if>
 <!-- ЗАГРУЗКА ПРОТОКОЛА -->

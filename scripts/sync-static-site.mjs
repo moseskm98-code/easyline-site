@@ -55,6 +55,7 @@ function buildHead(entryItem) {
 <link rel="stylesheet" href="/easyline-site/assets/layout-stage-preview.css">
 <link rel="stylesheet" href="/easyline-site/assets/menu-refresh.css?v=${SITE_VERSION}">
 <link rel="stylesheet" href="/easyline-site/assets/gentle-motion.css?v=${SITE_VERSION}">
+<link rel="stylesheet" href="/easyline-site/assets/customer-experience.css?v=${SITE_VERSION}">
 <script defer src="/easyline-site/assets/gentle-motion.js?v=${SITE_VERSION}"></script>
 <meta name="x-easyline-color-variant" content="accessible-digital">
 </head>`;
@@ -147,8 +148,8 @@ async function patchCompiledBundle() {
 }
 
 async function writePages() {
-  const [page, retained, logic, cart, rawCatalog, home, catalogs, cartPages, productCard, quantity] = await Promise.all(
-    ["page.html", "retained-content.js", "site-logic.js", "cart.js", "catalog.json", "home.html", "catalogs.html", "cart-pages.html", "product-card.html", "quantity.html"]
+  const [page, retained, logic, cart, rawCatalog, home, catalogs, cartPages, productCard, quantity, customerState] = await Promise.all(
+    ["page.html", "retained-content.js", "site-logic.js", "cart.js", "catalog.json", "home.html", "catalogs.html", "cart-pages.html", "product-card.html", "quantity.html", "customer-state.mjs"]
       .map((file) => readFile(path.join(root, "src", file), "utf8")),
   );
   const catalog = JSON.parse(rawCatalog);
@@ -166,7 +167,7 @@ async function writePages() {
     .replace("<!-- NEW_HOME_AND_CATALOGS -->", [home, catalogs, cartPages].join("\n"))
     .replaceAll("<!-- PRODUCT_CARD -->", productCard)
     .replaceAll("<!-- QUANTITY_CONTROL -->", quantity)
-    .replace("<!-- EASYLINE_LOGIC -->", retained + "\n" + logic.replace("__CATALOG_ASSET__", catalogAsset));
+    .replace("<!-- EASYLINE_LOGIC -->", retained + "\n" + customerState.replace(/^export /gm, "") + "\n" + logic.replace("__CATALOG_ASSET__", catalogAsset));
   for (const entryItem of ROUTE_ENTRIES) {
     const html = template
       .replace(/<html lang="ru"(?:\s+data-el-route-key="[^"]*")?>/, `<html lang="ru" data-el-route-key="${entryItem.routeKey}">`)

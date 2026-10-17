@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
+import { SITE_VERSION } from "../scripts/site-metadata.mjs";
 
 const root = new URL("../", import.meta.url);
 const index = await readFile(new URL("index.html", root), "utf8");
@@ -8,7 +9,7 @@ const readability = await readFile(new URL("assets/readability-overrides.css", r
 const menuSource = await readFile(new URL("assets/menu-data-6F787N4k.js", root), "utf8");
 
 test("menu refresh retains the protocol and adds two catalog directions", async () => {
-  assert.match(index, /window\.__EASYLINE_VARIANT__ = "2\.3\.3"/);
+  assert.ok(index.includes(`window.__EASYLINE_VARIANT__ = "${SITE_VERSION}"`));
   assert.match(index, /<form[^>]+onSubmit="\{\{ submitApplication \}\}"/);
   assert.ok(index.includes("history.replaceState({},'',PAGES_BASE + '/programs/protokol-28')"), 'legacy programs URL resolves to protocol');
   assert.doesNotMatch(index, /data-el-app-intent="auth"|>Войти</);
@@ -46,7 +47,7 @@ test("delivery includes both Izberbash and Derbent", () => {
   for (const city of ['Махачкала','Каспийск','Избербаш','Дербент']) assert.ok(index.includes("{k:'" + city + "',v:'"), city + ' delivery retained');
 });
 
-test("the supplied 28-day menu is shown as one fixed menu without selectors", async () => {
+test("the fixed 28-day menu can be browsed by week and day without changing its meals", async () => {
   const { PROTOCOLS } = await import(new URL("../assets/menu-data-6F787N4k.js", import.meta.url));
   const protocol = PROTOCOLS.find(({ slug }) => slug === "protokol-28");
   const protocolPage = index.match(/<!-- СТРАНИЦА ПРОТОКОЛА -->([\s\S]*?)<!-- ТЕКСТОВАЯ СТРАНИЦА ИЗ CMS/)[1];
@@ -71,16 +72,19 @@ test("the supplied 28-day menu is shown as one fixed menu without selectors", as
   assert.doesNotMatch(index, /\d+(?:[.,]\d+)?\s*г(?!\p{L})/iu);
   assert.doesNotMatch(index, /(?:^|[^\p{L}])грамм(?:а|ов|ах|ы)?(?!\p{L})/iu);
   assert.match(protocolPage, /<sc-for list="\{\{ menuDays \}\}" as="d"/);
-  assert.match(protocolPage, /выбор блюд на сайте не предусмотрен/i);
-  assert.match(index, /menu-data-6F787N4k\.js\?v=version-2\.2\.3-20260904/);
-  assert.doesNotMatch(protocolPage, />День \{\{ d\.n \}\}</);
+  assert.match(protocolPage, /Блюда внутри цикла не выбираются/);
+  assert.ok(index.includes("menu-data-6F787N4k.js?v="));
+  assert.ok(index.includes("encodeURIComponent(window.__EASYLINE_VARIANT__"));
+  assert.match(protocolPage, /<h3>День \{\{ d\.n \}\}<\/h3>/);
   assert.doesNotMatch(protocolPage, /\{\{ d\.dow \}\}/);
   assert.doesNotMatch(protocolPage, /day\.kcalPlain/);
-  assert.doesNotMatch(protocolPage, /weekTabs|weekDays|\{\{ w\.select \}\}/);
+  assert.match(protocolPage, /weekTabs/);
+  assert.match(protocolPage, /weekDays/);
+  assert.match(protocolPage, /aria-controls="protocol-days"/);
 
   assert.match(protocolPage, /class="el-photo-frame el-protocol-hero"/);
   assert.match(protocolPage, /class="el-photo el-protocol-hero__image"/);
-  assert.match(protocolPage, /class="el-protocol-menu"/);
+  assert.match(protocolPage, /class="el-wrap el-protocol-menu"/);
   assert.match(protocolPage, /class="el-protocol-sticky"/);
   assert.doesNotMatch(protocolPage, /coverRatio/);
   assert.match(readability, /\.el-protocol-hero\s*\{[^}]*aspect-ratio:\s*1823\s*\/\s*863/s);

@@ -8,7 +8,7 @@
     <p class="el-lead">Рацион на 28 дней, обед для рабочего дня или любимые блюда поштучно. Выберите свой формат — приготовление возьмём на себя.</p>
     <nav class="el-hero-choices" aria-label="Выберите формат питания">
       <a class="el-button" href="{{ hrefLunches }}" onClick="{{ goLunches }}">Корпоративные обеды</a>
-      <a class="el-button el-button--outline" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">Ассортимент</a>
+      <a class="el-button el-button--outline" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">ПП-фастфуд</a>
       <a class="el-text-link" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}">Протокол на 28 дней →</a>
     </nav>
   </div>
@@ -20,7 +20,7 @@
     <div class="el-direction-grid">
       <a class="el-direction-card" href="{{ hrefPrograms }}" onClick="{{ goPrograms }}"><span class="el-direction-card__number">28 <small>дней</small></span><h3>Протокол питания</h3><p>Завтрак, обед и ужин. Полное меню уже собрано на весь цикл.</p><span class="el-text-link">Посмотреть меню →</span></a>
       <a class="el-direction-card" href="{{ hrefLunches }}" onClick="{{ goLunches }}"><span class="el-direction-card__number">13 <small>комплектов</small></span><h3>Корпоративные обеды</h3><p>Готовые комплекты для рабочего дня. Выбирайте блюда и количество.</p><span class="el-text-link">Выбрать обед →</span></a>
-      <a class="el-direction-card" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}"><span class="el-direction-card__number">26 <small>позиций</small></span><h3>Ассортимент</h3><p>Чиабатты, сэндвичи, бургеры, тортильи, боулы и выпечка.</p><span class="el-text-link">Перейти в каталог →</span></a>
+      <a class="el-direction-card" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}"><span class="el-direction-card__number">26 <small>позиций</small></span><h3>ПП-фастфуд</h3><p>Чиабатты, сэндвичи, бургеры, тортильи, боулы и выпечка.</p><span class="el-text-link">Перейти в каталог →</span></a>
     </div>
   </div>
 </section>
@@ -32,16 +32,16 @@
 </section>
 <section class="el-section el-surface">
   <div class="el-wrap">
-    <div class="el-section-heading"><div><span class="el-eyebrow">Блюда поштучно</span><h2>Ассортимент на каждый день</h2></div><a class="el-text-link" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">Весь ассортимент →</a></div>
+    <div class="el-section-heading"><div><span class="el-eyebrow">Блюда поштучно</span><h2>ПП-фастфуд на каждый день</h2></div><a class="el-text-link" href="{{ hrefAssortment }}" onClick="{{ goAssortment }}">Весь ПП-фастфуд →</a></div>
     <p class="el-section-intro">Выберите любимую начинку. Обычный или цельнозерновой хлеб — в одном каталоге.</p>
     <div class="el-category-grid"><sc-for list="{{ homeCategories }}" as="category" hint-placeholder-count="6"><a class="el-category-card" href="{{ category.href }}" onClick="{{ category.open }}"><h3>{{ category.label }}</h3><span class="el-category-card__count">{{ category.count }}</span><span class="el-category-card__arrow" aria-hidden="true">→</span></a></sc-for></div>
     <sc-if value="{{ catalogError }}"><div role="alert" class="el-notice">Не удалось загрузить категории. <button type="button" class="el-link-button" onClick="{{ retryCatalog }}">Повторить</button></div></sc-if>
   </div>
 </section>
 <section class="el-wrap el-section">
-  <div class="el-section-heading"><div><span class="el-eyebrow">Обеды и ассортимент</span><h2>Как заказать</h2></div></div>
+  <div class="el-section-heading"><div><span class="el-eyebrow">Обеды и ПП-фастфуд</span><h2>Как заказать</h2></div></div>
   <div class="el-steps-refresh">
-    <div><span class="el-step-number">1</span><h3>Выберите блюда</h3><p>Откройте обеды или ассортимент. Найдите нужные позиции в каталоге.</p></div>
+    <div><span class="el-step-number">1</span><h3>Выберите блюда</h3><p>Откройте обеды или ПП-фастфуд. Найдите нужные позиции в каталоге.</p></div>
     <div><span class="el-step-number">2</span><h3>Соберите корзину</h3><p>Добавьте блюда и укажите количество для себя или команды.</p></div>
     <div><span class="el-step-number">3</span><h3>Оформите заказ</h3><p>Проверьте состав заказа и заполните контактные данные.</p></div>
   </div>

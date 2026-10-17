@@ -1,10 +1,10 @@
 const PAGES_BASE = window.location.hostname.endsWith('github.io') ? '/easyline-site' : '';
 const IS_0131 = true;
 const GENERAL_FAQ = [
-  { q:'Какие направления есть в EasyLine?', a:'Протокол питания на 28 дней, корпоративные обеды и ассортимент готовых блюд: чиабатты, сэндвичи, бургеры, тортильи, боулы и выпечка.' },
+  { q:'Какие направления есть в EasyLine?', a:'Протокол питания на 28 дней, корпоративные обеды и ПП-фастфуд: чиабатты, сэндвичи, бургеры, тортильи, боулы и выпечка.' },
   { q:'Чем обеды отличаются от протокола?', a:'В протоколе заранее составлены все 28 дней: завтрак, обед и ужин. Корпоративные обеды — отдельные комплекты, которые можно выбрать поштучно.' },
-  { q:'Как выбрать блюда?', a:'Откройте корпоративные обеды или ассортимент, добавьте нужные позиции в корзину и укажите количество. В протоколе меню фиксировано, его состав можно посмотреть на отдельной странице.' },
-  { q:'Где посмотреть стоимость?', a:'Цены корпоративных обедов и ассортимента пока уточняются. Итоговая сумма и оформление заказа появятся после публикации цен и условий доставки.' },
+  { q:'Как выбрать блюда?', a:'Откройте корпоративные обеды или ПП-фастфуд, добавьте нужные позиции в корзину и укажите количество. В протоколе меню фиксировано, его состав можно посмотреть на отдельной странице.' },
+  { q:'Где посмотреть стоимость?', a:'Цены корпоративных обедов и ПП-фастфуда пока уточняются. Итоговая сумма и оформление заказа появятся после публикации цен и условий доставки.' },
   { q:'Как узнать состав и сообщить об аллергии?', a:'В карточках обедов перечислены части комплекта. Полный состав и возможные аллергены уточняйте до заказа по телефону +7 964 018-23-73 или в WhatsApp.' },
 ];
 
@@ -13,7 +13,9 @@ class Component extends DCLogic {
     route:'home', slug:null, menuOpen:false, moreOpen:false, viewportTick:0,
     faqOpen:0, homeFaqOpen:0, data:null, loading:true, error:false,
     catalogLoading:true, catalogError:false, cart:{}, cartAnnouncement:'', cartSaveError:false,
-    category:'all', protein:'all', wholegrain:false, search:'',
+    category:'all', protein:'all', wholegrain:false, search:'', filtersOpen:false, detailsId:null,
+    protocolDay:1, protocolWeek:1, showAllDays:false,
+    applicationName:'', applicationPhone:'', applicationPrivacy:false,
     applicationSending:false, applicationSent:false, applicationError:'',
   };
 
@@ -58,12 +60,15 @@ class Component extends DCLogic {
     cancelAnimationFrame(this._resizeFrame);
   }
 
-  componentDidUpdate() { window.dispatchEvent(new CustomEvent('easyline:render')); }
+  componentDidUpdate() {
+    window.dispatchEvent(new CustomEvent('easyline:render'));
+    if (this._applicationFocusPending) this.focusApplication();
+  }
 
   loadProtocol() {
     this.setState({ loading:true, error:false });
     const attempt = this._protocolAttempt || 0; this._protocolAttempt = attempt + 1;
-    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=version-2.2.3-20260904' + (attempt ? '&retry=' + attempt : '');
+    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.4.0-preview') + (attempt ? '&retry=' + attempt : '');
     import(url)
       .then(module => this.setState({ data:{ protocols:module.PROTOCOLS }, loading:false }))
       .catch(() => this.setState({ loading:false, error:true }));
@@ -106,24 +111,68 @@ class Component extends DCLogic {
     return PAGES_BASE + (paths[route] || '/404');
   }
 
-  syncRouteFromLocation() {
-    if (location.pathname.replace(/\/+$/,'') === PAGES_BASE + '/programs') history.replaceState({},'',PAGES_BASE + '/programs/protokol-28');
-    const category = new URLSearchParams(location.search).get('category') || 'all';
-    this.setState({ ...this.routeFromPath(location.pathname), category, menuOpen:false, moreOpen:false, faqOpen:0, homeFaqOpen:0 });
-    window.__EASYLINE_STATIC_HEAD_SYNC__?.();
+  catalogFilters() {
+    const { category, protein, wholegrain, search } = this.state;
+    return { category, protein, wholegrain, search };
   }
 
-  go(route,slug,category) {
-    const path = this.pathFor(route,slug) + (route === 'assortment' && category && category !== 'all' ? '?category=' + encodeURIComponent(category) : '');
-    if (location.pathname.replace(/\/+$/,'') + location.search !== path.replace(/\/+$/,'')) history.pushState({},'',path);
-    this.setState({ route, slug:slug || null, menuOpen:false, moreOpen:false, faqOpen:0, homeFaqOpen:0,
-      category:category || 'all', protein:'all', wholegrain:false, search:'' }, () => {
+  rememberCatalog() {
+    if (!['assortment','lunches'].includes(this.state.route)) return;
+    const context = { route:this.state.route, filters:this.catalogFilters(), scroll:window.scrollY, filtersOpen:this.state.filtersOpen };
+    this._catalogContexts ||= {};
+    this._catalogContexts[context.route] = context;
+    this._lastCatalogContext = context;
+    history.replaceState({ ...history.state, easylineCatalog:context },'',location.href);
+  }
+
+  setCatalogFilters(patch) {
+    this.setState({ ...patch, detailsId:null },() => {
+      const filters = this.catalogFilters();
+      history.replaceState({ ...history.state },'',this.pathFor(this.state.route) + catalogQuery(filters));
+      this.rememberCatalog();
+    });
+  }
+
+  resumeCatalog(event) {
+    event?.preventDefault();
+    const context = this._lastCatalogContext;
+    this.go(context?.route || 'assortment',null,undefined,{ restore:true });
+  }
+
+  syncRouteFromLocation() {
+    if (location.pathname.replace(/\/+$/,'') === PAGES_BASE + '/programs') history.replaceState({},'',PAGES_BASE + '/programs/protokol-28');
+    const route = this.routeFromPath(location.pathname);
+    const isCatalog = ['assortment','lunches'].includes(route.route);
+    const context = history.state?.easylineCatalog;
+    this.setState({ ...route, ...(isCatalog ? readCatalogFilters(location.search) : {}),
+      menuOpen:false, moreOpen:false, detailsId:null, filtersOpen:context?.filtersOpen || false, faqOpen:0, homeFaqOpen:0 },() => {
       window.__EASYLINE_STATIC_HEAD_SYNC__?.();
-      window.scrollTo(0,0);
+      if (isCatalog && context?.route === route.route) requestAnimationFrame(() => window.scrollTo(0,context.scroll || 0));
+    });
+  }
+
+  go(route,slug,category,options={}) {
+    this.rememberCatalog();
+    const isCatalog = ['assortment','lunches'].includes(route);
+    const saved = this._catalogContexts?.[route];
+    const filters = category != null ? { ...CATALOG_FILTER_DEFAULTS, category } : saved?.filters || { ...CATALOG_FILTER_DEFAULTS };
+    const path = this.pathFor(route,slug) + (isCatalog ? catalogQuery(filters) : '');
+    if (location.pathname.replace(/\/+$/,'') + location.search !== path.replace(/\/+$/,'')) history.pushState({},'',path);
+    this.setState({ route, slug:slug || null, menuOpen:false, moreOpen:false, detailsId:null, faqOpen:0, homeFaqOpen:0,
+      ...(isCatalog ? filters : {}), filtersOpen:isCatalog && !!saved?.filtersOpen },() => {
+      window.__EASYLINE_STATIC_HEAD_SYNC__?.();
       requestAnimationFrame(() => {
-        const heading = document.querySelector('main h1');
-        heading?.setAttribute('tabindex','-1');
-        heading?.focus({ preventScroll:true });
+        if (options.restore && saved) {
+          window.scrollTo(0,saved.scroll || 0);
+          const heading = document.querySelector('.el-catalog h1');
+          heading?.setAttribute('tabindex','-1');
+          heading?.focus({ preventScroll:true });
+        } else {
+          window.scrollTo(0,0);
+          const heading = document.querySelector('main h1');
+          heading?.setAttribute('tabindex','-1');
+          heading?.focus({ preventScroll:true });
+        }
       });
     });
   }
@@ -154,12 +203,20 @@ class Component extends DCLogic {
     });
   }
 
+  focusApplication() {
+    const heading = document.getElementById('application-title');
+    const section = document.getElementById('application');
+    if (!heading || !section) return;
+    this._applicationFocusPending = false;
+    heading.focus({ preventScroll:true });
+    section.scrollIntoView({ behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start' });
+  }
+
   openOrder(event) {
     event?.preventDefault();
-    if (this.state.route !== 'program') {
-      this.go('program','protokol-28');
-      requestAnimationFrame(() => document.getElementById('application')?.scrollIntoView({ behavior:'smooth', block:'start' }));
-    } else document.getElementById('application')?.scrollIntoView({ behavior:'smooth', block:'start' });
+    this._applicationFocusPending = true;
+    if (this.state.route !== 'program') this.go('program','protokol-28');
+    else this.focusApplication();
   }
 
   submitApplication(event) {
@@ -175,7 +232,7 @@ class Component extends DCLogic {
     this.setState({ applicationSending:true, applicationSent:false, applicationError:'' });
     client.submitInquiry({ idempotencyKey, name:payload.name, phone:payload.phone }).then(() => {
       form.reset(); delete form.dataset.idempotencyKey;
-      this.setState({ applicationSending:false, applicationSent:true });
+      this.setState({ applicationSending:false, applicationSent:true, applicationName:'', applicationPhone:'', applicationPrivacy:false });
     }).catch(error => this.setState({ applicationSending:false, applicationError:error?.code === 'rate_limited'
       ? 'Слишком много попыток. Попробуйте позже или напишите в WhatsApp.'
       : 'Не удалось отправить заявку. Проверьте данные или свяжитесь с нами.' }));
@@ -184,7 +241,7 @@ class Component extends DCLogic {
   renderVals() {
     const S = this.state, M = this.catalogModule;
     const href = (route,slug) => this.pathFor(route,slug);
-    const primary = [ ['Протокол 28 дней','program','protokol-28'], ['Корпоративные обеды','lunches'], ['Ассортимент','assortment'] ];
+    const primary = [ ['Протокол 28 дней','program','protokol-28'], ['Корпоративные обеды','lunches'], ['ПП-фастфуд','assortment'] ];
     const secondary = [ ['FAQ','faq'], ['О производстве','text','about-production'], ['Доставка и оплата','text','delivery-payment'], ['Контакты','text','contacts'] ];
     const nav = ([label,route,slug]) => ({ label, href:href(route,slug), onClick:this.link(route,slug),
       color:S.route === route && (!slug || S.slug === slug) ? '#0f4d7a' : '#8e242e',
@@ -195,7 +252,16 @@ class Component extends DCLogic {
     const summary = M ? M.summarizeCart(S.cart) : { lines:[], count:0, totalRub:null };
     const card = item => {
       const quantity = S.cart[item.id] || 0;
-      return { ...item, quantity, inCart:quantity > 0, atLimit:quantity >= 99,
+      return { ...item, quantity, inCart:quantity > 0, atLimit:quantity >= 99, atZero:quantity === 0,
+        showQuantity:quantity > 0 || S.route === 'lunches', hasPrice:Number.isFinite(item.priceRub),
+        quantityLabel:'Количество: ' + item.name, quantityCaption:item.direction === 'corporate-lunches' ? 'Порций' : '',
+        setQuantity:event => { const quantity = parseItemQuantity(event.target.value); if (quantity !== null) this.changeQuantity(item.id,quantity); },
+        restoreQuantity:event => { event.target.value = String(this.state.cart[item.id] || 0); },
+        detailsId:'details-' + item.id, detailsOpen:S.detailsId === item.id, detailsLabel:'Подробнее: ' + item.name,
+        detailsText:S.route === 'lunches' ? 'Состав и порция' : 'Подробнее о блюде',
+        toggleDetails:() => this.setState({ detailsId:this.state.detailsId === item.id ? null : item.id }),
+        inquiryHref:'https://wa.me/79640182373?text=' + encodeURIComponent('Здравствуйте! Подскажите полный состав, массу порции и аллергены блюда «' + item.name + '».'),
+
         hasImage:!!item.image, imageAlt:(item.imageNote ? 'Предварительная иллюстрация: ' : '') + item.name,
         priceLabel:item.priceRub == null ? 'Цена уточняется' : item.priceRub.toLocaleString('ru-RU') + ' ₽',
         eyebrow:item.direction === 'corporate-lunches' ? 'Обед ' + item.number : (M?.CATEGORIES.find(category => category.id === item.category)?.label || ''),
@@ -208,22 +274,29 @@ class Component extends DCLogic {
     };
     const allCategories = [{ id:'all', label:'Все', count:26 }, ...(M?.CATEGORIES || [])];
     const categories = allCategories.map(category => ({ ...category, selected:S.category === category.id,
-      select:() => {
-        history.replaceState({},'',href('assortment') + (category.id === 'all' ? '' : '?category=' + encodeURIComponent(category.id)));
-        this.setState({ category:category.id });
-      }, href:href('assortment') + '?category=' + category.id, open:this.link('assortment',null,category.id) }));
+      select:() => this.setCatalogFilters({ category:category.id }), href:href('assortment') + '?category=' + category.id, open:this.link('assortment',null,category.id) }));
     const filtered = M ? M.filterCatalog({ direction:S.route === 'lunches' ? 'corporate-lunches' : 'assortment', category:S.route === 'lunches' ? 'all' : S.category,
       protein:S.route === 'lunches' ? 'all' : S.protein, wholegrain:S.route === 'assortment' && S.wholegrain, search:S.search }) : [];
     const faqItems = GENERAL_FAQ.concat(FAQ.map(item => ({ ...item, q:item.q === 'Когда привозят еду?' ? 'Когда доставляют протокол на 28 дней?' : item.q })));
     const faqBuild = (key,items) => items.map((item,i) => ({ ...item, isOpen:S[key] === i, sign:S[key] === i ? '−' : '+',
       buttonId:key + '-question-' + i, panelId:key + '-answer-' + i, toggle:() => this.setState({ [key]:this.state[key] === i ? -1 : i }) }));
     const selectedLegal = LEGAL.find(item => item.type === S.slug) || LEGAL[0];
+    const proteinNames = { chicken:'Курица', turkey:'Индейка', beef:'Говядина', shrimp:'Креветка' };
+    const teamLines = summary.lines.filter(item => item.direction === 'corporate-lunches');
+    const teamCount = teamLines.reduce((sum,item) => sum + item.quantity,0);
+    const lastCatalog = this._lastCatalogContext;
+    const weekTabs = [1,2,3,4].map(n => ({ n, selected:S.protocolWeek === n, select:() => this.setState({ protocolWeek:n, protocolDay:(n-1)*7+1, showAllDays:false }) }));
+    const weekDays = (prog?.days || []).filter(day => Math.ceil(day.n/7) === S.protocolWeek).map(day => ({
+      n:day.n, selected:S.protocolDay === day.n, select:() => this.setState({ protocolDay:day.n, showAllDays:false }),
+    }));
+
     const isNotFound = S.route === 'notfound';
     const showProtocolError = S.route === 'program' && S.error;
     return {
       frameMax:'100vw', isWide:innerWidth > 1080, isNarrow:innerWidth <= 1080, is0131:true,
       isHome:S.route === 'home', isProgram:S.route === 'program' && !!prog, isText:S.route === 'text', isLegal:S.route === 'legal',
       isFaq:S.route === 'faq', isReviews:S.route === 'reviews', isNotFound, isCatalog:['lunches','assortment'].includes(S.route),
+      showTeamSearchCount:S.route === 'lunches' && !!S.search,
       isCartPage:['cart','checkout'].includes(S.route), isAssortment:S.route === 'assortment', isLunches:S.route === 'lunches', isCart:S.route === 'cart', isCheckout:S.route === 'checkout',
       showApplicationForm:S.route === 'program' && !!prog,
       navItems:primary.map(nav), topNav:secondary.map(nav), allNav:primary.concat(secondary).map(nav),
@@ -245,16 +318,34 @@ class Component extends DCLogic {
       applicationButton:S.applicationSending ? 'Отправляем…' : 'Отправить заявку',
       loading:S.loading && S.route === 'program', showProtocolError, retry:() => this.loadProtocol(),
       prog:prog ? { ...prog, image:'/easyline-site/assets/photos/protocol-protokol-28.jpg', imageAlt:'Протокол 28 дней: готовый рацион EasyLine' } : {},
-      menuDays:prog?.days || [],
+      menuDays:visibleProtocolDays(prog?.days || [],S.protocolDay,S.showAllDays), weekTabs, weekDays,
+      showAllDays:S.showAllDays, toggleAllDays:() => this.setState({ showAllDays:!this.state.showAllDays }),
+      allDaysLabel:S.showAllDays ? 'Показать один день' : 'Открыть весь цикл',
+      goExample:event => { event.preventDefault(); const heading=document.getElementById('protocol-menu-title'); heading?.focus({preventScroll:true}); document.getElementById('protocol-menu')?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}); },
+      goStorage:event => { event.preventDefault(); this.go('faq'); const index=faqItems.findIndex(item => item.q === 'Как хранить и разогревать рационы?'); this.setState({faqOpen:index},() => requestAnimationFrame(() => { const question=document.getElementById('faqOpen-question-'+index); question?.focus(); })); },
+
       homeLunches:catalog.filter(item => item.direction === 'corporate-lunches').slice(0,4).map(card),
       catalogItems:filtered.map(card), catalogEmpty:!S.catalogLoading && !S.catalogError && !filtered.length,
       catalogReady:!S.catalogLoading && !S.catalogError, catalogLoading:S.catalogLoading, catalogError:S.catalogError, retryCatalog:() => this.loadCatalog(),
-      catalogTitle:S.route === 'lunches' ? 'Корпоративные обеды' : 'Ассортимент',
+      catalogTitle:S.route === 'lunches' ? 'Корпоративные обеды' : 'ПП-фастфуд',
       catalogIntro:S.route === 'lunches' ? '13 готовых комплектов для обеда. Выберите блюда и укажите количество.' : '26 позиций для вашего дня. Выберите категорию, начинку и хлеб.',
-      resultCount:filtered.length + ' ' + (filtered.length % 100 >= 11 && filtered.length % 100 <= 14 ? 'позиций' : filtered.length % 10 === 1 ? 'позиция' : [2,3,4].includes(filtered.length % 10) ? 'позиции' : 'позиций'), search:S.search, setSearch:event => this.setState({ search:event.target.value }),
-      categories, homeCategories:categories.slice(1), protein:S.protein, setProtein:event => this.setState({ protein:event.target.value }),
-      wholegrain:S.wholegrain, setWholegrain:event => this.setState({ wholegrain:event.target.checked }),
-      clearFilters:() => { history.replaceState({},'',this.pathFor(S.route)); this.setState({ category:'all', protein:'all', wholegrain:false, search:'' }); },
+      resultCount:filtered.length + ' ' + (filtered.length % 100 >= 11 && filtered.length % 100 <= 14 ? 'позиций' : filtered.length % 10 === 1 ? 'позиция' : [2,3,4].includes(filtered.length % 10) ? 'позиции' : 'позиций'), search:S.search, setSearch:event => this.setCatalogFilters({ search:event.target.value }),
+      categories, homeCategories:categories.slice(1), protein:S.protein, setProtein:event => this.setCatalogFilters({ protein:event.target.value }),
+      wholegrain:S.wholegrain, setWholegrain:event => this.setCatalogFilters({ wholegrain:event.target.checked }),
+      clearFilters:() => this.setCatalogFilters({ ...CATALOG_FILTER_DEFAULTS }),
+      filtersOpen:S.filtersOpen, toggleFilters:() => this.setState({ filtersOpen:!this.state.filtersOpen }),
+      activeFilterCount:Number(S.protein !== 'all') + Number(S.wholegrain), hasProteinFilter:S.protein !== 'all', proteinLabel:proteinNames[S.protein] || '',
+      clearProteinLabel:'Убрать фильтр: ' + (proteinNames[S.protein] || ''), clearProtein:() => this.setCatalogFilters({ protein:'all' }),
+      clearWholegrain:() => this.setCatalogFilters({ wholegrain:false }), clearSecondaryFilters:() => this.setCatalogFilters({ protein:'all', wholegrain:false }),
+      showTeamSelection:S.route === 'lunches' && teamCount > 0,
+      teamSelectionLabel:'Выбрано ' + teamCount + ' ' + quantityWord(teamCount,'обед','обеда','обедов'),
+      teamLineLabel:teamLines.length + ' ' + quantityWord(teamLines.length,'комплект','комплекта','комплектов'),
+      hrefContinue:lastCatalog ? href(lastCatalog.route) + catalogQuery(lastCatalog.filters) : href('assortment'), goContinue:event => this.resumeCatalog(event),
+      applicationName:S.applicationName, applicationPhone:S.applicationPhone, applicationPrivacy:S.applicationPrivacy,
+      setApplicationName:event => this.setState({applicationName:event.target.value,applicationSent:false}),
+      setApplicationPhone:event => this.setState({applicationPhone:event.target.value,applicationSent:false}),
+      setApplicationPrivacy:event => this.setState({applicationPrivacy:event.target.checked}),
+
       cartCount:summary.count, cartLabel:'Корзина: ' + summary.count + ' шт.', cartAnnouncement:S.cartAnnouncement,
       cartItems:summary.lines.map(card), hasCart:summary.lines.length > 0, cartEmpty:!S.catalogLoading && !S.catalogError && !summary.lines.length,
       cartTotal:summary.totalRub == null ? 'Стоимость уточняется' : summary.totalRub.toLocaleString('ru-RU') + ' ₽',

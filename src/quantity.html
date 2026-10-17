@@ -1,5 +1,7 @@
+<div class="el-quantity-field"><sc-if value="{{ item.quantityCaption }}"><span class="el-quantity-caption">{{ item.quantityCaption }}</span></sc-if>
 <div class="el-quantity" role="group" aria-label="{{ item.name }}">
-  <button type="button" onClick="{{ item.minus }}" aria-label="{{ item.minusLabel }}">−</button>
-  <span aria-label="Количество">{{ item.quantity }}</span>
+  <button type="button" onClick="{{ item.minus }}" disabled="{{ item.atZero }}" aria-label="{{ item.minusLabel }}">−</button>
+  <input type="number" inputmode="numeric" min="0" max="99" step="1" value="{{ item.quantity }}" onChange="{{ item.setQuantity }}" onBlur="{{ item.restoreQuantity }}" aria-label="{{ item.quantityLabel }}">
   <button type="button" onClick="{{ item.add }}" disabled="{{ item.atLimit }}" aria-label="{{ item.plusLabel }}">+</button>
+</div>
 </div>
