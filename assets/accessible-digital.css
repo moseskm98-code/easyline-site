@@ -100,10 +100,18 @@ body,
   background: var(--el-primary) !important;
 }
 
+/* Keep visited footer links readable on the burgundy background. */
 .sc-host footer a,
+.sc-host footer a:visited {
+  color: #fff5e8 !important;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+}
+
 .sc-host footer a:hover,
 .sc-host footer a:focus-visible {
   color: #ffffff !important;
+  text-decoration: underline;
 }
 
 .sc-host :where(a[href], button, input, select, textarea):focus-visible {

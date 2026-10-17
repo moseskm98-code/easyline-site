@@ -193,7 +193,6 @@ button{font-family:inherit}
   <a class="el-back-link" href="{{ hrefHome }}" onClick="{{ goHome }}">← Главная</a>
   <div class="el-section-heading"><div><span class="el-eyebrow">Меню EasyLine</span><h1>{{ catalogTitle }}</h1></div><a class="el-button el-button--outline" href="{{ hrefCart }}" onClick="{{ goCart }}">Корзина · {{ cartCount }}</a></div>
   <p class="el-section-intro">{{ catalogIntro }}</p>
-  <div class="el-notice el-catalog-notice">Цены уточняются. Можно собрать корзину; оформление заказа откроется позже.</div>
   <sc-if value="{{ isAssortment }}"><nav class="el-category-tabs" aria-label="Категории ассортимента"><sc-for list="{{ categories }}" as="category" hint-placeholder-count="7"><button type="button" aria-pressed="{{ category.selected }}" onClick="{{ category.select }}">{{ category.label }} <span>{{ category.count }}</span></button></sc-for></nav></sc-if>
   <div class="el-filter-bar">
     <label class="el-search-label">Найти блюдо<input type="search" value="{{ search }}" onInput="{{ setSearch }}" placeholder="Название блюда" autocomplete="off"></label>
@@ -698,7 +697,7 @@ class Component extends DCLogic {
   loadCatalog() {
     this.setState({ catalogLoading:true, catalogError:false });
     const attempt = this._catalogAttempt || 0; this._catalogAttempt = attempt + 1;
-    const url = '/easyline-site/assets/menu-catalog-b2e59bfdb87f.js' + (attempt ? '?retry=' + attempt : '');
+    const url = '/easyline-site/assets/menu-catalog-949fb1bba61c.js' + (attempt ? '?retry=' + attempt : '');
     import(url)
       .then(module => {
         this.catalogModule = module;

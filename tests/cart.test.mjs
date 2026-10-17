@@ -16,7 +16,7 @@ test('all supplied positions remain distinct, with no invented prices and labele
   assert.ok(CATALOG.every(item => item.priceRub === null));
   assert.ok(CATALOG.every(item => /^\/easyline-site\/assets\/menu-images\/[a-z0-9-]+\.jpg$/.test(item.image)));
   assert.equal(new Set(CATALOG.map(item => item.image)).size,39);
-  assert.ok(CATALOG.filter(item => item.id !== 'assortment-25').every(item => item.imageNote?.includes('нужно уточнить')));
+  assert.ok(CATALOG.filter(item => item.id !== 'assortment-25').every(item => item.imageNote === 'фото, состав и подача уточнить'));
   assert.equal(CATALOG.find(item => item.id === 'assortment-25').imageNote,null);
   assert.ok(index.includes('el-product-card__image-note'));
   assert.equal(CATALOG.find(item => item.id === 'lunch-08').name,'Крабовый салат, киноа, котлета');
