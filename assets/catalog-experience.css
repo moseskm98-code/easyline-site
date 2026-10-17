@@ -23,7 +23,7 @@ html[data-el-cart-dock=true] .el-catalog{padding-bottom:calc(var(--el-cart-dock-
 .sc-host .el-refresh .el-cart-line{display:grid;grid-template-columns:96px minmax(0,1fr);align-items:start;gap:12px 18px;padding:18px}
 .el-cart-line__photo{width:96px;height:80px;object-fit:cover;flex:none;border-radius:12px}
 .el-cart-line__content{grid-column:2;grid-row:1;min-width:0}
-.sc-host .el-refresh p.el-cart-line__image-note{grid-column:1/-1;margin:0!important;font-size:10px!important;line-height:1.4!important;color:#6c7b84}
+.sc-host .el-refresh p.el-cart-line__image-note{grid-column:1/-1;margin:0!important;font-size:10px!important;line-height:1.4!important;color:#5d6973}
 .sc-host .el-cart-line__bottom{margin-top:12px;gap:14px}
 .sc-host .el-cart-line__top h2{font-size:25px!important}
 .el-product-dialog{border:1px solid #b8d2e1;border-radius:24px;padding:0;background:#fff;color:#23333d;width:880px;max-width:calc(100vw - 48px);max-height:90dvh;overflow:hidden;box-shadow:0 24px 80px #23333d40;font-family:'Nunito EasyLine',sans-serif}

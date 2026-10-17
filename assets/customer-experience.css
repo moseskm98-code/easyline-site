@@ -1,4 +1,5 @@
 /* Customer flow, approved mockups — 2.4.0 preview. Existing brand assets stay intact. */
+@media(max-width:1080px){#mobile-menu{max-height:calc(100dvh - var(--el-header-inner-height,74px) - 1px);overflow-y:auto;overscroll-behavior-y:contain}}
 html{scroll-padding-top:100px}
 .sc-host #application{scroll-margin-top:0}
 .el-catalog-cta{position:relative;isolation:isolate;overflow:hidden;flex:none;gap:12px;transition:background-color 180ms ease,transform 220ms cubic-bezier(.2,.72,.2,1),box-shadow 220ms ease}

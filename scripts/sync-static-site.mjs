@@ -156,6 +156,14 @@ async function patchCompiledBundle() {
     if (matches !== 1) throw new Error(`Expected one legacy motion controller, found ${matches}`);
     patched = patched.replace(legacyMotionStart, ownedMotionStart);
   }
+  // The full DOM typography audit is a diagnostic tool, not work for every render.
+  const automaticAudit = 'function ut(){tt(),ht(),at(),X()}';
+  const manualAudit = 'function ut(){tt(),ht(),at()}';
+  if (!patched.includes(manualAudit)) {
+    const matches = patched.split(automaticAudit).length - 1;
+    if (matches !== 1) throw new Error(`Expected one automatic typography audit, found ${matches}`);
+    patched = patched.replace(automaticAudit,manualAudit);
+  }
   if (patched !== original) await writeFile(compiledBundlePath, patched);
 }
 

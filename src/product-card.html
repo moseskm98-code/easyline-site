@@ -1,14 +1,14 @@
 <article class="el-product-card" data-product-id="{{ item.id }}">
   <div class="el-product-card__media">
-  <sc-if value="{{ item.hasImage }}"><button type="button" class="el-product-card__photo el-product-card__photo-button" aria-label="{{ item.photoDetailsLabel }}" aria-expanded="{{ item.detailsOpen }}" aria-controls="product-details-dialog" aria-haspopup="dialog" onClick="{{ item.toggleDetails }}"><img data-el-src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></button></sc-if>
+  <sc-if value="{{ item.hasImage }}"><button type="button" class="el-product-card__photo el-product-card__photo-button" aria-label="{{ item.photoDetailsLabel }}" aria-expanded="{{ item.detailsOpen }}" aria-haspopup="dialog" onClick="{{ item.toggleDetails }}"><img data-el-src="{{ item.image }}" alt="{{ item.imageAlt }}" width="1200" height="800" loading="lazy" decoding="async"></button></sc-if>
   <sc-if value="{{ item.imageNote }}"><p class="el-product-card__image-note">{{ item.imageNote }}</p></sc-if>
   </div>
   <div class="el-product-card__body">
-    <div class="el-eyebrow">{{ item.eyebrow }}</div><h3>{{ item.title }}</h3>
+    <div class="el-eyebrow">{{ item.eyebrow }}</div><h3 aria-level="{{ item.headingLevel }}">{{ item.title }}</h3>
     <sc-if value="{{ item.detail }}"><p class="el-product-card__detail">{{ item.detail }}</p></sc-if>
     <sc-if value="{{ item.wholegrain }}"><span class="el-bread-label">Цельнозерновой хлеб</span></sc-if>
     <div class="el-product-card__bottom">
-      <button class="el-product-details-link" type="button" aria-label="{{ item.detailsLabel }}" aria-expanded="{{ item.detailsOpen }}" aria-controls="product-details-dialog" aria-haspopup="dialog" onClick="{{ item.toggleDetails }}">{{ item.detailsText }}</button>
+      <button class="el-product-details-link" type="button" aria-label="{{ item.detailsLabel }}" aria-expanded="{{ item.detailsOpen }}" aria-haspopup="dialog" onClick="{{ item.toggleDetails }}">{{ item.detailsText }}</button>
       <sc-if value="{{ item.hasPrice }}"><span class="el-product-card__price">{{ item.priceLabel }}</span></sc-if>
       <sc-if value="{{ !item.showQuantity }}"><button type="button" class="el-button el-product-add" aria-label="{{ item.addLabel }}" onClick="{{ item.add }}">В корзину</button></sc-if>
       <sc-if value="{{ item.showQuantity }}"><!-- QUANTITY_CONTROL --></sc-if>

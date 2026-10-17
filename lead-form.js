@@ -1,12 +1,14 @@
 export const LEAD_ENDPOINT = "https://api.easyline.club/inquiries";
 export const PERSONAL_DATA_VERSION = "12 мая 2026";
+export const INQUIRY_TIMEOUT_MS = 15000;
 
 const PHONE_PATTERN = /^\+\d{10,15}$/;
 
 export function normalizePhone(value) {
   const digits = String(value || "").replace(/\D/g, "");
   if (digits.length === 10) return `+7${digits}`;
-  if (digits.length === 11 && digits.startsWith("8")) return `+7${digits.slice(1)}`;
+  if (digits.length === 11 && digits.startsWith("8"))
+    return `+7${digits.slice(1)}`;
   if (digits.length >= 11 && digits.length <= 15) return `+${digits}`;
   return "";
 }
@@ -14,7 +16,11 @@ export function normalizePhone(value) {
 export function buildInquiryPayload({ idempotencyKey, name, phone }) {
   const fullName = String(name || "").trim();
   const normalizedPhone = normalizePhone(phone);
-  if (fullName.length < 2 || fullName.length > 80 || !PHONE_PATTERN.test(normalizedPhone)) {
+  if (
+    fullName.length < 2 ||
+    fullName.length > 80 ||
+    !PHONE_PATTERN.test(normalizedPhone)
+  ) {
     const error = new TypeError("Проверьте имя и телефон");
     error.code = "validation_error";
     throw error;
@@ -31,17 +37,43 @@ export function buildInquiryPayload({ idempotencyKey, name, phone }) {
   };
 }
 
-export async function submitInquiry(input, fetchImpl = globalThis.fetch) {
-  const response = await fetchImpl(LEAD_ENDPOINT, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(buildInquiryPayload(input)),
-  });
-  const body = await response.json().catch(() => null);
-  if (!response.ok || !body?.ok) {
-    const error = new Error(body?.error?.message || "Не удалось отправить заявку");
-    error.code = body?.error?.code || "request_failed";
+export async function submitInquiry(
+  input,
+  fetchImpl = globalThis.fetch,
+  { timeoutMs = INQUIRY_TIMEOUT_MS } = {},
+) {
+  const bodyText = JSON.stringify(buildInquiryPayload(input));
+  const controller = new AbortController();
+  const timeout = setTimeout(
+    () => controller.abort(),
+    Number.isFinite(timeoutMs) && timeoutMs > 0
+      ? timeoutMs
+      : INQUIRY_TIMEOUT_MS,
+  );
+  try {
+    const response = await fetchImpl(LEAD_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: bodyText,
+      signal: controller.signal,
+    });
+    const body = await response.json().catch(() => null);
+    if (!response.ok || !body?.ok) {
+      const error = new Error(
+        body?.error?.message || "Не удалось отправить заявку",
+      );
+      error.code = body?.error?.code || "request_failed";
+      throw error;
+    }
+    return body.data;
+  } catch (error) {
+    if (controller.signal.aborted) {
+      const timeoutError = new Error("Превышено время ожидания ответа");
+      timeoutError.code = "timeout";
+      throw timeoutError;
+    }
     throw error;
+  } finally {
+    clearTimeout(timeout);
   }
-  return body.data;
 }

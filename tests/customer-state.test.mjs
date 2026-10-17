@@ -261,3 +261,40 @@ test('refresh saves the latest menu position rather than the old arrival positio
   listeners.beforeunload();
   assert.equal(context.history.state.easylineCatalog.scroll,7200);
 });
+
+test('inquiry retry keeps its key for the same payload and changes it for edited contacts',async()=>{
+  const {app,context}=appFixture(),calls=[],fields=new Map([['name','Тест'],['phone','+70000000000']]);let serial=0;
+  context.crypto={randomUUID:()=>`synthetic-${++serial}`};
+  context.FormData=class{constructor(){return fields;}};
+  context.window.__EASYLINE_LEADS__={normalizePhone:phone=>phone,submitInquiry:payload=>{calls.push(payload);return Promise.reject({code:'request_failed'});}};
+  const form={dataset:{},reportValidity:()=>true},event={preventDefault(){},currentTarget:form};
+  app.submitApplication(event);await new Promise(setImmediate);
+  app.submitApplication(event);await new Promise(setImmediate);
+  assert.equal(calls[0].idempotencyKey,calls[1].idempotencyKey);
+  fields.set('phone','+70000000001');app.submitApplication(event);await new Promise(setImmediate);
+  assert.notEqual(calls[0].idempotencyKey,calls[2].idempotencyKey);
+});
+
+test('dish headings follow the actual page hierarchy without changing their visual style',()=>{
+  const {app}=appFixture();app.catalogModule=catalogModule;
+  for(const route of ['assortment','bowls']){app.state.route=route;assert.ok(app.renderVals().catalogItems.every(item=>item.headingLevel===2));}
+  app.state.route='home';const values=app.renderVals();
+  assert.ok(values.homeLunches.every(item=>item.headingLevel===3));
+  assert.ok(values.homeMenuGroups.every(group=>group.items.every(item=>item.headingLevel===4)));
+});
+
+test('checkout contact draft survives policy navigation without entering persistent or history state',()=>{
+  const {app,context,setLocation}=appFixture();app.state.route='checkout';
+  app.renderVals().setCheckoutField({target:{name:'customerName',value:'Черновик проверки'}});
+  app.renderVals().setCheckoutField({target:{name:'consent',checked:true}});
+  app.go('legal','privacy');setLocation('/checkout/');app.syncRouteFromLocation();
+  assert.equal(app.renderVals().checkoutDraft.customerName,'Черновик проверки');
+  assert.equal(app.renderVals().checkoutDraft.consent,true);
+  assert.ok(!JSON.stringify(context.history.state).includes('Черновик проверки'));
+});
+
+test('a browser return with an unknown category uses the same safe default as initial loading',()=>{
+  const {app,setLocation}=appFixture();app.catalogModule=catalogModule;
+  setLocation('/assortment/?category=unknown');app.syncRouteFromLocation();
+  assert.equal(app.state.category,'all');assert.equal(app.renderVals().catalogItems.length,23);
+});

@@ -16,6 +16,7 @@ class Component extends DCLogic {
     category:'all', protein:'all', wholegrain:false, search:'', filtersOpen:false, detailsId:null,
     applicationName:'', applicationPhone:'', applicationPrivacy:false,
     applicationSending:false, applicationSent:false, applicationError:'',
+    checkoutDraft:{customerName:'',customerPhone:'',city:'',address:'',comment:'',consent:false},
   };
 
   componentDidMount() {
@@ -121,6 +122,8 @@ class Component extends DCLogic {
     if (!root) return;
     const header = document.querySelector('.el-main-header');
     if (header) root.style.setProperty('--el-header-height',Math.ceil(header.getBoundingClientRect().height) + 'px');
+    const headerInner = document.querySelector('.el-main-header__inner');
+    if (headerInner) root.style.setProperty('--el-header-inner-height',Math.ceil(headerInner.getBoundingClientRect().height) + 'px');
     const dock = document.querySelector('.el-cart-dock');
     root.dataset.elCartDock = dock ? 'true' : 'false';
     root.style.setProperty('--el-cart-dock-height',dock ? Math.ceil(dock.getBoundingClientRect().height) + 'px' : '0px');
@@ -145,7 +148,7 @@ class Component extends DCLogic {
   loadProtocol() {
     this.setState({ loading:true, error:false });
     const attempt = this._protocolAttempt || 0; this._protocolAttempt = attempt + 1;
-    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.6.5') + (attempt ? '&retry=' + attempt : '');
+    const url = '/easyline-site/assets/menu-data-6F787N4k.js?v=' + encodeURIComponent(window.__EASYLINE_VARIANT__ || '2.6.6') + (attempt ? '&retry=' + attempt : '');
     import(url)
       .then(module => this.setState({ data:{ protocols:module.PROTOCOLS }, loading:false }))
       .catch(() => this.setState({ loading:false, error:true }));
@@ -191,7 +194,8 @@ class Component extends DCLogic {
 
   catalogFilters(route=this.state.route, filters=this.state) {
     const { category, protein, wholegrain, search } = filters;
-    return { category:route === 'assortment' ? category : 'all', protein:route === 'assortment' ? protein : 'all',
+    const validCategory = category === 'all' || !this.catalogModule || this.catalogModule.CATEGORIES.some(item => item.id === category);
+    return { category:route === 'assortment' && validCategory ? category : 'all', protein:route === 'assortment' ? protein : 'all',
       wholegrain:route === 'assortment' && wholegrain, search:route === 'bowls' ? '' : search };
   }
 
@@ -360,15 +364,24 @@ class Component extends DCLogic {
     const client = window.__EASYLINE_LEADS__;
     if (!client) { this.setState({ applicationError:'Не удалось отправить заявку. Позвоните: +7 964 018-23-73.' }); return; }
     const payload = Object.fromEntries(new FormData(form));
-    const idempotencyKey = form.dataset.idempotencyKey || crypto.randomUUID();
+    const signature = JSON.stringify([String(payload.name || '').trim(),client.normalizePhone?.(payload.phone) || String(payload.phone || '').trim()]);
+    const idempotencyKey = this._applicationAttempt?.signature === signature
+      ? this._applicationAttempt.key : crypto.randomUUID();
+    this._applicationAttempt = { signature, key:idempotencyKey };
     form.dataset.idempotencyKey = idempotencyKey;
     this.setState({ applicationSending:true, applicationSent:false, applicationError:'' });
     client.submitInquiry({ idempotencyKey, name:payload.name, phone:payload.phone }).then(() => {
-      form.reset(); delete form.dataset.idempotencyKey;
+      form.reset(); delete form.dataset.idempotencyKey; this._applicationAttempt = null;
       this.setState({ applicationSending:false, applicationSent:true, applicationName:'', applicationPhone:'', applicationPrivacy:false });
     }).catch(error => this.setState({ applicationSending:false, applicationError:error?.code === 'rate_limited'
       ? 'Слишком много попыток. Попробуйте позже или напишите в WhatsApp.'
       : 'Не удалось отправить заявку. Проверьте данные или свяжитесь с нами.' }));
+  }
+
+  setCheckoutField(event) {
+    const {name,value,checked} = event.target;
+    if (!Object.prototype.hasOwnProperty.call(this.state.checkoutDraft,name)) return;
+    this.setState(state => ({checkoutDraft:{...state.checkoutDraft,[name]:name === 'consent' ? checked === true : value}}));
   }
 
   renderVals() {
@@ -386,6 +399,7 @@ class Component extends DCLogic {
     const card = item => {
       const quantity = S.cart[item.id] || 0;
       return { ...item, quantity, inCart:quantity > 0, atLimit:quantity >= 99, atZero:quantity === 0,
+        headingLevel:['assortment','bowls'].includes(S.route) ? 2 : S.route === 'home' && item.direction === 'assortment' ? 4 : 3,
         showQuantity:quantity > 0 || S.route === 'lunches' || (S.route === 'home' && item.direction === 'corporate-lunches'), hasPrice:Number.isFinite(item.priceRub),
         quantityLabel:'Количество: ' + item.name, quantityCaption:item.direction === 'corporate-lunches' ? 'Порций' : '',
         setQuantity:event => { const quantity = parseItemQuantity(event.target.value); if (quantity !== null) this.changeQuantity(item.id,quantity); },
@@ -480,6 +494,7 @@ class Component extends DCLogic {
       teamLineLabel:teamLines.length + ' ' + quantityWord(teamLines.length,'комплект','комплекта','комплектов'),
       hrefContinue:lastCatalog ? href(lastCatalog.route) + (lastCatalog.route === 'home' ? lastCatalog.hash || '' : catalogQuery(lastCatalog.filters)) : href('assortment'), goContinue:event => this.resumeCatalog(event),
       applicationName:S.applicationName, applicationPhone:S.applicationPhone, applicationPrivacy:S.applicationPrivacy,
+      checkoutDraft:S.checkoutDraft, setCheckoutField:event => this.setCheckoutField(event),
       setApplicationName:event => this.setState({applicationName:event.target.value,applicationSent:false}),
       setApplicationPhone:event => this.setState({applicationPhone:event.target.value,applicationSent:false}),
       setApplicationPrivacy:event => this.setState({applicationPrivacy:event.target.checked}),

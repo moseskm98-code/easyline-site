@@ -1,6 +1,7 @@
 (() => {
   const root = document.documentElement;
   let complete = false;
+  let timeout = 0;
   root.dataset.elBootState = "pending";
 
   function inspect() {
@@ -8,7 +9,9 @@
     const main = document.querySelector("#dc-root main");
     if (!main) return;
     complete = true;
+    window.clearTimeout(timeout);
     observer.disconnect();
+    document.getElementById('el-boot-fallback')?.remove();
     main.classList.remove("el-page-enter");
     document.querySelector("#dc-root header")?.classList.remove("el-header-enter");
     root.dataset.elMotionDegraded = "true";
@@ -22,9 +25,8 @@
   } else inspect();
 
   // Keep the retry state if the renderer itself fails to load.
-  window.setTimeout(() => {
+  timeout = window.setTimeout(() => {
     if (complete || document.getElementById("el-boot-fallback")) return;
-    observer.disconnect();
     const fallback = document.createElement("main");
     const title = document.createElement("h1");
     const message = document.createElement("p");

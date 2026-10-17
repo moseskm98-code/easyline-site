@@ -40,6 +40,7 @@
 <meta name="x-easyline-color-variant" content="accessible-digital">
 </head>
 <body>
+<noscript><main id="el-boot-fallback"><h1>Страница не загрузилась</h1><p>Включите JavaScript в настройках браузера и обновите страницу.</p></main></noscript>
 <x-dc>
 <helmet>
 <meta name="design_doc_mode" content="canvas">
@@ -71,7 +72,7 @@ button{font-family:inherit}
         </sc-for>
       </nav>
       <div class="el-more-menu" onKeyDown="{{ handleMoreMenuKeyDown }}">
-        <button class="el-more-menu__trigger" type="button" onClick="{{ toggleMore }}" onKeyDown="{{ handleMoreTriggerKeyDown }}" aria-haspopup="true" aria-expanded="{{ moreOpen }}" aria-controls="desktop-more-menu" style="padding:10px 11px;background:transparent;color:#8e242e;border:1px solid #b8d2e1;border-radius:999px;font:500 14px/1 'Geologica',sans-serif;cursor:pointer;white-space:nowrap">Ещё <span class="el-more-menu__chevron" aria-hidden="true">⌄</span></button>
+        <button class="el-more-menu__trigger" type="button" onClick="{{ toggleMore }}" onKeyDown="{{ handleMoreTriggerKeyDown }}" aria-expanded="{{ moreOpen }}" aria-controls="desktop-more-menu" style="padding:10px 11px;background:transparent;color:#8e242e;border:1px solid #b8d2e1;border-radius:999px;font:500 14px/1 'Geologica',sans-serif;cursor:pointer;white-space:nowrap">Ещё <span class="el-more-menu__chevron" aria-hidden="true">⌄</span></button>
         <nav id="desktop-more-menu" class="el-more-menu__panel" hidden="{{ !moreOpen }}" aria-hidden="{{ !moreOpen }}" aria-label="Дополнительная навигация">
           <sc-for list="{{ topNav }}" as="t" hint-placeholder-count="3">
             <a class="el-more-menu__item" href="{{ t.href }}" onClick="{{ t.onClick }}" style="font:400 15px/1.25 'Geologica',sans-serif;color:{{ t.color }};white-space:nowrap;border-bottom:1px solid transparent">{{ t.label }}</a>
@@ -203,7 +204,7 @@ button{font-family:inherit}
     <div style="border-bottom:1px solid #c8dce8">
       <button id="{{ f.buttonId }}" onClick="{{ f.toggle }}" aria-expanded="{{ f.isOpen }}" aria-controls="{{ f.panelId }}" style="width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:22px 0;background:transparent;border:none;cursor:pointer;text-align:left">
         <span style="font:400 clamp(16px,1.5cqw,19px)/1.4 'Geologica',sans-serif;color:#23333d">{{ f.q }}</span>
-        <span style="font:400 22px/1 'Oswald',sans-serif;color:#719dc9;flex:0 0 auto">{{ f.sign }}</span>
+        <span aria-hidden="true" style="font:400 22px/1 'Oswald',sans-serif;color:#719dc9;flex:0 0 auto">{{ f.sign }}</span>
       </button>
       <p id="{{ f.panelId }}" hidden="{{ !f.isOpen }}" aria-hidden="{{ !f.isOpen }}" role="region" aria-labelledby="{{ f.buttonId }}" style="font:300 15px/1.7 'Geologica',sans-serif;color:#465a67;margin:0;padding:0 40px 24px 0;text-wrap:pretty">{{ f.a }}</p>
     </div>
@@ -214,14 +215,14 @@ button{font-family:inherit}
 <!-- ЮР-ДОКУМЕНТЫ -->
 <sc-if value="{{ isLegal }}">
 <section style="max-width:1240px;margin:0 auto;padding:clamp(32px,4cqw,64px) clamp(16px,3cqw,40px) clamp(56px,7cqw,100px);display:flex;flex-wrap:wrap;gap:clamp(28px,4cqw,64px)">
-  <aside style="flex:0 1 260px;min-width:220px">
+  <div style="flex:0 1 260px;min-width:220px">
     <div class="el-brand-kicker el-brand-kicker--compact" style="font:400 11px/1 'Geologica',sans-serif;color:#6f8492;letter-spacing:.09em;text-transform:uppercase;margin-bottom:14px">Документы</div>
     <nav aria-label="Юридические документы" style="display:flex;flex-direction:column">
       <sc-for list="{{ legalDocs }}" as="d" hint-placeholder-count="9">
         <a href="{{ d.href }}" onClick="{{ d.open }}" aria-current="{{ d.current }}" style="font:300 14px/1.45 'Geologica',sans-serif;color:{{ d.color }};padding:10px 0;border-bottom:1px solid #e3edf3">{{ d.title }}</a>
       </sc-for>
     </nav>
-  </aside>
+  </div>
   <div style="flex:1 1 460px;min-width:280px;max-width:760px">
     <h1 style="font:600 clamp(26px,3.4cqw,44px)/1.05 'Oswald',sans-serif;text-transform:uppercase;color:#8e242e;margin:0 0 10px;text-wrap:balance">{{ legal.title }}</h1>
     <div style="font:300 13px/1.5 'Geologica',sans-serif;color:#7a909d;margin-bottom:24px">{{ legal.note }}</div>
@@ -251,13 +252,13 @@ button{font-family:inherit}
       </div>
       <form id="application-form" onSubmit="{{ submitApplication }}" style="flex:1 1 360px;max-width:560px;background:#ffffff;border:1px solid #8e242e;padding:clamp(22px,3cqw,36px);display:flex;flex-direction:column;gap:18px">
         <label style="font:400 14px/1.4 'Geologica',sans-serif;color:#23333d">Имя
-          <input name="name" type="text" value="{{ applicationName }}" onInput="{{ setApplicationName }}" autocomplete="name" minlength="2" maxlength="80" required="{{ true }}" placeholder="Как к вам обращаться" style="display:block;width:100%;margin-top:8px;padding:15px 16px;background:#ffffff;border:1px solid #9ab5c5;border-radius:16px;font:400 16px/1 'Geologica',sans-serif;color:#23333d">
+          <input name="name" disabled="{{ applicationSending }}" type="text" value="{{ applicationName }}" onInput="{{ setApplicationName }}" autocomplete="name" minlength="2" maxlength="80" required="{{ true }}" placeholder="Как к вам обращаться" style="display:block;width:100%;margin-top:8px;padding:15px 16px;background:#ffffff;border:1px solid #9ab5c5;border-radius:16px;font:400 16px/1 'Geologica',sans-serif;color:#23333d">
         </label>
         <label style="font:400 14px/1.4 'Geologica',sans-serif;color:#23333d">Номер телефона
-          <input name="phone" type="tel" value="{{ applicationPhone }}" onInput="{{ setApplicationPhone }}" autocomplete="tel" inputmode="tel" required="{{ true }}" placeholder="+7 900 000-00-00" style="display:block;width:100%;margin-top:8px;padding:15px 16px;background:#ffffff;border:1px solid #9ab5c5;border-radius:16px;font:400 16px/1 'Geologica',sans-serif;color:#23333d">
+          <input name="phone" disabled="{{ applicationSending }}" type="tel" value="{{ applicationPhone }}" onInput="{{ setApplicationPhone }}" autocomplete="tel" inputmode="tel" required="{{ true }}" placeholder="+7 900 000-00-00" style="display:block;width:100%;margin-top:8px;padding:15px 16px;background:#ffffff;border:1px solid #9ab5c5;border-radius:16px;font:400 16px/1 'Geologica',sans-serif;color:#23333d">
         </label>
         <label style="display:flex;align-items:flex-start;gap:10px;font:300 13px/1.5 'Geologica',sans-serif;color:#465a67;cursor:pointer">
-          <input name="privacy" type="checkbox" checked="{{ applicationPrivacy }}" onChange="{{ setApplicationPrivacy }}" required="{{ true }}" style="width:18px;height:18px;margin:1px 0 0;accent-color:#8e242e;flex:0 0 auto">
+          <input name="privacy" disabled="{{ applicationSending }}" type="checkbox" checked="{{ applicationPrivacy }}" onChange="{{ setApplicationPrivacy }}" required="{{ true }}" style="width:18px;height:18px;margin:1px 0 0;accent-color:#8e242e;flex:0 0 auto">
           <span>Я согласен(а) на обработку персональных данных согласно <a href="{{ hrefPrivacy }}" onClick="{{ goPrivacy }}" style="text-decoration:underline;text-underline-offset:3px">политике обработки персональных данных</a>.</span>
         </label>
         <button type="submit" disabled="{{ applicationSending }}" style="padding:16px 24px;background:#8e242e;color:#ffffff;border:1px solid #8e242e;border-radius:999px;font:500 15px/1 'Geologica',sans-serif;cursor:pointer">{{ applicationButton }}</button>
@@ -280,7 +281,7 @@ button{font-family:inherit}
       <img src="/easyline-site/assets/logo-cream-D09r1U-t.svg" alt="EasyLine" style="width:clamp(112px,11cqw,148px);height:auto;display:block">
       <p style="font:300 14px/1.65 'Geologica',sans-serif;color:#dbe9f1;margin:20px 0 0;max-width:300px;text-wrap:pretty">Рацион питания на 28 дней, корпоративные обеды и готовые блюда на каждый день.</p>
       <div style="font:300 13px/1.7 'Geologica',sans-serif;color:#c9dce8;margin-top:18px"><a href="tel:+79640182373" style="color:#ffffff;text-decoration:underline;text-underline-offset:4px">+7 964 018-23-73</a><br><a href="https://wa.me/79640182373" target="_blank" rel="noreferrer" style="color:#ffffff;text-decoration:underline;text-underline-offset:4px">WhatsApp</a> · <a href="mailto:hello@easyline.club" style="color:#ffffff;text-decoration:underline;text-underline-offset:4px">hello@easyline.club</a><br>Ежедневно 8:00–20:00</div>
-      <div aria-label="Социальные сети" style="display:flex;align-items:center;gap:10px;margin-top:18px">
+      <div role="group" aria-label="Социальные сети" style="display:flex;align-items:center;gap:10px;margin-top:18px">
         <a data-el-social="telegram" href="" aria-disabled="true" tabindex="-1" onClick="{{ disableSocial }}" aria-label="Telegram — ссылка скоро появится" title="Telegram — ссылка скоро появится" style="width:38px;height:38px;display:grid;place-items:center;color:#ffffff;border:1px solid #b55b66;border-radius:50%;opacity:.55;cursor:not-allowed">
           <svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M21.4 3.3 3.8 10.1c-1.2.5-1.2 1.1-.2 1.4l4.5 1.4 1.7 5.3c.2.6.1.9.8.9.5 0 .8-.2 1-.5l2.5-2.4 5 3.7c.9.5 1.6.2 1.8-.9l3-14.2c.3-1.4-.5-2-1.5-1.5ZM9.8 12.6l8.7-5.5c.4-.3.8-.1.5.2l-7.2 6.5-.3 3.4-1.7-4.6Z"/></svg>
         </a>
